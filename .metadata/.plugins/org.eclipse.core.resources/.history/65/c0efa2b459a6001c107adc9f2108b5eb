@@ -1,0 +1,9 @@
+grammar edu.upb.lp.isc.DymeLanguage with org.eclipse.xtext.common.Terminals
+
+generate dymeLanguage "http://www.upb.edu/lp/isc/DymeLanguage"
+
+Model:
+	greetings+=Greeting*;
+	
+Greeting:
+	'Hello' name=ID '!';

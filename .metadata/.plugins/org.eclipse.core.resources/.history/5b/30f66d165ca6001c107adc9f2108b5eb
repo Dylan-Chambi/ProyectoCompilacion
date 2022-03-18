@@ -1,0 +1,45 @@
+grammar edu.upb.lp.isc.DymeLanguage with org.eclipse.xtext.common.Terminals
+
+generate dymeLanguage "http://www.upb.edu/lp/isc/DymeLanguage"
+
+//Model:
+//	greetings+=Greeting*;
+//	
+//Greeting:
+//	'Hello' name=ID '!';
+
+
+
+Funciones:
+	'CASIMIR' name=ID 'CONSUME' (param+=Param ('$' param+=Param)*)? 'CONVERGE'
+	(instr+=Instruccion)+
+	"GUT" 
+;
+
+Param:
+	name=ID 'es' tip=Valor
+;
+
+Valor:
+	'INT' | 'STRING'
+;
+
+Instruccion:
+	Asignacion /*Falta */
+;
+
+Asignacion:
+	'MASA' name=ID (':' tip=Valor)?  '<-' valor=Expresion
+;
+
+Expresion:
+	Suma | ExprSimple
+;
+
+Suma:
+	izq=ExprSimple '+' der=ExprSimple
+;
+
+ExprSimple:
+	z = INT | x = STRING
+;
