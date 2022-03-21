@@ -14,8 +14,9 @@ package edu.upb.lp.isc.dymeLanguage;
  * </p>
  * <ul>
  *   <li>{@link edu.upb.lp.isc.dymeLanguage.Asignacion#getName <em>Name</em>}</li>
+ *   <li>{@link edu.upb.lp.isc.dymeLanguage.Asignacion#isTipoInferido <em>Tipo Inferido</em>}</li>
  *   <li>{@link edu.upb.lp.isc.dymeLanguage.Asignacion#getTip <em>Tip</em>}</li>
- *   <li>{@link edu.upb.lp.isc.dymeLanguage.Asignacion#getValor <em>Valor</em>}</li>
+ *   <li>{@link edu.upb.lp.isc.dymeLanguage.Asignacion#getValorAsig <em>Valor Asig</em>}</li>
  * </ul>
  *
  * @see edu.upb.lp.isc.dymeLanguage.DymeLanguagePackage#getAsignacion()
@@ -47,47 +48,69 @@ public interface Asignacion extends Instruccion
   void setName(String value);
 
   /**
-   * Returns the value of the '<em><b>Tip</b></em>' attribute.
+   * Returns the value of the '<em><b>Tipo Inferido</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Tip</em>' attribute.
-   * @see #setTip(String)
-   * @see edu.upb.lp.isc.dymeLanguage.DymeLanguagePackage#getAsignacion_Tip()
+   * @return the value of the '<em>Tipo Inferido</em>' attribute.
+   * @see #setTipoInferido(boolean)
+   * @see edu.upb.lp.isc.dymeLanguage.DymeLanguagePackage#getAsignacion_TipoInferido()
    * @model
    * @generated
    */
-  String getTip();
+  boolean isTipoInferido();
 
   /**
-   * Sets the value of the '{@link edu.upb.lp.isc.dymeLanguage.Asignacion#getTip <em>Tip</em>}' attribute.
+   * Sets the value of the '{@link edu.upb.lp.isc.dymeLanguage.Asignacion#isTipoInferido <em>Tipo Inferido</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Tip</em>' attribute.
-   * @see #getTip()
+   * @param value the new value of the '<em>Tipo Inferido</em>' attribute.
+   * @see #isTipoInferido()
    * @generated
    */
-  void setTip(String value);
+  void setTipoInferido(boolean value);
 
   /**
-   * Returns the value of the '<em><b>Valor</b></em>' containment reference.
+   * Returns the value of the '<em><b>Tip</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Valor</em>' containment reference.
-   * @see #setValor(Expresion)
-   * @see edu.upb.lp.isc.dymeLanguage.DymeLanguagePackage#getAsignacion_Valor()
+   * @return the value of the '<em>Tip</em>' containment reference.
+   * @see #setTip(Tipo)
+   * @see edu.upb.lp.isc.dymeLanguage.DymeLanguagePackage#getAsignacion_Tip()
    * @model containment="true"
    * @generated
    */
-  Expresion getValor();
+  Tipo getTip();
 
   /**
-   * Sets the value of the '{@link edu.upb.lp.isc.dymeLanguage.Asignacion#getValor <em>Valor</em>}' containment reference.
+   * Sets the value of the '{@link edu.upb.lp.isc.dymeLanguage.Asignacion#getTip <em>Tip</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Valor</em>' containment reference.
-   * @see #getValor()
+   * @param value the new value of the '<em>Tip</em>' containment reference.
+   * @see #getTip()
    * @generated
    */
-  void setValor(Expresion value);
+  void setTip(Tipo value);
+
+  /**
+   * Returns the value of the '<em><b>Valor Asig</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Valor Asig</em>' containment reference.
+   * @see #setValorAsig(Expresion)
+   * @see edu.upb.lp.isc.dymeLanguage.DymeLanguagePackage#getAsignacion_ValorAsig()
+   * @model containment="true"
+   * @generated
+   */
+  Expresion getValorAsig();
+
+  /**
+   * Sets the value of the '{@link edu.upb.lp.isc.dymeLanguage.Asignacion#getValorAsig <em>Valor Asig</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Valor Asig</em>' containment reference.
+   * @see #getValorAsig()
+   * @generated
+   */
+  void setValorAsig(Expresion value);
 
 } // Asignacion

@@ -12,8 +12,6 @@ import java.util.ArrayList;
 
 @SuppressWarnings("all")
 public class InternalDymeLanguageLexer extends Lexer {
-    public static final int RULE_STRING=5;
-    public static final int RULE_SL_COMMENT=8;
     public static final int T__19=19;
     public static final int T__15=15;
     public static final int T__16=16;
@@ -23,17 +21,11 @@ public class InternalDymeLanguageLexer extends Lexer {
     public static final int T__12=12;
     public static final int T__13=13;
     public static final int T__14=14;
-    public static final int EOF=-1;
-    public static final int T__30=30;
-    public static final int T__31=31;
-    public static final int T__32=32;
     public static final int RULE_ID=4;
-    public static final int RULE_WS=9;
-    public static final int RULE_ANY_OTHER=10;
     public static final int T__26=26;
     public static final int T__27=27;
     public static final int T__28=28;
-    public static final int RULE_INT=6;
+    public static final int RULE_INT=5;
     public static final int T__29=29;
     public static final int T__22=22;
     public static final int RULE_ML_COMMENT=7;
@@ -42,6 +34,25 @@ public class InternalDymeLanguageLexer extends Lexer {
     public static final int T__25=25;
     public static final int T__20=20;
     public static final int T__21=21;
+    public static final int RULE_STRING=6;
+    public static final int RULE_SL_COMMENT=8;
+    public static final int T__37=37;
+    public static final int T__38=38;
+    public static final int T__39=39;
+    public static final int T__33=33;
+    public static final int T__34=34;
+    public static final int T__35=35;
+    public static final int T__36=36;
+    public static final int EOF=-1;
+    public static final int T__30=30;
+    public static final int T__31=31;
+    public static final int T__32=32;
+    public static final int RULE_WS=9;
+    public static final int RULE_ANY_OTHER=10;
+    public static final int T__40=40;
+    public static final int T__41=41;
+    public static final int T__42=42;
+    public static final int T__43=43;
 
     // delegates
     // delegators
@@ -82,10 +93,10 @@ public class InternalDymeLanguageLexer extends Lexer {
         try {
             int _type = T__12;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalDymeLanguage.g:12:7: ( 'CONSUME' )
-            // InternalDymeLanguage.g:12:9: 'CONSUME'
+            // InternalDymeLanguage.g:12:7: ( 'NECESITA' )
+            // InternalDymeLanguage.g:12:9: 'NECESITA'
             {
-            match("CONSUME"); 
+            match("NECESITA"); 
 
 
             }
@@ -186,10 +197,10 @@ public class InternalDymeLanguageLexer extends Lexer {
         try {
             int _type = T__17;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalDymeLanguage.g:17:7: ( 'es' )
-            // InternalDymeLanguage.g:17:9: 'es'
+            // InternalDymeLanguage.g:17:7: ( 'CONSUME' )
+            // InternalDymeLanguage.g:17:9: 'CONSUME'
             {
-            match("es"); 
+            match("CONSUME"); 
 
 
             }
@@ -207,11 +218,10 @@ public class InternalDymeLanguageLexer extends Lexer {
         try {
             int _type = T__18;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalDymeLanguage.g:18:7: ( 'Planeta' )
-            // InternalDymeLanguage.g:18:9: 'Planeta'
+            // InternalDymeLanguage.g:18:7: ( '#' )
+            // InternalDymeLanguage.g:18:9: '#'
             {
-            match("Planeta"); 
-
+            match('#'); 
 
             }
 
@@ -228,10 +238,10 @@ public class InternalDymeLanguageLexer extends Lexer {
         try {
             int _type = T__19;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalDymeLanguage.g:19:7: ( 'STRING' )
-            // InternalDymeLanguage.g:19:9: 'STRING'
+            // InternalDymeLanguage.g:19:7: ( 'es' )
+            // InternalDymeLanguage.g:19:9: 'es'
             {
-            match("STRING"); 
+            match("es"); 
 
 
             }
@@ -291,10 +301,10 @@ public class InternalDymeLanguageLexer extends Lexer {
         try {
             int _type = T__22;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalDymeLanguage.g:22:7: ( '+' )
-            // InternalDymeLanguage.g:22:9: '+'
+            // InternalDymeLanguage.g:22:7: ( '~' )
+            // InternalDymeLanguage.g:22:9: '~'
             {
-            match('+'); 
+            match('~'); 
 
             }
 
@@ -311,10 +321,11 @@ public class InternalDymeLanguageLexer extends Lexer {
         try {
             int _type = T__23;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalDymeLanguage.g:23:7: ( '1' )
-            // InternalDymeLanguage.g:23:9: '1'
+            // InternalDymeLanguage.g:23:7: ( 'Planeta' )
+            // InternalDymeLanguage.g:23:9: 'Planeta'
             {
-            match('1'); 
+            match("Planeta"); 
+
 
             }
 
@@ -331,10 +342,11 @@ public class InternalDymeLanguageLexer extends Lexer {
         try {
             int _type = T__24;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalDymeLanguage.g:24:7: ( '2' )
-            // InternalDymeLanguage.g:24:9: '2'
+            // InternalDymeLanguage.g:24:7: ( 'Constelacion' )
+            // InternalDymeLanguage.g:24:9: 'Constelacion'
             {
-            match('2'); 
+            match("Constelacion"); 
+
 
             }
 
@@ -351,10 +363,11 @@ public class InternalDymeLanguageLexer extends Lexer {
         try {
             int _type = T__25;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalDymeLanguage.g:25:7: ( '3' )
-            // InternalDymeLanguage.g:25:9: '3'
+            // InternalDymeLanguage.g:25:7: ( 'Estrella' )
+            // InternalDymeLanguage.g:25:9: 'Estrella'
             {
-            match('3'); 
+            match("Estrella"); 
+
 
             }
 
@@ -371,10 +384,11 @@ public class InternalDymeLanguageLexer extends Lexer {
         try {
             int _type = T__26;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalDymeLanguage.g:26:7: ( '4' )
-            // InternalDymeLanguage.g:26:9: '4'
+            // InternalDymeLanguage.g:26:7: ( 'PolvoEstelar' )
+            // InternalDymeLanguage.g:26:9: 'PolvoEstelar'
             {
-            match('4'); 
+            match("PolvoEstelar"); 
+
 
             }
 
@@ -391,10 +405,11 @@ public class InternalDymeLanguageLexer extends Lexer {
         try {
             int _type = T__27;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalDymeLanguage.g:27:7: ( '5' )
-            // InternalDymeLanguage.g:27:9: '5'
+            // InternalDymeLanguage.g:27:7: ( 'Luna' )
+            // InternalDymeLanguage.g:27:9: 'Luna'
             {
-            match('5'); 
+            match("Luna"); 
+
 
             }
 
@@ -411,10 +426,10 @@ public class InternalDymeLanguageLexer extends Lexer {
         try {
             int _type = T__28;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalDymeLanguage.g:28:7: ( '6' )
-            // InternalDymeLanguage.g:28:9: '6'
+            // InternalDymeLanguage.g:28:7: ( '(' )
+            // InternalDymeLanguage.g:28:9: '('
             {
-            match('6'); 
+            match('('); 
 
             }
 
@@ -431,10 +446,11 @@ public class InternalDymeLanguageLexer extends Lexer {
         try {
             int _type = T__29;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalDymeLanguage.g:29:7: ( '7' )
-            // InternalDymeLanguage.g:29:9: '7'
+            // InternalDymeLanguage.g:29:7: ( '++' )
+            // InternalDymeLanguage.g:29:9: '++'
             {
-            match('7'); 
+            match("++"); 
+
 
             }
 
@@ -451,10 +467,10 @@ public class InternalDymeLanguageLexer extends Lexer {
         try {
             int _type = T__30;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalDymeLanguage.g:30:7: ( '8' )
-            // InternalDymeLanguage.g:30:9: '8'
+            // InternalDymeLanguage.g:30:7: ( ')' )
+            // InternalDymeLanguage.g:30:9: ')'
             {
-            match('8'); 
+            match(')'); 
 
             }
 
@@ -471,10 +487,10 @@ public class InternalDymeLanguageLexer extends Lexer {
         try {
             int _type = T__31;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalDymeLanguage.g:31:7: ( '9' )
-            // InternalDymeLanguage.g:31:9: '9'
+            // InternalDymeLanguage.g:31:7: ( '+' )
+            // InternalDymeLanguage.g:31:9: '+'
             {
-            match('9'); 
+            match('+'); 
 
             }
 
@@ -491,10 +507,10 @@ public class InternalDymeLanguageLexer extends Lexer {
         try {
             int _type = T__32;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalDymeLanguage.g:32:7: ( '0' )
-            // InternalDymeLanguage.g:32:9: '0'
+            // InternalDymeLanguage.g:32:7: ( '-' )
+            // InternalDymeLanguage.g:32:9: '-'
             {
-            match('0'); 
+            match('-'); 
 
             }
 
@@ -506,15 +522,240 @@ public class InternalDymeLanguageLexer extends Lexer {
     }
     // $ANTLR end "T__32"
 
+    // $ANTLR start "T__33"
+    public final void mT__33() throws RecognitionException {
+        try {
+            int _type = T__33;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // InternalDymeLanguage.g:33:7: ( '/' )
+            // InternalDymeLanguage.g:33:9: '/'
+            {
+            match('/'); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "T__33"
+
+    // $ANTLR start "T__34"
+    public final void mT__34() throws RecognitionException {
+        try {
+            int _type = T__34;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // InternalDymeLanguage.g:34:7: ( '*' )
+            // InternalDymeLanguage.g:34:9: '*'
+            {
+            match('*'); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "T__34"
+
+    // $ANTLR start "T__35"
+    public final void mT__35() throws RecognitionException {
+        try {
+            int _type = T__35;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // InternalDymeLanguage.g:35:7: ( '%' )
+            // InternalDymeLanguage.g:35:9: '%'
+            {
+            match('%'); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "T__35"
+
+    // $ANTLR start "T__36"
+    public final void mT__36() throws RecognitionException {
+        try {
+            int _type = T__36;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // InternalDymeLanguage.g:36:7: ( '&&' )
+            // InternalDymeLanguage.g:36:9: '&&'
+            {
+            match("&&"); 
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "T__36"
+
+    // $ANTLR start "T__37"
+    public final void mT__37() throws RecognitionException {
+        try {
+            int _type = T__37;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // InternalDymeLanguage.g:37:7: ( '||' )
+            // InternalDymeLanguage.g:37:9: '||'
+            {
+            match("||"); 
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "T__37"
+
+    // $ANTLR start "T__38"
+    public final void mT__38() throws RecognitionException {
+        try {
+            int _type = T__38;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // InternalDymeLanguage.g:38:7: ( '$$' )
+            // InternalDymeLanguage.g:38:9: '$$'
+            {
+            match("$$"); 
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "T__38"
+
+    // $ANTLR start "T__39"
+    public final void mT__39() throws RecognitionException {
+        try {
+            int _type = T__39;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // InternalDymeLanguage.g:39:7: ( '!' )
+            // InternalDymeLanguage.g:39:9: '!'
+            {
+            match('!'); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "T__39"
+
+    // $ANTLR start "T__40"
+    public final void mT__40() throws RecognitionException {
+        try {
+            int _type = T__40;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // InternalDymeLanguage.g:40:7: ( 'a' )
+            // InternalDymeLanguage.g:40:9: 'a'
+            {
+            match('a'); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "T__40"
+
+    // $ANTLR start "T__41"
+    public final void mT__41() throws RecognitionException {
+        try {
+            int _type = T__41;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // InternalDymeLanguage.g:41:7: ( '.' )
+            // InternalDymeLanguage.g:41:9: '.'
+            {
+            match('.'); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "T__41"
+
+    // $ANTLR start "T__42"
+    public final void mT__42() throws RecognitionException {
+        try {
+            int _type = T__42;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // InternalDymeLanguage.g:42:7: ( 'LunaNueva' )
+            // InternalDymeLanguage.g:42:9: 'LunaNueva'
+            {
+            match("LunaNueva"); 
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "T__42"
+
+    // $ANTLR start "T__43"
+    public final void mT__43() throws RecognitionException {
+        try {
+            int _type = T__43;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // InternalDymeLanguage.g:43:7: ( 'LunaLlena' )
+            // InternalDymeLanguage.g:43:9: 'LunaLlena'
+            {
+            match("LunaLlena"); 
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "T__43"
+
     // $ANTLR start "RULE_ID"
     public final void mRULE_ID() throws RecognitionException {
         try {
             int _type = RULE_ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalDymeLanguage.g:788:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
-            // InternalDymeLanguage.g:788:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // InternalDymeLanguage.g:1310:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
+            // InternalDymeLanguage.g:1310:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             {
-            // InternalDymeLanguage.g:788:11: ( '^' )?
+            // InternalDymeLanguage.g:1310:11: ( '^' )?
             int alt1=2;
             int LA1_0 = input.LA(1);
 
@@ -523,7 +764,7 @@ public class InternalDymeLanguageLexer extends Lexer {
             }
             switch (alt1) {
                 case 1 :
-                    // InternalDymeLanguage.g:788:11: '^'
+                    // InternalDymeLanguage.g:1310:11: '^'
                     {
                     match('^'); 
 
@@ -541,7 +782,7 @@ public class InternalDymeLanguageLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // InternalDymeLanguage.g:788:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // InternalDymeLanguage.g:1310:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             loop2:
             do {
                 int alt2=2;
@@ -590,10 +831,10 @@ public class InternalDymeLanguageLexer extends Lexer {
         try {
             int _type = RULE_INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalDymeLanguage.g:790:10: ( ( '0' .. '9' )+ )
-            // InternalDymeLanguage.g:790:12: ( '0' .. '9' )+
+            // InternalDymeLanguage.g:1312:10: ( ( '0' .. '9' )+ )
+            // InternalDymeLanguage.g:1312:12: ( '0' .. '9' )+
             {
-            // InternalDymeLanguage.g:790:12: ( '0' .. '9' )+
+            // InternalDymeLanguage.g:1312:12: ( '0' .. '9' )+
             int cnt3=0;
             loop3:
             do {
@@ -607,7 +848,7 @@ public class InternalDymeLanguageLexer extends Lexer {
 
                 switch (alt3) {
             	case 1 :
-            	    // InternalDymeLanguage.g:790:13: '0' .. '9'
+            	    // InternalDymeLanguage.g:1312:13: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -639,10 +880,10 @@ public class InternalDymeLanguageLexer extends Lexer {
         try {
             int _type = RULE_STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalDymeLanguage.g:792:13: ( ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
-            // InternalDymeLanguage.g:792:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // InternalDymeLanguage.g:1314:13: ( ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
+            // InternalDymeLanguage.g:1314:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             {
-            // InternalDymeLanguage.g:792:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // InternalDymeLanguage.g:1314:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             int alt6=2;
             int LA6_0 = input.LA(1);
 
@@ -660,10 +901,10 @@ public class InternalDymeLanguageLexer extends Lexer {
             }
             switch (alt6) {
                 case 1 :
-                    // InternalDymeLanguage.g:792:16: '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
+                    // InternalDymeLanguage.g:1314:16: '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
                     {
                     match('\"'); 
-                    // InternalDymeLanguage.g:792:20: ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )*
+                    // InternalDymeLanguage.g:1314:20: ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )*
                     loop4:
                     do {
                         int alt4=3;
@@ -679,7 +920,7 @@ public class InternalDymeLanguageLexer extends Lexer {
 
                         switch (alt4) {
                     	case 1 :
-                    	    // InternalDymeLanguage.g:792:21: '\\\\' .
+                    	    // InternalDymeLanguage.g:1314:21: '\\\\' .
                     	    {
                     	    match('\\'); 
                     	    matchAny(); 
@@ -687,7 +928,7 @@ public class InternalDymeLanguageLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // InternalDymeLanguage.g:792:28: ~ ( ( '\\\\' | '\"' ) )
+                    	    // InternalDymeLanguage.g:1314:28: ~ ( ( '\\\\' | '\"' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -712,10 +953,10 @@ public class InternalDymeLanguageLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // InternalDymeLanguage.g:792:48: '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
+                    // InternalDymeLanguage.g:1314:48: '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
                     {
                     match('\''); 
-                    // InternalDymeLanguage.g:792:53: ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )*
+                    // InternalDymeLanguage.g:1314:53: ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )*
                     loop5:
                     do {
                         int alt5=3;
@@ -731,7 +972,7 @@ public class InternalDymeLanguageLexer extends Lexer {
 
                         switch (alt5) {
                     	case 1 :
-                    	    // InternalDymeLanguage.g:792:54: '\\\\' .
+                    	    // InternalDymeLanguage.g:1314:54: '\\\\' .
                     	    {
                     	    match('\\'); 
                     	    matchAny(); 
@@ -739,7 +980,7 @@ public class InternalDymeLanguageLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // InternalDymeLanguage.g:792:61: ~ ( ( '\\\\' | '\\'' ) )
+                    	    // InternalDymeLanguage.g:1314:61: ~ ( ( '\\\\' | '\\'' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -782,12 +1023,12 @@ public class InternalDymeLanguageLexer extends Lexer {
         try {
             int _type = RULE_ML_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalDymeLanguage.g:794:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
-            // InternalDymeLanguage.g:794:19: '/*' ( options {greedy=false; } : . )* '*/'
+            // InternalDymeLanguage.g:1316:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
+            // InternalDymeLanguage.g:1316:19: '/*' ( options {greedy=false; } : . )* '*/'
             {
             match("/*"); 
 
-            // InternalDymeLanguage.g:794:24: ( options {greedy=false; } : . )*
+            // InternalDymeLanguage.g:1316:24: ( options {greedy=false; } : . )*
             loop7:
             do {
                 int alt7=2;
@@ -812,7 +1053,7 @@ public class InternalDymeLanguageLexer extends Lexer {
 
                 switch (alt7) {
             	case 1 :
-            	    // InternalDymeLanguage.g:794:52: .
+            	    // InternalDymeLanguage.g:1316:52: .
             	    {
             	    matchAny(); 
 
@@ -842,12 +1083,12 @@ public class InternalDymeLanguageLexer extends Lexer {
         try {
             int _type = RULE_SL_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalDymeLanguage.g:796:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
-            // InternalDymeLanguage.g:796:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
+            // InternalDymeLanguage.g:1318:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
+            // InternalDymeLanguage.g:1318:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
             {
             match("//"); 
 
-            // InternalDymeLanguage.g:796:24: (~ ( ( '\\n' | '\\r' ) ) )*
+            // InternalDymeLanguage.g:1318:24: (~ ( ( '\\n' | '\\r' ) ) )*
             loop8:
             do {
                 int alt8=2;
@@ -860,7 +1101,7 @@ public class InternalDymeLanguageLexer extends Lexer {
 
                 switch (alt8) {
             	case 1 :
-            	    // InternalDymeLanguage.g:796:24: ~ ( ( '\\n' | '\\r' ) )
+            	    // InternalDymeLanguage.g:1318:24: ~ ( ( '\\n' | '\\r' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -880,7 +1121,7 @@ public class InternalDymeLanguageLexer extends Lexer {
                 }
             } while (true);
 
-            // InternalDymeLanguage.g:796:40: ( ( '\\r' )? '\\n' )?
+            // InternalDymeLanguage.g:1318:40: ( ( '\\r' )? '\\n' )?
             int alt10=2;
             int LA10_0 = input.LA(1);
 
@@ -889,9 +1130,9 @@ public class InternalDymeLanguageLexer extends Lexer {
             }
             switch (alt10) {
                 case 1 :
-                    // InternalDymeLanguage.g:796:41: ( '\\r' )? '\\n'
+                    // InternalDymeLanguage.g:1318:41: ( '\\r' )? '\\n'
                     {
-                    // InternalDymeLanguage.g:796:41: ( '\\r' )?
+                    // InternalDymeLanguage.g:1318:41: ( '\\r' )?
                     int alt9=2;
                     int LA9_0 = input.LA(1);
 
@@ -900,7 +1141,7 @@ public class InternalDymeLanguageLexer extends Lexer {
                     }
                     switch (alt9) {
                         case 1 :
-                            // InternalDymeLanguage.g:796:41: '\\r'
+                            // InternalDymeLanguage.g:1318:41: '\\r'
                             {
                             match('\r'); 
 
@@ -932,10 +1173,10 @@ public class InternalDymeLanguageLexer extends Lexer {
         try {
             int _type = RULE_WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalDymeLanguage.g:798:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
-            // InternalDymeLanguage.g:798:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // InternalDymeLanguage.g:1320:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+            // InternalDymeLanguage.g:1320:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             {
-            // InternalDymeLanguage.g:798:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // InternalDymeLanguage.g:1320:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             int cnt11=0;
             loop11:
             do {
@@ -989,8 +1230,8 @@ public class InternalDymeLanguageLexer extends Lexer {
         try {
             int _type = RULE_ANY_OTHER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalDymeLanguage.g:800:16: ( . )
-            // InternalDymeLanguage.g:800:18: .
+            // InternalDymeLanguage.g:1322:16: ( . )
+            // InternalDymeLanguage.g:1322:18: .
             {
             matchAny(); 
 
@@ -1005,8 +1246,8 @@ public class InternalDymeLanguageLexer extends Lexer {
     // $ANTLR end "RULE_ANY_OTHER"
 
     public void mTokens() throws RecognitionException {
-        // InternalDymeLanguage.g:1:8: ( T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER )
-        int alt12=29;
+        // InternalDymeLanguage.g:1:8: ( T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER )
+        int alt12=40;
         alt12 = dfa12.predict(input);
         switch (alt12) {
             case 1 :
@@ -1164,49 +1405,126 @@ public class InternalDymeLanguageLexer extends Lexer {
                 }
                 break;
             case 23 :
-                // InternalDymeLanguage.g:1:142: RULE_ID
+                // InternalDymeLanguage.g:1:142: T__33
+                {
+                mT__33(); 
+
+                }
+                break;
+            case 24 :
+                // InternalDymeLanguage.g:1:148: T__34
+                {
+                mT__34(); 
+
+                }
+                break;
+            case 25 :
+                // InternalDymeLanguage.g:1:154: T__35
+                {
+                mT__35(); 
+
+                }
+                break;
+            case 26 :
+                // InternalDymeLanguage.g:1:160: T__36
+                {
+                mT__36(); 
+
+                }
+                break;
+            case 27 :
+                // InternalDymeLanguage.g:1:166: T__37
+                {
+                mT__37(); 
+
+                }
+                break;
+            case 28 :
+                // InternalDymeLanguage.g:1:172: T__38
+                {
+                mT__38(); 
+
+                }
+                break;
+            case 29 :
+                // InternalDymeLanguage.g:1:178: T__39
+                {
+                mT__39(); 
+
+                }
+                break;
+            case 30 :
+                // InternalDymeLanguage.g:1:184: T__40
+                {
+                mT__40(); 
+
+                }
+                break;
+            case 31 :
+                // InternalDymeLanguage.g:1:190: T__41
+                {
+                mT__41(); 
+
+                }
+                break;
+            case 32 :
+                // InternalDymeLanguage.g:1:196: T__42
+                {
+                mT__42(); 
+
+                }
+                break;
+            case 33 :
+                // InternalDymeLanguage.g:1:202: T__43
+                {
+                mT__43(); 
+
+                }
+                break;
+            case 34 :
+                // InternalDymeLanguage.g:1:208: RULE_ID
                 {
                 mRULE_ID(); 
 
                 }
                 break;
-            case 24 :
-                // InternalDymeLanguage.g:1:150: RULE_INT
+            case 35 :
+                // InternalDymeLanguage.g:1:216: RULE_INT
                 {
                 mRULE_INT(); 
 
                 }
                 break;
-            case 25 :
-                // InternalDymeLanguage.g:1:159: RULE_STRING
+            case 36 :
+                // InternalDymeLanguage.g:1:225: RULE_STRING
                 {
                 mRULE_STRING(); 
 
                 }
                 break;
-            case 26 :
-                // InternalDymeLanguage.g:1:171: RULE_ML_COMMENT
+            case 37 :
+                // InternalDymeLanguage.g:1:237: RULE_ML_COMMENT
                 {
                 mRULE_ML_COMMENT(); 
 
                 }
                 break;
-            case 27 :
-                // InternalDymeLanguage.g:1:187: RULE_SL_COMMENT
+            case 38 :
+                // InternalDymeLanguage.g:1:253: RULE_SL_COMMENT
                 {
                 mRULE_SL_COMMENT(); 
 
                 }
                 break;
-            case 28 :
-                // InternalDymeLanguage.g:1:203: RULE_WS
+            case 39 :
+                // InternalDymeLanguage.g:1:269: RULE_WS
                 {
                 mRULE_WS(); 
 
                 }
                 break;
-            case 29 :
-                // InternalDymeLanguage.g:1:211: RULE_ANY_OTHER
+            case 40 :
+                // InternalDymeLanguage.g:1:277: RULE_ANY_OTHER
                 {
                 mRULE_ANY_OTHER(); 
 
@@ -1220,106 +1538,165 @@ public class InternalDymeLanguageLexer extends Lexer {
 
     protected DFA12 dfa12 = new DFA12(this);
     static final String DFA12_eotS =
-        "\1\uffff\1\36\1\uffff\1\36\1\33\4\36\1\33\1\uffff\1\50\1\52\1\53\1\54\1\55\1\56\1\57\1\60\1\61\1\62\1\33\1\uffff\3\33\2\uffff\2\36\2\uffff\1\36\1\uffff\1\72\3\36\21\uffff\2\36\1\101\1\uffff\6\36\1\uffff\2\36\1\112\5\36\1\uffff\4\36\1\124\1\125\1\126\1\36\1\130\3\uffff\1\131\2\uffff";
+        "\1\uffff\2\43\1\46\1\43\1\51\1\uffff\2\43\1\37\1\uffff\3\43\1\uffff\1\65\1\uffff\1\71\2\uffff\2\37\1\uffff\1\77\1\uffff\1\37\2\uffff\2\37\2\uffff\3\43\1\uffff\1\43\2\uffff\1\43\3\uffff\1\111\1\43\2\uffff\4\43\21\uffff\4\43\1\124\1\uffff\12\43\1\uffff\1\137\3\43\1\145\5\43\1\uffff\5\43\1\uffff\12\43\1\172\1\43\1\174\2\43\1\177\4\43\1\uffff\1\u0084\1\uffff\1\43\1\u0086\1\uffff\1\43\1\u0088\2\43\1\uffff\1\43\1\uffff\1\43\1\uffff\1\u008d\1\u008e\2\43\2\uffff\2\43\1\u0093\1\u0094\2\uffff";
     static final String DFA12_eofS =
-        "\132\uffff";
+        "\u0095\uffff";
     static final String DFA12_minS =
-        "\1\0\1\101\1\uffff\1\125\1\76\1\163\1\154\1\124\1\101\1\55\1\uffff\12\60\1\101\1\uffff\2\0\1\52\2\uffff\1\123\1\116\2\uffff\1\124\1\uffff\1\60\1\141\1\122\1\123\21\uffff\1\111\1\123\1\60\1\uffff\1\156\1\111\1\101\1\115\1\125\1\105\1\uffff\1\145\1\116\1\60\1\111\1\115\1\122\1\164\1\107\1\uffff\1\122\1\105\1\107\1\141\3\60\1\105\1\60\3\uffff\1\60\2\uffff";
+        "\1\0\1\101\1\105\1\44\1\125\1\76\1\uffff\1\163\1\101\1\55\1\uffff\1\154\1\163\1\165\1\uffff\1\53\1\uffff\1\52\2\uffff\1\46\1\174\1\uffff\1\60\1\uffff\1\101\2\uffff\2\0\2\uffff\1\123\1\116\1\156\1\uffff\1\103\2\uffff\1\124\3\uffff\1\60\1\123\2\uffff\1\141\1\154\1\164\1\156\21\uffff\1\111\1\123\1\163\1\105\1\60\1\uffff\1\101\1\156\1\166\1\162\1\141\1\115\1\105\1\125\1\164\1\123\1\uffff\1\60\1\145\1\157\1\145\1\60\1\111\1\122\1\115\1\145\1\111\1\uffff\1\164\1\105\1\154\1\165\1\154\1\uffff\1\122\1\107\1\105\1\154\1\124\1\141\1\163\1\154\2\145\1\60\1\105\1\60\1\141\1\101\1\60\1\164\1\141\1\166\1\156\1\uffff\1\60\1\uffff\1\143\1\60\1\uffff\1\145\1\60\2\141\1\uffff\1\151\1\uffff\1\154\1\uffff\2\60\1\157\1\141\2\uffff\1\156\1\162\2\60\2\uffff";
     static final String DFA12_maxS =
-        "\1\uffff\1\117\1\uffff\1\125\1\76\1\163\1\154\1\124\1\101\1\55\1\uffff\12\71\1\172\1\uffff\2\uffff\1\57\2\uffff\1\123\1\116\2\uffff\1\124\1\uffff\1\172\1\141\1\122\1\123\21\uffff\1\111\1\126\1\172\1\uffff\1\156\1\111\1\101\1\115\1\125\1\105\1\uffff\1\145\1\116\1\172\1\111\1\115\1\122\1\164\1\107\1\uffff\1\122\1\105\1\107\1\141\3\172\1\105\1\172\3\uffff\1\172\2\uffff";
+        "\1\uffff\1\157\1\105\1\44\1\125\1\76\1\uffff\1\163\1\101\1\55\1\uffff\1\157\1\163\1\165\1\uffff\1\53\1\uffff\1\57\2\uffff\1\46\1\174\1\uffff\1\172\1\uffff\1\172\2\uffff\2\uffff\2\uffff\1\123\1\116\1\156\1\uffff\1\103\2\uffff\1\124\3\uffff\1\172\1\123\2\uffff\1\141\1\154\1\164\1\156\21\uffff\1\111\1\126\1\163\1\105\1\172\1\uffff\1\101\1\156\1\166\1\162\1\141\1\115\1\105\1\125\1\164\1\123\1\uffff\1\172\1\145\1\157\1\145\1\172\1\111\1\122\1\115\1\145\1\111\1\uffff\1\164\1\105\1\154\1\165\1\154\1\uffff\1\122\1\107\1\105\1\154\1\124\1\141\1\163\1\154\2\145\1\172\1\105\1\172\1\141\1\101\1\172\1\164\1\141\1\166\1\156\1\uffff\1\172\1\uffff\1\143\1\172\1\uffff\1\145\1\172\2\141\1\uffff\1\151\1\uffff\1\154\1\uffff\2\172\1\157\1\141\2\uffff\1\156\1\162\2\172\2\uffff";
     static final String DFA12_acceptS =
-        "\2\uffff\1\3\7\uffff\1\14\13\uffff\1\27\3\uffff\1\34\1\35\2\uffff\1\27\1\3\1\uffff\1\6\4\uffff\1\13\1\14\1\15\1\30\1\16\1\17\1\20\1\21\1\22\1\23\1\24\1\25\1\26\1\31\1\32\1\33\1\34\3\uffff\1\7\6\uffff\1\5\10\uffff\1\12\11\uffff\1\11\1\1\1\2\1\uffff\1\10\1\4";
+        "\6\uffff\1\10\3\uffff\1\14\3\uffff\1\22\1\uffff\1\24\1\uffff\1\30\1\31\2\uffff\1\35\1\uffff\1\37\1\uffff\1\42\1\43\2\uffff\1\47\1\50\3\uffff\1\42\1\uffff\1\34\1\3\1\uffff\1\6\1\26\1\10\2\uffff\1\13\1\14\4\uffff\1\22\1\23\1\25\1\24\1\45\1\46\1\27\1\30\1\31\1\32\1\33\1\35\1\36\1\37\1\43\1\44\1\47\5\uffff\1\11\12\uffff\1\5\12\uffff\1\12\5\uffff\1\21\24\uffff\1\1\1\uffff\1\7\2\uffff\1\15\4\uffff\1\4\1\uffff\1\2\1\uffff\1\17\4\uffff\1\40\1\41\4\uffff\1\16\1\20";
     static final String DFA12_specialS =
-        "\1\0\26\uffff\1\1\1\2\101\uffff}>";
+        "\1\1\33\uffff\1\0\1\2\167\uffff}>";
     static final String[] DFA12_transitionS = {
-            "\11\33\2\32\2\33\1\32\22\33\1\32\1\33\1\27\1\33\1\2\2\33\1\30\3\33\1\12\1\33\1\4\1\33\1\31\1\24\1\13\1\14\1\15\1\16\1\17\1\20\1\21\1\22\1\23\2\33\1\11\4\33\2\26\1\1\3\26\1\3\5\26\1\10\2\26\1\6\2\26\1\7\7\26\3\33\1\25\1\26\1\33\4\26\1\5\25\26\uff85\33",
-            "\1\34\15\uffff\1\35",
-            "",
-            "\1\40",
-            "\1\41",
-            "\1\42",
-            "\1\43",
+            "\11\37\2\36\2\37\1\36\22\37\1\36\1\26\1\34\1\6\1\3\1\23\1\24\1\35\1\16\1\20\1\22\1\17\1\37\1\5\1\30\1\21\12\33\2\37\1\11\4\37\2\32\1\1\1\32\1\14\1\32\1\4\4\32\1\15\1\10\1\2\1\32\1\13\12\32\3\37\1\31\1\32\1\37\1\27\3\32\1\7\25\32\1\37\1\25\1\37\1\12\uff81\37",
+            "\1\40\15\uffff\1\41\37\uffff\1\42",
             "\1\44",
             "\1\45",
-            "\1\46",
+            "\1\47",
+            "\1\50",
             "",
-            "\12\51",
-            "\12\51",
-            "\12\51",
-            "\12\51",
-            "\12\51",
-            "\12\51",
-            "\12\51",
-            "\12\51",
-            "\12\51",
-            "\12\51",
-            "\32\36\4\uffff\1\36\1\uffff\32\36",
+            "\1\53",
+            "\1\54",
+            "\1\55",
             "",
-            "\0\63",
-            "\0\63",
-            "\1\64\4\uffff\1\65",
+            "\1\57\2\uffff\1\60",
+            "\1\61",
+            "\1\62",
+            "",
+            "\1\64",
+            "",
+            "\1\67\4\uffff\1\70",
             "",
             "",
-            "\1\67",
-            "\1\70",
-            "",
-            "",
-            "\1\71",
-            "",
-            "\12\36\7\uffff\32\36\4\uffff\1\36\1\uffff\32\36",
-            "\1\73",
             "\1\74",
             "\1\75",
             "",
+            "\12\43\7\uffff\32\43\4\uffff\1\43\1\uffff\32\43",
+            "",
+            "\32\43\4\uffff\1\43\1\uffff\32\43",
             "",
             "",
+            "\0\102",
+            "\0\102",
             "",
             "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "\1\76",
-            "\1\77\2\uffff\1\100",
-            "\12\36\7\uffff\32\36\4\uffff\1\36\1\uffff\32\36",
-            "",
-            "\1\102",
-            "\1\103",
             "\1\104",
             "\1\105",
             "\1\106",
+            "",
             "\1\107",
             "",
+            "",
             "\1\110",
-            "\1\111",
-            "\12\36\7\uffff\32\36\4\uffff\1\36\1\uffff\32\36",
+            "",
+            "",
+            "",
+            "\12\43\7\uffff\32\43\4\uffff\1\43\1\uffff\32\43",
+            "\1\112",
+            "",
+            "",
             "\1\113",
             "\1\114",
             "\1\115",
             "\1\116",
-            "\1\117",
             "",
-            "\1\120",
-            "\1\121",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "\1\117",
+            "\1\121\2\uffff\1\120",
             "\1\122",
             "\1\123",
-            "\12\36\7\uffff\32\36\4\uffff\1\36\1\uffff\32\36",
-            "\12\36\7\uffff\32\36\4\uffff\1\36\1\uffff\32\36",
-            "\12\36\7\uffff\32\36\4\uffff\1\36\1\uffff\32\36",
+            "\12\43\7\uffff\32\43\4\uffff\1\43\1\uffff\32\43",
+            "",
+            "\1\125",
+            "\1\126",
             "\1\127",
-            "\12\36\7\uffff\32\36\4\uffff\1\36\1\uffff\32\36",
+            "\1\130",
+            "\1\131",
+            "\1\132",
+            "\1\133",
+            "\1\134",
+            "\1\135",
+            "\1\136",
+            "",
+            "\12\43\7\uffff\32\43\4\uffff\1\43\1\uffff\32\43",
+            "\1\140",
+            "\1\141",
+            "\1\142",
+            "\12\43\7\uffff\13\43\1\144\1\43\1\143\14\43\4\uffff\1\43\1\uffff\32\43",
+            "\1\146",
+            "\1\147",
+            "\1\150",
+            "\1\151",
+            "\1\152",
+            "",
+            "\1\153",
+            "\1\154",
+            "\1\155",
+            "\1\156",
+            "\1\157",
+            "",
+            "\1\160",
+            "\1\161",
+            "\1\162",
+            "\1\163",
+            "\1\164",
+            "\1\165",
+            "\1\166",
+            "\1\167",
+            "\1\170",
+            "\1\171",
+            "\12\43\7\uffff\32\43\4\uffff\1\43\1\uffff\32\43",
+            "\1\173",
+            "\12\43\7\uffff\32\43\4\uffff\1\43\1\uffff\32\43",
+            "\1\175",
+            "\1\176",
+            "\12\43\7\uffff\32\43\4\uffff\1\43\1\uffff\32\43",
+            "\1\u0080",
+            "\1\u0081",
+            "\1\u0082",
+            "\1\u0083",
+            "",
+            "\12\43\7\uffff\32\43\4\uffff\1\43\1\uffff\32\43",
+            "",
+            "\1\u0085",
+            "\12\43\7\uffff\32\43\4\uffff\1\43\1\uffff\32\43",
+            "",
+            "\1\u0087",
+            "\12\43\7\uffff\32\43\4\uffff\1\43\1\uffff\32\43",
+            "\1\u0089",
+            "\1\u008a",
+            "",
+            "\1\u008b",
+            "",
+            "\1\u008c",
+            "",
+            "\12\43\7\uffff\32\43\4\uffff\1\43\1\uffff\32\43",
+            "\12\43\7\uffff\32\43\4\uffff\1\43\1\uffff\32\43",
+            "\1\u008f",
+            "\1\u0090",
             "",
             "",
-            "",
-            "\12\36\7\uffff\32\36\4\uffff\1\36\1\uffff\32\36",
+            "\1\u0091",
+            "\1\u0092",
+            "\12\43\7\uffff\32\43\4\uffff\1\43\1\uffff\32\43",
+            "\12\43\7\uffff\32\43\4\uffff\1\43\1\uffff\32\43",
             "",
             ""
     };
@@ -1354,89 +1731,97 @@ public class InternalDymeLanguageLexer extends Lexer {
             this.transition = DFA12_transition;
         }
         public String getDescription() {
-            return "1:1: Tokens : ( T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER );";
+            return "1:1: Tokens : ( T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER );";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             IntStream input = _input;
         	int _s = s;
             switch ( s ) {
                     case 0 : 
+                        int LA12_28 = input.LA(1);
+
+                        s = -1;
+                        if ( ((LA12_28>='\u0000' && LA12_28<='\uFFFF')) ) {s = 66;}
+
+                        else s = 31;
+
+                        if ( s>=0 ) return s;
+                        break;
+                    case 1 : 
                         int LA12_0 = input.LA(1);
 
                         s = -1;
                         if ( (LA12_0=='C') ) {s = 1;}
 
-                        else if ( (LA12_0=='$') ) {s = 2;}
+                        else if ( (LA12_0=='N') ) {s = 2;}
 
-                        else if ( (LA12_0=='G') ) {s = 3;}
+                        else if ( (LA12_0=='$') ) {s = 3;}
 
-                        else if ( (LA12_0=='-') ) {s = 4;}
+                        else if ( (LA12_0=='G') ) {s = 4;}
 
-                        else if ( (LA12_0=='e') ) {s = 5;}
+                        else if ( (LA12_0=='-') ) {s = 5;}
 
-                        else if ( (LA12_0=='P') ) {s = 6;}
+                        else if ( (LA12_0=='#') ) {s = 6;}
 
-                        else if ( (LA12_0=='S') ) {s = 7;}
+                        else if ( (LA12_0=='e') ) {s = 7;}
 
                         else if ( (LA12_0=='M') ) {s = 8;}
 
                         else if ( (LA12_0=='<') ) {s = 9;}
 
-                        else if ( (LA12_0=='+') ) {s = 10;}
+                        else if ( (LA12_0=='~') ) {s = 10;}
 
-                        else if ( (LA12_0=='1') ) {s = 11;}
+                        else if ( (LA12_0=='P') ) {s = 11;}
 
-                        else if ( (LA12_0=='2') ) {s = 12;}
+                        else if ( (LA12_0=='E') ) {s = 12;}
 
-                        else if ( (LA12_0=='3') ) {s = 13;}
+                        else if ( (LA12_0=='L') ) {s = 13;}
 
-                        else if ( (LA12_0=='4') ) {s = 14;}
+                        else if ( (LA12_0=='(') ) {s = 14;}
 
-                        else if ( (LA12_0=='5') ) {s = 15;}
+                        else if ( (LA12_0=='+') ) {s = 15;}
 
-                        else if ( (LA12_0=='6') ) {s = 16;}
+                        else if ( (LA12_0==')') ) {s = 16;}
 
-                        else if ( (LA12_0=='7') ) {s = 17;}
+                        else if ( (LA12_0=='/') ) {s = 17;}
 
-                        else if ( (LA12_0=='8') ) {s = 18;}
+                        else if ( (LA12_0=='*') ) {s = 18;}
 
-                        else if ( (LA12_0=='9') ) {s = 19;}
+                        else if ( (LA12_0=='%') ) {s = 19;}
 
-                        else if ( (LA12_0=='0') ) {s = 20;}
+                        else if ( (LA12_0=='&') ) {s = 20;}
 
-                        else if ( (LA12_0=='^') ) {s = 21;}
+                        else if ( (LA12_0=='|') ) {s = 21;}
 
-                        else if ( ((LA12_0>='A' && LA12_0<='B')||(LA12_0>='D' && LA12_0<='F')||(LA12_0>='H' && LA12_0<='L')||(LA12_0>='N' && LA12_0<='O')||(LA12_0>='Q' && LA12_0<='R')||(LA12_0>='T' && LA12_0<='Z')||LA12_0=='_'||(LA12_0>='a' && LA12_0<='d')||(LA12_0>='f' && LA12_0<='z')) ) {s = 22;}
+                        else if ( (LA12_0=='!') ) {s = 22;}
 
-                        else if ( (LA12_0=='\"') ) {s = 23;}
+                        else if ( (LA12_0=='a') ) {s = 23;}
 
-                        else if ( (LA12_0=='\'') ) {s = 24;}
+                        else if ( (LA12_0=='.') ) {s = 24;}
 
-                        else if ( (LA12_0=='/') ) {s = 25;}
+                        else if ( (LA12_0=='^') ) {s = 25;}
 
-                        else if ( ((LA12_0>='\t' && LA12_0<='\n')||LA12_0=='\r'||LA12_0==' ') ) {s = 26;}
+                        else if ( ((LA12_0>='A' && LA12_0<='B')||LA12_0=='D'||LA12_0=='F'||(LA12_0>='H' && LA12_0<='K')||LA12_0=='O'||(LA12_0>='Q' && LA12_0<='Z')||LA12_0=='_'||(LA12_0>='b' && LA12_0<='d')||(LA12_0>='f' && LA12_0<='z')) ) {s = 26;}
 
-                        else if ( ((LA12_0>='\u0000' && LA12_0<='\b')||(LA12_0>='\u000B' && LA12_0<='\f')||(LA12_0>='\u000E' && LA12_0<='\u001F')||LA12_0=='!'||LA12_0=='#'||(LA12_0>='%' && LA12_0<='&')||(LA12_0>='(' && LA12_0<='*')||LA12_0==','||LA12_0=='.'||(LA12_0>=':' && LA12_0<=';')||(LA12_0>='=' && LA12_0<='@')||(LA12_0>='[' && LA12_0<=']')||LA12_0=='`'||(LA12_0>='{' && LA12_0<='\uFFFF')) ) {s = 27;}
+                        else if ( ((LA12_0>='0' && LA12_0<='9')) ) {s = 27;}
 
-                        if ( s>=0 ) return s;
-                        break;
-                    case 1 : 
-                        int LA12_23 = input.LA(1);
+                        else if ( (LA12_0=='\"') ) {s = 28;}
 
-                        s = -1;
-                        if ( ((LA12_23>='\u0000' && LA12_23<='\uFFFF')) ) {s = 51;}
+                        else if ( (LA12_0=='\'') ) {s = 29;}
 
-                        else s = 27;
+                        else if ( ((LA12_0>='\t' && LA12_0<='\n')||LA12_0=='\r'||LA12_0==' ') ) {s = 30;}
+
+                        else if ( ((LA12_0>='\u0000' && LA12_0<='\b')||(LA12_0>='\u000B' && LA12_0<='\f')||(LA12_0>='\u000E' && LA12_0<='\u001F')||LA12_0==','||(LA12_0>=':' && LA12_0<=';')||(LA12_0>='=' && LA12_0<='@')||(LA12_0>='[' && LA12_0<=']')||LA12_0=='`'||LA12_0=='{'||LA12_0=='}'||(LA12_0>='\u007F' && LA12_0<='\uFFFF')) ) {s = 31;}
 
                         if ( s>=0 ) return s;
                         break;
                     case 2 : 
-                        int LA12_24 = input.LA(1);
+                        int LA12_29 = input.LA(1);
 
                         s = -1;
-                        if ( ((LA12_24>='\u0000' && LA12_24<='\uFFFF')) ) {s = 51;}
+                        if ( ((LA12_29>='\u0000' && LA12_29<='\uFFFF')) ) {s = 66;}
 
-                        else s = 27;
+                        else s = 31;
 
                         if ( s>=0 ) return s;
                         break;

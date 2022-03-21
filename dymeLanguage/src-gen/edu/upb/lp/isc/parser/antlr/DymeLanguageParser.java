@@ -27,7 +27,7 @@ public class DymeLanguageParser extends AbstractAntlrParser {
 
 	@Override 
 	protected String getDefaultRuleName() {
-		return "Funcion";
+		return "Programa";
 	}
 
 	public DymeLanguageGrammarAccess getGrammarAccess() {

@@ -73,6 +73,13 @@ public class DymeLanguageSwitch<T> extends Switch<T>
   {
     switch (classifierID)
     {
+      case DymeLanguagePackage.PROGRAMA:
+      {
+        Programa programa = (Programa)theEObject;
+        T result = casePrograma(programa);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case DymeLanguagePackage.FUNCION:
       {
         Funcion funcion = (Funcion)theEObject;
@@ -110,6 +117,21 @@ public class DymeLanguageSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case DymeLanguagePackage.TIPO:
+      {
+        Tipo tipo = (Tipo)theEObject;
+        T result = caseTipo(tipo);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DymeLanguagePackage.CONSTANTE:
+      {
+        Constante constante = (Constante)theEObject;
+        T result = caseConstante(constante);
+        if (result == null) result = caseExpresion(constante);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case DymeLanguagePackage.EXPRESION:
       {
         Expresion expresion = (Expresion)theEObject;
@@ -117,24 +139,93 @@ public class DymeLanguageSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case DymeLanguagePackage.SUMA:
+      case DymeLanguagePackage.EXPR_CONCATENACION:
       {
-        Suma suma = (Suma)theEObject;
-        T result = caseSuma(suma);
-        if (result == null) result = caseExpresion(suma);
+        ExprConcatenacion exprConcatenacion = (ExprConcatenacion)theEObject;
+        T result = caseExprConcatenacion(exprConcatenacion);
+        if (result == null) result = caseExpresion(exprConcatenacion);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case DymeLanguagePackage.EXPR_SIMPLE:
+      case DymeLanguagePackage.EXPR_ARITMETICA:
       {
-        ExprSimple exprSimple = (ExprSimple)theEObject;
-        T result = caseExprSimple(exprSimple);
-        if (result == null) result = caseExpresion(exprSimple);
+        ExprAritmetica exprAritmetica = (ExprAritmetica)theEObject;
+        T result = caseExprAritmetica(exprAritmetica);
+        if (result == null) result = caseExpresion(exprAritmetica);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DymeLanguagePackage.EXPR_LOGICA:
+      {
+        ExprLogica exprLogica = (ExprLogica)theEObject;
+        T result = caseExprLogica(exprLogica);
+        if (result == null) result = caseExpresion(exprLogica);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DymeLanguagePackage.PLANETA:
+      {
+        Planeta planeta = (Planeta)theEObject;
+        T result = casePlaneta(planeta);
+        if (result == null) result = caseExprAritmetica(planeta);
+        if (result == null) result = caseExpresion(planeta);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DymeLanguagePackage.CONSTELACION:
+      {
+        Constelacion constelacion = (Constelacion)theEObject;
+        T result = caseConstelacion(constelacion);
+        if (result == null) result = caseExprConcatenacion(constelacion);
+        if (result == null) result = caseExpresion(constelacion);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DymeLanguagePackage.ESTRELLA:
+      {
+        Estrella estrella = (Estrella)theEObject;
+        T result = caseEstrella(estrella);
+        if (result == null) result = caseExprConcatenacion(estrella);
+        if (result == null) result = caseExpresion(estrella);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DymeLanguagePackage.POLVO_ESTELAR:
+      {
+        PolvoEstelar polvoEstelar = (PolvoEstelar)theEObject;
+        T result = casePolvoEstelar(polvoEstelar);
+        if (result == null) result = caseExprAritmetica(polvoEstelar);
+        if (result == null) result = caseExpresion(polvoEstelar);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DymeLanguagePackage.LUNA:
+      {
+        Luna luna = (Luna)theEObject;
+        T result = caseLuna(luna);
+        if (result == null) result = caseExprLogica(luna);
+        if (result == null) result = caseExpresion(luna);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
       default: return defaultCase(theEObject);
     }
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Programa</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Programa</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T casePrograma(Programa object)
+  {
+    return null;
   }
 
   /**
@@ -218,6 +309,38 @@ public class DymeLanguageSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Tipo</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Tipo</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseTipo(Tipo object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Constante</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Constante</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseConstante(Constante object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Expresion</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -234,33 +357,129 @@ public class DymeLanguageSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Suma</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Expr Concatenacion</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Suma</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Expr Concatenacion</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseSuma(Suma object)
+  public T caseExprConcatenacion(ExprConcatenacion object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Expr Simple</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Expr Aritmetica</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Expr Simple</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Expr Aritmetica</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseExprSimple(ExprSimple object)
+  public T caseExprAritmetica(ExprAritmetica object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Expr Logica</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Expr Logica</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseExprLogica(ExprLogica object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Planeta</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Planeta</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T casePlaneta(Planeta object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Constelacion</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Constelacion</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseConstelacion(Constelacion object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Estrella</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Estrella</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseEstrella(Estrella object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Polvo Estelar</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Polvo Estelar</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T casePolvoEstelar(PolvoEstelar object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Luna</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Luna</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseLuna(Luna object)
   {
     return null;
   }

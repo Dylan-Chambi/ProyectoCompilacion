@@ -23,13 +23,34 @@ import org.eclipse.xtext.service.GrammarProvider;
 @Singleton
 public class DymeLanguageGrammarAccess extends AbstractElementFinder.AbstractGrammarElementFinder {
 	
+	public class ProgramaElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.isc.DymeLanguage.Programa");
+		private final Assignment cFuncAssignment = (Assignment)rule.eContents().get(1);
+		private final RuleCall cFuncFuncionParserRuleCall_0 = (RuleCall)cFuncAssignment.eContents().get(0);
+		
+		////Model:
+		////    greetings+=Greeting*;
+		////
+		////Greeting:
+		////    'Hello' name=ID '!';
+		//Programa:
+		//    (func+=Funcion)+
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//(func+=Funcion)+
+		public Assignment getFuncAssignment() { return cFuncAssignment; }
+		
+		//Funcion
+		public RuleCall getFuncFuncionParserRuleCall_0() { return cFuncFuncionParserRuleCall_0; }
+	}
 	public class FuncionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.isc.DymeLanguage.Funcion");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cCASIMIRKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Keyword cCONSUMEKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Keyword cNECESITAKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
 		private final Assignment cParamAssignment_3_0 = (Assignment)cGroup_3.eContents().get(0);
 		private final RuleCall cParamParamParserRuleCall_3_0_0 = (RuleCall)cParamAssignment_3_0.eContents().get(0);
@@ -40,26 +61,25 @@ public class DymeLanguageGrammarAccess extends AbstractElementFinder.AbstractGra
 		private final Keyword cCONVERGEKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		private final Assignment cInstrAssignment_5 = (Assignment)cGroup.eContents().get(5);
 		private final RuleCall cInstrInstruccionParserRuleCall_5_0 = (RuleCall)cInstrAssignment_5.eContents().get(0);
-		private final Keyword cGUTKeyword_6 = (Keyword)cGroup.eContents().get(6);
-		private final Keyword cHyphenMinusGreaterThanSignKeyword_7 = (Keyword)cGroup.eContents().get(7);
-		private final Assignment cTipAssignment_8 = (Assignment)cGroup.eContents().get(8);
-		private final RuleCall cTipTipoParserRuleCall_8_0 = (RuleCall)cTipAssignment_8.eContents().get(0);
+		private final Assignment cExprAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cExprExpresionParserRuleCall_6_0 = (RuleCall)cExprAssignment_6.eContents().get(0);
+		private final Keyword cGUTKeyword_7 = (Keyword)cGroup.eContents().get(7);
+		private final Group cGroup_8 = (Group)cGroup.eContents().get(8);
+		private final Assignment cReturnTipoAssignment_8_0 = (Assignment)cGroup_8.eContents().get(0);
+		private final Keyword cReturnTipoHyphenMinusGreaterThanSignKeyword_8_0_0 = (Keyword)cReturnTipoAssignment_8_0.eContents().get(0);
+		private final Assignment cTipAssignment_8_1 = (Assignment)cGroup_8.eContents().get(1);
+		private final RuleCall cTipTipoParserRuleCall_8_1_0 = (RuleCall)cTipAssignment_8_1.eContents().get(0);
 		
-		////Model:
-		////    greetings+=Greeting*;
-		////
-		////Greeting:
-		////    'Hello' name=ID '!';
 		//Funcion:
-		//    'CASIMIR' name=ID 'CONSUME' (param+=Param ('$' param+=Param)*)? 'CONVERGE'
-		//    (instr+=Instruccion)+
-		//    "GUT" '->' tip=Tipo
+		//    'CASIMIR' name=ID 'NECESITA' (param+=Param ('$' param+=Param)*)? 'CONVERGE'
+		//    (instr+=Instruccion)* (expr=Expresion)
+		//    "GUT" (returnTipo ?= '->' tip=Tipo?)?
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'CASIMIR' name=ID 'CONSUME' (param+=Param ('$' param+=Param)*)? 'CONVERGE'
-		//(instr+=Instruccion)+
-		//"GUT" '->' tip=Tipo
+		//'CASIMIR' name=ID 'NECESITA' (param+=Param ('$' param+=Param)*)? 'CONVERGE'
+		//(instr+=Instruccion)* (expr=Expresion)
+		//"GUT" (returnTipo ?= '->' tip=Tipo?)?
 		public Group getGroup() { return cGroup; }
 		
 		//'CASIMIR'
@@ -71,8 +91,8 @@ public class DymeLanguageGrammarAccess extends AbstractElementFinder.AbstractGra
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 		
-		//'CONSUME'
-		public Keyword getCONSUMEKeyword_2() { return cCONSUMEKeyword_2; }
+		//'NECESITA'
+		public Keyword getNECESITAKeyword_2() { return cNECESITAKeyword_2; }
 		
 		//(param+=Param ('$' param+=Param)*)?
 		public Group getGroup_3() { return cGroup_3; }
@@ -98,23 +118,35 @@ public class DymeLanguageGrammarAccess extends AbstractElementFinder.AbstractGra
 		//'CONVERGE'
 		public Keyword getCONVERGEKeyword_4() { return cCONVERGEKeyword_4; }
 		
-		//(instr+=Instruccion)+
+		//(instr+=Instruccion)*
 		public Assignment getInstrAssignment_5() { return cInstrAssignment_5; }
 		
 		//Instruccion
 		public RuleCall getInstrInstruccionParserRuleCall_5_0() { return cInstrInstruccionParserRuleCall_5_0; }
 		
+		//(expr=Expresion)
+		public Assignment getExprAssignment_6() { return cExprAssignment_6; }
+		
+		//Expresion
+		public RuleCall getExprExpresionParserRuleCall_6_0() { return cExprExpresionParserRuleCall_6_0; }
+		
 		//"GUT"
-		public Keyword getGUTKeyword_6() { return cGUTKeyword_6; }
+		public Keyword getGUTKeyword_7() { return cGUTKeyword_7; }
+		
+		//(returnTipo ?= '->' tip=Tipo?)?
+		public Group getGroup_8() { return cGroup_8; }
+		
+		//returnTipo ?= '->'
+		public Assignment getReturnTipoAssignment_8_0() { return cReturnTipoAssignment_8_0; }
 		
 		//'->'
-		public Keyword getHyphenMinusGreaterThanSignKeyword_7() { return cHyphenMinusGreaterThanSignKeyword_7; }
+		public Keyword getReturnTipoHyphenMinusGreaterThanSignKeyword_8_0_0() { return cReturnTipoHyphenMinusGreaterThanSignKeyword_8_0_0; }
 		
-		//tip=Tipo
-		public Assignment getTipAssignment_8() { return cTipAssignment_8; }
+		//tip=Tipo?
+		public Assignment getTipAssignment_8_1() { return cTipAssignment_8_1; }
 		
 		//Tipo
-		public RuleCall getTipTipoParserRuleCall_8_0() { return cTipTipoParserRuleCall_8_0; }
+		public RuleCall getTipTipoParserRuleCall_8_1_0() { return cTipTipoParserRuleCall_8_1_0; }
 	}
 	public class LlamadoFuncElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.isc.DymeLanguage.LlamadoFunc");
@@ -130,13 +162,14 @@ public class DymeLanguageGrammarAccess extends AbstractElementFinder.AbstractGra
 		private final Keyword cDollarSignKeyword_2_1_0 = (Keyword)cGroup_2_1.eContents().get(0);
 		private final Assignment cArgsAssignment_2_1_1 = (Assignment)cGroup_2_1.eContents().get(1);
 		private final RuleCall cArgsExpresionParserRuleCall_2_1_1_0 = (RuleCall)cArgsAssignment_2_1_1.eContents().get(0);
+		private final Keyword cNumberSignKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
 		//LlamadoFunc:
-		//    funcion=[Funcion] 'CONSUME' (args+=Expresion ('$' args+=Expresion)*)?
+		//    funcion=[Funcion] 'CONSUME' (args+=Expresion ('$' args+=Expresion)*)? '#'
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//funcion=[Funcion] 'CONSUME' (args+=Expresion ('$' args+=Expresion)*)?
+		//funcion=[Funcion] 'CONSUME' (args+=Expresion ('$' args+=Expresion)*)? '#'
 		public Group getGroup() { return cGroup; }
 		
 		//funcion=[Funcion]
@@ -171,6 +204,9 @@ public class DymeLanguageGrammarAccess extends AbstractElementFinder.AbstractGra
 		
 		//Expresion
 		public RuleCall getArgsExpresionParserRuleCall_2_1_1_0() { return cArgsExpresionParserRuleCall_2_1_1_0; }
+		
+		//'#'
+		public Keyword getNumberSignKeyword_3() { return cNumberSignKeyword_3; }
 	}
 	public class ParamElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.isc.DymeLanguage.Param");
@@ -204,26 +240,6 @@ public class DymeLanguageGrammarAccess extends AbstractElementFinder.AbstractGra
 		//Tipo
 		public RuleCall getTipTipoParserRuleCall_2_0() { return cTipTipoParserRuleCall_2_0; }
 	}
-	public class TipoElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.isc.DymeLanguage.Tipo");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Keyword cPlanetaKeyword_0 = (Keyword)cAlternatives.eContents().get(0);
-		private final Keyword cSTRINGKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
-		
-		//Tipo:
-		//    'Planeta' | 'STRING'
-		//;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//'Planeta' | 'STRING'
-		public Alternatives getAlternatives() { return cAlternatives; }
-		
-		//'Planeta'
-		public Keyword getPlanetaKeyword_0() { return cPlanetaKeyword_0; }
-		
-		//'STRING'
-		public Keyword getSTRINGKeyword_1() { return cSTRINGKeyword_1; }
-	}
 	public class InstruccionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.isc.DymeLanguage.Instruccion");
 		private final RuleCall cAsignacionParserRuleCall = (RuleCall)rule.eContents().get(1);
@@ -243,19 +259,23 @@ public class DymeLanguageGrammarAccess extends AbstractElementFinder.AbstractGra
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
-		private final Keyword cEsKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
+		private final Assignment cTipoInferidoAssignment_2_0 = (Assignment)cGroup_2.eContents().get(0);
+		private final Keyword cTipoInferidoEsKeyword_2_0_0 = (Keyword)cTipoInferidoAssignment_2_0.eContents().get(0);
 		private final Assignment cTipAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
 		private final RuleCall cTipTipoParserRuleCall_2_1_0 = (RuleCall)cTipAssignment_2_1.eContents().get(0);
 		private final Keyword cLessThanSignHyphenMinusKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Assignment cValorAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cValorExpresionParserRuleCall_4_0 = (RuleCall)cValorAssignment_4.eContents().get(0);
+		private final Assignment cValorAsigAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cValorAsigExpresionParserRuleCall_4_0 = (RuleCall)cValorAsigAssignment_4.eContents().get(0);
+		private final Keyword cTildeKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
 		//Asignacion:
-		//    'MASA' name=ID ('es' tip=Tipo)?  '<-' valor=Expresion
+		//    'MASA' name=ID (tipoInferido ?= 'es' tip=Tipo)?  '<-' valorAsig=Expresion '~'
+		//    /*'MASA' name=ID ('es' tip=Tipo)?  '<-' valor=Expresion */
+		//    /* Preguntar la comparacion con null, con el valor opcional */
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'MASA' name=ID ('es' tip=Tipo)?  '<-' valor=Expresion
+		//'MASA' name=ID (tipoInferido ?= 'es' tip=Tipo)?  '<-' valorAsig=Expresion '~'
 		public Group getGroup() { return cGroup; }
 		
 		//'MASA'
@@ -267,11 +287,14 @@ public class DymeLanguageGrammarAccess extends AbstractElementFinder.AbstractGra
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 		
-		//('es' tip=Tipo)?
+		//(tipoInferido ?= 'es' tip=Tipo)?
 		public Group getGroup_2() { return cGroup_2; }
 		
+		//tipoInferido ?= 'es'
+		public Assignment getTipoInferidoAssignment_2_0() { return cTipoInferidoAssignment_2_0; }
+		
 		//'es'
-		public Keyword getEsKeyword_2_0() { return cEsKeyword_2_0; }
+		public Keyword getTipoInferidoEsKeyword_2_0_0() { return cTipoInferidoEsKeyword_2_0_0; }
 		
 		//tip=Tipo
 		public Assignment getTipAssignment_2_1() { return cTipAssignment_2_1; }
@@ -282,206 +305,463 @@ public class DymeLanguageGrammarAccess extends AbstractElementFinder.AbstractGra
 		//'<-'
 		public Keyword getLessThanSignHyphenMinusKeyword_3() { return cLessThanSignHyphenMinusKeyword_3; }
 		
-		//valor=Expresion
-		public Assignment getValorAssignment_4() { return cValorAssignment_4; }
+		//valorAsig=Expresion
+		public Assignment getValorAsigAssignment_4() { return cValorAsigAssignment_4; }
 		
 		//Expresion
-		public RuleCall getValorExpresionParserRuleCall_4_0() { return cValorExpresionParserRuleCall_4_0; }
+		public RuleCall getValorAsigExpresionParserRuleCall_4_0() { return cValorAsigExpresionParserRuleCall_4_0; }
+		
+		//'~'
+		public Keyword getTildeKeyword_5() { return cTildeKeyword_5; }
+	}
+	public class TipoElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.isc.DymeLanguage.Tipo");
+		private final Assignment cTypeAssignment = (Assignment)rule.eContents().get(1);
+		private final Alternatives cTypeAlternatives_0 = (Alternatives)cTypeAssignment.eContents().get(0);
+		private final Keyword cTypePlanetaKeyword_0_0 = (Keyword)cTypeAlternatives_0.eContents().get(0);
+		private final Keyword cTypeConstelacionKeyword_0_1 = (Keyword)cTypeAlternatives_0.eContents().get(1);
+		private final Keyword cTypeEstrellaKeyword_0_2 = (Keyword)cTypeAlternatives_0.eContents().get(2);
+		private final Keyword cTypePolvoEstelarKeyword_0_3 = (Keyword)cTypeAlternatives_0.eContents().get(3);
+		private final Keyword cTypeLunaKeyword_0_4 = (Keyword)cTypeAlternatives_0.eContents().get(4);
+		
+		//Tipo:
+		//    type = ('Planeta' | 'Constelacion' | 'Estrella' | 'PolvoEstelar' | 'Luna' )
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//type = ('Planeta' | 'Constelacion' | 'Estrella' | 'PolvoEstelar' | 'Luna' )
+		public Assignment getTypeAssignment() { return cTypeAssignment; }
+		
+		//('Planeta' | 'Constelacion' | 'Estrella' | 'PolvoEstelar' | 'Luna' )
+		public Alternatives getTypeAlternatives_0() { return cTypeAlternatives_0; }
+		
+		//'Planeta'
+		public Keyword getTypePlanetaKeyword_0_0() { return cTypePlanetaKeyword_0_0; }
+		
+		//'Constelacion'
+		public Keyword getTypeConstelacionKeyword_0_1() { return cTypeConstelacionKeyword_0_1; }
+		
+		//'Estrella'
+		public Keyword getTypeEstrellaKeyword_0_2() { return cTypeEstrellaKeyword_0_2; }
+		
+		//'PolvoEstelar'
+		public Keyword getTypePolvoEstelarKeyword_0_3() { return cTypePolvoEstelarKeyword_0_3; }
+		
+		//'Luna'
+		public Keyword getTypeLunaKeyword_0_4() { return cTypeLunaKeyword_0_4; }
+	}
+	public class ConstanteElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.isc.DymeLanguage.Constante");
+		private final Assignment cNombreAssignment = (Assignment)rule.eContents().get(1);
+		private final CrossReference cNombreAsignacionCrossReference_0 = (CrossReference)cNombreAssignment.eContents().get(0);
+		private final RuleCall cNombreAsignacionIDTerminalRuleCall_0_1 = (RuleCall)cNombreAsignacionCrossReference_0.eContents().get(1);
+		
+		//Constante:
+		//    nombre=[Asignacion]
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//nombre=[Asignacion]
+		public Assignment getNombreAssignment() { return cNombreAssignment; }
+		
+		//[Asignacion]
+		public CrossReference getNombreAsignacionCrossReference_0() { return cNombreAsignacionCrossReference_0; }
+		
+		//ID
+		public RuleCall getNombreAsignacionIDTerminalRuleCall_0_1() { return cNombreAsignacionIDTerminalRuleCall_0_1; }
 	}
 	public class ExpresionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.isc.DymeLanguage.Expresion");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cSumaParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cExprSimpleParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		private final RuleCall cLlamadoFuncParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cExprConcatenacionParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cExprAritmeticaParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cExprLogicaParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cLlamadoFuncParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
+		private final RuleCall cConstanteParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
 		
 		//Expresion:
-		//    Suma | ExprSimple | LlamadoFunc
+		//    ExprConcatenacion | ExprAritmetica | ExprLogica | LlamadoFunc | Constante
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//Suma | ExprSimple | LlamadoFunc
+		//ExprConcatenacion | ExprAritmetica | ExprLogica | LlamadoFunc | Constante
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
-		//Suma
-		public RuleCall getSumaParserRuleCall_0() { return cSumaParserRuleCall_0; }
+		//ExprConcatenacion
+		public RuleCall getExprConcatenacionParserRuleCall_0() { return cExprConcatenacionParserRuleCall_0; }
 		
-		//ExprSimple
-		public RuleCall getExprSimpleParserRuleCall_1() { return cExprSimpleParserRuleCall_1; }
+		//ExprAritmetica
+		public RuleCall getExprAritmeticaParserRuleCall_1() { return cExprAritmeticaParserRuleCall_1; }
+		
+		//ExprLogica
+		public RuleCall getExprLogicaParserRuleCall_2() { return cExprLogicaParserRuleCall_2; }
 		
 		//LlamadoFunc
-		public RuleCall getLlamadoFuncParserRuleCall_2() { return cLlamadoFuncParserRuleCall_2; }
+		public RuleCall getLlamadoFuncParserRuleCall_3() { return cLlamadoFuncParserRuleCall_3; }
+		
+		//Constante
+		public RuleCall getConstanteParserRuleCall_4() { return cConstanteParserRuleCall_4; }
 	}
-	public class SumaElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.isc.DymeLanguage.Suma");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cIzqAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cIzqExprSimpleParserRuleCall_0_0 = (RuleCall)cIzqAssignment_0.eContents().get(0);
-		private final Keyword cPlusSignKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cDerAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cDerExprSimpleParserRuleCall_2_0 = (RuleCall)cDerAssignment_2.eContents().get(0);
-		
-		//Suma:
-		//    izq=ExprSimple '+' der=ExprSimple
-		//;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//izq=ExprSimple '+' der=ExprSimple
-		public Group getGroup() { return cGroup; }
-		
-		//izq=ExprSimple
-		public Assignment getIzqAssignment_0() { return cIzqAssignment_0; }
-		
-		//ExprSimple
-		public RuleCall getIzqExprSimpleParserRuleCall_0_0() { return cIzqExprSimpleParserRuleCall_0_0; }
-		
-		//'+'
-		public Keyword getPlusSignKeyword_1() { return cPlusSignKeyword_1; }
-		
-		//der=ExprSimple
-		public Assignment getDerAssignment_2() { return cDerAssignment_2; }
-		
-		//ExprSimple
-		public RuleCall getDerExprSimpleParserRuleCall_2_0() { return cDerExprSimpleParserRuleCall_2_0; }
-	}
-	public class ExprSimpleElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.isc.DymeLanguage.ExprSimple");
+	public class ExprConcatenacionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.isc.DymeLanguage.ExprConcatenacion");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Assignment cXAssignment_0 = (Assignment)cAlternatives.eContents().get(0);
-		private final RuleCall cXSTRINGTerminalRuleCall_0_0 = (RuleCall)cXAssignment_0.eContents().get(0);
-		private final Assignment cPAssignment_1 = (Assignment)cAlternatives.eContents().get(1);
-		private final RuleCall cPPlanetaParserRuleCall_1_0 = (RuleCall)cPAssignment_1.eContents().get(0);
+		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
+		private final Group cGroup_0_1 = (Group)cGroup_0.eContents().get(1);
+		private final Assignment cOperadorConAssignment_0_1_0 = (Assignment)cGroup_0_1.eContents().get(0);
+		private final Keyword cOperadorConPlusSignPlusSignKeyword_0_1_0_0 = (Keyword)cOperadorConAssignment_0_1_0.eContents().get(0);
+		private final Assignment cExprConAssignment_0_1_1 = (Assignment)cGroup_0_1.eContents().get(1);
+		private final Alternatives cExprConAlternatives_0_1_1_0 = (Alternatives)cExprConAssignment_0_1_1.eContents().get(0);
+		private final RuleCall cExprConExprConcatenacionParserRuleCall_0_1_1_0_0 = (RuleCall)cExprConAlternatives_0_1_1_0.eContents().get(0);
+		private final RuleCall cExprConLlamadoFuncParserRuleCall_0_1_1_0_1 = (RuleCall)cExprConAlternatives_0_1_1_0.eContents().get(1);
+		private final Keyword cRightParenthesisKeyword_0_2 = (Keyword)cGroup_0.eContents().get(2);
+		private final Alternatives cAlternatives_1 = (Alternatives)cAlternatives.eContents().get(1);
+		private final RuleCall cConstelacionParserRuleCall_1_0 = (RuleCall)cAlternatives_1.eContents().get(0);
+		private final RuleCall cEstrellaParserRuleCall_1_1 = (RuleCall)cAlternatives_1.eContents().get(1);
 		
-		//ExprSimple:
-		//    x = STRING | p = Planeta
+		//ExprConcatenacion:
+		//    '('(operadorCon = '++' (exprCon+=(ExprConcatenacion | LlamadoFunc))+) ')' |  (Constelacion | Estrella)
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//x = STRING | p = Planeta
+		//'('(operadorCon = '++' (exprCon+=(ExprConcatenacion | LlamadoFunc))+) ')' |  (Constelacion | Estrella)
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
-		//x = STRING
-		public Assignment getXAssignment_0() { return cXAssignment_0; }
+		//'('(operadorCon = '++' (exprCon+=(ExprConcatenacion | LlamadoFunc))+) ')'
+		public Group getGroup_0() { return cGroup_0; }
 		
-		//STRING
-		public RuleCall getXSTRINGTerminalRuleCall_0_0() { return cXSTRINGTerminalRuleCall_0_0; }
+		//'('
+		public Keyword getLeftParenthesisKeyword_0_0() { return cLeftParenthesisKeyword_0_0; }
 		
-		//p = Planeta
-		public Assignment getPAssignment_1() { return cPAssignment_1; }
+		//(operadorCon = '++' (exprCon+=(ExprConcatenacion | LlamadoFunc))+)
+		public Group getGroup_0_1() { return cGroup_0_1; }
+		
+		//operadorCon = '++'
+		public Assignment getOperadorConAssignment_0_1_0() { return cOperadorConAssignment_0_1_0; }
+		
+		//'++'
+		public Keyword getOperadorConPlusSignPlusSignKeyword_0_1_0_0() { return cOperadorConPlusSignPlusSignKeyword_0_1_0_0; }
+		
+		//(exprCon+=(ExprConcatenacion | LlamadoFunc))+
+		public Assignment getExprConAssignment_0_1_1() { return cExprConAssignment_0_1_1; }
+		
+		//(ExprConcatenacion | LlamadoFunc)
+		public Alternatives getExprConAlternatives_0_1_1_0() { return cExprConAlternatives_0_1_1_0; }
+		
+		//ExprConcatenacion
+		public RuleCall getExprConExprConcatenacionParserRuleCall_0_1_1_0_0() { return cExprConExprConcatenacionParserRuleCall_0_1_1_0_0; }
+		
+		//LlamadoFunc
+		public RuleCall getExprConLlamadoFuncParserRuleCall_0_1_1_0_1() { return cExprConLlamadoFuncParserRuleCall_0_1_1_0_1; }
+		
+		//')'
+		public Keyword getRightParenthesisKeyword_0_2() { return cRightParenthesisKeyword_0_2; }
+		
+		//(Constelacion | Estrella)
+		public Alternatives getAlternatives_1() { return cAlternatives_1; }
+		
+		//Constelacion
+		public RuleCall getConstelacionParserRuleCall_1_0() { return cConstelacionParserRuleCall_1_0; }
+		
+		//Estrella
+		public RuleCall getEstrellaParserRuleCall_1_1() { return cEstrellaParserRuleCall_1_1; }
+	}
+	public class ExprAritmeticaElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.isc.DymeLanguage.ExprAritmetica");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
+		private final Group cGroup_0_1 = (Group)cGroup_0.eContents().get(1);
+		private final Assignment cOperadorArAssignment_0_1_0 = (Assignment)cGroup_0_1.eContents().get(0);
+		private final Alternatives cOperadorArAlternatives_0_1_0_0 = (Alternatives)cOperadorArAssignment_0_1_0.eContents().get(0);
+		private final Keyword cOperadorArPlusSignKeyword_0_1_0_0_0 = (Keyword)cOperadorArAlternatives_0_1_0_0.eContents().get(0);
+		private final Keyword cOperadorArHyphenMinusKeyword_0_1_0_0_1 = (Keyword)cOperadorArAlternatives_0_1_0_0.eContents().get(1);
+		private final Keyword cOperadorArSolidusKeyword_0_1_0_0_2 = (Keyword)cOperadorArAlternatives_0_1_0_0.eContents().get(2);
+		private final Keyword cOperadorArAsteriskKeyword_0_1_0_0_3 = (Keyword)cOperadorArAlternatives_0_1_0_0.eContents().get(3);
+		private final Keyword cOperadorArPercentSignKeyword_0_1_0_0_4 = (Keyword)cOperadorArAlternatives_0_1_0_0.eContents().get(4);
+		private final Assignment cExprArAssignment_0_1_1 = (Assignment)cGroup_0_1.eContents().get(1);
+		private final Alternatives cExprArAlternatives_0_1_1_0 = (Alternatives)cExprArAssignment_0_1_1.eContents().get(0);
+		private final RuleCall cExprArExprAritmeticaParserRuleCall_0_1_1_0_0 = (RuleCall)cExprArAlternatives_0_1_1_0.eContents().get(0);
+		private final RuleCall cExprArLlamadoFuncParserRuleCall_0_1_1_0_1 = (RuleCall)cExprArAlternatives_0_1_1_0.eContents().get(1);
+		private final Keyword cRightParenthesisKeyword_0_2 = (Keyword)cGroup_0.eContents().get(2);
+		private final Alternatives cAlternatives_1 = (Alternatives)cAlternatives.eContents().get(1);
+		private final RuleCall cPlanetaParserRuleCall_1_0 = (RuleCall)cAlternatives_1.eContents().get(0);
+		private final RuleCall cPolvoEstelarParserRuleCall_1_1 = (RuleCall)cAlternatives_1.eContents().get(1);
+		
+		//ExprAritmetica:
+		//    '('(operadorAr = ('+' | '-' | '/' | '*' | '%')  (exprAr+=(ExprAritmetica | LlamadoFunc))+) ')' |  (Planeta | PolvoEstelar)
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'('(operadorAr = ('+' | '-' | '/' | '*' | '%')  (exprAr+=(ExprAritmetica | LlamadoFunc))+) ')' |  (Planeta | PolvoEstelar)
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//'('(operadorAr = ('+' | '-' | '/' | '*' | '%')  (exprAr+=(ExprAritmetica | LlamadoFunc))+) ')'
+		public Group getGroup_0() { return cGroup_0; }
+		
+		//'('
+		public Keyword getLeftParenthesisKeyword_0_0() { return cLeftParenthesisKeyword_0_0; }
+		
+		//(operadorAr = ('+' | '-' | '/' | '*' | '%')  (exprAr+=(ExprAritmetica | LlamadoFunc))+)
+		public Group getGroup_0_1() { return cGroup_0_1; }
+		
+		//operadorAr = ('+' | '-' | '/' | '*' | '%')
+		public Assignment getOperadorArAssignment_0_1_0() { return cOperadorArAssignment_0_1_0; }
+		
+		//('+' | '-' | '/' | '*' | '%')
+		public Alternatives getOperadorArAlternatives_0_1_0_0() { return cOperadorArAlternatives_0_1_0_0; }
+		
+		//'+'
+		public Keyword getOperadorArPlusSignKeyword_0_1_0_0_0() { return cOperadorArPlusSignKeyword_0_1_0_0_0; }
+		
+		//'-'
+		public Keyword getOperadorArHyphenMinusKeyword_0_1_0_0_1() { return cOperadorArHyphenMinusKeyword_0_1_0_0_1; }
+		
+		//'/'
+		public Keyword getOperadorArSolidusKeyword_0_1_0_0_2() { return cOperadorArSolidusKeyword_0_1_0_0_2; }
+		
+		//'*'
+		public Keyword getOperadorArAsteriskKeyword_0_1_0_0_3() { return cOperadorArAsteriskKeyword_0_1_0_0_3; }
+		
+		//'%'
+		public Keyword getOperadorArPercentSignKeyword_0_1_0_0_4() { return cOperadorArPercentSignKeyword_0_1_0_0_4; }
+		
+		//(exprAr+=(ExprAritmetica | LlamadoFunc))+
+		public Assignment getExprArAssignment_0_1_1() { return cExprArAssignment_0_1_1; }
+		
+		//(ExprAritmetica | LlamadoFunc)
+		public Alternatives getExprArAlternatives_0_1_1_0() { return cExprArAlternatives_0_1_1_0; }
+		
+		//ExprAritmetica
+		public RuleCall getExprArExprAritmeticaParserRuleCall_0_1_1_0_0() { return cExprArExprAritmeticaParserRuleCall_0_1_1_0_0; }
+		
+		//LlamadoFunc
+		public RuleCall getExprArLlamadoFuncParserRuleCall_0_1_1_0_1() { return cExprArLlamadoFuncParserRuleCall_0_1_1_0_1; }
+		
+		//')'
+		public Keyword getRightParenthesisKeyword_0_2() { return cRightParenthesisKeyword_0_2; }
+		
+		//(Planeta | PolvoEstelar)
+		public Alternatives getAlternatives_1() { return cAlternatives_1; }
 		
 		//Planeta
-		public RuleCall getPPlanetaParserRuleCall_1_0() { return cPPlanetaParserRuleCall_1_0; }
+		public RuleCall getPlanetaParserRuleCall_1_0() { return cPlanetaParserRuleCall_1_0; }
+		
+		//PolvoEstelar
+		public RuleCall getPolvoEstelarParserRuleCall_1_1() { return cPolvoEstelarParserRuleCall_1_1; }
+	}
+	public class ExprLogicaElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.isc.DymeLanguage.ExprLogica");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
+		private final Group cGroup_0_1 = (Group)cGroup_0.eContents().get(1);
+		private final Assignment cOperadorLogAssignment_0_1_0 = (Assignment)cGroup_0_1.eContents().get(0);
+		private final Alternatives cOperadorLogAlternatives_0_1_0_0 = (Alternatives)cOperadorLogAssignment_0_1_0.eContents().get(0);
+		private final Keyword cOperadorLogAmpersandAmpersandKeyword_0_1_0_0_0 = (Keyword)cOperadorLogAlternatives_0_1_0_0.eContents().get(0);
+		private final Keyword cOperadorLogVerticalLineVerticalLineKeyword_0_1_0_0_1 = (Keyword)cOperadorLogAlternatives_0_1_0_0.eContents().get(1);
+		private final Keyword cOperadorLogDollarSignDollarSignKeyword_0_1_0_0_2 = (Keyword)cOperadorLogAlternatives_0_1_0_0.eContents().get(2);
+		private final Keyword cOperadorLogExclamationMarkKeyword_0_1_0_0_3 = (Keyword)cOperadorLogAlternatives_0_1_0_0.eContents().get(3);
+		private final Assignment cExprLogAssignment_0_1_1 = (Assignment)cGroup_0_1.eContents().get(1);
+		private final Alternatives cExprLogAlternatives_0_1_1_0 = (Alternatives)cExprLogAssignment_0_1_1.eContents().get(0);
+		private final RuleCall cExprLogExprLogicaParserRuleCall_0_1_1_0_0 = (RuleCall)cExprLogAlternatives_0_1_1_0.eContents().get(0);
+		private final RuleCall cExprLogLlamadoFuncParserRuleCall_0_1_1_0_1 = (RuleCall)cExprLogAlternatives_0_1_1_0.eContents().get(1);
+		private final Keyword cRightParenthesisKeyword_0_2 = (Keyword)cGroup_0.eContents().get(2);
+		private final RuleCall cLunaParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		
+		//ExprLogica:
+		//    '('(operadorLog = ( '&&' | '||' | '$$' | '!' ) (exprLog+=(ExprLogica | LlamadoFunc))+) ')' | Luna
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'('(operadorLog = ( '&&' | '||' | '$$' | '!' ) (exprLog+=(ExprLogica | LlamadoFunc))+) ')' | Luna
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//'('(operadorLog = ( '&&' | '||' | '$$' | '!' ) (exprLog+=(ExprLogica | LlamadoFunc))+) ')'
+		public Group getGroup_0() { return cGroup_0; }
+		
+		//'('
+		public Keyword getLeftParenthesisKeyword_0_0() { return cLeftParenthesisKeyword_0_0; }
+		
+		//(operadorLog = ( '&&' | '||' | '$$' | '!' ) (exprLog+=(ExprLogica | LlamadoFunc))+)
+		public Group getGroup_0_1() { return cGroup_0_1; }
+		
+		//operadorLog = ( '&&' | '||' | '$$' | '!' )
+		public Assignment getOperadorLogAssignment_0_1_0() { return cOperadorLogAssignment_0_1_0; }
+		
+		//( '&&' | '||' | '$$' | '!' )
+		public Alternatives getOperadorLogAlternatives_0_1_0_0() { return cOperadorLogAlternatives_0_1_0_0; }
+		
+		//'&&'
+		public Keyword getOperadorLogAmpersandAmpersandKeyword_0_1_0_0_0() { return cOperadorLogAmpersandAmpersandKeyword_0_1_0_0_0; }
+		
+		//'||'
+		public Keyword getOperadorLogVerticalLineVerticalLineKeyword_0_1_0_0_1() { return cOperadorLogVerticalLineVerticalLineKeyword_0_1_0_0_1; }
+		
+		//'$$'
+		public Keyword getOperadorLogDollarSignDollarSignKeyword_0_1_0_0_2() { return cOperadorLogDollarSignDollarSignKeyword_0_1_0_0_2; }
+		
+		//'!'
+		public Keyword getOperadorLogExclamationMarkKeyword_0_1_0_0_3() { return cOperadorLogExclamationMarkKeyword_0_1_0_0_3; }
+		
+		//(exprLog+=(ExprLogica | LlamadoFunc))+
+		public Assignment getExprLogAssignment_0_1_1() { return cExprLogAssignment_0_1_1; }
+		
+		//(ExprLogica | LlamadoFunc)
+		public Alternatives getExprLogAlternatives_0_1_1_0() { return cExprLogAlternatives_0_1_1_0; }
+		
+		//ExprLogica
+		public RuleCall getExprLogExprLogicaParserRuleCall_0_1_1_0_0() { return cExprLogExprLogicaParserRuleCall_0_1_1_0_0; }
+		
+		//LlamadoFunc
+		public RuleCall getExprLogLlamadoFuncParserRuleCall_0_1_1_0_1() { return cExprLogLlamadoFuncParserRuleCall_0_1_1_0_1; }
+		
+		//')'
+		public Keyword getRightParenthesisKeyword_0_2() { return cRightParenthesisKeyword_0_2; }
+		
+		//Luna
+		public RuleCall getLunaParserRuleCall_1() { return cLunaParserRuleCall_1; }
 	}
 	public class PlanetaElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.isc.DymeLanguage.Planeta");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Alternatives cAlternatives_0 = (Alternatives)cGroup.eContents().get(0);
-		private final Keyword cDigitOneKeyword_0_0 = (Keyword)cAlternatives_0.eContents().get(0);
-		private final Keyword cDigitTwoKeyword_0_1 = (Keyword)cAlternatives_0.eContents().get(1);
-		private final Keyword cDigitThreeKeyword_0_2 = (Keyword)cAlternatives_0.eContents().get(2);
-		private final Keyword cDigitFourKeyword_0_3 = (Keyword)cAlternatives_0.eContents().get(3);
-		private final Keyword cDigitFiveKeyword_0_4 = (Keyword)cAlternatives_0.eContents().get(4);
-		private final Keyword cDigitSixKeyword_0_5 = (Keyword)cAlternatives_0.eContents().get(5);
-		private final Keyword cDigitSevenKeyword_0_6 = (Keyword)cAlternatives_0.eContents().get(6);
-		private final Keyword cDigitEightKeyword_0_7 = (Keyword)cAlternatives_0.eContents().get(7);
-		private final Keyword cDigitNineKeyword_0_8 = (Keyword)cAlternatives_0.eContents().get(8);
-		private final Alternatives cAlternatives_1 = (Alternatives)cGroup.eContents().get(1);
-		private final Keyword cDigitZeroKeyword_1_0 = (Keyword)cAlternatives_1.eContents().get(0);
-		private final Keyword cDigitOneKeyword_1_1 = (Keyword)cAlternatives_1.eContents().get(1);
-		private final Keyword cDigitTwoKeyword_1_2 = (Keyword)cAlternatives_1.eContents().get(2);
-		private final Keyword cDigitThreeKeyword_1_3 = (Keyword)cAlternatives_1.eContents().get(3);
-		private final Keyword cDigitFourKeyword_1_4 = (Keyword)cAlternatives_1.eContents().get(4);
-		private final Keyword cDigitFiveKeyword_1_5 = (Keyword)cAlternatives_1.eContents().get(5);
-		private final Keyword cDigitSixKeyword_1_6 = (Keyword)cAlternatives_1.eContents().get(6);
-		private final Keyword cDigitSevenKeyword_1_7 = (Keyword)cAlternatives_1.eContents().get(7);
-		private final Keyword cDigitEightKeyword_1_8 = (Keyword)cAlternatives_1.eContents().get(8);
-		private final Keyword cDigitNineKeyword_1_9 = (Keyword)cAlternatives_1.eContents().get(9);
+		private final Assignment cXAssignment = (Assignment)rule.eContents().get(1);
+		private final RuleCall cXINTTerminalRuleCall_0 = (RuleCall)cXAssignment.eContents().get(0);
 		
-		//Planeta:
-		//    ('1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9')
-		//    ('0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9')*
+		///*
+		//ExprSimple:
+		//     valorExpr = ( Planeta | PolvoEstelar | Constelacion | Estrella | Luna | Cometa )
+		//;
+		//*/
+		//Planeta: /* int */
+		//    x = INT
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//('1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9')
-		//('0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9')*
+		///* int */
+		//   x = INT
+		public Assignment getXAssignment() { return cXAssignment; }
+		
+		//INT
+		public RuleCall getXINTTerminalRuleCall_0() { return cXINTTerminalRuleCall_0; }
+	}
+	public class ConstelacionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.isc.DymeLanguage.Constelacion");
+		private final Assignment cXAssignment = (Assignment)rule.eContents().get(1);
+		private final RuleCall cXSTRINGTerminalRuleCall_0 = (RuleCall)cXAssignment.eContents().get(0);
+		
+		//Constelacion: /* string */
+		//    x = STRING
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		///* string */
+		//   x = STRING
+		public Assignment getXAssignment() { return cXAssignment; }
+		
+		//STRING
+		public RuleCall getXSTRINGTerminalRuleCall_0() { return cXSTRINGTerminalRuleCall_0; }
+	}
+	public class EstrellaElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.isc.DymeLanguage.Estrella");
+		private final Assignment cXAssignment = (Assignment)rule.eContents().get(1);
+		private final Keyword cXAKeyword_0 = (Keyword)cXAssignment.eContents().get(0);
+		
+		//Estrella: /* char */ /* preguntar como aceptar solo 1 */
+		//    x = 'a'
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		///* char */ /* preguntar como aceptar solo 1 */
+		//   x = 'a'
+		public Assignment getXAssignment() { return cXAssignment; }
+		
+		//'a'
+		public Keyword getXAKeyword_0() { return cXAKeyword_0; }
+	}
+	public class PolvoEstelarElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.isc.DymeLanguage.PolvoEstelar");
+		private final Assignment cXAssignment = (Assignment)rule.eContents().get(1);
+		private final RuleCall cXDoubleParserRuleCall_0 = (RuleCall)cXAssignment.eContents().get(0);
+		
+		//PolvoEstelar:
+		//    x = Double
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//x = Double
+		public Assignment getXAssignment() { return cXAssignment; }
+		
+		//Double
+		public RuleCall getXDoubleParserRuleCall_0() { return cXDoubleParserRuleCall_0; }
+	}
+	public class DoubleElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.isc.DymeLanguage.Double");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final RuleCall cINTTerminalRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Keyword cFullStopKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final RuleCall cINTTerminalRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
+		
+		//Double returns ecore::EDouble:
+		//    INT '.' INT
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//INT '.' INT
 		public Group getGroup() { return cGroup; }
 		
-		//('1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9')
-		public Alternatives getAlternatives_0() { return cAlternatives_0; }
+		//INT
+		public RuleCall getINTTerminalRuleCall_0() { return cINTTerminalRuleCall_0; }
 		
-		//'1'
-		public Keyword getDigitOneKeyword_0_0() { return cDigitOneKeyword_0_0; }
+		//'.'
+		public Keyword getFullStopKeyword_1() { return cFullStopKeyword_1; }
 		
-		//'2'
-		public Keyword getDigitTwoKeyword_0_1() { return cDigitTwoKeyword_0_1; }
+		//INT
+		public RuleCall getINTTerminalRuleCall_2() { return cINTTerminalRuleCall_2; }
+	}
+	public class LunaElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.isc.DymeLanguage.Luna");
+		private final Assignment cXAssignment = (Assignment)rule.eContents().get(1);
+		private final Alternatives cXAlternatives_0 = (Alternatives)cXAssignment.eContents().get(0);
+		private final Keyword cXLunaNuevaKeyword_0_0 = (Keyword)cXAlternatives_0.eContents().get(0);
+		private final Keyword cXLunaLlenaKeyword_0_1 = (Keyword)cXAlternatives_0.eContents().get(1);
 		
-		//'3'
-		public Keyword getDigitThreeKeyword_0_2() { return cDigitThreeKeyword_0_2; }
+		//Luna:
+		//    x = ('LunaNueva' | 'LunaLlena')
+		//;
+		@Override public ParserRule getRule() { return rule; }
 		
-		//'4'
-		public Keyword getDigitFourKeyword_0_3() { return cDigitFourKeyword_0_3; }
+		//x = ('LunaNueva' | 'LunaLlena')
+		public Assignment getXAssignment() { return cXAssignment; }
 		
-		//'5'
-		public Keyword getDigitFiveKeyword_0_4() { return cDigitFiveKeyword_0_4; }
+		//('LunaNueva' | 'LunaLlena')
+		public Alternatives getXAlternatives_0() { return cXAlternatives_0; }
 		
-		//'6'
-		public Keyword getDigitSixKeyword_0_5() { return cDigitSixKeyword_0_5; }
+		//'LunaNueva'
+		public Keyword getXLunaNuevaKeyword_0_0() { return cXLunaNuevaKeyword_0_0; }
 		
-		//'7'
-		public Keyword getDigitSevenKeyword_0_6() { return cDigitSevenKeyword_0_6; }
-		
-		//'8'
-		public Keyword getDigitEightKeyword_0_7() { return cDigitEightKeyword_0_7; }
-		
-		//'9'
-		public Keyword getDigitNineKeyword_0_8() { return cDigitNineKeyword_0_8; }
-		
-		//('0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9')*
-		public Alternatives getAlternatives_1() { return cAlternatives_1; }
-		
-		//'0'
-		public Keyword getDigitZeroKeyword_1_0() { return cDigitZeroKeyword_1_0; }
-		
-		//'1'
-		public Keyword getDigitOneKeyword_1_1() { return cDigitOneKeyword_1_1; }
-		
-		//'2'
-		public Keyword getDigitTwoKeyword_1_2() { return cDigitTwoKeyword_1_2; }
-		
-		//'3'
-		public Keyword getDigitThreeKeyword_1_3() { return cDigitThreeKeyword_1_3; }
-		
-		//'4'
-		public Keyword getDigitFourKeyword_1_4() { return cDigitFourKeyword_1_4; }
-		
-		//'5'
-		public Keyword getDigitFiveKeyword_1_5() { return cDigitFiveKeyword_1_5; }
-		
-		//'6'
-		public Keyword getDigitSixKeyword_1_6() { return cDigitSixKeyword_1_6; }
-		
-		//'7'
-		public Keyword getDigitSevenKeyword_1_7() { return cDigitSevenKeyword_1_7; }
-		
-		//'8'
-		public Keyword getDigitEightKeyword_1_8() { return cDigitEightKeyword_1_8; }
-		
-		//'9'
-		public Keyword getDigitNineKeyword_1_9() { return cDigitNineKeyword_1_9; }
+		//'LunaLlena'
+		public Keyword getXLunaLlenaKeyword_0_1() { return cXLunaLlenaKeyword_0_1; }
 	}
 	
 	
+	private final ProgramaElements pPrograma;
 	private final FuncionElements pFuncion;
 	private final LlamadoFuncElements pLlamadoFunc;
 	private final ParamElements pParam;
-	private final TipoElements pTipo;
 	private final InstruccionElements pInstruccion;
 	private final AsignacionElements pAsignacion;
+	private final TipoElements pTipo;
+	private final ConstanteElements pConstante;
 	private final ExpresionElements pExpresion;
-	private final SumaElements pSuma;
-	private final ExprSimpleElements pExprSimple;
+	private final ExprConcatenacionElements pExprConcatenacion;
+	private final ExprAritmeticaElements pExprAritmetica;
+	private final ExprLogicaElements pExprLogica;
 	private final PlanetaElements pPlaneta;
+	private final ConstelacionElements pConstelacion;
+	private final EstrellaElements pEstrella;
+	private final PolvoEstelarElements pPolvoEstelar;
+	private final DoubleElements pDouble;
+	private final LunaElements pLuna;
 	
 	private final Grammar grammar;
 	
@@ -492,16 +772,24 @@ public class DymeLanguageGrammarAccess extends AbstractElementFinder.AbstractGra
 			TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
 		this.gaTerminals = gaTerminals;
+		this.pPrograma = new ProgramaElements();
 		this.pFuncion = new FuncionElements();
 		this.pLlamadoFunc = new LlamadoFuncElements();
 		this.pParam = new ParamElements();
-		this.pTipo = new TipoElements();
 		this.pInstruccion = new InstruccionElements();
 		this.pAsignacion = new AsignacionElements();
+		this.pTipo = new TipoElements();
+		this.pConstante = new ConstanteElements();
 		this.pExpresion = new ExpresionElements();
-		this.pSuma = new SumaElements();
-		this.pExprSimple = new ExprSimpleElements();
+		this.pExprConcatenacion = new ExprConcatenacionElements();
+		this.pExprAritmetica = new ExprAritmeticaElements();
+		this.pExprLogica = new ExprLogicaElements();
 		this.pPlaneta = new PlanetaElements();
+		this.pConstelacion = new ConstelacionElements();
+		this.pEstrella = new EstrellaElements();
+		this.pPolvoEstelar = new PolvoEstelarElements();
+		this.pDouble = new DoubleElements();
+		this.pLuna = new LunaElements();
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -536,10 +824,21 @@ public class DymeLanguageGrammarAccess extends AbstractElementFinder.AbstractGra
 	////
 	////Greeting:
 	////    'Hello' name=ID '!';
+	//Programa:
+	//    (func+=Funcion)+
+	//;
+	public ProgramaElements getProgramaAccess() {
+		return pPrograma;
+	}
+	
+	public ParserRule getProgramaRule() {
+		return getProgramaAccess().getRule();
+	}
+	
 	//Funcion:
-	//    'CASIMIR' name=ID 'CONSUME' (param+=Param ('$' param+=Param)*)? 'CONVERGE'
-	//    (instr+=Instruccion)+
-	//    "GUT" '->' tip=Tipo
+	//    'CASIMIR' name=ID 'NECESITA' (param+=Param ('$' param+=Param)*)? 'CONVERGE'
+	//    (instr+=Instruccion)* (expr=Expresion)
+	//    "GUT" (returnTipo ?= '->' tip=Tipo?)?
 	//;
 	public FuncionElements getFuncionAccess() {
 		return pFuncion;
@@ -550,7 +849,7 @@ public class DymeLanguageGrammarAccess extends AbstractElementFinder.AbstractGra
 	}
 	
 	//LlamadoFunc:
-	//    funcion=[Funcion] 'CONSUME' (args+=Expresion ('$' args+=Expresion)*)?
+	//    funcion=[Funcion] 'CONSUME' (args+=Expresion ('$' args+=Expresion)*)? '#'
 	//;
 	public LlamadoFuncElements getLlamadoFuncAccess() {
 		return pLlamadoFunc;
@@ -571,17 +870,6 @@ public class DymeLanguageGrammarAccess extends AbstractElementFinder.AbstractGra
 		return getParamAccess().getRule();
 	}
 	
-	//Tipo:
-	//    'Planeta' | 'STRING'
-	//;
-	public TipoElements getTipoAccess() {
-		return pTipo;
-	}
-	
-	public ParserRule getTipoRule() {
-		return getTipoAccess().getRule();
-	}
-	
 	//Instruccion:
 	//    Asignacion /*Falta */
 	//;
@@ -594,7 +882,9 @@ public class DymeLanguageGrammarAccess extends AbstractElementFinder.AbstractGra
 	}
 	
 	//Asignacion:
-	//    'MASA' name=ID ('es' tip=Tipo)?  '<-' valor=Expresion
+	//    'MASA' name=ID (tipoInferido ?= 'es' tip=Tipo)?  '<-' valorAsig=Expresion '~'
+	//    /*'MASA' name=ID ('es' tip=Tipo)?  '<-' valor=Expresion */
+	//    /* Preguntar la comparacion con null, con el valor opcional */
 	//;
 	public AsignacionElements getAsignacionAccess() {
 		return pAsignacion;
@@ -604,8 +894,30 @@ public class DymeLanguageGrammarAccess extends AbstractElementFinder.AbstractGra
 		return getAsignacionAccess().getRule();
 	}
 	
+	//Tipo:
+	//    type = ('Planeta' | 'Constelacion' | 'Estrella' | 'PolvoEstelar' | 'Luna' )
+	//;
+	public TipoElements getTipoAccess() {
+		return pTipo;
+	}
+	
+	public ParserRule getTipoRule() {
+		return getTipoAccess().getRule();
+	}
+	
+	//Constante:
+	//    nombre=[Asignacion]
+	//;
+	public ConstanteElements getConstanteAccess() {
+		return pConstante;
+	}
+	
+	public ParserRule getConstanteRule() {
+		return getConstanteAccess().getRule();
+	}
+	
 	//Expresion:
-	//    Suma | ExprSimple | LlamadoFunc
+	//    ExprConcatenacion | ExprAritmetica | ExprLogica | LlamadoFunc | Constante
 	//;
 	public ExpresionElements getExpresionAccess() {
 		return pExpresion;
@@ -615,31 +927,46 @@ public class DymeLanguageGrammarAccess extends AbstractElementFinder.AbstractGra
 		return getExpresionAccess().getRule();
 	}
 	
-	//Suma:
-	//    izq=ExprSimple '+' der=ExprSimple
+	//ExprConcatenacion:
+	//    '('(operadorCon = '++' (exprCon+=(ExprConcatenacion | LlamadoFunc))+) ')' |  (Constelacion | Estrella)
 	//;
-	public SumaElements getSumaAccess() {
-		return pSuma;
+	public ExprConcatenacionElements getExprConcatenacionAccess() {
+		return pExprConcatenacion;
 	}
 	
-	public ParserRule getSumaRule() {
-		return getSumaAccess().getRule();
+	public ParserRule getExprConcatenacionRule() {
+		return getExprConcatenacionAccess().getRule();
 	}
 	
+	//ExprAritmetica:
+	//    '('(operadorAr = ('+' | '-' | '/' | '*' | '%')  (exprAr+=(ExprAritmetica | LlamadoFunc))+) ')' |  (Planeta | PolvoEstelar)
+	//;
+	public ExprAritmeticaElements getExprAritmeticaAccess() {
+		return pExprAritmetica;
+	}
+	
+	public ParserRule getExprAritmeticaRule() {
+		return getExprAritmeticaAccess().getRule();
+	}
+	
+	//ExprLogica:
+	//    '('(operadorLog = ( '&&' | '||' | '$$' | '!' ) (exprLog+=(ExprLogica | LlamadoFunc))+) ')' | Luna
+	//;
+	public ExprLogicaElements getExprLogicaAccess() {
+		return pExprLogica;
+	}
+	
+	public ParserRule getExprLogicaRule() {
+		return getExprLogicaAccess().getRule();
+	}
+	
+	///*
 	//ExprSimple:
-	//    x = STRING | p = Planeta
+	//     valorExpr = ( Planeta | PolvoEstelar | Constelacion | Estrella | Luna | Cometa )
 	//;
-	public ExprSimpleElements getExprSimpleAccess() {
-		return pExprSimple;
-	}
-	
-	public ParserRule getExprSimpleRule() {
-		return getExprSimpleAccess().getRule();
-	}
-	
-	//Planeta:
-	//    ('1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9')
-	//    ('0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9')*
+	//*/
+	//Planeta: /* int */
+	//    x = INT
 	//;
 	public PlanetaElements getPlanetaAccess() {
 		return pPlaneta;
@@ -647,6 +974,61 @@ public class DymeLanguageGrammarAccess extends AbstractElementFinder.AbstractGra
 	
 	public ParserRule getPlanetaRule() {
 		return getPlanetaAccess().getRule();
+	}
+	
+	//Constelacion: /* string */
+	//    x = STRING
+	//;
+	public ConstelacionElements getConstelacionAccess() {
+		return pConstelacion;
+	}
+	
+	public ParserRule getConstelacionRule() {
+		return getConstelacionAccess().getRule();
+	}
+	
+	//Estrella: /* char */ /* preguntar como aceptar solo 1 */
+	//    x = 'a'
+	//;
+	public EstrellaElements getEstrellaAccess() {
+		return pEstrella;
+	}
+	
+	public ParserRule getEstrellaRule() {
+		return getEstrellaAccess().getRule();
+	}
+	
+	//PolvoEstelar:
+	//    x = Double
+	//;
+	public PolvoEstelarElements getPolvoEstelarAccess() {
+		return pPolvoEstelar;
+	}
+	
+	public ParserRule getPolvoEstelarRule() {
+		return getPolvoEstelarAccess().getRule();
+	}
+	
+	//Double returns ecore::EDouble:
+	//    INT '.' INT
+	//;
+	public DoubleElements getDoubleAccess() {
+		return pDouble;
+	}
+	
+	public ParserRule getDoubleRule() {
+		return getDoubleAccess().getRule();
+	}
+	
+	//Luna:
+	//    x = ('LunaNueva' | 'LunaLlena')
+	//;
+	public LunaElements getLunaAccess() {
+		return pLuna;
+	}
+	
+	public ParserRule getLunaRule() {
+		return getLunaAccess().getRule();
 	}
 	
 	//terminal ID: '^'?('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;

@@ -24,6 +24,15 @@ public interface DymeLanguageFactory extends EFactory
   DymeLanguageFactory eINSTANCE = edu.upb.lp.isc.dymeLanguage.impl.DymeLanguageFactoryImpl.init();
 
   /**
+   * Returns a new object of class '<em>Programa</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Programa</em>'.
+   * @generated
+   */
+  Programa createPrograma();
+
+  /**
    * Returns a new object of class '<em>Funcion</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -69,6 +78,24 @@ public interface DymeLanguageFactory extends EFactory
   Asignacion createAsignacion();
 
   /**
+   * Returns a new object of class '<em>Tipo</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Tipo</em>'.
+   * @generated
+   */
+  Tipo createTipo();
+
+  /**
+   * Returns a new object of class '<em>Constante</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Constante</em>'.
+   * @generated
+   */
+  Constante createConstante();
+
+  /**
    * Returns a new object of class '<em>Expresion</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -78,22 +105,76 @@ public interface DymeLanguageFactory extends EFactory
   Expresion createExpresion();
 
   /**
-   * Returns a new object of class '<em>Suma</em>'.
+   * Returns a new object of class '<em>Expr Concatenacion</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Suma</em>'.
+   * @return a new object of class '<em>Expr Concatenacion</em>'.
    * @generated
    */
-  Suma createSuma();
+  ExprConcatenacion createExprConcatenacion();
 
   /**
-   * Returns a new object of class '<em>Expr Simple</em>'.
+   * Returns a new object of class '<em>Expr Aritmetica</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Expr Simple</em>'.
+   * @return a new object of class '<em>Expr Aritmetica</em>'.
    * @generated
    */
-  ExprSimple createExprSimple();
+  ExprAritmetica createExprAritmetica();
+
+  /**
+   * Returns a new object of class '<em>Expr Logica</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Expr Logica</em>'.
+   * @generated
+   */
+  ExprLogica createExprLogica();
+
+  /**
+   * Returns a new object of class '<em>Planeta</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Planeta</em>'.
+   * @generated
+   */
+  Planeta createPlaneta();
+
+  /**
+   * Returns a new object of class '<em>Constelacion</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Constelacion</em>'.
+   * @generated
+   */
+  Constelacion createConstelacion();
+
+  /**
+   * Returns a new object of class '<em>Estrella</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Estrella</em>'.
+   * @generated
+   */
+  Estrella createEstrella();
+
+  /**
+   * Returns a new object of class '<em>Polvo Estelar</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Polvo Estelar</em>'.
+   * @generated
+   */
+  PolvoEstelar createPolvoEstelar();
+
+  /**
+   * Returns a new object of class '<em>Luna</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Luna</em>'.
+   * @generated
+   */
+  Luna createLuna();
 
   /**
    * Returns the package supported by this factory.

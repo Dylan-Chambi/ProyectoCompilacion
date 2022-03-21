@@ -65,17 +65,38 @@ public class DymeLanguageFactoryImpl extends EFactoryImpl implements DymeLanguag
   {
     switch (eClass.getClassifierID())
     {
+      case DymeLanguagePackage.PROGRAMA: return createPrograma();
       case DymeLanguagePackage.FUNCION: return createFuncion();
       case DymeLanguagePackage.LLAMADO_FUNC: return createLlamadoFunc();
       case DymeLanguagePackage.PARAM: return createParam();
       case DymeLanguagePackage.INSTRUCCION: return createInstruccion();
       case DymeLanguagePackage.ASIGNACION: return createAsignacion();
+      case DymeLanguagePackage.TIPO: return createTipo();
+      case DymeLanguagePackage.CONSTANTE: return createConstante();
       case DymeLanguagePackage.EXPRESION: return createExpresion();
-      case DymeLanguagePackage.SUMA: return createSuma();
-      case DymeLanguagePackage.EXPR_SIMPLE: return createExprSimple();
+      case DymeLanguagePackage.EXPR_CONCATENACION: return createExprConcatenacion();
+      case DymeLanguagePackage.EXPR_ARITMETICA: return createExprAritmetica();
+      case DymeLanguagePackage.EXPR_LOGICA: return createExprLogica();
+      case DymeLanguagePackage.PLANETA: return createPlaneta();
+      case DymeLanguagePackage.CONSTELACION: return createConstelacion();
+      case DymeLanguagePackage.ESTRELLA: return createEstrella();
+      case DymeLanguagePackage.POLVO_ESTELAR: return createPolvoEstelar();
+      case DymeLanguagePackage.LUNA: return createLuna();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Programa createPrograma()
+  {
+    ProgramaImpl programa = new ProgramaImpl();
+    return programa;
   }
 
   /**
@@ -144,6 +165,30 @@ public class DymeLanguageFactoryImpl extends EFactoryImpl implements DymeLanguag
    * @generated
    */
   @Override
+  public Tipo createTipo()
+  {
+    TipoImpl tipo = new TipoImpl();
+    return tipo;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Constante createConstante()
+  {
+    ConstanteImpl constante = new ConstanteImpl();
+    return constante;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public Expresion createExpresion()
   {
     ExpresionImpl expresion = new ExpresionImpl();
@@ -156,10 +201,10 @@ public class DymeLanguageFactoryImpl extends EFactoryImpl implements DymeLanguag
    * @generated
    */
   @Override
-  public Suma createSuma()
+  public ExprConcatenacion createExprConcatenacion()
   {
-    SumaImpl suma = new SumaImpl();
-    return suma;
+    ExprConcatenacionImpl exprConcatenacion = new ExprConcatenacionImpl();
+    return exprConcatenacion;
   }
 
   /**
@@ -168,10 +213,82 @@ public class DymeLanguageFactoryImpl extends EFactoryImpl implements DymeLanguag
    * @generated
    */
   @Override
-  public ExprSimple createExprSimple()
+  public ExprAritmetica createExprAritmetica()
   {
-    ExprSimpleImpl exprSimple = new ExprSimpleImpl();
-    return exprSimple;
+    ExprAritmeticaImpl exprAritmetica = new ExprAritmeticaImpl();
+    return exprAritmetica;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public ExprLogica createExprLogica()
+  {
+    ExprLogicaImpl exprLogica = new ExprLogicaImpl();
+    return exprLogica;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Planeta createPlaneta()
+  {
+    PlanetaImpl planeta = new PlanetaImpl();
+    return planeta;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Constelacion createConstelacion()
+  {
+    ConstelacionImpl constelacion = new ConstelacionImpl();
+    return constelacion;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Estrella createEstrella()
+  {
+    EstrellaImpl estrella = new EstrellaImpl();
+    return estrella;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public PolvoEstelar createPolvoEstelar()
+  {
+    PolvoEstelarImpl polvoEstelar = new PolvoEstelarImpl();
+    return polvoEstelar;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Luna createLuna()
+  {
+    LunaImpl luna = new LunaImpl();
+    return luna;
   }
 
   /**

@@ -4,6 +4,22 @@
 package edu.upb.lp.isc.validation;
 
 import org.eclipse.xtext.validation.Check;
+import edu.upb.lp.isc.dymeLanguage.Asignacion;
+import edu.upb.lp.isc.dymeLanguage.Constante;
+import edu.upb.lp.isc.dymeLanguage.Constelacion;
+import edu.upb.lp.isc.dymeLanguage.DymeLanguagePackage;
+import edu.upb.lp.isc.dymeLanguage.Estrella;
+import edu.upb.lp.isc.dymeLanguage.ExprAritmetica;
+import edu.upb.lp.isc.dymeLanguage.ExprConcatenacion;
+import edu.upb.lp.isc.dymeLanguage.ExprLogica;
+import edu.upb.lp.isc.dymeLanguage.Expresion;
+import edu.upb.lp.isc.dymeLanguage.Funcion;
+import edu.upb.lp.isc.dymeLanguage.LlamadoFunc;
+import edu.upb.lp.isc.dymeLanguage.Luna;
+import edu.upb.lp.isc.dymeLanguage.Planeta;
+import edu.upb.lp.isc.dymeLanguage.PolvoEstelar;
+import edu.upb.lp.isc.dymeLanguage.Tipo;
+import edu.upb.lp.isc.dymeLanguage.impl.TipoImpl;
 
 /**
  * This class contains custom validation rules. 
@@ -23,9 +39,139 @@ public class DymeLanguageValidator extends AbstractDymeLanguageValidator {
 //		}
 //	}
 	
+	
+	public String obtenerValorExpr(Expresion expr) {
+		if(expr instanceof ExprConcatenacion) {
+			ExprConcatenacion exprCon = (ExprConcatenacion) expr;
+			return(obtenerTipoExprConcat(exprCon));
+		}else if (expr instanceof ExprAritmetica) {
+			ExprAritmetica exprAr = (ExprAritmetica) expr;
+			return(obtenerTipoExprArit(exprAr));
+		}else if(expr instanceof ExprLogica) {
+			ExprLogica exprLog = (ExprLogica) expr;
+			return(obtenerTipoExprLog(exprLog));
+		}else if (expr instanceof LlamadoFunc) {
+			return obtenerTipoLlamadoFunc((LlamadoFunc) expr);
+		}else if(expr instanceof Constante) {
+			return obtenerTipoConstante((Constante) expr);
+		}
+		return "ErrorType";
+	}
+	
+	public String obtenerTipoExprConcat(ExprConcatenacion expr) {
+		if(expr instanceof Constelacion) {
+			return "Constelacion";
+		}else if(expr instanceof Estrella) {
+			return "Estrella";
+		}else {
+			String tipoTemp = "";
+			for (int i = 0; i < expr.getExprCon().size(); i++) {
+				tipoTemp = obtenerValorExpr(expr.getExprCon().get(i));
+				if(tipoTemp.equals("Constelacion") || tipoTemp.equals("Estrella")) tipoTemp = "Constelacion";
+				else return "ErrorType";
+			}
+			return tipoTemp;
+		}
+	}
+	
+	
+	public String obtenerTipoExprArit(ExprAritmetica expr) {
+		if(expr instanceof Planeta) {
+			return "Planeta";
+		}else if(expr instanceof PolvoEstelar) {
+			return "PolvoEstelar";
+		}else {
+			String tipoTemp = "Planeta";
+			for (int i = 0; i < expr.getExprAr().size(); i++) {
+				tipoTemp = obtenerValorExpr(expr.getExprAr().get(i));
+				if(tipoTemp.equals("PolvoEstelar")) tipoTemp = "PolvoEstelar";
+				else if(!tipoTemp.equals("PolvoEstelar") && !tipoTemp.equals("Cometa") && !tipoTemp.equals("Planeta")) {
+					// no tenemos la referencia al literal en donde poner el error
+					//error("Expression no valida para operacion de tipo Expresion Aritmetica", DymeLanguagePackage.Literals.EXPR_ARITMETICA__EXPR_AR);
+					return "ErrorType";
+				}
+			}
+			return tipoTemp;
+		}
+	}
+	
+	public String obtenerTipoExprLog(ExprLogica expr) {
+		if(expr instanceof Luna) {
+			return "Luna";
+		}else {
+			String tipoTemp = "Luna";
+			for (int i = 0; i < expr.getExprLog().size(); i++) {
+				tipoTemp = obtenerValorExpr(expr.getExprLog().get(i));
+				if(!tipoTemp.equals("Luna")) return "ErrorType";
+			}
+			return tipoTemp;
+		}
+	}
+	
+	public String obtenerTipoLlamadoFunc(LlamadoFunc llf) {
+		return llf.getFuncion().getTip().getType();
+	}
+	
+	public String obtenerTipoConstante(Constante cons) {
+		return cons.getNombre().getTip().getType();
+	}
+	
 	@Check
-	public void verificarTipoDeExpresion() {
-		
+	public void obtenerTipoFuncion(Funcion func) {		
+		String tipoExprFinal= obtenerValorExpr(func.getExpr());
+		if(func.isReturnTipo()) {
+			String TipoFunc = func.getTip().getType();
+			if(!TipoFunc.equals(tipoExprFinal)) {
+				error("Tipo no valido: " + tipoExprFinal, DymeLanguagePackage.Literals.FUNCION__EXPR);
+			}
+		}else {
+			/* Cambiamos la visibilidad del constructor de TipoImpl para crear y pasar un nuevo tipo inferido */
+			Tipo myTipo = new TipoImpl();
+			myTipo.setType(tipoExprFinal);
+			func.setTip(myTipo);
+		}
+	}
+	
+	@Check
+	public void verificarNumeroParametrosLLamadoFunc(LlamadoFunc llf) {
+		Funcion func = llf.getFuncion();
+		System.out.println(func.getParam());
+		System.out.println(llf.getArgs());
+		if(llf.getArgs().size() == func.getParam().size()) {
+		for( int i = 0; i < llf.getArgs().size(); i++) {
+			String paramTipo = func.getParam().get(i).getTip().getType();
+			String argTipo = obtenerValorExpr(llf.getArgs().get(i));
+			if(!argTipo.equals(paramTipo)) {
+				error("Argumento " + (i+1) + " no valido '"+ argTipo + "' para el tipo de parametro '" + paramTipo + "'", DymeLanguagePackage.Literals.LLAMADO_FUNC__ARGS.getEOpposite());
+			}
+		}
+		}else {
+			error("Numero de argumentos no valido: " + llf.getArgs().size(), DymeLanguagePackage.Literals.LLAMADO_FUNC__ARGS.getEOpposite());
+		}
+	}
+
+	@Check
+	public void verificaroInferirTipoDeExpresionEnAsignacion(Asignacion asg) {
+		Object valor = asg.getValorAsig();
+		if (valor instanceof Expresion) {
+			Expresion valorExpr = ((Expresion) valor);
+			String exprTipo = obtenerValorExpr(valorExpr);
+			if(asg.isTipoInferido()) {
+				Object tipo = asg.getTip().getType();
+				if(!exprTipo.equals(tipo)) {
+					error("Tipo no valido: " + exprTipo, DymeLanguagePackage.Literals.ASIGNACION__VALOR_ASIG);
+				}
+			}else {
+				Tipo myTipo = new TipoImpl();
+				myTipo.setType(exprTipo);
+				asg.setTip(myTipo);
+			}
+		}else {
+			error("No es un valor valido", DymeLanguagePackage.Literals.ASIGNACION__VALOR_ASIG);
+		}
 	}
 	
 }
+
+
+/* Bug: Solo infiere el tipo de dato de una funcion a la segunda modficacion en adelante */

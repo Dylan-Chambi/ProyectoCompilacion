@@ -19,6 +19,8 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link edu.upb.lp.isc.dymeLanguage.Funcion#getName <em>Name</em>}</li>
  *   <li>{@link edu.upb.lp.isc.dymeLanguage.Funcion#getParam <em>Param</em>}</li>
  *   <li>{@link edu.upb.lp.isc.dymeLanguage.Funcion#getInstr <em>Instr</em>}</li>
+ *   <li>{@link edu.upb.lp.isc.dymeLanguage.Funcion#getExpr <em>Expr</em>}</li>
+ *   <li>{@link edu.upb.lp.isc.dymeLanguage.Funcion#isReturnTipo <em>Return Tipo</em>}</li>
  *   <li>{@link edu.upb.lp.isc.dymeLanguage.Funcion#getTip <em>Tip</em>}</li>
  * </ul>
  *
@@ -75,25 +77,69 @@ public interface Funcion extends EObject
   EList<Instruccion> getInstr();
 
   /**
-   * Returns the value of the '<em><b>Tip</b></em>' attribute.
+   * Returns the value of the '<em><b>Expr</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Tip</em>' attribute.
-   * @see #setTip(String)
-   * @see edu.upb.lp.isc.dymeLanguage.DymeLanguagePackage#getFuncion_Tip()
+   * @return the value of the '<em>Expr</em>' containment reference.
+   * @see #setExpr(Expresion)
+   * @see edu.upb.lp.isc.dymeLanguage.DymeLanguagePackage#getFuncion_Expr()
+   * @model containment="true"
+   * @generated
+   */
+  Expresion getExpr();
+
+  /**
+   * Sets the value of the '{@link edu.upb.lp.isc.dymeLanguage.Funcion#getExpr <em>Expr</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Expr</em>' containment reference.
+   * @see #getExpr()
+   * @generated
+   */
+  void setExpr(Expresion value);
+
+  /**
+   * Returns the value of the '<em><b>Return Tipo</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Return Tipo</em>' attribute.
+   * @see #setReturnTipo(boolean)
+   * @see edu.upb.lp.isc.dymeLanguage.DymeLanguagePackage#getFuncion_ReturnTipo()
    * @model
    * @generated
    */
-  String getTip();
+  boolean isReturnTipo();
 
   /**
-   * Sets the value of the '{@link edu.upb.lp.isc.dymeLanguage.Funcion#getTip <em>Tip</em>}' attribute.
+   * Sets the value of the '{@link edu.upb.lp.isc.dymeLanguage.Funcion#isReturnTipo <em>Return Tipo</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Tip</em>' attribute.
+   * @param value the new value of the '<em>Return Tipo</em>' attribute.
+   * @see #isReturnTipo()
+   * @generated
+   */
+  void setReturnTipo(boolean value);
+
+  /**
+   * Returns the value of the '<em><b>Tip</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Tip</em>' containment reference.
+   * @see #setTip(Tipo)
+   * @see edu.upb.lp.isc.dymeLanguage.DymeLanguagePackage#getFuncion_Tip()
+   * @model containment="true"
+   * @generated
+   */
+  Tipo getTip();
+
+  /**
+   * Sets the value of the '{@link edu.upb.lp.isc.dymeLanguage.Funcion#getTip <em>Tip</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Tip</em>' containment reference.
    * @see #getTip()
    * @generated
    */
-  void setTip(String value);
+  void setTip(Tipo value);
 
 } // Funcion

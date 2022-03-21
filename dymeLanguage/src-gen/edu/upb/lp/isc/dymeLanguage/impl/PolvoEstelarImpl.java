@@ -4,7 +4,7 @@
 package edu.upb.lp.isc.dymeLanguage.impl;
 
 import edu.upb.lp.isc.dymeLanguage.DymeLanguagePackage;
-import edu.upb.lp.isc.dymeLanguage.ExprSimple;
+import edu.upb.lp.isc.dymeLanguage.PolvoEstelar;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -14,19 +14,18 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Expr Simple</b></em>'.
+ * An implementation of the model object '<em><b>Polvo Estelar</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link edu.upb.lp.isc.dymeLanguage.impl.ExprSimpleImpl#getX <em>X</em>}</li>
- *   <li>{@link edu.upb.lp.isc.dymeLanguage.impl.ExprSimpleImpl#getP <em>P</em>}</li>
+ *   <li>{@link edu.upb.lp.isc.dymeLanguage.impl.PolvoEstelarImpl#getX <em>X</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ExprSimpleImpl extends ExpresionImpl implements ExprSimple
+public class PolvoEstelarImpl extends ExprAritmeticaImpl implements PolvoEstelar
 {
   /**
    * The default value of the '{@link #getX() <em>X</em>}' attribute.
@@ -36,7 +35,7 @@ public class ExprSimpleImpl extends ExpresionImpl implements ExprSimple
    * @generated
    * @ordered
    */
-  protected static final String X_EDEFAULT = null;
+  protected static final double X_EDEFAULT = 0.0;
 
   /**
    * The cached value of the '{@link #getX() <em>X</em>}' attribute.
@@ -46,34 +45,14 @@ public class ExprSimpleImpl extends ExpresionImpl implements ExprSimple
    * @generated
    * @ordered
    */
-  protected String x = X_EDEFAULT;
-
-  /**
-   * The default value of the '{@link #getP() <em>P</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getP()
-   * @generated
-   * @ordered
-   */
-  protected static final String P_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getP() <em>P</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getP()
-   * @generated
-   * @ordered
-   */
-  protected String p = P_EDEFAULT;
+  protected double x = X_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected ExprSimpleImpl()
+  protected PolvoEstelarImpl()
   {
     super();
   }
@@ -86,7 +65,7 @@ public class ExprSimpleImpl extends ExpresionImpl implements ExprSimple
   @Override
   protected EClass eStaticClass()
   {
-    return DymeLanguagePackage.Literals.EXPR_SIMPLE;
+    return DymeLanguagePackage.Literals.POLVO_ESTELAR;
   }
 
   /**
@@ -95,7 +74,7 @@ public class ExprSimpleImpl extends ExpresionImpl implements ExprSimple
    * @generated
    */
   @Override
-  public String getX()
+  public double getX()
   {
     return x;
   }
@@ -106,37 +85,12 @@ public class ExprSimpleImpl extends ExpresionImpl implements ExprSimple
    * @generated
    */
   @Override
-  public void setX(String newX)
+  public void setX(double newX)
   {
-    String oldX = x;
+    double oldX = x;
     x = newX;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DymeLanguagePackage.EXPR_SIMPLE__X, oldX, x));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String getP()
-  {
-    return p;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setP(String newP)
-  {
-    String oldP = p;
-    p = newP;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DymeLanguagePackage.EXPR_SIMPLE__P, oldP, p));
+      eNotify(new ENotificationImpl(this, Notification.SET, DymeLanguagePackage.POLVO_ESTELAR__X, oldX, x));
   }
 
   /**
@@ -149,10 +103,8 @@ public class ExprSimpleImpl extends ExpresionImpl implements ExprSimple
   {
     switch (featureID)
     {
-      case DymeLanguagePackage.EXPR_SIMPLE__X:
+      case DymeLanguagePackage.POLVO_ESTELAR__X:
         return getX();
-      case DymeLanguagePackage.EXPR_SIMPLE__P:
-        return getP();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -167,11 +119,8 @@ public class ExprSimpleImpl extends ExpresionImpl implements ExprSimple
   {
     switch (featureID)
     {
-      case DymeLanguagePackage.EXPR_SIMPLE__X:
-        setX((String)newValue);
-        return;
-      case DymeLanguagePackage.EXPR_SIMPLE__P:
-        setP((String)newValue);
+      case DymeLanguagePackage.POLVO_ESTELAR__X:
+        setX((Double)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -187,11 +136,8 @@ public class ExprSimpleImpl extends ExpresionImpl implements ExprSimple
   {
     switch (featureID)
     {
-      case DymeLanguagePackage.EXPR_SIMPLE__X:
+      case DymeLanguagePackage.POLVO_ESTELAR__X:
         setX(X_EDEFAULT);
-        return;
-      case DymeLanguagePackage.EXPR_SIMPLE__P:
-        setP(P_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -207,10 +153,8 @@ public class ExprSimpleImpl extends ExpresionImpl implements ExprSimple
   {
     switch (featureID)
     {
-      case DymeLanguagePackage.EXPR_SIMPLE__X:
-        return X_EDEFAULT == null ? x != null : !X_EDEFAULT.equals(x);
-      case DymeLanguagePackage.EXPR_SIMPLE__P:
-        return P_EDEFAULT == null ? p != null : !P_EDEFAULT.equals(p);
+      case DymeLanguagePackage.POLVO_ESTELAR__X:
+        return x != X_EDEFAULT;
     }
     return super.eIsSet(featureID);
   }
@@ -228,10 +172,8 @@ public class ExprSimpleImpl extends ExpresionImpl implements ExprSimple
     StringBuilder result = new StringBuilder(super.toString());
     result.append(" (x: ");
     result.append(x);
-    result.append(", p: ");
-    result.append(p);
     result.append(')');
     return result.toString();
   }
 
-} //ExprSimpleImpl
+} //PolvoEstelarImpl

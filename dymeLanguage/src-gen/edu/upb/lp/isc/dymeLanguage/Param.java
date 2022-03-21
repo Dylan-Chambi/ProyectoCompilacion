@@ -47,25 +47,25 @@ public interface Param extends EObject
   void setName(String value);
 
   /**
-   * Returns the value of the '<em><b>Tip</b></em>' attribute.
+   * Returns the value of the '<em><b>Tip</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Tip</em>' attribute.
-   * @see #setTip(String)
+   * @return the value of the '<em>Tip</em>' containment reference.
+   * @see #setTip(Tipo)
    * @see edu.upb.lp.isc.dymeLanguage.DymeLanguagePackage#getParam_Tip()
-   * @model
+   * @model containment="true"
    * @generated
    */
-  String getTip();
+  Tipo getTip();
 
   /**
-   * Sets the value of the '{@link edu.upb.lp.isc.dymeLanguage.Param#getTip <em>Tip</em>}' attribute.
+   * Sets the value of the '{@link edu.upb.lp.isc.dymeLanguage.Param#getTip <em>Tip</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Tip</em>' attribute.
+   * @param value the new value of the '<em>Tip</em>' containment reference.
    * @see #getTip()
    * @generated
    */
-  void setTip(String value);
+  void setTip(Tipo value);
 
 } // Param

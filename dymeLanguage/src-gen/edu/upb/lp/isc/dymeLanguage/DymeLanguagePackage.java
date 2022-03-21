@@ -58,6 +58,34 @@ public interface DymeLanguagePackage extends EPackage
   DymeLanguagePackage eINSTANCE = edu.upb.lp.isc.dymeLanguage.impl.DymeLanguagePackageImpl.init();
 
   /**
+   * The meta object id for the '{@link edu.upb.lp.isc.dymeLanguage.impl.ProgramaImpl <em>Programa</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see edu.upb.lp.isc.dymeLanguage.impl.ProgramaImpl
+   * @see edu.upb.lp.isc.dymeLanguage.impl.DymeLanguagePackageImpl#getPrograma()
+   * @generated
+   */
+  int PROGRAMA = 0;
+
+  /**
+   * The feature id for the '<em><b>Func</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROGRAMA__FUNC = 0;
+
+  /**
+   * The number of structural features of the '<em>Programa</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROGRAMA_FEATURE_COUNT = 1;
+
+  /**
    * The meta object id for the '{@link edu.upb.lp.isc.dymeLanguage.impl.FuncionImpl <em>Funcion</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -65,7 +93,7 @@ public interface DymeLanguagePackage extends EPackage
    * @see edu.upb.lp.isc.dymeLanguage.impl.DymeLanguagePackageImpl#getFuncion()
    * @generated
    */
-  int FUNCION = 0;
+  int FUNCION = 1;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -95,13 +123,31 @@ public interface DymeLanguagePackage extends EPackage
   int FUNCION__INSTR = 2;
 
   /**
-   * The feature id for the '<em><b>Tip</b></em>' attribute.
+   * The feature id for the '<em><b>Expr</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FUNCION__TIP = 3;
+  int FUNCION__EXPR = 3;
+
+  /**
+   * The feature id for the '<em><b>Return Tipo</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUNCION__RETURN_TIPO = 4;
+
+  /**
+   * The feature id for the '<em><b>Tip</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUNCION__TIP = 5;
 
   /**
    * The number of structural features of the '<em>Funcion</em>' class.
@@ -110,7 +156,7 @@ public interface DymeLanguagePackage extends EPackage
    * @generated
    * @ordered
    */
-  int FUNCION_FEATURE_COUNT = 4;
+  int FUNCION_FEATURE_COUNT = 6;
 
   /**
    * The meta object id for the '{@link edu.upb.lp.isc.dymeLanguage.impl.ExpresionImpl <em>Expresion</em>}' class.
@@ -120,7 +166,7 @@ public interface DymeLanguagePackage extends EPackage
    * @see edu.upb.lp.isc.dymeLanguage.impl.DymeLanguagePackageImpl#getExpresion()
    * @generated
    */
-  int EXPRESION = 5;
+  int EXPRESION = 8;
 
   /**
    * The number of structural features of the '<em>Expresion</em>' class.
@@ -139,7 +185,7 @@ public interface DymeLanguagePackage extends EPackage
    * @see edu.upb.lp.isc.dymeLanguage.impl.DymeLanguagePackageImpl#getLlamadoFunc()
    * @generated
    */
-  int LLAMADO_FUNC = 1;
+  int LLAMADO_FUNC = 2;
 
   /**
    * The feature id for the '<em><b>Funcion</b></em>' reference.
@@ -176,7 +222,7 @@ public interface DymeLanguagePackage extends EPackage
    * @see edu.upb.lp.isc.dymeLanguage.impl.DymeLanguagePackageImpl#getParam()
    * @generated
    */
-  int PARAM = 2;
+  int PARAM = 3;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -188,7 +234,7 @@ public interface DymeLanguagePackage extends EPackage
   int PARAM__NAME = 0;
 
   /**
-   * The feature id for the '<em><b>Tip</b></em>' attribute.
+   * The feature id for the '<em><b>Tip</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -213,7 +259,7 @@ public interface DymeLanguagePackage extends EPackage
    * @see edu.upb.lp.isc.dymeLanguage.impl.DymeLanguagePackageImpl#getInstruccion()
    * @generated
    */
-  int INSTRUCCION = 3;
+  int INSTRUCCION = 4;
 
   /**
    * The number of structural features of the '<em>Instruccion</em>' class.
@@ -232,7 +278,7 @@ public interface DymeLanguagePackage extends EPackage
    * @see edu.upb.lp.isc.dymeLanguage.impl.DymeLanguagePackageImpl#getAsignacion()
    * @generated
    */
-  int ASIGNACION = 4;
+  int ASIGNACION = 5;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -244,22 +290,31 @@ public interface DymeLanguagePackage extends EPackage
   int ASIGNACION__NAME = INSTRUCCION_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Tip</b></em>' attribute.
+   * The feature id for the '<em><b>Tipo Inferido</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ASIGNACION__TIP = INSTRUCCION_FEATURE_COUNT + 1;
+  int ASIGNACION__TIPO_INFERIDO = INSTRUCCION_FEATURE_COUNT + 1;
 
   /**
-   * The feature id for the '<em><b>Valor</b></em>' containment reference.
+   * The feature id for the '<em><b>Tip</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ASIGNACION__VALOR = INSTRUCCION_FEATURE_COUNT + 2;
+  int ASIGNACION__TIP = INSTRUCCION_FEATURE_COUNT + 2;
+
+  /**
+   * The feature id for the '<em><b>Valor Asig</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ASIGNACION__VALOR_ASIG = INSTRUCCION_FEATURE_COUNT + 3;
 
   /**
    * The number of structural features of the '<em>Asignacion</em>' class.
@@ -268,54 +323,91 @@ public interface DymeLanguagePackage extends EPackage
    * @generated
    * @ordered
    */
-  int ASIGNACION_FEATURE_COUNT = INSTRUCCION_FEATURE_COUNT + 3;
+  int ASIGNACION_FEATURE_COUNT = INSTRUCCION_FEATURE_COUNT + 4;
 
   /**
-   * The meta object id for the '{@link edu.upb.lp.isc.dymeLanguage.impl.SumaImpl <em>Suma</em>}' class.
+   * The meta object id for the '{@link edu.upb.lp.isc.dymeLanguage.impl.TipoImpl <em>Tipo</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see edu.upb.lp.isc.dymeLanguage.impl.SumaImpl
-   * @see edu.upb.lp.isc.dymeLanguage.impl.DymeLanguagePackageImpl#getSuma()
+   * @see edu.upb.lp.isc.dymeLanguage.impl.TipoImpl
+   * @see edu.upb.lp.isc.dymeLanguage.impl.DymeLanguagePackageImpl#getTipo()
    * @generated
    */
-  int SUMA = 6;
+  int TIPO = 6;
 
   /**
-   * The feature id for the '<em><b>Izq</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SUMA__IZQ = EXPRESION_FEATURE_COUNT + 0;
-
-  /**
-   * The feature id for the '<em><b>Der</b></em>' containment reference.
+   * The feature id for the '<em><b>Type</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int SUMA__DER = EXPRESION_FEATURE_COUNT + 1;
+  int TIPO__TYPE = 0;
 
   /**
-   * The number of structural features of the '<em>Suma</em>' class.
+   * The number of structural features of the '<em>Tipo</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int SUMA_FEATURE_COUNT = EXPRESION_FEATURE_COUNT + 2;
+  int TIPO_FEATURE_COUNT = 1;
 
   /**
-   * The meta object id for the '{@link edu.upb.lp.isc.dymeLanguage.impl.ExprSimpleImpl <em>Expr Simple</em>}' class.
+   * The meta object id for the '{@link edu.upb.lp.isc.dymeLanguage.impl.ConstanteImpl <em>Constante</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see edu.upb.lp.isc.dymeLanguage.impl.ExprSimpleImpl
-   * @see edu.upb.lp.isc.dymeLanguage.impl.DymeLanguagePackageImpl#getExprSimple()
+   * @see edu.upb.lp.isc.dymeLanguage.impl.ConstanteImpl
+   * @see edu.upb.lp.isc.dymeLanguage.impl.DymeLanguagePackageImpl#getConstante()
    * @generated
    */
-  int EXPR_SIMPLE = 7;
+  int CONSTANTE = 7;
+
+  /**
+   * The feature id for the '<em><b>Nombre</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONSTANTE__NOMBRE = EXPRESION_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Constante</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONSTANTE_FEATURE_COUNT = EXPRESION_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link edu.upb.lp.isc.dymeLanguage.impl.ExprConcatenacionImpl <em>Expr Concatenacion</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see edu.upb.lp.isc.dymeLanguage.impl.ExprConcatenacionImpl
+   * @see edu.upb.lp.isc.dymeLanguage.impl.DymeLanguagePackageImpl#getExprConcatenacion()
+   * @generated
+   */
+  int EXPR_CONCATENACION = 9;
+
+  /**
+   * The feature id for the '<em><b>Operador Con</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPR_CONCATENACION__OPERADOR_CON = EXPRESION_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Expr Con</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPR_CONCATENACION__EXPR_CON = EXPRESION_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>X</b></em>' attribute.
@@ -324,26 +416,342 @@ public interface DymeLanguagePackage extends EPackage
    * @generated
    * @ordered
    */
-  int EXPR_SIMPLE__X = EXPRESION_FEATURE_COUNT + 0;
+  int EXPR_CONCATENACION__X = EXPRESION_FEATURE_COUNT + 2;
 
   /**
-   * The feature id for the '<em><b>P</b></em>' attribute.
+   * The number of structural features of the '<em>Expr Concatenacion</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int EXPR_SIMPLE__P = EXPRESION_FEATURE_COUNT + 1;
+  int EXPR_CONCATENACION_FEATURE_COUNT = EXPRESION_FEATURE_COUNT + 3;
 
   /**
-   * The number of structural features of the '<em>Expr Simple</em>' class.
+   * The meta object id for the '{@link edu.upb.lp.isc.dymeLanguage.impl.ExprAritmeticaImpl <em>Expr Aritmetica</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see edu.upb.lp.isc.dymeLanguage.impl.ExprAritmeticaImpl
+   * @see edu.upb.lp.isc.dymeLanguage.impl.DymeLanguagePackageImpl#getExprAritmetica()
+   * @generated
+   */
+  int EXPR_ARITMETICA = 10;
+
+  /**
+   * The feature id for the '<em><b>Operador Ar</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int EXPR_SIMPLE_FEATURE_COUNT = EXPRESION_FEATURE_COUNT + 2;
+  int EXPR_ARITMETICA__OPERADOR_AR = EXPRESION_FEATURE_COUNT + 0;
 
+  /**
+   * The feature id for the '<em><b>Expr Ar</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPR_ARITMETICA__EXPR_AR = EXPRESION_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Expr Aritmetica</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPR_ARITMETICA_FEATURE_COUNT = EXPRESION_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link edu.upb.lp.isc.dymeLanguage.impl.ExprLogicaImpl <em>Expr Logica</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see edu.upb.lp.isc.dymeLanguage.impl.ExprLogicaImpl
+   * @see edu.upb.lp.isc.dymeLanguage.impl.DymeLanguagePackageImpl#getExprLogica()
+   * @generated
+   */
+  int EXPR_LOGICA = 11;
+
+  /**
+   * The feature id for the '<em><b>Operador Log</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPR_LOGICA__OPERADOR_LOG = EXPRESION_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Expr Log</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPR_LOGICA__EXPR_LOG = EXPRESION_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Expr Logica</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPR_LOGICA_FEATURE_COUNT = EXPRESION_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link edu.upb.lp.isc.dymeLanguage.impl.PlanetaImpl <em>Planeta</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see edu.upb.lp.isc.dymeLanguage.impl.PlanetaImpl
+   * @see edu.upb.lp.isc.dymeLanguage.impl.DymeLanguagePackageImpl#getPlaneta()
+   * @generated
+   */
+  int PLANETA = 12;
+
+  /**
+   * The feature id for the '<em><b>Operador Ar</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PLANETA__OPERADOR_AR = EXPR_ARITMETICA__OPERADOR_AR;
+
+  /**
+   * The feature id for the '<em><b>Expr Ar</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PLANETA__EXPR_AR = EXPR_ARITMETICA__EXPR_AR;
+
+  /**
+   * The feature id for the '<em><b>X</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PLANETA__X = EXPR_ARITMETICA_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Planeta</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PLANETA_FEATURE_COUNT = EXPR_ARITMETICA_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link edu.upb.lp.isc.dymeLanguage.impl.ConstelacionImpl <em>Constelacion</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see edu.upb.lp.isc.dymeLanguage.impl.ConstelacionImpl
+   * @see edu.upb.lp.isc.dymeLanguage.impl.DymeLanguagePackageImpl#getConstelacion()
+   * @generated
+   */
+  int CONSTELACION = 13;
+
+  /**
+   * The feature id for the '<em><b>Operador Con</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONSTELACION__OPERADOR_CON = EXPR_CONCATENACION__OPERADOR_CON;
+
+  /**
+   * The feature id for the '<em><b>Expr Con</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONSTELACION__EXPR_CON = EXPR_CONCATENACION__EXPR_CON;
+
+  /**
+   * The feature id for the '<em><b>X</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONSTELACION__X = EXPR_CONCATENACION__X;
+
+  /**
+   * The number of structural features of the '<em>Constelacion</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONSTELACION_FEATURE_COUNT = EXPR_CONCATENACION_FEATURE_COUNT + 0;
+
+  /**
+   * The meta object id for the '{@link edu.upb.lp.isc.dymeLanguage.impl.EstrellaImpl <em>Estrella</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see edu.upb.lp.isc.dymeLanguage.impl.EstrellaImpl
+   * @see edu.upb.lp.isc.dymeLanguage.impl.DymeLanguagePackageImpl#getEstrella()
+   * @generated
+   */
+  int ESTRELLA = 14;
+
+  /**
+   * The feature id for the '<em><b>Operador Con</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ESTRELLA__OPERADOR_CON = EXPR_CONCATENACION__OPERADOR_CON;
+
+  /**
+   * The feature id for the '<em><b>Expr Con</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ESTRELLA__EXPR_CON = EXPR_CONCATENACION__EXPR_CON;
+
+  /**
+   * The feature id for the '<em><b>X</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ESTRELLA__X = EXPR_CONCATENACION__X;
+
+  /**
+   * The number of structural features of the '<em>Estrella</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ESTRELLA_FEATURE_COUNT = EXPR_CONCATENACION_FEATURE_COUNT + 0;
+
+  /**
+   * The meta object id for the '{@link edu.upb.lp.isc.dymeLanguage.impl.PolvoEstelarImpl <em>Polvo Estelar</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see edu.upb.lp.isc.dymeLanguage.impl.PolvoEstelarImpl
+   * @see edu.upb.lp.isc.dymeLanguage.impl.DymeLanguagePackageImpl#getPolvoEstelar()
+   * @generated
+   */
+  int POLVO_ESTELAR = 15;
+
+  /**
+   * The feature id for the '<em><b>Operador Ar</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int POLVO_ESTELAR__OPERADOR_AR = EXPR_ARITMETICA__OPERADOR_AR;
+
+  /**
+   * The feature id for the '<em><b>Expr Ar</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int POLVO_ESTELAR__EXPR_AR = EXPR_ARITMETICA__EXPR_AR;
+
+  /**
+   * The feature id for the '<em><b>X</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int POLVO_ESTELAR__X = EXPR_ARITMETICA_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Polvo Estelar</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int POLVO_ESTELAR_FEATURE_COUNT = EXPR_ARITMETICA_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link edu.upb.lp.isc.dymeLanguage.impl.LunaImpl <em>Luna</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see edu.upb.lp.isc.dymeLanguage.impl.LunaImpl
+   * @see edu.upb.lp.isc.dymeLanguage.impl.DymeLanguagePackageImpl#getLuna()
+   * @generated
+   */
+  int LUNA = 16;
+
+  /**
+   * The feature id for the '<em><b>Operador Log</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LUNA__OPERADOR_LOG = EXPR_LOGICA__OPERADOR_LOG;
+
+  /**
+   * The feature id for the '<em><b>Expr Log</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LUNA__EXPR_LOG = EXPR_LOGICA__EXPR_LOG;
+
+  /**
+   * The feature id for the '<em><b>X</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LUNA__X = EXPR_LOGICA_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Luna</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LUNA_FEATURE_COUNT = EXPR_LOGICA_FEATURE_COUNT + 1;
+
+
+  /**
+   * Returns the meta object for class '{@link edu.upb.lp.isc.dymeLanguage.Programa <em>Programa</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Programa</em>'.
+   * @see edu.upb.lp.isc.dymeLanguage.Programa
+   * @generated
+   */
+  EClass getPrograma();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link edu.upb.lp.isc.dymeLanguage.Programa#getFunc <em>Func</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Func</em>'.
+   * @see edu.upb.lp.isc.dymeLanguage.Programa#getFunc()
+   * @see #getPrograma()
+   * @generated
+   */
+  EReference getPrograma_Func();
 
   /**
    * Returns the meta object for class '{@link edu.upb.lp.isc.dymeLanguage.Funcion <em>Funcion</em>}'.
@@ -389,15 +797,37 @@ public interface DymeLanguagePackage extends EPackage
   EReference getFuncion_Instr();
 
   /**
-   * Returns the meta object for the attribute '{@link edu.upb.lp.isc.dymeLanguage.Funcion#getTip <em>Tip</em>}'.
+   * Returns the meta object for the containment reference '{@link edu.upb.lp.isc.dymeLanguage.Funcion#getExpr <em>Expr</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Tip</em>'.
+   * @return the meta object for the containment reference '<em>Expr</em>'.
+   * @see edu.upb.lp.isc.dymeLanguage.Funcion#getExpr()
+   * @see #getFuncion()
+   * @generated
+   */
+  EReference getFuncion_Expr();
+
+  /**
+   * Returns the meta object for the attribute '{@link edu.upb.lp.isc.dymeLanguage.Funcion#isReturnTipo <em>Return Tipo</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Return Tipo</em>'.
+   * @see edu.upb.lp.isc.dymeLanguage.Funcion#isReturnTipo()
+   * @see #getFuncion()
+   * @generated
+   */
+  EAttribute getFuncion_ReturnTipo();
+
+  /**
+   * Returns the meta object for the containment reference '{@link edu.upb.lp.isc.dymeLanguage.Funcion#getTip <em>Tip</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Tip</em>'.
    * @see edu.upb.lp.isc.dymeLanguage.Funcion#getTip()
    * @see #getFuncion()
    * @generated
    */
-  EAttribute getFuncion_Tip();
+  EReference getFuncion_Tip();
 
   /**
    * Returns the meta object for class '{@link edu.upb.lp.isc.dymeLanguage.LlamadoFunc <em>Llamado Func</em>}'.
@@ -453,15 +883,15 @@ public interface DymeLanguagePackage extends EPackage
   EAttribute getParam_Name();
 
   /**
-   * Returns the meta object for the attribute '{@link edu.upb.lp.isc.dymeLanguage.Param#getTip <em>Tip</em>}'.
+   * Returns the meta object for the containment reference '{@link edu.upb.lp.isc.dymeLanguage.Param#getTip <em>Tip</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Tip</em>'.
+   * @return the meta object for the containment reference '<em>Tip</em>'.
    * @see edu.upb.lp.isc.dymeLanguage.Param#getTip()
    * @see #getParam()
    * @generated
    */
-  EAttribute getParam_Tip();
+  EReference getParam_Tip();
 
   /**
    * Returns the meta object for class '{@link edu.upb.lp.isc.dymeLanguage.Instruccion <em>Instruccion</em>}'.
@@ -495,26 +925,79 @@ public interface DymeLanguagePackage extends EPackage
   EAttribute getAsignacion_Name();
 
   /**
-   * Returns the meta object for the attribute '{@link edu.upb.lp.isc.dymeLanguage.Asignacion#getTip <em>Tip</em>}'.
+   * Returns the meta object for the attribute '{@link edu.upb.lp.isc.dymeLanguage.Asignacion#isTipoInferido <em>Tipo Inferido</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Tip</em>'.
+   * @return the meta object for the attribute '<em>Tipo Inferido</em>'.
+   * @see edu.upb.lp.isc.dymeLanguage.Asignacion#isTipoInferido()
+   * @see #getAsignacion()
+   * @generated
+   */
+  EAttribute getAsignacion_TipoInferido();
+
+  /**
+   * Returns the meta object for the containment reference '{@link edu.upb.lp.isc.dymeLanguage.Asignacion#getTip <em>Tip</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Tip</em>'.
    * @see edu.upb.lp.isc.dymeLanguage.Asignacion#getTip()
    * @see #getAsignacion()
    * @generated
    */
-  EAttribute getAsignacion_Tip();
+  EReference getAsignacion_Tip();
 
   /**
-   * Returns the meta object for the containment reference '{@link edu.upb.lp.isc.dymeLanguage.Asignacion#getValor <em>Valor</em>}'.
+   * Returns the meta object for the containment reference '{@link edu.upb.lp.isc.dymeLanguage.Asignacion#getValorAsig <em>Valor Asig</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Valor</em>'.
-   * @see edu.upb.lp.isc.dymeLanguage.Asignacion#getValor()
+   * @return the meta object for the containment reference '<em>Valor Asig</em>'.
+   * @see edu.upb.lp.isc.dymeLanguage.Asignacion#getValorAsig()
    * @see #getAsignacion()
    * @generated
    */
-  EReference getAsignacion_Valor();
+  EReference getAsignacion_ValorAsig();
+
+  /**
+   * Returns the meta object for class '{@link edu.upb.lp.isc.dymeLanguage.Tipo <em>Tipo</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Tipo</em>'.
+   * @see edu.upb.lp.isc.dymeLanguage.Tipo
+   * @generated
+   */
+  EClass getTipo();
+
+  /**
+   * Returns the meta object for the attribute '{@link edu.upb.lp.isc.dymeLanguage.Tipo#getType <em>Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Type</em>'.
+   * @see edu.upb.lp.isc.dymeLanguage.Tipo#getType()
+   * @see #getTipo()
+   * @generated
+   */
+  EAttribute getTipo_Type();
+
+  /**
+   * Returns the meta object for class '{@link edu.upb.lp.isc.dymeLanguage.Constante <em>Constante</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Constante</em>'.
+   * @see edu.upb.lp.isc.dymeLanguage.Constante
+   * @generated
+   */
+  EClass getConstante();
+
+  /**
+   * Returns the meta object for the reference '{@link edu.upb.lp.isc.dymeLanguage.Constante#getNombre <em>Nombre</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Nombre</em>'.
+   * @see edu.upb.lp.isc.dymeLanguage.Constante#getNombre()
+   * @see #getConstante()
+   * @generated
+   */
+  EReference getConstante_Nombre();
 
   /**
    * Returns the meta object for class '{@link edu.upb.lp.isc.dymeLanguage.Expresion <em>Expresion</em>}'.
@@ -527,68 +1010,194 @@ public interface DymeLanguagePackage extends EPackage
   EClass getExpresion();
 
   /**
-   * Returns the meta object for class '{@link edu.upb.lp.isc.dymeLanguage.Suma <em>Suma</em>}'.
+   * Returns the meta object for class '{@link edu.upb.lp.isc.dymeLanguage.ExprConcatenacion <em>Expr Concatenacion</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Suma</em>'.
-   * @see edu.upb.lp.isc.dymeLanguage.Suma
+   * @return the meta object for class '<em>Expr Concatenacion</em>'.
+   * @see edu.upb.lp.isc.dymeLanguage.ExprConcatenacion
    * @generated
    */
-  EClass getSuma();
+  EClass getExprConcatenacion();
 
   /**
-   * Returns the meta object for the containment reference '{@link edu.upb.lp.isc.dymeLanguage.Suma#getIzq <em>Izq</em>}'.
+   * Returns the meta object for the attribute '{@link edu.upb.lp.isc.dymeLanguage.ExprConcatenacion#getOperadorCon <em>Operador Con</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Izq</em>'.
-   * @see edu.upb.lp.isc.dymeLanguage.Suma#getIzq()
-   * @see #getSuma()
+   * @return the meta object for the attribute '<em>Operador Con</em>'.
+   * @see edu.upb.lp.isc.dymeLanguage.ExprConcatenacion#getOperadorCon()
+   * @see #getExprConcatenacion()
    * @generated
    */
-  EReference getSuma_Izq();
+  EAttribute getExprConcatenacion_OperadorCon();
 
   /**
-   * Returns the meta object for the containment reference '{@link edu.upb.lp.isc.dymeLanguage.Suma#getDer <em>Der</em>}'.
+   * Returns the meta object for the containment reference list '{@link edu.upb.lp.isc.dymeLanguage.ExprConcatenacion#getExprCon <em>Expr Con</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Der</em>'.
-   * @see edu.upb.lp.isc.dymeLanguage.Suma#getDer()
-   * @see #getSuma()
+   * @return the meta object for the containment reference list '<em>Expr Con</em>'.
+   * @see edu.upb.lp.isc.dymeLanguage.ExprConcatenacion#getExprCon()
+   * @see #getExprConcatenacion()
    * @generated
    */
-  EReference getSuma_Der();
+  EReference getExprConcatenacion_ExprCon();
 
   /**
-   * Returns the meta object for class '{@link edu.upb.lp.isc.dymeLanguage.ExprSimple <em>Expr Simple</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Expr Simple</em>'.
-   * @see edu.upb.lp.isc.dymeLanguage.ExprSimple
-   * @generated
-   */
-  EClass getExprSimple();
-
-  /**
-   * Returns the meta object for the attribute '{@link edu.upb.lp.isc.dymeLanguage.ExprSimple#getX <em>X</em>}'.
+   * Returns the meta object for the attribute '{@link edu.upb.lp.isc.dymeLanguage.ExprConcatenacion#getX <em>X</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>X</em>'.
-   * @see edu.upb.lp.isc.dymeLanguage.ExprSimple#getX()
-   * @see #getExprSimple()
+   * @see edu.upb.lp.isc.dymeLanguage.ExprConcatenacion#getX()
+   * @see #getExprConcatenacion()
    * @generated
    */
-  EAttribute getExprSimple_X();
+  EAttribute getExprConcatenacion_X();
 
   /**
-   * Returns the meta object for the attribute '{@link edu.upb.lp.isc.dymeLanguage.ExprSimple#getP <em>P</em>}'.
+   * Returns the meta object for class '{@link edu.upb.lp.isc.dymeLanguage.ExprAritmetica <em>Expr Aritmetica</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>P</em>'.
-   * @see edu.upb.lp.isc.dymeLanguage.ExprSimple#getP()
-   * @see #getExprSimple()
+   * @return the meta object for class '<em>Expr Aritmetica</em>'.
+   * @see edu.upb.lp.isc.dymeLanguage.ExprAritmetica
    * @generated
    */
-  EAttribute getExprSimple_P();
+  EClass getExprAritmetica();
+
+  /**
+   * Returns the meta object for the attribute '{@link edu.upb.lp.isc.dymeLanguage.ExprAritmetica#getOperadorAr <em>Operador Ar</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Operador Ar</em>'.
+   * @see edu.upb.lp.isc.dymeLanguage.ExprAritmetica#getOperadorAr()
+   * @see #getExprAritmetica()
+   * @generated
+   */
+  EAttribute getExprAritmetica_OperadorAr();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link edu.upb.lp.isc.dymeLanguage.ExprAritmetica#getExprAr <em>Expr Ar</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Expr Ar</em>'.
+   * @see edu.upb.lp.isc.dymeLanguage.ExprAritmetica#getExprAr()
+   * @see #getExprAritmetica()
+   * @generated
+   */
+  EReference getExprAritmetica_ExprAr();
+
+  /**
+   * Returns the meta object for class '{@link edu.upb.lp.isc.dymeLanguage.ExprLogica <em>Expr Logica</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Expr Logica</em>'.
+   * @see edu.upb.lp.isc.dymeLanguage.ExprLogica
+   * @generated
+   */
+  EClass getExprLogica();
+
+  /**
+   * Returns the meta object for the attribute '{@link edu.upb.lp.isc.dymeLanguage.ExprLogica#getOperadorLog <em>Operador Log</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Operador Log</em>'.
+   * @see edu.upb.lp.isc.dymeLanguage.ExprLogica#getOperadorLog()
+   * @see #getExprLogica()
+   * @generated
+   */
+  EAttribute getExprLogica_OperadorLog();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link edu.upb.lp.isc.dymeLanguage.ExprLogica#getExprLog <em>Expr Log</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Expr Log</em>'.
+   * @see edu.upb.lp.isc.dymeLanguage.ExprLogica#getExprLog()
+   * @see #getExprLogica()
+   * @generated
+   */
+  EReference getExprLogica_ExprLog();
+
+  /**
+   * Returns the meta object for class '{@link edu.upb.lp.isc.dymeLanguage.Planeta <em>Planeta</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Planeta</em>'.
+   * @see edu.upb.lp.isc.dymeLanguage.Planeta
+   * @generated
+   */
+  EClass getPlaneta();
+
+  /**
+   * Returns the meta object for the attribute '{@link edu.upb.lp.isc.dymeLanguage.Planeta#getX <em>X</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>X</em>'.
+   * @see edu.upb.lp.isc.dymeLanguage.Planeta#getX()
+   * @see #getPlaneta()
+   * @generated
+   */
+  EAttribute getPlaneta_X();
+
+  /**
+   * Returns the meta object for class '{@link edu.upb.lp.isc.dymeLanguage.Constelacion <em>Constelacion</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Constelacion</em>'.
+   * @see edu.upb.lp.isc.dymeLanguage.Constelacion
+   * @generated
+   */
+  EClass getConstelacion();
+
+  /**
+   * Returns the meta object for class '{@link edu.upb.lp.isc.dymeLanguage.Estrella <em>Estrella</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Estrella</em>'.
+   * @see edu.upb.lp.isc.dymeLanguage.Estrella
+   * @generated
+   */
+  EClass getEstrella();
+
+  /**
+   * Returns the meta object for class '{@link edu.upb.lp.isc.dymeLanguage.PolvoEstelar <em>Polvo Estelar</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Polvo Estelar</em>'.
+   * @see edu.upb.lp.isc.dymeLanguage.PolvoEstelar
+   * @generated
+   */
+  EClass getPolvoEstelar();
+
+  /**
+   * Returns the meta object for the attribute '{@link edu.upb.lp.isc.dymeLanguage.PolvoEstelar#getX <em>X</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>X</em>'.
+   * @see edu.upb.lp.isc.dymeLanguage.PolvoEstelar#getX()
+   * @see #getPolvoEstelar()
+   * @generated
+   */
+  EAttribute getPolvoEstelar_X();
+
+  /**
+   * Returns the meta object for class '{@link edu.upb.lp.isc.dymeLanguage.Luna <em>Luna</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Luna</em>'.
+   * @see edu.upb.lp.isc.dymeLanguage.Luna
+   * @generated
+   */
+  EClass getLuna();
+
+  /**
+   * Returns the meta object for the attribute '{@link edu.upb.lp.isc.dymeLanguage.Luna#getX <em>X</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>X</em>'.
+   * @see edu.upb.lp.isc.dymeLanguage.Luna#getX()
+   * @see #getLuna()
+   * @generated
+   */
+  EAttribute getLuna_X();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -613,6 +1222,24 @@ public interface DymeLanguagePackage extends EPackage
    */
   interface Literals
   {
+    /**
+     * The meta object literal for the '{@link edu.upb.lp.isc.dymeLanguage.impl.ProgramaImpl <em>Programa</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see edu.upb.lp.isc.dymeLanguage.impl.ProgramaImpl
+     * @see edu.upb.lp.isc.dymeLanguage.impl.DymeLanguagePackageImpl#getPrograma()
+     * @generated
+     */
+    EClass PROGRAMA = eINSTANCE.getPrograma();
+
+    /**
+     * The meta object literal for the '<em><b>Func</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference PROGRAMA__FUNC = eINSTANCE.getPrograma_Func();
+
     /**
      * The meta object literal for the '{@link edu.upb.lp.isc.dymeLanguage.impl.FuncionImpl <em>Funcion</em>}' class.
      * <!-- begin-user-doc -->
@@ -648,12 +1275,28 @@ public interface DymeLanguagePackage extends EPackage
     EReference FUNCION__INSTR = eINSTANCE.getFuncion_Instr();
 
     /**
-     * The meta object literal for the '<em><b>Tip</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Expr</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute FUNCION__TIP = eINSTANCE.getFuncion_Tip();
+    EReference FUNCION__EXPR = eINSTANCE.getFuncion_Expr();
+
+    /**
+     * The meta object literal for the '<em><b>Return Tipo</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute FUNCION__RETURN_TIPO = eINSTANCE.getFuncion_ReturnTipo();
+
+    /**
+     * The meta object literal for the '<em><b>Tip</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference FUNCION__TIP = eINSTANCE.getFuncion_Tip();
 
     /**
      * The meta object literal for the '{@link edu.upb.lp.isc.dymeLanguage.impl.LlamadoFuncImpl <em>Llamado Func</em>}' class.
@@ -700,12 +1343,12 @@ public interface DymeLanguagePackage extends EPackage
     EAttribute PARAM__NAME = eINSTANCE.getParam_Name();
 
     /**
-     * The meta object literal for the '<em><b>Tip</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Tip</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute PARAM__TIP = eINSTANCE.getParam_Tip();
+    EReference PARAM__TIP = eINSTANCE.getParam_Tip();
 
     /**
      * The meta object literal for the '{@link edu.upb.lp.isc.dymeLanguage.impl.InstruccionImpl <em>Instruccion</em>}' class.
@@ -736,20 +1379,64 @@ public interface DymeLanguagePackage extends EPackage
     EAttribute ASIGNACION__NAME = eINSTANCE.getAsignacion_Name();
 
     /**
-     * The meta object literal for the '<em><b>Tip</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Tipo Inferido</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute ASIGNACION__TIP = eINSTANCE.getAsignacion_Tip();
+    EAttribute ASIGNACION__TIPO_INFERIDO = eINSTANCE.getAsignacion_TipoInferido();
 
     /**
-     * The meta object literal for the '<em><b>Valor</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Tip</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference ASIGNACION__VALOR = eINSTANCE.getAsignacion_Valor();
+    EReference ASIGNACION__TIP = eINSTANCE.getAsignacion_Tip();
+
+    /**
+     * The meta object literal for the '<em><b>Valor Asig</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ASIGNACION__VALOR_ASIG = eINSTANCE.getAsignacion_ValorAsig();
+
+    /**
+     * The meta object literal for the '{@link edu.upb.lp.isc.dymeLanguage.impl.TipoImpl <em>Tipo</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see edu.upb.lp.isc.dymeLanguage.impl.TipoImpl
+     * @see edu.upb.lp.isc.dymeLanguage.impl.DymeLanguagePackageImpl#getTipo()
+     * @generated
+     */
+    EClass TIPO = eINSTANCE.getTipo();
+
+    /**
+     * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute TIPO__TYPE = eINSTANCE.getTipo_Type();
+
+    /**
+     * The meta object literal for the '{@link edu.upb.lp.isc.dymeLanguage.impl.ConstanteImpl <em>Constante</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see edu.upb.lp.isc.dymeLanguage.impl.ConstanteImpl
+     * @see edu.upb.lp.isc.dymeLanguage.impl.DymeLanguagePackageImpl#getConstante()
+     * @generated
+     */
+    EClass CONSTANTE = eINSTANCE.getConstante();
+
+    /**
+     * The meta object literal for the '<em><b>Nombre</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CONSTANTE__NOMBRE = eINSTANCE.getConstante_Nombre();
 
     /**
      * The meta object literal for the '{@link edu.upb.lp.isc.dymeLanguage.impl.ExpresionImpl <em>Expresion</em>}' class.
@@ -762,40 +1449,30 @@ public interface DymeLanguagePackage extends EPackage
     EClass EXPRESION = eINSTANCE.getExpresion();
 
     /**
-     * The meta object literal for the '{@link edu.upb.lp.isc.dymeLanguage.impl.SumaImpl <em>Suma</em>}' class.
+     * The meta object literal for the '{@link edu.upb.lp.isc.dymeLanguage.impl.ExprConcatenacionImpl <em>Expr Concatenacion</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see edu.upb.lp.isc.dymeLanguage.impl.SumaImpl
-     * @see edu.upb.lp.isc.dymeLanguage.impl.DymeLanguagePackageImpl#getSuma()
+     * @see edu.upb.lp.isc.dymeLanguage.impl.ExprConcatenacionImpl
+     * @see edu.upb.lp.isc.dymeLanguage.impl.DymeLanguagePackageImpl#getExprConcatenacion()
      * @generated
      */
-    EClass SUMA = eINSTANCE.getSuma();
+    EClass EXPR_CONCATENACION = eINSTANCE.getExprConcatenacion();
 
     /**
-     * The meta object literal for the '<em><b>Izq</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Operador Con</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference SUMA__IZQ = eINSTANCE.getSuma_Izq();
+    EAttribute EXPR_CONCATENACION__OPERADOR_CON = eINSTANCE.getExprConcatenacion_OperadorCon();
 
     /**
-     * The meta object literal for the '<em><b>Der</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Expr Con</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference SUMA__DER = eINSTANCE.getSuma_Der();
-
-    /**
-     * The meta object literal for the '{@link edu.upb.lp.isc.dymeLanguage.impl.ExprSimpleImpl <em>Expr Simple</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see edu.upb.lp.isc.dymeLanguage.impl.ExprSimpleImpl
-     * @see edu.upb.lp.isc.dymeLanguage.impl.DymeLanguagePackageImpl#getExprSimple()
-     * @generated
-     */
-    EClass EXPR_SIMPLE = eINSTANCE.getExprSimple();
+    EReference EXPR_CONCATENACION__EXPR_CON = eINSTANCE.getExprConcatenacion_ExprCon();
 
     /**
      * The meta object literal for the '<em><b>X</b></em>' attribute feature.
@@ -803,15 +1480,133 @@ public interface DymeLanguagePackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute EXPR_SIMPLE__X = eINSTANCE.getExprSimple_X();
+    EAttribute EXPR_CONCATENACION__X = eINSTANCE.getExprConcatenacion_X();
 
     /**
-     * The meta object literal for the '<em><b>P</b></em>' attribute feature.
+     * The meta object literal for the '{@link edu.upb.lp.isc.dymeLanguage.impl.ExprAritmeticaImpl <em>Expr Aritmetica</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see edu.upb.lp.isc.dymeLanguage.impl.ExprAritmeticaImpl
+     * @see edu.upb.lp.isc.dymeLanguage.impl.DymeLanguagePackageImpl#getExprAritmetica()
+     * @generated
+     */
+    EClass EXPR_ARITMETICA = eINSTANCE.getExprAritmetica();
+
+    /**
+     * The meta object literal for the '<em><b>Operador Ar</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute EXPR_SIMPLE__P = eINSTANCE.getExprSimple_P();
+    EAttribute EXPR_ARITMETICA__OPERADOR_AR = eINSTANCE.getExprAritmetica_OperadorAr();
+
+    /**
+     * The meta object literal for the '<em><b>Expr Ar</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference EXPR_ARITMETICA__EXPR_AR = eINSTANCE.getExprAritmetica_ExprAr();
+
+    /**
+     * The meta object literal for the '{@link edu.upb.lp.isc.dymeLanguage.impl.ExprLogicaImpl <em>Expr Logica</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see edu.upb.lp.isc.dymeLanguage.impl.ExprLogicaImpl
+     * @see edu.upb.lp.isc.dymeLanguage.impl.DymeLanguagePackageImpl#getExprLogica()
+     * @generated
+     */
+    EClass EXPR_LOGICA = eINSTANCE.getExprLogica();
+
+    /**
+     * The meta object literal for the '<em><b>Operador Log</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute EXPR_LOGICA__OPERADOR_LOG = eINSTANCE.getExprLogica_OperadorLog();
+
+    /**
+     * The meta object literal for the '<em><b>Expr Log</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference EXPR_LOGICA__EXPR_LOG = eINSTANCE.getExprLogica_ExprLog();
+
+    /**
+     * The meta object literal for the '{@link edu.upb.lp.isc.dymeLanguage.impl.PlanetaImpl <em>Planeta</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see edu.upb.lp.isc.dymeLanguage.impl.PlanetaImpl
+     * @see edu.upb.lp.isc.dymeLanguage.impl.DymeLanguagePackageImpl#getPlaneta()
+     * @generated
+     */
+    EClass PLANETA = eINSTANCE.getPlaneta();
+
+    /**
+     * The meta object literal for the '<em><b>X</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute PLANETA__X = eINSTANCE.getPlaneta_X();
+
+    /**
+     * The meta object literal for the '{@link edu.upb.lp.isc.dymeLanguage.impl.ConstelacionImpl <em>Constelacion</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see edu.upb.lp.isc.dymeLanguage.impl.ConstelacionImpl
+     * @see edu.upb.lp.isc.dymeLanguage.impl.DymeLanguagePackageImpl#getConstelacion()
+     * @generated
+     */
+    EClass CONSTELACION = eINSTANCE.getConstelacion();
+
+    /**
+     * The meta object literal for the '{@link edu.upb.lp.isc.dymeLanguage.impl.EstrellaImpl <em>Estrella</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see edu.upb.lp.isc.dymeLanguage.impl.EstrellaImpl
+     * @see edu.upb.lp.isc.dymeLanguage.impl.DymeLanguagePackageImpl#getEstrella()
+     * @generated
+     */
+    EClass ESTRELLA = eINSTANCE.getEstrella();
+
+    /**
+     * The meta object literal for the '{@link edu.upb.lp.isc.dymeLanguage.impl.PolvoEstelarImpl <em>Polvo Estelar</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see edu.upb.lp.isc.dymeLanguage.impl.PolvoEstelarImpl
+     * @see edu.upb.lp.isc.dymeLanguage.impl.DymeLanguagePackageImpl#getPolvoEstelar()
+     * @generated
+     */
+    EClass POLVO_ESTELAR = eINSTANCE.getPolvoEstelar();
+
+    /**
+     * The meta object literal for the '<em><b>X</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute POLVO_ESTELAR__X = eINSTANCE.getPolvoEstelar_X();
+
+    /**
+     * The meta object literal for the '{@link edu.upb.lp.isc.dymeLanguage.impl.LunaImpl <em>Luna</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see edu.upb.lp.isc.dymeLanguage.impl.LunaImpl
+     * @see edu.upb.lp.isc.dymeLanguage.impl.DymeLanguagePackageImpl#getLuna()
+     * @generated
+     */
+    EClass LUNA = eINSTANCE.getLuna();
+
+    /**
+     * The meta object literal for the '<em><b>X</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute LUNA__X = eINSTANCE.getLuna_X();
 
   }
 

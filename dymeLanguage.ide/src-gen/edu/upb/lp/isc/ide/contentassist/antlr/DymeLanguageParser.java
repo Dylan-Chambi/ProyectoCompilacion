@@ -31,39 +31,66 @@ public class DymeLanguageParser extends AbstractContentAssistParser {
 		}
 		
 		private static void init(ImmutableMap.Builder<AbstractElement, String> builder, DymeLanguageGrammarAccess grammarAccess) {
-			builder.put(grammarAccess.getTipoAccess().getAlternatives(), "rule__Tipo__Alternatives");
+			builder.put(grammarAccess.getTipoAccess().getTypeAlternatives_0(), "rule__Tipo__TypeAlternatives_0");
 			builder.put(grammarAccess.getExpresionAccess().getAlternatives(), "rule__Expresion__Alternatives");
-			builder.put(grammarAccess.getExprSimpleAccess().getAlternatives(), "rule__ExprSimple__Alternatives");
-			builder.put(grammarAccess.getPlanetaAccess().getAlternatives_0(), "rule__Planeta__Alternatives_0");
-			builder.put(grammarAccess.getPlanetaAccess().getAlternatives_1(), "rule__Planeta__Alternatives_1");
+			builder.put(grammarAccess.getExprConcatenacionAccess().getAlternatives(), "rule__ExprConcatenacion__Alternatives");
+			builder.put(grammarAccess.getExprConcatenacionAccess().getExprConAlternatives_0_1_1_0(), "rule__ExprConcatenacion__ExprConAlternatives_0_1_1_0");
+			builder.put(grammarAccess.getExprConcatenacionAccess().getAlternatives_1(), "rule__ExprConcatenacion__Alternatives_1");
+			builder.put(grammarAccess.getExprAritmeticaAccess().getAlternatives(), "rule__ExprAritmetica__Alternatives");
+			builder.put(grammarAccess.getExprAritmeticaAccess().getOperadorArAlternatives_0_1_0_0(), "rule__ExprAritmetica__OperadorArAlternatives_0_1_0_0");
+			builder.put(grammarAccess.getExprAritmeticaAccess().getExprArAlternatives_0_1_1_0(), "rule__ExprAritmetica__ExprArAlternatives_0_1_1_0");
+			builder.put(grammarAccess.getExprAritmeticaAccess().getAlternatives_1(), "rule__ExprAritmetica__Alternatives_1");
+			builder.put(grammarAccess.getExprLogicaAccess().getAlternatives(), "rule__ExprLogica__Alternatives");
+			builder.put(grammarAccess.getExprLogicaAccess().getOperadorLogAlternatives_0_1_0_0(), "rule__ExprLogica__OperadorLogAlternatives_0_1_0_0");
+			builder.put(grammarAccess.getExprLogicaAccess().getExprLogAlternatives_0_1_1_0(), "rule__ExprLogica__ExprLogAlternatives_0_1_1_0");
+			builder.put(grammarAccess.getLunaAccess().getXAlternatives_0(), "rule__Luna__XAlternatives_0");
 			builder.put(grammarAccess.getFuncionAccess().getGroup(), "rule__Funcion__Group__0");
 			builder.put(grammarAccess.getFuncionAccess().getGroup_3(), "rule__Funcion__Group_3__0");
 			builder.put(grammarAccess.getFuncionAccess().getGroup_3_1(), "rule__Funcion__Group_3_1__0");
+			builder.put(grammarAccess.getFuncionAccess().getGroup_8(), "rule__Funcion__Group_8__0");
 			builder.put(grammarAccess.getLlamadoFuncAccess().getGroup(), "rule__LlamadoFunc__Group__0");
 			builder.put(grammarAccess.getLlamadoFuncAccess().getGroup_2(), "rule__LlamadoFunc__Group_2__0");
 			builder.put(grammarAccess.getLlamadoFuncAccess().getGroup_2_1(), "rule__LlamadoFunc__Group_2_1__0");
 			builder.put(grammarAccess.getParamAccess().getGroup(), "rule__Param__Group__0");
 			builder.put(grammarAccess.getAsignacionAccess().getGroup(), "rule__Asignacion__Group__0");
 			builder.put(grammarAccess.getAsignacionAccess().getGroup_2(), "rule__Asignacion__Group_2__0");
-			builder.put(grammarAccess.getSumaAccess().getGroup(), "rule__Suma__Group__0");
-			builder.put(grammarAccess.getPlanetaAccess().getGroup(), "rule__Planeta__Group__0");
+			builder.put(grammarAccess.getExprConcatenacionAccess().getGroup_0(), "rule__ExprConcatenacion__Group_0__0");
+			builder.put(grammarAccess.getExprConcatenacionAccess().getGroup_0_1(), "rule__ExprConcatenacion__Group_0_1__0");
+			builder.put(grammarAccess.getExprAritmeticaAccess().getGroup_0(), "rule__ExprAritmetica__Group_0__0");
+			builder.put(grammarAccess.getExprAritmeticaAccess().getGroup_0_1(), "rule__ExprAritmetica__Group_0_1__0");
+			builder.put(grammarAccess.getExprLogicaAccess().getGroup_0(), "rule__ExprLogica__Group_0__0");
+			builder.put(grammarAccess.getExprLogicaAccess().getGroup_0_1(), "rule__ExprLogica__Group_0_1__0");
+			builder.put(grammarAccess.getDoubleAccess().getGroup(), "rule__Double__Group__0");
+			builder.put(grammarAccess.getProgramaAccess().getFuncAssignment(), "rule__Programa__FuncAssignment");
 			builder.put(grammarAccess.getFuncionAccess().getNameAssignment_1(), "rule__Funcion__NameAssignment_1");
 			builder.put(grammarAccess.getFuncionAccess().getParamAssignment_3_0(), "rule__Funcion__ParamAssignment_3_0");
 			builder.put(grammarAccess.getFuncionAccess().getParamAssignment_3_1_1(), "rule__Funcion__ParamAssignment_3_1_1");
 			builder.put(grammarAccess.getFuncionAccess().getInstrAssignment_5(), "rule__Funcion__InstrAssignment_5");
-			builder.put(grammarAccess.getFuncionAccess().getTipAssignment_8(), "rule__Funcion__TipAssignment_8");
+			builder.put(grammarAccess.getFuncionAccess().getExprAssignment_6(), "rule__Funcion__ExprAssignment_6");
+			builder.put(grammarAccess.getFuncionAccess().getReturnTipoAssignment_8_0(), "rule__Funcion__ReturnTipoAssignment_8_0");
+			builder.put(grammarAccess.getFuncionAccess().getTipAssignment_8_1(), "rule__Funcion__TipAssignment_8_1");
 			builder.put(grammarAccess.getLlamadoFuncAccess().getFuncionAssignment_0(), "rule__LlamadoFunc__FuncionAssignment_0");
 			builder.put(grammarAccess.getLlamadoFuncAccess().getArgsAssignment_2_0(), "rule__LlamadoFunc__ArgsAssignment_2_0");
 			builder.put(grammarAccess.getLlamadoFuncAccess().getArgsAssignment_2_1_1(), "rule__LlamadoFunc__ArgsAssignment_2_1_1");
 			builder.put(grammarAccess.getParamAccess().getNameAssignment_0(), "rule__Param__NameAssignment_0");
 			builder.put(grammarAccess.getParamAccess().getTipAssignment_2(), "rule__Param__TipAssignment_2");
 			builder.put(grammarAccess.getAsignacionAccess().getNameAssignment_1(), "rule__Asignacion__NameAssignment_1");
+			builder.put(grammarAccess.getAsignacionAccess().getTipoInferidoAssignment_2_0(), "rule__Asignacion__TipoInferidoAssignment_2_0");
 			builder.put(grammarAccess.getAsignacionAccess().getTipAssignment_2_1(), "rule__Asignacion__TipAssignment_2_1");
-			builder.put(grammarAccess.getAsignacionAccess().getValorAssignment_4(), "rule__Asignacion__ValorAssignment_4");
-			builder.put(grammarAccess.getSumaAccess().getIzqAssignment_0(), "rule__Suma__IzqAssignment_0");
-			builder.put(grammarAccess.getSumaAccess().getDerAssignment_2(), "rule__Suma__DerAssignment_2");
-			builder.put(grammarAccess.getExprSimpleAccess().getXAssignment_0(), "rule__ExprSimple__XAssignment_0");
-			builder.put(grammarAccess.getExprSimpleAccess().getPAssignment_1(), "rule__ExprSimple__PAssignment_1");
+			builder.put(grammarAccess.getAsignacionAccess().getValorAsigAssignment_4(), "rule__Asignacion__ValorAsigAssignment_4");
+			builder.put(grammarAccess.getTipoAccess().getTypeAssignment(), "rule__Tipo__TypeAssignment");
+			builder.put(grammarAccess.getConstanteAccess().getNombreAssignment(), "rule__Constante__NombreAssignment");
+			builder.put(grammarAccess.getExprConcatenacionAccess().getOperadorConAssignment_0_1_0(), "rule__ExprConcatenacion__OperadorConAssignment_0_1_0");
+			builder.put(grammarAccess.getExprConcatenacionAccess().getExprConAssignment_0_1_1(), "rule__ExprConcatenacion__ExprConAssignment_0_1_1");
+			builder.put(grammarAccess.getExprAritmeticaAccess().getOperadorArAssignment_0_1_0(), "rule__ExprAritmetica__OperadorArAssignment_0_1_0");
+			builder.put(grammarAccess.getExprAritmeticaAccess().getExprArAssignment_0_1_1(), "rule__ExprAritmetica__ExprArAssignment_0_1_1");
+			builder.put(grammarAccess.getExprLogicaAccess().getOperadorLogAssignment_0_1_0(), "rule__ExprLogica__OperadorLogAssignment_0_1_0");
+			builder.put(grammarAccess.getExprLogicaAccess().getExprLogAssignment_0_1_1(), "rule__ExprLogica__ExprLogAssignment_0_1_1");
+			builder.put(grammarAccess.getPlanetaAccess().getXAssignment(), "rule__Planeta__XAssignment");
+			builder.put(grammarAccess.getConstelacionAccess().getXAssignment(), "rule__Constelacion__XAssignment");
+			builder.put(grammarAccess.getEstrellaAccess().getXAssignment(), "rule__Estrella__XAssignment");
+			builder.put(grammarAccess.getPolvoEstelarAccess().getXAssignment(), "rule__PolvoEstelar__XAssignment");
+			builder.put(grammarAccess.getLunaAccess().getXAssignment(), "rule__Luna__XAssignment");
 		}
 	}
 	

@@ -2,54 +2,104 @@ grammar edu.upb.lp.isc.DymeLanguage with org.eclipse.xtext.common.Terminals
 
 generate dymeLanguage "http://www.upb.edu/lp/isc/DymeLanguage"
 
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+
 //Model:
 //	greetings+=Greeting*;
 //	
 //Greeting:
 //	'Hello' name=ID '!';
 
-
+Programa:
+	(func+=Funcion)+
+;
 
 
 Funcion:
-	'CASIMIR' name=ID 'CONSUME' (param+=Param ('$' param+=Param)*)? 'CONVERGE'
-	(instr+=Instruccion)+
-	"GUT" '->' tip=Tipo
+	'CASIMIR' name=ID 'NECESITA' (param+=Param ('$' param+=Param)*)? 'CONVERGE'
+	(instr+=Instruccion)* (expr=Expresion)
+	"GUT" (returnTipo ?= '->' tip=Tipo?)?
 ;
 
 LlamadoFunc:
-	funcion=[Funcion] 'CONSUME' (args+=Expresion ('$' args+=Expresion)*)?
+	funcion=[Funcion] 'CONSUME' (args+=Expresion ('$' args+=Expresion)*)? '#'
 ;
 
 Param:
 	name=ID 'es' tip=Tipo
 ;
 
-Tipo:
-	'Planeta' | 'STRING'
-;
 
 Instruccion:
 	Asignacion /*Falta */
 ;
 
 Asignacion:
-	'MASA' name=ID ('es' tip=Tipo)?  '<-' valor=Expresion
+	'MASA' name=ID (tipoInferido ?= 'es' tip=Tipo)?  '<-' valorAsig=Expresion '~'
+	/*'MASA' name=ID ('es' tip=Tipo)?  '<-' valor=Expresion */
+	/* Preguntar la comparacion con null, con el valor opcional */
 ;
+
+Tipo:
+	type = ('Planeta' | 'Constelacion' | 'Estrella' | 'PolvoEstelar' | 'Luna' )
+;
+
+Constante:
+	nombre=[Asignacion]
+;
+
 
 Expresion:
-	Suma | ExprSimple | LlamadoFunc
+	ExprConcatenacion | ExprAritmetica | ExprLogica | LlamadoFunc | Constante
 ;
 
-Suma:
-	izq=ExprSimple '+' der=ExprSimple
+ExprConcatenacion:
+	'('(operadorCon = '++' (exprCon+=(ExprConcatenacion | LlamadoFunc))+) ')' |  (Constelacion | Estrella)
 ;
 
+
+ExprAritmetica:
+	'('(operadorAr = ('+' | '-' | '/' | '*' | '%')  (exprAr+=(ExprAritmetica | LlamadoFunc))+) ')' |  (Planeta | PolvoEstelar)
+;
+
+
+ExprLogica:
+	'('(operadorLog = ( '&&' | '||' | '$$' | '!' ) (exprLog+=(ExprLogica | LlamadoFunc))+) ')' | Luna
+;
+/*
 ExprSimple:
-	x = STRING | p = Planeta
+	 valorExpr = ( Planeta | PolvoEstelar | Constelacion | Estrella | Luna | Cometa )
+;
+*/
+Planeta: /* int */
+	x = INT
 ;
 
-Planeta:
-	('1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9')
-	('0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9')*
+Constelacion: /* string */
+	x = STRING
 ;
+
+Estrella: /* char */ /* preguntar como aceptar solo 1 */
+	x = 'a'
+;
+
+PolvoEstelar:
+	x = Double
+;
+
+
+Double returns ecore::EDouble:
+    INT '.' INT
+;
+
+
+Luna:
+	x = ('LunaNueva' | 'LunaLlena')
+;
+
+/*
+ 1 Valores de Planeta como INT o nueva descripcion regular
+ 2 Esta bien el uso de instanceof?
+ 3 Esta bien usar comparacion con null?
+ 4 Expr simple se puede usar: valor = (STRING | Planeta)     ?
+ */

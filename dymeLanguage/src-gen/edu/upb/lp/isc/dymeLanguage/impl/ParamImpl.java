@@ -5,10 +5,13 @@ package edu.upb.lp.isc.dymeLanguage.impl;
 
 import edu.upb.lp.isc.dymeLanguage.DymeLanguagePackage;
 import edu.upb.lp.isc.dymeLanguage.Param;
+import edu.upb.lp.isc.dymeLanguage.Tipo;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
@@ -50,24 +53,14 @@ public class ParamImpl extends MinimalEObjectImpl.Container implements Param
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getTip() <em>Tip</em>}' attribute.
+   * The cached value of the '{@link #getTip() <em>Tip</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getTip()
    * @generated
    * @ordered
    */
-  protected static final String TIP_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getTip() <em>Tip</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getTip()
-   * @generated
-   * @ordered
-   */
-  protected String tip = TIP_EDEFAULT;
+  protected Tipo tip;
 
   /**
    * <!-- begin-user-doc -->
@@ -121,7 +114,7 @@ public class ParamImpl extends MinimalEObjectImpl.Container implements Param
    * @generated
    */
   @Override
-  public String getTip()
+  public Tipo getTip()
   {
     return tip;
   }
@@ -131,13 +124,54 @@ public class ParamImpl extends MinimalEObjectImpl.Container implements Param
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public void setTip(String newTip)
+  public NotificationChain basicSetTip(Tipo newTip, NotificationChain msgs)
   {
-    String oldTip = tip;
+    Tipo oldTip = tip;
     tip = newTip;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DymeLanguagePackage.PARAM__TIP, oldTip, tip));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DymeLanguagePackage.PARAM__TIP, oldTip, newTip);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setTip(Tipo newTip)
+  {
+    if (newTip != tip)
+    {
+      NotificationChain msgs = null;
+      if (tip != null)
+        msgs = ((InternalEObject)tip).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DymeLanguagePackage.PARAM__TIP, null, msgs);
+      if (newTip != null)
+        msgs = ((InternalEObject)newTip).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DymeLanguagePackage.PARAM__TIP, null, msgs);
+      msgs = basicSetTip(newTip, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DymeLanguagePackage.PARAM__TIP, newTip, newTip));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case DymeLanguagePackage.PARAM__TIP:
+        return basicSetTip(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
   /**
@@ -172,7 +206,7 @@ public class ParamImpl extends MinimalEObjectImpl.Container implements Param
         setName((String)newValue);
         return;
       case DymeLanguagePackage.PARAM__TIP:
-        setTip((String)newValue);
+        setTip((Tipo)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -192,7 +226,7 @@ public class ParamImpl extends MinimalEObjectImpl.Container implements Param
         setName(NAME_EDEFAULT);
         return;
       case DymeLanguagePackage.PARAM__TIP:
-        setTip(TIP_EDEFAULT);
+        setTip((Tipo)null);
         return;
     }
     super.eUnset(featureID);
@@ -211,7 +245,7 @@ public class ParamImpl extends MinimalEObjectImpl.Container implements Param
       case DymeLanguagePackage.PARAM__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case DymeLanguagePackage.PARAM__TIP:
-        return TIP_EDEFAULT == null ? tip != null : !TIP_EDEFAULT.equals(tip);
+        return tip != null;
     }
     return super.eIsSet(featureID);
   }
@@ -229,8 +263,6 @@ public class ParamImpl extends MinimalEObjectImpl.Container implements Param
     StringBuilder result = new StringBuilder(super.toString());
     result.append(" (name: ");
     result.append(name);
-    result.append(", tip: ");
-    result.append(tip);
     result.append(')');
     return result.toString();
   }

@@ -76,6 +76,11 @@ public class DymeLanguageAdapterFactory extends AdapterFactoryImpl
     new DymeLanguageSwitch<Adapter>()
     {
       @Override
+      public Adapter casePrograma(Programa object)
+      {
+        return createProgramaAdapter();
+      }
+      @Override
       public Adapter caseFuncion(Funcion object)
       {
         return createFuncionAdapter();
@@ -101,19 +106,59 @@ public class DymeLanguageAdapterFactory extends AdapterFactoryImpl
         return createAsignacionAdapter();
       }
       @Override
+      public Adapter caseTipo(Tipo object)
+      {
+        return createTipoAdapter();
+      }
+      @Override
+      public Adapter caseConstante(Constante object)
+      {
+        return createConstanteAdapter();
+      }
+      @Override
       public Adapter caseExpresion(Expresion object)
       {
         return createExpresionAdapter();
       }
       @Override
-      public Adapter caseSuma(Suma object)
+      public Adapter caseExprConcatenacion(ExprConcatenacion object)
       {
-        return createSumaAdapter();
+        return createExprConcatenacionAdapter();
       }
       @Override
-      public Adapter caseExprSimple(ExprSimple object)
+      public Adapter caseExprAritmetica(ExprAritmetica object)
       {
-        return createExprSimpleAdapter();
+        return createExprAritmeticaAdapter();
+      }
+      @Override
+      public Adapter caseExprLogica(ExprLogica object)
+      {
+        return createExprLogicaAdapter();
+      }
+      @Override
+      public Adapter casePlaneta(Planeta object)
+      {
+        return createPlanetaAdapter();
+      }
+      @Override
+      public Adapter caseConstelacion(Constelacion object)
+      {
+        return createConstelacionAdapter();
+      }
+      @Override
+      public Adapter caseEstrella(Estrella object)
+      {
+        return createEstrellaAdapter();
+      }
+      @Override
+      public Adapter casePolvoEstelar(PolvoEstelar object)
+      {
+        return createPolvoEstelarAdapter();
+      }
+      @Override
+      public Adapter caseLuna(Luna object)
+      {
+        return createLunaAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -136,6 +181,21 @@ public class DymeLanguageAdapterFactory extends AdapterFactoryImpl
     return modelSwitch.doSwitch((EObject)target);
   }
 
+
+  /**
+   * Creates a new adapter for an object of class '{@link edu.upb.lp.isc.dymeLanguage.Programa <em>Programa</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see edu.upb.lp.isc.dymeLanguage.Programa
+   * @generated
+   */
+  public Adapter createProgramaAdapter()
+  {
+    return null;
+  }
 
   /**
    * Creates a new adapter for an object of class '{@link edu.upb.lp.isc.dymeLanguage.Funcion <em>Funcion</em>}'.
@@ -213,6 +273,36 @@ public class DymeLanguageAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link edu.upb.lp.isc.dymeLanguage.Tipo <em>Tipo</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see edu.upb.lp.isc.dymeLanguage.Tipo
+   * @generated
+   */
+  public Adapter createTipoAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link edu.upb.lp.isc.dymeLanguage.Constante <em>Constante</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see edu.upb.lp.isc.dymeLanguage.Constante
+   * @generated
+   */
+  public Adapter createConstanteAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link edu.upb.lp.isc.dymeLanguage.Expresion <em>Expresion</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -228,31 +318,121 @@ public class DymeLanguageAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link edu.upb.lp.isc.dymeLanguage.Suma <em>Suma</em>}'.
+   * Creates a new adapter for an object of class '{@link edu.upb.lp.isc.dymeLanguage.ExprConcatenacion <em>Expr Concatenacion</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see edu.upb.lp.isc.dymeLanguage.Suma
+   * @see edu.upb.lp.isc.dymeLanguage.ExprConcatenacion
    * @generated
    */
-  public Adapter createSumaAdapter()
+  public Adapter createExprConcatenacionAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link edu.upb.lp.isc.dymeLanguage.ExprSimple <em>Expr Simple</em>}'.
+   * Creates a new adapter for an object of class '{@link edu.upb.lp.isc.dymeLanguage.ExprAritmetica <em>Expr Aritmetica</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see edu.upb.lp.isc.dymeLanguage.ExprSimple
+   * @see edu.upb.lp.isc.dymeLanguage.ExprAritmetica
    * @generated
    */
-  public Adapter createExprSimpleAdapter()
+  public Adapter createExprAritmeticaAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link edu.upb.lp.isc.dymeLanguage.ExprLogica <em>Expr Logica</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see edu.upb.lp.isc.dymeLanguage.ExprLogica
+   * @generated
+   */
+  public Adapter createExprLogicaAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link edu.upb.lp.isc.dymeLanguage.Planeta <em>Planeta</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see edu.upb.lp.isc.dymeLanguage.Planeta
+   * @generated
+   */
+  public Adapter createPlanetaAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link edu.upb.lp.isc.dymeLanguage.Constelacion <em>Constelacion</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see edu.upb.lp.isc.dymeLanguage.Constelacion
+   * @generated
+   */
+  public Adapter createConstelacionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link edu.upb.lp.isc.dymeLanguage.Estrella <em>Estrella</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see edu.upb.lp.isc.dymeLanguage.Estrella
+   * @generated
+   */
+  public Adapter createEstrellaAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link edu.upb.lp.isc.dymeLanguage.PolvoEstelar <em>Polvo Estelar</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see edu.upb.lp.isc.dymeLanguage.PolvoEstelar
+   * @generated
+   */
+  public Adapter createPolvoEstelarAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link edu.upb.lp.isc.dymeLanguage.Luna <em>Luna</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see edu.upb.lp.isc.dymeLanguage.Luna
+   * @generated
+   */
+  public Adapter createLunaAdapter()
   {
     return null;
   }

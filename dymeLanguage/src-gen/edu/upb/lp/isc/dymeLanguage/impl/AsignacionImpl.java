@@ -6,6 +6,7 @@ package edu.upb.lp.isc.dymeLanguage.impl;
 import edu.upb.lp.isc.dymeLanguage.Asignacion;
 import edu.upb.lp.isc.dymeLanguage.DymeLanguagePackage;
 import edu.upb.lp.isc.dymeLanguage.Expresion;
+import edu.upb.lp.isc.dymeLanguage.Tipo;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -24,8 +25,9 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * </p>
  * <ul>
  *   <li>{@link edu.upb.lp.isc.dymeLanguage.impl.AsignacionImpl#getName <em>Name</em>}</li>
+ *   <li>{@link edu.upb.lp.isc.dymeLanguage.impl.AsignacionImpl#isTipoInferido <em>Tipo Inferido</em>}</li>
  *   <li>{@link edu.upb.lp.isc.dymeLanguage.impl.AsignacionImpl#getTip <em>Tip</em>}</li>
- *   <li>{@link edu.upb.lp.isc.dymeLanguage.impl.AsignacionImpl#getValor <em>Valor</em>}</li>
+ *   <li>{@link edu.upb.lp.isc.dymeLanguage.impl.AsignacionImpl#getValorAsig <em>Valor Asig</em>}</li>
  * </ul>
  *
  * @generated
@@ -53,34 +55,44 @@ public class AsignacionImpl extends InstruccionImpl implements Asignacion
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getTip() <em>Tip</em>}' attribute.
+   * The default value of the '{@link #isTipoInferido() <em>Tipo Inferido</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isTipoInferido()
+   * @generated
+   * @ordered
+   */
+  protected static final boolean TIPO_INFERIDO_EDEFAULT = false;
+
+  /**
+   * The cached value of the '{@link #isTipoInferido() <em>Tipo Inferido</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isTipoInferido()
+   * @generated
+   * @ordered
+   */
+  protected boolean tipoInferido = TIPO_INFERIDO_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getTip() <em>Tip</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getTip()
    * @generated
    * @ordered
    */
-  protected static final String TIP_EDEFAULT = null;
+  protected Tipo tip;
 
   /**
-   * The cached value of the '{@link #getTip() <em>Tip</em>}' attribute.
+   * The cached value of the '{@link #getValorAsig() <em>Valor Asig</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getTip()
+   * @see #getValorAsig()
    * @generated
    * @ordered
    */
-  protected String tip = TIP_EDEFAULT;
-
-  /**
-   * The cached value of the '{@link #getValor() <em>Valor</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getValor()
-   * @generated
-   * @ordered
-   */
-  protected Expresion valor;
+  protected Expresion valorAsig;
 
   /**
    * <!-- begin-user-doc -->
@@ -134,7 +146,32 @@ public class AsignacionImpl extends InstruccionImpl implements Asignacion
    * @generated
    */
   @Override
-  public String getTip()
+  public boolean isTipoInferido()
+  {
+    return tipoInferido;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setTipoInferido(boolean newTipoInferido)
+  {
+    boolean oldTipoInferido = tipoInferido;
+    tipoInferido = newTipoInferido;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DymeLanguagePackage.ASIGNACION__TIPO_INFERIDO, oldTipoInferido, tipoInferido));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Tipo getTip()
   {
     return tip;
   }
@@ -144,38 +181,13 @@ public class AsignacionImpl extends InstruccionImpl implements Asignacion
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public void setTip(String newTip)
+  public NotificationChain basicSetTip(Tipo newTip, NotificationChain msgs)
   {
-    String oldTip = tip;
+    Tipo oldTip = tip;
     tip = newTip;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DymeLanguagePackage.ASIGNACION__TIP, oldTip, tip));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Expresion getValor()
-  {
-    return valor;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetValor(Expresion newValor, NotificationChain msgs)
-  {
-    Expresion oldValor = valor;
-    valor = newValor;
-    if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DymeLanguagePackage.ASIGNACION__VALOR, oldValor, newValor);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DymeLanguagePackage.ASIGNACION__TIP, oldTip, newTip);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -187,20 +199,70 @@ public class AsignacionImpl extends InstruccionImpl implements Asignacion
    * @generated
    */
   @Override
-  public void setValor(Expresion newValor)
+  public void setTip(Tipo newTip)
   {
-    if (newValor != valor)
+    if (newTip != tip)
     {
       NotificationChain msgs = null;
-      if (valor != null)
-        msgs = ((InternalEObject)valor).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DymeLanguagePackage.ASIGNACION__VALOR, null, msgs);
-      if (newValor != null)
-        msgs = ((InternalEObject)newValor).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DymeLanguagePackage.ASIGNACION__VALOR, null, msgs);
-      msgs = basicSetValor(newValor, msgs);
+      if (tip != null)
+        msgs = ((InternalEObject)tip).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DymeLanguagePackage.ASIGNACION__TIP, null, msgs);
+      if (newTip != null)
+        msgs = ((InternalEObject)newTip).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DymeLanguagePackage.ASIGNACION__TIP, null, msgs);
+      msgs = basicSetTip(newTip, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DymeLanguagePackage.ASIGNACION__VALOR, newValor, newValor));
+      eNotify(new ENotificationImpl(this, Notification.SET, DymeLanguagePackage.ASIGNACION__TIP, newTip, newTip));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Expresion getValorAsig()
+  {
+    return valorAsig;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetValorAsig(Expresion newValorAsig, NotificationChain msgs)
+  {
+    Expresion oldValorAsig = valorAsig;
+    valorAsig = newValorAsig;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DymeLanguagePackage.ASIGNACION__VALOR_ASIG, oldValorAsig, newValorAsig);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setValorAsig(Expresion newValorAsig)
+  {
+    if (newValorAsig != valorAsig)
+    {
+      NotificationChain msgs = null;
+      if (valorAsig != null)
+        msgs = ((InternalEObject)valorAsig).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DymeLanguagePackage.ASIGNACION__VALOR_ASIG, null, msgs);
+      if (newValorAsig != null)
+        msgs = ((InternalEObject)newValorAsig).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DymeLanguagePackage.ASIGNACION__VALOR_ASIG, null, msgs);
+      msgs = basicSetValorAsig(newValorAsig, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DymeLanguagePackage.ASIGNACION__VALOR_ASIG, newValorAsig, newValorAsig));
   }
 
   /**
@@ -213,8 +275,10 @@ public class AsignacionImpl extends InstruccionImpl implements Asignacion
   {
     switch (featureID)
     {
-      case DymeLanguagePackage.ASIGNACION__VALOR:
-        return basicSetValor(null, msgs);
+      case DymeLanguagePackage.ASIGNACION__TIP:
+        return basicSetTip(null, msgs);
+      case DymeLanguagePackage.ASIGNACION__VALOR_ASIG:
+        return basicSetValorAsig(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -231,10 +295,12 @@ public class AsignacionImpl extends InstruccionImpl implements Asignacion
     {
       case DymeLanguagePackage.ASIGNACION__NAME:
         return getName();
+      case DymeLanguagePackage.ASIGNACION__TIPO_INFERIDO:
+        return isTipoInferido();
       case DymeLanguagePackage.ASIGNACION__TIP:
         return getTip();
-      case DymeLanguagePackage.ASIGNACION__VALOR:
-        return getValor();
+      case DymeLanguagePackage.ASIGNACION__VALOR_ASIG:
+        return getValorAsig();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -252,11 +318,14 @@ public class AsignacionImpl extends InstruccionImpl implements Asignacion
       case DymeLanguagePackage.ASIGNACION__NAME:
         setName((String)newValue);
         return;
-      case DymeLanguagePackage.ASIGNACION__TIP:
-        setTip((String)newValue);
+      case DymeLanguagePackage.ASIGNACION__TIPO_INFERIDO:
+        setTipoInferido((Boolean)newValue);
         return;
-      case DymeLanguagePackage.ASIGNACION__VALOR:
-        setValor((Expresion)newValue);
+      case DymeLanguagePackage.ASIGNACION__TIP:
+        setTip((Tipo)newValue);
+        return;
+      case DymeLanguagePackage.ASIGNACION__VALOR_ASIG:
+        setValorAsig((Expresion)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -275,11 +344,14 @@ public class AsignacionImpl extends InstruccionImpl implements Asignacion
       case DymeLanguagePackage.ASIGNACION__NAME:
         setName(NAME_EDEFAULT);
         return;
-      case DymeLanguagePackage.ASIGNACION__TIP:
-        setTip(TIP_EDEFAULT);
+      case DymeLanguagePackage.ASIGNACION__TIPO_INFERIDO:
+        setTipoInferido(TIPO_INFERIDO_EDEFAULT);
         return;
-      case DymeLanguagePackage.ASIGNACION__VALOR:
-        setValor((Expresion)null);
+      case DymeLanguagePackage.ASIGNACION__TIP:
+        setTip((Tipo)null);
+        return;
+      case DymeLanguagePackage.ASIGNACION__VALOR_ASIG:
+        setValorAsig((Expresion)null);
         return;
     }
     super.eUnset(featureID);
@@ -297,10 +369,12 @@ public class AsignacionImpl extends InstruccionImpl implements Asignacion
     {
       case DymeLanguagePackage.ASIGNACION__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case DymeLanguagePackage.ASIGNACION__TIPO_INFERIDO:
+        return tipoInferido != TIPO_INFERIDO_EDEFAULT;
       case DymeLanguagePackage.ASIGNACION__TIP:
-        return TIP_EDEFAULT == null ? tip != null : !TIP_EDEFAULT.equals(tip);
-      case DymeLanguagePackage.ASIGNACION__VALOR:
-        return valor != null;
+        return tip != null;
+      case DymeLanguagePackage.ASIGNACION__VALOR_ASIG:
+        return valorAsig != null;
     }
     return super.eIsSet(featureID);
   }
@@ -318,8 +392,8 @@ public class AsignacionImpl extends InstruccionImpl implements Asignacion
     StringBuilder result = new StringBuilder(super.toString());
     result.append(" (name: ");
     result.append(name);
-    result.append(", tip: ");
-    result.append(tip);
+    result.append(", tipoInferido: ");
+    result.append(tipoInferido);
     result.append(')');
     return result.toString();
   }

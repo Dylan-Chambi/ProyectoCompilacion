@@ -4,9 +4,11 @@
 package edu.upb.lp.isc.dymeLanguage.impl;
 
 import edu.upb.lp.isc.dymeLanguage.DymeLanguagePackage;
+import edu.upb.lp.isc.dymeLanguage.Expresion;
 import edu.upb.lp.isc.dymeLanguage.Funcion;
 import edu.upb.lp.isc.dymeLanguage.Instruccion;
 import edu.upb.lp.isc.dymeLanguage.Param;
+import edu.upb.lp.isc.dymeLanguage.Tipo;
 
 import java.util.Collection;
 
@@ -35,6 +37,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link edu.upb.lp.isc.dymeLanguage.impl.FuncionImpl#getName <em>Name</em>}</li>
  *   <li>{@link edu.upb.lp.isc.dymeLanguage.impl.FuncionImpl#getParam <em>Param</em>}</li>
  *   <li>{@link edu.upb.lp.isc.dymeLanguage.impl.FuncionImpl#getInstr <em>Instr</em>}</li>
+ *   <li>{@link edu.upb.lp.isc.dymeLanguage.impl.FuncionImpl#getExpr <em>Expr</em>}</li>
+ *   <li>{@link edu.upb.lp.isc.dymeLanguage.impl.FuncionImpl#isReturnTipo <em>Return Tipo</em>}</li>
  *   <li>{@link edu.upb.lp.isc.dymeLanguage.impl.FuncionImpl#getTip <em>Tip</em>}</li>
  * </ul>
  *
@@ -83,24 +87,44 @@ public class FuncionImpl extends MinimalEObjectImpl.Container implements Funcion
   protected EList<Instruccion> instr;
 
   /**
-   * The default value of the '{@link #getTip() <em>Tip</em>}' attribute.
+   * The cached value of the '{@link #getExpr() <em>Expr</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getTip()
+   * @see #getExpr()
    * @generated
    * @ordered
    */
-  protected static final String TIP_EDEFAULT = null;
+  protected Expresion expr;
 
   /**
-   * The cached value of the '{@link #getTip() <em>Tip</em>}' attribute.
+   * The default value of the '{@link #isReturnTipo() <em>Return Tipo</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isReturnTipo()
+   * @generated
+   * @ordered
+   */
+  protected static final boolean RETURN_TIPO_EDEFAULT = false;
+
+  /**
+   * The cached value of the '{@link #isReturnTipo() <em>Return Tipo</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isReturnTipo()
+   * @generated
+   * @ordered
+   */
+  protected boolean returnTipo = RETURN_TIPO_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getTip() <em>Tip</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getTip()
    * @generated
    * @ordered
    */
-  protected String tip = TIP_EDEFAULT;
+  protected Tipo tip;
 
   /**
    * <!-- begin-user-doc -->
@@ -184,7 +208,82 @@ public class FuncionImpl extends MinimalEObjectImpl.Container implements Funcion
    * @generated
    */
   @Override
-  public String getTip()
+  public Expresion getExpr()
+  {
+    return expr;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetExpr(Expresion newExpr, NotificationChain msgs)
+  {
+    Expresion oldExpr = expr;
+    expr = newExpr;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DymeLanguagePackage.FUNCION__EXPR, oldExpr, newExpr);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setExpr(Expresion newExpr)
+  {
+    if (newExpr != expr)
+    {
+      NotificationChain msgs = null;
+      if (expr != null)
+        msgs = ((InternalEObject)expr).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DymeLanguagePackage.FUNCION__EXPR, null, msgs);
+      if (newExpr != null)
+        msgs = ((InternalEObject)newExpr).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DymeLanguagePackage.FUNCION__EXPR, null, msgs);
+      msgs = basicSetExpr(newExpr, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DymeLanguagePackage.FUNCION__EXPR, newExpr, newExpr));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public boolean isReturnTipo()
+  {
+    return returnTipo;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setReturnTipo(boolean newReturnTipo)
+  {
+    boolean oldReturnTipo = returnTipo;
+    returnTipo = newReturnTipo;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DymeLanguagePackage.FUNCION__RETURN_TIPO, oldReturnTipo, returnTipo));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Tipo getTip()
   {
     return tip;
   }
@@ -194,13 +293,38 @@ public class FuncionImpl extends MinimalEObjectImpl.Container implements Funcion
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public void setTip(String newTip)
+  public NotificationChain basicSetTip(Tipo newTip, NotificationChain msgs)
   {
-    String oldTip = tip;
+    Tipo oldTip = tip;
     tip = newTip;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DymeLanguagePackage.FUNCION__TIP, oldTip, tip));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DymeLanguagePackage.FUNCION__TIP, oldTip, newTip);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setTip(Tipo newTip)
+  {
+    if (newTip != tip)
+    {
+      NotificationChain msgs = null;
+      if (tip != null)
+        msgs = ((InternalEObject)tip).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DymeLanguagePackage.FUNCION__TIP, null, msgs);
+      if (newTip != null)
+        msgs = ((InternalEObject)newTip).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DymeLanguagePackage.FUNCION__TIP, null, msgs);
+      msgs = basicSetTip(newTip, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DymeLanguagePackage.FUNCION__TIP, newTip, newTip));
   }
 
   /**
@@ -217,6 +341,10 @@ public class FuncionImpl extends MinimalEObjectImpl.Container implements Funcion
         return ((InternalEList<?>)getParam()).basicRemove(otherEnd, msgs);
       case DymeLanguagePackage.FUNCION__INSTR:
         return ((InternalEList<?>)getInstr()).basicRemove(otherEnd, msgs);
+      case DymeLanguagePackage.FUNCION__EXPR:
+        return basicSetExpr(null, msgs);
+      case DymeLanguagePackage.FUNCION__TIP:
+        return basicSetTip(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -237,6 +365,10 @@ public class FuncionImpl extends MinimalEObjectImpl.Container implements Funcion
         return getParam();
       case DymeLanguagePackage.FUNCION__INSTR:
         return getInstr();
+      case DymeLanguagePackage.FUNCION__EXPR:
+        return getExpr();
+      case DymeLanguagePackage.FUNCION__RETURN_TIPO:
+        return isReturnTipo();
       case DymeLanguagePackage.FUNCION__TIP:
         return getTip();
     }
@@ -265,8 +397,14 @@ public class FuncionImpl extends MinimalEObjectImpl.Container implements Funcion
         getInstr().clear();
         getInstr().addAll((Collection<? extends Instruccion>)newValue);
         return;
+      case DymeLanguagePackage.FUNCION__EXPR:
+        setExpr((Expresion)newValue);
+        return;
+      case DymeLanguagePackage.FUNCION__RETURN_TIPO:
+        setReturnTipo((Boolean)newValue);
+        return;
       case DymeLanguagePackage.FUNCION__TIP:
-        setTip((String)newValue);
+        setTip((Tipo)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -291,8 +429,14 @@ public class FuncionImpl extends MinimalEObjectImpl.Container implements Funcion
       case DymeLanguagePackage.FUNCION__INSTR:
         getInstr().clear();
         return;
+      case DymeLanguagePackage.FUNCION__EXPR:
+        setExpr((Expresion)null);
+        return;
+      case DymeLanguagePackage.FUNCION__RETURN_TIPO:
+        setReturnTipo(RETURN_TIPO_EDEFAULT);
+        return;
       case DymeLanguagePackage.FUNCION__TIP:
-        setTip(TIP_EDEFAULT);
+        setTip((Tipo)null);
         return;
     }
     super.eUnset(featureID);
@@ -314,8 +458,12 @@ public class FuncionImpl extends MinimalEObjectImpl.Container implements Funcion
         return param != null && !param.isEmpty();
       case DymeLanguagePackage.FUNCION__INSTR:
         return instr != null && !instr.isEmpty();
+      case DymeLanguagePackage.FUNCION__EXPR:
+        return expr != null;
+      case DymeLanguagePackage.FUNCION__RETURN_TIPO:
+        return returnTipo != RETURN_TIPO_EDEFAULT;
       case DymeLanguagePackage.FUNCION__TIP:
-        return TIP_EDEFAULT == null ? tip != null : !TIP_EDEFAULT.equals(tip);
+        return tip != null;
     }
     return super.eIsSet(featureID);
   }
@@ -333,8 +481,8 @@ public class FuncionImpl extends MinimalEObjectImpl.Container implements Funcion
     StringBuilder result = new StringBuilder(super.toString());
     result.append(" (name: ");
     result.append(name);
-    result.append(", tip: ");
-    result.append(tip);
+    result.append(", returnTipo: ");
+    result.append(returnTipo);
     result.append(')');
     return result.toString();
   }
