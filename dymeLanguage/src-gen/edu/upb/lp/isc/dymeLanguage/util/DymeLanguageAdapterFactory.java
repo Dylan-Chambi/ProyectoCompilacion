@@ -81,6 +81,11 @@ public class DymeLanguageAdapterFactory extends AdapterFactoryImpl
         return createProgramaAdapter();
       }
       @Override
+      public Adapter caseEstrellaFugazMeteoro(EstrellaFugazMeteoro object)
+      {
+        return createEstrellaFugazMeteoroAdapter();
+      }
+      @Override
       public Adapter caseFuncion(Funcion object)
       {
         return createFuncionAdapter();
@@ -111,6 +116,11 @@ public class DymeLanguageAdapterFactory extends AdapterFactoryImpl
         return createTipoAdapter();
       }
       @Override
+      public Adapter caseTipoFuncionOrdenSuperior(TipoFuncionOrdenSuperior object)
+      {
+        return createTipoFuncionOrdenSuperiorAdapter();
+      }
+      @Override
       public Adapter caseConstante(Constante object)
       {
         return createConstanteAdapter();
@@ -134,6 +144,11 @@ public class DymeLanguageAdapterFactory extends AdapterFactoryImpl
       public Adapter caseExprLogica(ExprLogica object)
       {
         return createExprLogicaAdapter();
+      }
+      @Override
+      public Adapter caseExprComparacion(ExprComparacion object)
+      {
+        return createExprComparacionAdapter();
       }
       @Override
       public Adapter casePlaneta(Planeta object)
@@ -193,6 +208,21 @@ public class DymeLanguageAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createProgramaAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link edu.upb.lp.isc.dymeLanguage.EstrellaFugazMeteoro <em>Estrella Fugaz Meteoro</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see edu.upb.lp.isc.dymeLanguage.EstrellaFugazMeteoro
+   * @generated
+   */
+  public Adapter createEstrellaFugazMeteoroAdapter()
   {
     return null;
   }
@@ -288,6 +318,21 @@ public class DymeLanguageAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link edu.upb.lp.isc.dymeLanguage.TipoFuncionOrdenSuperior <em>Tipo Funcion Orden Superior</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see edu.upb.lp.isc.dymeLanguage.TipoFuncionOrdenSuperior
+   * @generated
+   */
+  public Adapter createTipoFuncionOrdenSuperiorAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link edu.upb.lp.isc.dymeLanguage.Constante <em>Constante</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -358,6 +403,21 @@ public class DymeLanguageAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createExprLogicaAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link edu.upb.lp.isc.dymeLanguage.ExprComparacion <em>Expr Comparacion</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see edu.upb.lp.isc.dymeLanguage.ExprComparacion
+   * @generated
+   */
+  public Adapter createExprComparacionAdapter()
   {
     return null;
   }

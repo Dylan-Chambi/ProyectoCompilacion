@@ -11,7 +11,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,32 +20,32 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link edu.upb.lp.isc.dymeLanguage.impl.TipoImpl#getType <em>Type</em>}</li>
+ *   <li>{@link edu.upb.lp.isc.dymeLanguage.impl.TipoImpl#getTipo <em>Tipo</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class TipoImpl extends MinimalEObjectImpl.Container implements Tipo
+public class TipoImpl extends TipoFuncionOrdenSuperiorImpl implements Tipo
 {
   /**
-   * The default value of the '{@link #getType() <em>Type</em>}' attribute.
+   * The default value of the '{@link #getTipo() <em>Tipo</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getType()
+   * @see #getTipo()
    * @generated
    * @ordered
    */
-  protected static final String TYPE_EDEFAULT = null;
+  protected static final String TIPO_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
+   * The cached value of the '{@link #getTipo() <em>Tipo</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getType()
+   * @see #getTipo()
    * @generated
    * @ordered
    */
-  protected String type = TYPE_EDEFAULT;
+  protected String tipo = TIPO_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -75,9 +74,9 @@ public class TipoImpl extends MinimalEObjectImpl.Container implements Tipo
    * @generated
    */
   @Override
-  public String getType()
+  public String getTipo()
   {
-    return type;
+    return tipo;
   }
 
   /**
@@ -86,12 +85,12 @@ public class TipoImpl extends MinimalEObjectImpl.Container implements Tipo
    * @generated
    */
   @Override
-  public void setType(String newType)
+  public void setTipo(String newTipo)
   {
-    String oldType = type;
-    type = newType;
+    String oldTipo = tipo;
+    tipo = newTipo;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DymeLanguagePackage.TIPO__TYPE, oldType, type));
+      eNotify(new ENotificationImpl(this, Notification.SET, DymeLanguagePackage.TIPO__TIPO, oldTipo, tipo));
   }
 
   /**
@@ -104,8 +103,8 @@ public class TipoImpl extends MinimalEObjectImpl.Container implements Tipo
   {
     switch (featureID)
     {
-      case DymeLanguagePackage.TIPO__TYPE:
-        return getType();
+      case DymeLanguagePackage.TIPO__TIPO:
+        return getTipo();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -120,8 +119,8 @@ public class TipoImpl extends MinimalEObjectImpl.Container implements Tipo
   {
     switch (featureID)
     {
-      case DymeLanguagePackage.TIPO__TYPE:
-        setType((String)newValue);
+      case DymeLanguagePackage.TIPO__TIPO:
+        setTipo((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -137,8 +136,8 @@ public class TipoImpl extends MinimalEObjectImpl.Container implements Tipo
   {
     switch (featureID)
     {
-      case DymeLanguagePackage.TIPO__TYPE:
-        setType(TYPE_EDEFAULT);
+      case DymeLanguagePackage.TIPO__TIPO:
+        setTipo(TIPO_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -154,8 +153,8 @@ public class TipoImpl extends MinimalEObjectImpl.Container implements Tipo
   {
     switch (featureID)
     {
-      case DymeLanguagePackage.TIPO__TYPE:
-        return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
+      case DymeLanguagePackage.TIPO__TIPO:
+        return TIPO_EDEFAULT == null ? tipo != null : !TIPO_EDEFAULT.equals(tipo);
     }
     return super.eIsSet(featureID);
   }
@@ -171,8 +170,8 @@ public class TipoImpl extends MinimalEObjectImpl.Container implements Tipo
     if (eIsProxy()) return super.toString();
 
     StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (type: ");
-    result.append(type);
+    result.append(" (tipo: ");
+    result.append(tipo);
     result.append(')');
     return result.toString();
   }

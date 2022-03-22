@@ -9,7 +9,9 @@ import edu.upb.lp.isc.dymeLanguage.Constelacion;
 import edu.upb.lp.isc.dymeLanguage.DymeLanguageFactory;
 import edu.upb.lp.isc.dymeLanguage.DymeLanguagePackage;
 import edu.upb.lp.isc.dymeLanguage.Estrella;
+import edu.upb.lp.isc.dymeLanguage.EstrellaFugazMeteoro;
 import edu.upb.lp.isc.dymeLanguage.ExprAritmetica;
+import edu.upb.lp.isc.dymeLanguage.ExprComparacion;
 import edu.upb.lp.isc.dymeLanguage.ExprConcatenacion;
 import edu.upb.lp.isc.dymeLanguage.ExprLogica;
 import edu.upb.lp.isc.dymeLanguage.Expresion;
@@ -22,6 +24,7 @@ import edu.upb.lp.isc.dymeLanguage.Planeta;
 import edu.upb.lp.isc.dymeLanguage.PolvoEstelar;
 import edu.upb.lp.isc.dymeLanguage.Programa;
 import edu.upb.lp.isc.dymeLanguage.Tipo;
+import edu.upb.lp.isc.dymeLanguage.TipoFuncionOrdenSuperior;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -44,6 +47,13 @@ public class DymeLanguagePackageImpl extends EPackageImpl implements DymeLanguag
    * @generated
    */
   private EClass programaEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass estrellaFugazMeteoroEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -92,6 +102,13 @@ public class DymeLanguagePackageImpl extends EPackageImpl implements DymeLanguag
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass tipoFuncionOrdenSuperiorEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass constanteEClass = null;
 
   /**
@@ -121,6 +138,13 @@ public class DymeLanguagePackageImpl extends EPackageImpl implements DymeLanguag
    * @generated
    */
   private EClass exprLogicaEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass exprComparacionEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -248,6 +272,50 @@ public class DymeLanguagePackageImpl extends EPackageImpl implements DymeLanguag
    * @generated
    */
   @Override
+  public EClass getEstrellaFugazMeteoro()
+  {
+    return estrellaFugazMeteoroEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getEstrellaFugazMeteoro_ExprLogCondicion()
+  {
+    return (EReference)estrellaFugazMeteoroEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getEstrellaFugazMeteoro_EstrellaFugazRes()
+  {
+    return (EReference)estrellaFugazMeteoroEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getEstrellaFugazMeteoro_MeteoroRes()
+  {
+    return (EReference)estrellaFugazMeteoroEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EClass getFuncion()
   {
     return funcionEClass;
@@ -314,7 +382,7 @@ public class DymeLanguagePackageImpl extends EPackageImpl implements DymeLanguag
    * @generated
    */
   @Override
-  public EReference getFuncion_Tip()
+  public EReference getFuncion_TipoClass()
   {
     return (EReference)funcionEClass.getEStructuralFeatures().get(5);
   }
@@ -380,7 +448,7 @@ public class DymeLanguagePackageImpl extends EPackageImpl implements DymeLanguag
    * @generated
    */
   @Override
-  public EReference getParam_Tip()
+  public EReference getParam_TipoClass()
   {
     return (EReference)paramEClass.getEStructuralFeatures().get(1);
   }
@@ -435,7 +503,7 @@ public class DymeLanguagePackageImpl extends EPackageImpl implements DymeLanguag
    * @generated
    */
   @Override
-  public EReference getAsignacion_Tip()
+  public EReference getAsignacion_TipoClass()
   {
     return (EReference)asignacionEClass.getEStructuralFeatures().get(2);
   }
@@ -468,9 +536,64 @@ public class DymeLanguagePackageImpl extends EPackageImpl implements DymeLanguag
    * @generated
    */
   @Override
-  public EAttribute getTipo_Type()
+  public EAttribute getTipo_Tipo()
   {
     return (EAttribute)tipoEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getTipoFuncionOrdenSuperior()
+  {
+    return tipoFuncionOrdenSuperiorEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getTipoFuncionOrdenSuperior_OrdenSuperiorTipo()
+  {
+    return (EAttribute)tipoFuncionOrdenSuperiorEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getTipoFuncionOrdenSuperior_ParamFunc()
+  {
+    return (EReference)tipoFuncionOrdenSuperiorEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getTipoFuncionOrdenSuperior_ReturnTipoFunc()
+  {
+    return (EAttribute)tipoFuncionOrdenSuperiorEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getTipoFuncionOrdenSuperior_ReturnFunc()
+  {
+    return (EReference)tipoFuncionOrdenSuperiorEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -622,6 +745,50 @@ public class DymeLanguagePackageImpl extends EPackageImpl implements DymeLanguag
    * @generated
    */
   @Override
+  public EClass getExprComparacion()
+  {
+    return exprComparacionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getExprComparacion_OperadorComp()
+  {
+    return (EAttribute)exprComparacionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getExprComparacion_ExprComIzq()
+  {
+    return (EReference)exprComparacionEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getExprComparacion_ExprComDer()
+  {
+    return (EReference)exprComparacionEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EClass getPlaneta()
   {
     return planetaEClass;
@@ -738,13 +905,18 @@ public class DymeLanguagePackageImpl extends EPackageImpl implements DymeLanguag
     programaEClass = createEClass(PROGRAMA);
     createEReference(programaEClass, PROGRAMA__FUNC);
 
+    estrellaFugazMeteoroEClass = createEClass(ESTRELLA_FUGAZ_METEORO);
+    createEReference(estrellaFugazMeteoroEClass, ESTRELLA_FUGAZ_METEORO__EXPR_LOG_CONDICION);
+    createEReference(estrellaFugazMeteoroEClass, ESTRELLA_FUGAZ_METEORO__ESTRELLA_FUGAZ_RES);
+    createEReference(estrellaFugazMeteoroEClass, ESTRELLA_FUGAZ_METEORO__METEORO_RES);
+
     funcionEClass = createEClass(FUNCION);
     createEAttribute(funcionEClass, FUNCION__NAME);
     createEReference(funcionEClass, FUNCION__PARAM);
     createEReference(funcionEClass, FUNCION__INSTR);
     createEReference(funcionEClass, FUNCION__EXPR);
     createEAttribute(funcionEClass, FUNCION__RETURN_TIPO);
-    createEReference(funcionEClass, FUNCION__TIP);
+    createEReference(funcionEClass, FUNCION__TIPO_CLASS);
 
     llamadoFuncEClass = createEClass(LLAMADO_FUNC);
     createEReference(llamadoFuncEClass, LLAMADO_FUNC__FUNCION);
@@ -752,18 +924,24 @@ public class DymeLanguagePackageImpl extends EPackageImpl implements DymeLanguag
 
     paramEClass = createEClass(PARAM);
     createEAttribute(paramEClass, PARAM__NAME);
-    createEReference(paramEClass, PARAM__TIP);
+    createEReference(paramEClass, PARAM__TIPO_CLASS);
 
     instruccionEClass = createEClass(INSTRUCCION);
 
     asignacionEClass = createEClass(ASIGNACION);
     createEAttribute(asignacionEClass, ASIGNACION__NAME);
     createEAttribute(asignacionEClass, ASIGNACION__TIPO_INFERIDO);
-    createEReference(asignacionEClass, ASIGNACION__TIP);
+    createEReference(asignacionEClass, ASIGNACION__TIPO_CLASS);
     createEReference(asignacionEClass, ASIGNACION__VALOR_ASIG);
 
     tipoEClass = createEClass(TIPO);
-    createEAttribute(tipoEClass, TIPO__TYPE);
+    createEAttribute(tipoEClass, TIPO__TIPO);
+
+    tipoFuncionOrdenSuperiorEClass = createEClass(TIPO_FUNCION_ORDEN_SUPERIOR);
+    createEAttribute(tipoFuncionOrdenSuperiorEClass, TIPO_FUNCION_ORDEN_SUPERIOR__ORDEN_SUPERIOR_TIPO);
+    createEReference(tipoFuncionOrdenSuperiorEClass, TIPO_FUNCION_ORDEN_SUPERIOR__PARAM_FUNC);
+    createEAttribute(tipoFuncionOrdenSuperiorEClass, TIPO_FUNCION_ORDEN_SUPERIOR__RETURN_TIPO_FUNC);
+    createEReference(tipoFuncionOrdenSuperiorEClass, TIPO_FUNCION_ORDEN_SUPERIOR__RETURN_FUNC);
 
     constanteEClass = createEClass(CONSTANTE);
     createEReference(constanteEClass, CONSTANTE__NOMBRE);
@@ -782,6 +960,11 @@ public class DymeLanguagePackageImpl extends EPackageImpl implements DymeLanguag
     exprLogicaEClass = createEClass(EXPR_LOGICA);
     createEAttribute(exprLogicaEClass, EXPR_LOGICA__OPERADOR_LOG);
     createEReference(exprLogicaEClass, EXPR_LOGICA__EXPR_LOG);
+
+    exprComparacionEClass = createEClass(EXPR_COMPARACION);
+    createEAttribute(exprComparacionEClass, EXPR_COMPARACION__OPERADOR_COMP);
+    createEReference(exprComparacionEClass, EXPR_COMPARACION__EXPR_COM_IZQ);
+    createEReference(exprComparacionEClass, EXPR_COMPARACION__EXPR_COM_DER);
 
     planetaEClass = createEClass(PLANETA);
     createEAttribute(planetaEClass, PLANETA__X);
@@ -826,12 +1009,15 @@ public class DymeLanguagePackageImpl extends EPackageImpl implements DymeLanguag
     // Set bounds for type parameters
 
     // Add supertypes to classes
+    estrellaFugazMeteoroEClass.getESuperTypes().add(this.getExpresion());
     llamadoFuncEClass.getESuperTypes().add(this.getExpresion());
     asignacionEClass.getESuperTypes().add(this.getInstruccion());
+    tipoEClass.getESuperTypes().add(this.getTipoFuncionOrdenSuperior());
     constanteEClass.getESuperTypes().add(this.getExpresion());
     exprConcatenacionEClass.getESuperTypes().add(this.getExpresion());
     exprAritmeticaEClass.getESuperTypes().add(this.getExpresion());
     exprLogicaEClass.getESuperTypes().add(this.getExpresion());
+    exprComparacionEClass.getESuperTypes().add(this.getExprLogica());
     planetaEClass.getESuperTypes().add(this.getExprAritmetica());
     constelacionEClass.getESuperTypes().add(this.getExprConcatenacion());
     estrellaEClass.getESuperTypes().add(this.getExprConcatenacion());
@@ -842,13 +1028,18 @@ public class DymeLanguagePackageImpl extends EPackageImpl implements DymeLanguag
     initEClass(programaEClass, Programa.class, "Programa", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getPrograma_Func(), this.getFuncion(), null, "func", null, 0, -1, Programa.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+    initEClass(estrellaFugazMeteoroEClass, EstrellaFugazMeteoro.class, "EstrellaFugazMeteoro", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getEstrellaFugazMeteoro_ExprLogCondicion(), this.getExpresion(), null, "exprLogCondicion", null, 0, 1, EstrellaFugazMeteoro.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getEstrellaFugazMeteoro_EstrellaFugazRes(), this.getExpresion(), null, "estrellaFugazRes", null, 0, 1, EstrellaFugazMeteoro.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getEstrellaFugazMeteoro_MeteoroRes(), this.getExpresion(), null, "meteoroRes", null, 0, 1, EstrellaFugazMeteoro.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
     initEClass(funcionEClass, Funcion.class, "Funcion", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getFuncion_Name(), ecorePackage.getEString(), "name", null, 0, 1, Funcion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getFuncion_Param(), this.getParam(), null, "param", null, 0, -1, Funcion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getFuncion_Instr(), this.getInstruccion(), null, "instr", null, 0, -1, Funcion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getFuncion_Expr(), this.getExpresion(), null, "expr", null, 0, 1, Funcion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getFuncion_ReturnTipo(), ecorePackage.getEBoolean(), "returnTipo", null, 0, 1, Funcion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getFuncion_Tip(), this.getTipo(), null, "tip", null, 0, 1, Funcion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFuncion_TipoClass(), this.getTipoFuncionOrdenSuperior(), null, "tipoClass", null, 0, 1, Funcion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(llamadoFuncEClass, LlamadoFunc.class, "LlamadoFunc", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getLlamadoFunc_Funcion(), this.getFuncion(), null, "funcion", null, 0, 1, LlamadoFunc.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -856,18 +1047,24 @@ public class DymeLanguagePackageImpl extends EPackageImpl implements DymeLanguag
 
     initEClass(paramEClass, Param.class, "Param", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getParam_Name(), ecorePackage.getEString(), "name", null, 0, 1, Param.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getParam_Tip(), this.getTipo(), null, "tip", null, 0, 1, Param.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getParam_TipoClass(), this.getTipoFuncionOrdenSuperior(), null, "tipoClass", null, 0, 1, Param.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(instruccionEClass, Instruccion.class, "Instruccion", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(asignacionEClass, Asignacion.class, "Asignacion", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getAsignacion_Name(), ecorePackage.getEString(), "name", null, 0, 1, Asignacion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getAsignacion_TipoInferido(), ecorePackage.getEBoolean(), "tipoInferido", null, 0, 1, Asignacion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getAsignacion_Tip(), this.getTipo(), null, "tip", null, 0, 1, Asignacion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAsignacion_TipoClass(), this.getTipoFuncionOrdenSuperior(), null, "tipoClass", null, 0, 1, Asignacion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getAsignacion_ValorAsig(), this.getExpresion(), null, "valorAsig", null, 0, 1, Asignacion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(tipoEClass, Tipo.class, "Tipo", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getTipo_Type(), ecorePackage.getEString(), "type", null, 0, 1, Tipo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getTipo_Tipo(), ecorePackage.getEString(), "tipo", null, 0, 1, Tipo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(tipoFuncionOrdenSuperiorEClass, TipoFuncionOrdenSuperior.class, "TipoFuncionOrdenSuperior", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getTipoFuncionOrdenSuperior_OrdenSuperiorTipo(), ecorePackage.getEString(), "ordenSuperiorTipo", null, 0, 1, TipoFuncionOrdenSuperior.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getTipoFuncionOrdenSuperior_ParamFunc(), this.getTipoFuncionOrdenSuperior(), null, "paramFunc", null, 0, -1, TipoFuncionOrdenSuperior.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getTipoFuncionOrdenSuperior_ReturnTipoFunc(), ecorePackage.getEBoolean(), "returnTipoFunc", null, 0, 1, TipoFuncionOrdenSuperior.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getTipoFuncionOrdenSuperior_ReturnFunc(), this.getTipoFuncionOrdenSuperior(), null, "returnFunc", null, 0, 1, TipoFuncionOrdenSuperior.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(constanteEClass, Constante.class, "Constante", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getConstante_Nombre(), this.getAsignacion(), null, "nombre", null, 0, 1, Constante.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -886,6 +1083,11 @@ public class DymeLanguagePackageImpl extends EPackageImpl implements DymeLanguag
     initEClass(exprLogicaEClass, ExprLogica.class, "ExprLogica", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getExprLogica_OperadorLog(), ecorePackage.getEString(), "operadorLog", null, 0, 1, ExprLogica.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getExprLogica_ExprLog(), this.getExpresion(), null, "exprLog", null, 0, -1, ExprLogica.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(exprComparacionEClass, ExprComparacion.class, "ExprComparacion", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getExprComparacion_OperadorComp(), ecorePackage.getEString(), "operadorComp", null, 0, 1, ExprComparacion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getExprComparacion_ExprComIzq(), this.getExpresion(), null, "exprComIzq", null, 0, 1, ExprComparacion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getExprComparacion_ExprComDer(), this.getExpresion(), null, "exprComDer", null, 0, 1, ExprComparacion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(planetaEClass, Planeta.class, "Planeta", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getPlaneta_X(), ecorePackage.getEInt(), "x", null, 0, 1, Planeta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

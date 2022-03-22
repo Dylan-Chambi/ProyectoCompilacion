@@ -6,6 +6,14 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="func" upperBound="-1" eType="#//Funcion"
         containment="true"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EstrellaFugazMeteoro" eSuperTypes="#//Expresion">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="exprLogCondicion" eType="#//Expresion"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="estrellaFugazRes" eType="#//Expresion"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="meteoroRes" eType="#//Expresion"
+        containment="true"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Funcion">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="param" upperBound="-1"
@@ -15,7 +23,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="expr" eType="#//Expresion"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="returnTipo" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="tip" eType="#//Tipo" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tipoClass" eType="#//TipoFuncionOrdenSuperior"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LlamadoFunc" eSuperTypes="#//Expresion">
     <eStructuralFeatures xsi:type="ecore:EReference" name="funcion" eType="#//Funcion"/>
@@ -24,18 +33,28 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Param">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="tip" eType="#//Tipo" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tipoClass" eType="#//TipoFuncionOrdenSuperior"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Instruccion"/>
   <eClassifiers xsi:type="ecore:EClass" name="Asignacion" eSuperTypes="#//Instruccion">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="tipoInferido" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="tip" eType="#//Tipo" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tipoClass" eType="#//TipoFuncionOrdenSuperior"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="valorAsig" eType="#//Expresion"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Tipo">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Tipo" eSuperTypes="#//TipoFuncionOrdenSuperior">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="tipo" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TipoFuncionOrdenSuperior">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ordenSuperiorTipo" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="paramFunc" upperBound="-1"
+        eType="#//TipoFuncionOrdenSuperior" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="returnTipoFunc" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="returnFunc" eType="#//TipoFuncionOrdenSuperior"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Constante" eSuperTypes="#//Expresion">
     <eStructuralFeatures xsi:type="ecore:EReference" name="nombre" eType="#//Asignacion"/>
@@ -56,6 +75,13 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="operadorLog" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="exprLog" upperBound="-1"
         eType="#//Expresion" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExprComparacion" eSuperTypes="#//ExprLogica">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="operadorComp" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="exprComIzq" eType="#//Expresion"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="exprComDer" eType="#//Expresion"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Planeta" eSuperTypes="#//ExprAritmetica">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="x" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>

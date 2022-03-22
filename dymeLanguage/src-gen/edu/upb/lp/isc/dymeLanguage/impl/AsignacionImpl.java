@@ -6,7 +6,7 @@ package edu.upb.lp.isc.dymeLanguage.impl;
 import edu.upb.lp.isc.dymeLanguage.Asignacion;
 import edu.upb.lp.isc.dymeLanguage.DymeLanguagePackage;
 import edu.upb.lp.isc.dymeLanguage.Expresion;
-import edu.upb.lp.isc.dymeLanguage.Tipo;
+import edu.upb.lp.isc.dymeLanguage.TipoFuncionOrdenSuperior;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -26,7 +26,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <ul>
  *   <li>{@link edu.upb.lp.isc.dymeLanguage.impl.AsignacionImpl#getName <em>Name</em>}</li>
  *   <li>{@link edu.upb.lp.isc.dymeLanguage.impl.AsignacionImpl#isTipoInferido <em>Tipo Inferido</em>}</li>
- *   <li>{@link edu.upb.lp.isc.dymeLanguage.impl.AsignacionImpl#getTip <em>Tip</em>}</li>
+ *   <li>{@link edu.upb.lp.isc.dymeLanguage.impl.AsignacionImpl#getTipoClass <em>Tipo Class</em>}</li>
  *   <li>{@link edu.upb.lp.isc.dymeLanguage.impl.AsignacionImpl#getValorAsig <em>Valor Asig</em>}</li>
  * </ul>
  *
@@ -75,14 +75,14 @@ public class AsignacionImpl extends InstruccionImpl implements Asignacion
   protected boolean tipoInferido = TIPO_INFERIDO_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getTip() <em>Tip</em>}' containment reference.
+   * The cached value of the '{@link #getTipoClass() <em>Tipo Class</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getTip()
+   * @see #getTipoClass()
    * @generated
    * @ordered
    */
-  protected Tipo tip;
+  protected TipoFuncionOrdenSuperior tipoClass;
 
   /**
    * The cached value of the '{@link #getValorAsig() <em>Valor Asig</em>}' containment reference.
@@ -171,9 +171,9 @@ public class AsignacionImpl extends InstruccionImpl implements Asignacion
    * @generated
    */
   @Override
-  public Tipo getTip()
+  public TipoFuncionOrdenSuperior getTipoClass()
   {
-    return tip;
+    return tipoClass;
   }
 
   /**
@@ -181,13 +181,13 @@ public class AsignacionImpl extends InstruccionImpl implements Asignacion
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetTip(Tipo newTip, NotificationChain msgs)
+  public NotificationChain basicSetTipoClass(TipoFuncionOrdenSuperior newTipoClass, NotificationChain msgs)
   {
-    Tipo oldTip = tip;
-    tip = newTip;
+    TipoFuncionOrdenSuperior oldTipoClass = tipoClass;
+    tipoClass = newTipoClass;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DymeLanguagePackage.ASIGNACION__TIP, oldTip, newTip);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DymeLanguagePackage.ASIGNACION__TIPO_CLASS, oldTipoClass, newTipoClass);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -199,20 +199,20 @@ public class AsignacionImpl extends InstruccionImpl implements Asignacion
    * @generated
    */
   @Override
-  public void setTip(Tipo newTip)
+  public void setTipoClass(TipoFuncionOrdenSuperior newTipoClass)
   {
-    if (newTip != tip)
+    if (newTipoClass != tipoClass)
     {
       NotificationChain msgs = null;
-      if (tip != null)
-        msgs = ((InternalEObject)tip).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DymeLanguagePackage.ASIGNACION__TIP, null, msgs);
-      if (newTip != null)
-        msgs = ((InternalEObject)newTip).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DymeLanguagePackage.ASIGNACION__TIP, null, msgs);
-      msgs = basicSetTip(newTip, msgs);
+      if (tipoClass != null)
+        msgs = ((InternalEObject)tipoClass).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DymeLanguagePackage.ASIGNACION__TIPO_CLASS, null, msgs);
+      if (newTipoClass != null)
+        msgs = ((InternalEObject)newTipoClass).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DymeLanguagePackage.ASIGNACION__TIPO_CLASS, null, msgs);
+      msgs = basicSetTipoClass(newTipoClass, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DymeLanguagePackage.ASIGNACION__TIP, newTip, newTip));
+      eNotify(new ENotificationImpl(this, Notification.SET, DymeLanguagePackage.ASIGNACION__TIPO_CLASS, newTipoClass, newTipoClass));
   }
 
   /**
@@ -275,8 +275,8 @@ public class AsignacionImpl extends InstruccionImpl implements Asignacion
   {
     switch (featureID)
     {
-      case DymeLanguagePackage.ASIGNACION__TIP:
-        return basicSetTip(null, msgs);
+      case DymeLanguagePackage.ASIGNACION__TIPO_CLASS:
+        return basicSetTipoClass(null, msgs);
       case DymeLanguagePackage.ASIGNACION__VALOR_ASIG:
         return basicSetValorAsig(null, msgs);
     }
@@ -297,8 +297,8 @@ public class AsignacionImpl extends InstruccionImpl implements Asignacion
         return getName();
       case DymeLanguagePackage.ASIGNACION__TIPO_INFERIDO:
         return isTipoInferido();
-      case DymeLanguagePackage.ASIGNACION__TIP:
-        return getTip();
+      case DymeLanguagePackage.ASIGNACION__TIPO_CLASS:
+        return getTipoClass();
       case DymeLanguagePackage.ASIGNACION__VALOR_ASIG:
         return getValorAsig();
     }
@@ -321,8 +321,8 @@ public class AsignacionImpl extends InstruccionImpl implements Asignacion
       case DymeLanguagePackage.ASIGNACION__TIPO_INFERIDO:
         setTipoInferido((Boolean)newValue);
         return;
-      case DymeLanguagePackage.ASIGNACION__TIP:
-        setTip((Tipo)newValue);
+      case DymeLanguagePackage.ASIGNACION__TIPO_CLASS:
+        setTipoClass((TipoFuncionOrdenSuperior)newValue);
         return;
       case DymeLanguagePackage.ASIGNACION__VALOR_ASIG:
         setValorAsig((Expresion)newValue);
@@ -347,8 +347,8 @@ public class AsignacionImpl extends InstruccionImpl implements Asignacion
       case DymeLanguagePackage.ASIGNACION__TIPO_INFERIDO:
         setTipoInferido(TIPO_INFERIDO_EDEFAULT);
         return;
-      case DymeLanguagePackage.ASIGNACION__TIP:
-        setTip((Tipo)null);
+      case DymeLanguagePackage.ASIGNACION__TIPO_CLASS:
+        setTipoClass((TipoFuncionOrdenSuperior)null);
         return;
       case DymeLanguagePackage.ASIGNACION__VALOR_ASIG:
         setValorAsig((Expresion)null);
@@ -371,8 +371,8 @@ public class AsignacionImpl extends InstruccionImpl implements Asignacion
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case DymeLanguagePackage.ASIGNACION__TIPO_INFERIDO:
         return tipoInferido != TIPO_INFERIDO_EDEFAULT;
-      case DymeLanguagePackage.ASIGNACION__TIP:
-        return tip != null;
+      case DymeLanguagePackage.ASIGNACION__TIPO_CLASS:
+        return tipoClass != null;
       case DymeLanguagePackage.ASIGNACION__VALOR_ASIG:
         return valorAsig != null;
     }

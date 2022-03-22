@@ -9,7 +9,9 @@ import edu.upb.lp.isc.dymeLanguage.Constante;
 import edu.upb.lp.isc.dymeLanguage.Constelacion;
 import edu.upb.lp.isc.dymeLanguage.DymeLanguagePackage;
 import edu.upb.lp.isc.dymeLanguage.Estrella;
+import edu.upb.lp.isc.dymeLanguage.EstrellaFugazMeteoro;
 import edu.upb.lp.isc.dymeLanguage.ExprAritmetica;
+import edu.upb.lp.isc.dymeLanguage.ExprComparacion;
 import edu.upb.lp.isc.dymeLanguage.ExprConcatenacion;
 import edu.upb.lp.isc.dymeLanguage.ExprLogica;
 import edu.upb.lp.isc.dymeLanguage.Funcion;
@@ -20,6 +22,7 @@ import edu.upb.lp.isc.dymeLanguage.Planeta;
 import edu.upb.lp.isc.dymeLanguage.PolvoEstelar;
 import edu.upb.lp.isc.dymeLanguage.Programa;
 import edu.upb.lp.isc.dymeLanguage.Tipo;
+import edu.upb.lp.isc.dymeLanguage.TipoFuncionOrdenSuperior;
 import edu.upb.lp.isc.services.DymeLanguageGrammarAccess;
 import java.util.Set;
 import org.eclipse.emf.ecore.EObject;
@@ -58,8 +61,14 @@ public class DymeLanguageSemanticSequencer extends AbstractDelegatingSemanticSeq
 			case DymeLanguagePackage.ESTRELLA:
 				sequence_Estrella(context, (Estrella) semanticObject); 
 				return; 
+			case DymeLanguagePackage.ESTRELLA_FUGAZ_METEORO:
+				sequence_EstrellaFugazMeteoro(context, (EstrellaFugazMeteoro) semanticObject); 
+				return; 
 			case DymeLanguagePackage.EXPR_ARITMETICA:
 				sequence_ExprAritmetica(context, (ExprAritmetica) semanticObject); 
+				return; 
+			case DymeLanguagePackage.EXPR_COMPARACION:
+				sequence_ExprComparacion(context, (ExprComparacion) semanticObject); 
 				return; 
 			case DymeLanguagePackage.EXPR_CONCATENACION:
 				sequence_ExprConcatenacion(context, (ExprConcatenacion) semanticObject); 
@@ -89,7 +98,17 @@ public class DymeLanguageSemanticSequencer extends AbstractDelegatingSemanticSeq
 				sequence_Programa(context, (Programa) semanticObject); 
 				return; 
 			case DymeLanguagePackage.TIPO:
-				sequence_Tipo(context, (Tipo) semanticObject); 
+				if (rule == grammarAccess.getTipoRule()) {
+					sequence_Tipo(context, (Tipo) semanticObject); 
+					return; 
+				}
+				else if (rule == grammarAccess.getTipoFuncionOrdenSuperiorRule()) {
+					sequence_Tipo_TipoFuncionOrdenSuperior(context, (Tipo) semanticObject); 
+					return; 
+				}
+				else break;
+			case DymeLanguagePackage.TIPO_FUNCION_ORDEN_SUPERIOR:
+				sequence_TipoFuncionOrdenSuperior(context, (TipoFuncionOrdenSuperior) semanticObject); 
 				return; 
 			}
 		if (errorAcceptor != null)
@@ -103,7 +122,7 @@ public class DymeLanguageSemanticSequencer extends AbstractDelegatingSemanticSeq
 	 *     Asignacion returns Asignacion
 	 *
 	 * Constraint:
-	 *     (name=ID (tipoInferido?='es' tip=Tipo)? valorAsig=Expresion)
+	 *     (name=ID (tipoInferido?='es' tipoClass=TipoFuncionOrdenSuperior)? valorAsig=Expresion)
 	 * </pre>
 	 */
 	protected void sequence_Asignacion(ISerializationContext context, Asignacion semanticObject) {
@@ -157,6 +176,33 @@ public class DymeLanguageSemanticSequencer extends AbstractDelegatingSemanticSeq
 	/**
 	 * <pre>
 	 * Contexts:
+	 *     EstrellaFugazMeteoro returns EstrellaFugazMeteoro
+	 *     Expresion returns EstrellaFugazMeteoro
+	 *
+	 * Constraint:
+	 *     (exprLogCondicion=Expresion estrellaFugazRes=Expresion meteoroRes=Expresion)
+	 * </pre>
+	 */
+	protected void sequence_EstrellaFugazMeteoro(ISerializationContext context, EstrellaFugazMeteoro semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, DymeLanguagePackage.Literals.ESTRELLA_FUGAZ_METEORO__EXPR_LOG_CONDICION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DymeLanguagePackage.Literals.ESTRELLA_FUGAZ_METEORO__EXPR_LOG_CONDICION));
+			if (transientValues.isValueTransient(semanticObject, DymeLanguagePackage.Literals.ESTRELLA_FUGAZ_METEORO__ESTRELLA_FUGAZ_RES) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DymeLanguagePackage.Literals.ESTRELLA_FUGAZ_METEORO__ESTRELLA_FUGAZ_RES));
+			if (transientValues.isValueTransient(semanticObject, DymeLanguagePackage.Literals.ESTRELLA_FUGAZ_METEORO__METEORO_RES) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DymeLanguagePackage.Literals.ESTRELLA_FUGAZ_METEORO__METEORO_RES));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getEstrellaFugazMeteoroAccess().getExprLogCondicionExpresionParserRuleCall_0_2_0(), semanticObject.getExprLogCondicion());
+		feeder.accept(grammarAccess.getEstrellaFugazMeteoroAccess().getEstrellaFugazResExpresionParserRuleCall_0_4_0(), semanticObject.getEstrellaFugazRes());
+		feeder.accept(grammarAccess.getEstrellaFugazMeteoroAccess().getMeteoroResExpresionParserRuleCall_1_1_0(), semanticObject.getMeteoroRes());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
 	 *     Expresion returns Estrella
 	 *     ExprConcatenacion returns Estrella
 	 *     Estrella returns Estrella
@@ -187,6 +233,33 @@ public class DymeLanguageSemanticSequencer extends AbstractDelegatingSemanticSeq
 	 * </pre>
 	 */
 	protected void sequence_ExprAritmetica(ISerializationContext context, ExprAritmetica semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     Expresion returns ExprComparacion
+	 *     ExprLogica returns ExprComparacion
+	 *     ExprComparacion returns ExprComparacion
+	 *
+	 * Constraint:
+	 *     (
+	 *         (
+	 *             operadorComp='&lt;' | 
+	 *             operadorComp='&gt;' | 
+	 *             operadorComp='&lt;=' | 
+	 *             operadorComp='&gt;=' | 
+	 *             operadorComp='==' | 
+	 *             operadorComp='~'
+	 *         ) 
+	 *         exprComIzq=Expresion 
+	 *         exprComDer=Expresion
+	 *     )
+	 * </pre>
+	 */
+	protected void sequence_ExprComparacion(ISerializationContext context, ExprComparacion semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -227,7 +300,7 @@ public class DymeLanguageSemanticSequencer extends AbstractDelegatingSemanticSeq
 	 *     Funcion returns Funcion
 	 *
 	 * Constraint:
-	 *     (name=ID (param+=Param param+=Param*)? instr+=Instruccion* expr=Expresion (returnTipo?='-&gt;' tip=Tipo?)?)
+	 *     (name=ID (param+=Param param+=Param*)? instr+=Instruccion* expr=Expresion (returnTipo?='-&gt;' tipoClass=TipoFuncionOrdenSuperior?)?)
 	 * </pre>
 	 */
 	protected void sequence_Funcion(ISerializationContext context, Funcion semanticObject) {
@@ -272,19 +345,19 @@ public class DymeLanguageSemanticSequencer extends AbstractDelegatingSemanticSeq
 	 *     Param returns Param
 	 *
 	 * Constraint:
-	 *     (name=ID tip=Tipo)
+	 *     (name=ID tipoClass=TipoFuncionOrdenSuperior)
 	 * </pre>
 	 */
 	protected void sequence_Param(ISerializationContext context, Param semanticObject) {
 		if (errorAcceptor != null) {
 			if (transientValues.isValueTransient(semanticObject, DymeLanguagePackage.Literals.PARAM__NAME) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DymeLanguagePackage.Literals.PARAM__NAME));
-			if (transientValues.isValueTransient(semanticObject, DymeLanguagePackage.Literals.PARAM__TIP) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DymeLanguagePackage.Literals.PARAM__TIP));
+			if (transientValues.isValueTransient(semanticObject, DymeLanguagePackage.Literals.PARAM__TIPO_CLASS) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DymeLanguagePackage.Literals.PARAM__TIPO_CLASS));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getParamAccess().getNameIDTerminalRuleCall_0_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getParamAccess().getTipTipoParserRuleCall_2_0(), semanticObject.getTip());
+		feeder.accept(grammarAccess.getParamAccess().getTipoClassTipoFuncionOrdenSuperiorParserRuleCall_2_0(), semanticObject.getTipoClass());
 		feeder.finish();
 	}
 	
@@ -350,13 +423,49 @@ public class DymeLanguageSemanticSequencer extends AbstractDelegatingSemanticSeq
 	/**
 	 * <pre>
 	 * Contexts:
+	 *     TipoFuncionOrdenSuperior returns TipoFuncionOrdenSuperior
+	 *
+	 * Constraint:
+	 *     (
+	 *         ordenSuperiorTipo='(' 
+	 *         paramFunc+=TipoFuncionOrdenSuperior 
+	 *         paramFunc+=TipoFuncionOrdenSuperior* 
+	 *         (returnTipoFunc?='-&gt;' (returnFunc=TipoFuncionOrdenSuperior | returnFunc=Tipo))?
+	 *     )
+	 * </pre>
+	 */
+	protected void sequence_TipoFuncionOrdenSuperior(ISerializationContext context, TipoFuncionOrdenSuperior semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
 	 *     Tipo returns Tipo
 	 *
 	 * Constraint:
-	 *     (type='Planeta' | type='Constelacion' | type='Estrella' | type='PolvoEstelar' | type='Luna')
+	 *     (tipo='Planeta' | tipo='Constelacion' | tipo='Estrella' | tipo='PolvoEstelar' | tipo='Luna')
 	 * </pre>
 	 */
 	protected void sequence_Tipo(ISerializationContext context, Tipo semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     TipoFuncionOrdenSuperior returns Tipo
+	 *
+	 * Constraint:
+	 *     (
+	 *         (tipo='Planeta' | tipo='Constelacion' | tipo='Estrella' | tipo='PolvoEstelar' | tipo='Luna') 
+	 *         (returnTipoFunc?='-&gt;' (returnFunc=TipoFuncionOrdenSuperior | returnFunc=Tipo))?
+	 *     )
+	 * </pre>
+	 */
+	protected void sequence_Tipo_TipoFuncionOrdenSuperior(ISerializationContext context, Tipo semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

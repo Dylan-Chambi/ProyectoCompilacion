@@ -21,7 +21,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link edu.upb.lp.isc.dymeLanguage.Funcion#getInstr <em>Instr</em>}</li>
  *   <li>{@link edu.upb.lp.isc.dymeLanguage.Funcion#getExpr <em>Expr</em>}</li>
  *   <li>{@link edu.upb.lp.isc.dymeLanguage.Funcion#isReturnTipo <em>Return Tipo</em>}</li>
- *   <li>{@link edu.upb.lp.isc.dymeLanguage.Funcion#getTip <em>Tip</em>}</li>
+ *   <li>{@link edu.upb.lp.isc.dymeLanguage.Funcion#getTipoClass <em>Tipo Class</em>}</li>
  * </ul>
  *
  * @see edu.upb.lp.isc.dymeLanguage.DymeLanguagePackage#getFuncion()
@@ -121,25 +121,25 @@ public interface Funcion extends EObject
   void setReturnTipo(boolean value);
 
   /**
-   * Returns the value of the '<em><b>Tip</b></em>' containment reference.
+   * Returns the value of the '<em><b>Tipo Class</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Tip</em>' containment reference.
-   * @see #setTip(Tipo)
-   * @see edu.upb.lp.isc.dymeLanguage.DymeLanguagePackage#getFuncion_Tip()
+   * @return the value of the '<em>Tipo Class</em>' containment reference.
+   * @see #setTipoClass(TipoFuncionOrdenSuperior)
+   * @see edu.upb.lp.isc.dymeLanguage.DymeLanguagePackage#getFuncion_TipoClass()
    * @model containment="true"
    * @generated
    */
-  Tipo getTip();
+  TipoFuncionOrdenSuperior getTipoClass();
 
   /**
-   * Sets the value of the '{@link edu.upb.lp.isc.dymeLanguage.Funcion#getTip <em>Tip</em>}' containment reference.
+   * Sets the value of the '{@link edu.upb.lp.isc.dymeLanguage.Funcion#getTipoClass <em>Tipo Class</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Tip</em>' containment reference.
-   * @see #getTip()
+   * @param value the new value of the '<em>Tipo Class</em>' containment reference.
+   * @see #getTipoClass()
    * @generated
    */
-  void setTip(Tipo value);
+  void setTipoClass(TipoFuncionOrdenSuperior value);
 
 } // Funcion

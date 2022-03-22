@@ -3,7 +3,6 @@
  */
 package edu.upb.lp.isc.dymeLanguage;
 
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -14,35 +13,35 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link edu.upb.lp.isc.dymeLanguage.Tipo#getType <em>Type</em>}</li>
+ *   <li>{@link edu.upb.lp.isc.dymeLanguage.Tipo#getTipo <em>Tipo</em>}</li>
  * </ul>
  *
  * @see edu.upb.lp.isc.dymeLanguage.DymeLanguagePackage#getTipo()
  * @model
  * @generated
  */
-public interface Tipo extends EObject
+public interface Tipo extends TipoFuncionOrdenSuperior
 {
   /**
-   * Returns the value of the '<em><b>Type</b></em>' attribute.
+   * Returns the value of the '<em><b>Tipo</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Type</em>' attribute.
-   * @see #setType(String)
-   * @see edu.upb.lp.isc.dymeLanguage.DymeLanguagePackage#getTipo_Type()
+   * @return the value of the '<em>Tipo</em>' attribute.
+   * @see #setTipo(String)
+   * @see edu.upb.lp.isc.dymeLanguage.DymeLanguagePackage#getTipo_Tipo()
    * @model
    * @generated
    */
-  String getType();
+  String getTipo();
 
   /**
-   * Sets the value of the '{@link edu.upb.lp.isc.dymeLanguage.Tipo#getType <em>Type</em>}' attribute.
+   * Sets the value of the '{@link edu.upb.lp.isc.dymeLanguage.Tipo#getTipo <em>Tipo</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Type</em>' attribute.
-   * @see #getType()
+   * @param value the new value of the '<em>Tipo</em>' attribute.
+   * @see #getTipo()
    * @generated
    */
-  void setType(String value);
+  void setTipo(String value);
 
 } // Tipo

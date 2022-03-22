@@ -86,6 +86,71 @@ public interface DymeLanguagePackage extends EPackage
   int PROGRAMA_FEATURE_COUNT = 1;
 
   /**
+   * The meta object id for the '{@link edu.upb.lp.isc.dymeLanguage.impl.ExpresionImpl <em>Expresion</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see edu.upb.lp.isc.dymeLanguage.impl.ExpresionImpl
+   * @see edu.upb.lp.isc.dymeLanguage.impl.DymeLanguagePackageImpl#getExpresion()
+   * @generated
+   */
+  int EXPRESION = 10;
+
+  /**
+   * The number of structural features of the '<em>Expresion</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPRESION_FEATURE_COUNT = 0;
+
+  /**
+   * The meta object id for the '{@link edu.upb.lp.isc.dymeLanguage.impl.EstrellaFugazMeteoroImpl <em>Estrella Fugaz Meteoro</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see edu.upb.lp.isc.dymeLanguage.impl.EstrellaFugazMeteoroImpl
+   * @see edu.upb.lp.isc.dymeLanguage.impl.DymeLanguagePackageImpl#getEstrellaFugazMeteoro()
+   * @generated
+   */
+  int ESTRELLA_FUGAZ_METEORO = 1;
+
+  /**
+   * The feature id for the '<em><b>Expr Log Condicion</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ESTRELLA_FUGAZ_METEORO__EXPR_LOG_CONDICION = EXPRESION_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Estrella Fugaz Res</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ESTRELLA_FUGAZ_METEORO__ESTRELLA_FUGAZ_RES = EXPRESION_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Meteoro Res</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ESTRELLA_FUGAZ_METEORO__METEORO_RES = EXPRESION_FEATURE_COUNT + 2;
+
+  /**
+   * The number of structural features of the '<em>Estrella Fugaz Meteoro</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ESTRELLA_FUGAZ_METEORO_FEATURE_COUNT = EXPRESION_FEATURE_COUNT + 3;
+
+  /**
    * The meta object id for the '{@link edu.upb.lp.isc.dymeLanguage.impl.FuncionImpl <em>Funcion</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -93,7 +158,7 @@ public interface DymeLanguagePackage extends EPackage
    * @see edu.upb.lp.isc.dymeLanguage.impl.DymeLanguagePackageImpl#getFuncion()
    * @generated
    */
-  int FUNCION = 1;
+  int FUNCION = 2;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -141,13 +206,13 @@ public interface DymeLanguagePackage extends EPackage
   int FUNCION__RETURN_TIPO = 4;
 
   /**
-   * The feature id for the '<em><b>Tip</b></em>' containment reference.
+   * The feature id for the '<em><b>Tipo Class</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FUNCION__TIP = 5;
+  int FUNCION__TIPO_CLASS = 5;
 
   /**
    * The number of structural features of the '<em>Funcion</em>' class.
@@ -159,25 +224,6 @@ public interface DymeLanguagePackage extends EPackage
   int FUNCION_FEATURE_COUNT = 6;
 
   /**
-   * The meta object id for the '{@link edu.upb.lp.isc.dymeLanguage.impl.ExpresionImpl <em>Expresion</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see edu.upb.lp.isc.dymeLanguage.impl.ExpresionImpl
-   * @see edu.upb.lp.isc.dymeLanguage.impl.DymeLanguagePackageImpl#getExpresion()
-   * @generated
-   */
-  int EXPRESION = 8;
-
-  /**
-   * The number of structural features of the '<em>Expresion</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int EXPRESION_FEATURE_COUNT = 0;
-
-  /**
    * The meta object id for the '{@link edu.upb.lp.isc.dymeLanguage.impl.LlamadoFuncImpl <em>Llamado Func</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -185,7 +231,7 @@ public interface DymeLanguagePackage extends EPackage
    * @see edu.upb.lp.isc.dymeLanguage.impl.DymeLanguagePackageImpl#getLlamadoFunc()
    * @generated
    */
-  int LLAMADO_FUNC = 2;
+  int LLAMADO_FUNC = 3;
 
   /**
    * The feature id for the '<em><b>Funcion</b></em>' reference.
@@ -222,7 +268,7 @@ public interface DymeLanguagePackage extends EPackage
    * @see edu.upb.lp.isc.dymeLanguage.impl.DymeLanguagePackageImpl#getParam()
    * @generated
    */
-  int PARAM = 3;
+  int PARAM = 4;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -234,13 +280,13 @@ public interface DymeLanguagePackage extends EPackage
   int PARAM__NAME = 0;
 
   /**
-   * The feature id for the '<em><b>Tip</b></em>' containment reference.
+   * The feature id for the '<em><b>Tipo Class</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PARAM__TIP = 1;
+  int PARAM__TIPO_CLASS = 1;
 
   /**
    * The number of structural features of the '<em>Param</em>' class.
@@ -259,7 +305,7 @@ public interface DymeLanguagePackage extends EPackage
    * @see edu.upb.lp.isc.dymeLanguage.impl.DymeLanguagePackageImpl#getInstruccion()
    * @generated
    */
-  int INSTRUCCION = 4;
+  int INSTRUCCION = 5;
 
   /**
    * The number of structural features of the '<em>Instruccion</em>' class.
@@ -278,7 +324,7 @@ public interface DymeLanguagePackage extends EPackage
    * @see edu.upb.lp.isc.dymeLanguage.impl.DymeLanguagePackageImpl#getAsignacion()
    * @generated
    */
-  int ASIGNACION = 5;
+  int ASIGNACION = 6;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -299,13 +345,13 @@ public interface DymeLanguagePackage extends EPackage
   int ASIGNACION__TIPO_INFERIDO = INSTRUCCION_FEATURE_COUNT + 1;
 
   /**
-   * The feature id for the '<em><b>Tip</b></em>' containment reference.
+   * The feature id for the '<em><b>Tipo Class</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ASIGNACION__TIP = INSTRUCCION_FEATURE_COUNT + 2;
+  int ASIGNACION__TIPO_CLASS = INSTRUCCION_FEATURE_COUNT + 2;
 
   /**
    * The feature id for the '<em><b>Valor Asig</b></em>' containment reference.
@@ -326,6 +372,61 @@ public interface DymeLanguagePackage extends EPackage
   int ASIGNACION_FEATURE_COUNT = INSTRUCCION_FEATURE_COUNT + 4;
 
   /**
+   * The meta object id for the '{@link edu.upb.lp.isc.dymeLanguage.impl.TipoFuncionOrdenSuperiorImpl <em>Tipo Funcion Orden Superior</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see edu.upb.lp.isc.dymeLanguage.impl.TipoFuncionOrdenSuperiorImpl
+   * @see edu.upb.lp.isc.dymeLanguage.impl.DymeLanguagePackageImpl#getTipoFuncionOrdenSuperior()
+   * @generated
+   */
+  int TIPO_FUNCION_ORDEN_SUPERIOR = 8;
+
+  /**
+   * The feature id for the '<em><b>Orden Superior Tipo</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TIPO_FUNCION_ORDEN_SUPERIOR__ORDEN_SUPERIOR_TIPO = 0;
+
+  /**
+   * The feature id for the '<em><b>Param Func</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TIPO_FUNCION_ORDEN_SUPERIOR__PARAM_FUNC = 1;
+
+  /**
+   * The feature id for the '<em><b>Return Tipo Func</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TIPO_FUNCION_ORDEN_SUPERIOR__RETURN_TIPO_FUNC = 2;
+
+  /**
+   * The feature id for the '<em><b>Return Func</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TIPO_FUNCION_ORDEN_SUPERIOR__RETURN_FUNC = 3;
+
+  /**
+   * The number of structural features of the '<em>Tipo Funcion Orden Superior</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TIPO_FUNCION_ORDEN_SUPERIOR_FEATURE_COUNT = 4;
+
+  /**
    * The meta object id for the '{@link edu.upb.lp.isc.dymeLanguage.impl.TipoImpl <em>Tipo</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -333,16 +434,52 @@ public interface DymeLanguagePackage extends EPackage
    * @see edu.upb.lp.isc.dymeLanguage.impl.DymeLanguagePackageImpl#getTipo()
    * @generated
    */
-  int TIPO = 6;
+  int TIPO = 7;
 
   /**
-   * The feature id for the '<em><b>Type</b></em>' attribute.
+   * The feature id for the '<em><b>Orden Superior Tipo</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int TIPO__TYPE = 0;
+  int TIPO__ORDEN_SUPERIOR_TIPO = TIPO_FUNCION_ORDEN_SUPERIOR__ORDEN_SUPERIOR_TIPO;
+
+  /**
+   * The feature id for the '<em><b>Param Func</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TIPO__PARAM_FUNC = TIPO_FUNCION_ORDEN_SUPERIOR__PARAM_FUNC;
+
+  /**
+   * The feature id for the '<em><b>Return Tipo Func</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TIPO__RETURN_TIPO_FUNC = TIPO_FUNCION_ORDEN_SUPERIOR__RETURN_TIPO_FUNC;
+
+  /**
+   * The feature id for the '<em><b>Return Func</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TIPO__RETURN_FUNC = TIPO_FUNCION_ORDEN_SUPERIOR__RETURN_FUNC;
+
+  /**
+   * The feature id for the '<em><b>Tipo</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TIPO__TIPO = TIPO_FUNCION_ORDEN_SUPERIOR_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Tipo</em>' class.
@@ -351,7 +488,7 @@ public interface DymeLanguagePackage extends EPackage
    * @generated
    * @ordered
    */
-  int TIPO_FEATURE_COUNT = 1;
+  int TIPO_FEATURE_COUNT = TIPO_FUNCION_ORDEN_SUPERIOR_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link edu.upb.lp.isc.dymeLanguage.impl.ConstanteImpl <em>Constante</em>}' class.
@@ -361,7 +498,7 @@ public interface DymeLanguagePackage extends EPackage
    * @see edu.upb.lp.isc.dymeLanguage.impl.DymeLanguagePackageImpl#getConstante()
    * @generated
    */
-  int CONSTANTE = 7;
+  int CONSTANTE = 9;
 
   /**
    * The feature id for the '<em><b>Nombre</b></em>' reference.
@@ -389,7 +526,7 @@ public interface DymeLanguagePackage extends EPackage
    * @see edu.upb.lp.isc.dymeLanguage.impl.DymeLanguagePackageImpl#getExprConcatenacion()
    * @generated
    */
-  int EXPR_CONCATENACION = 9;
+  int EXPR_CONCATENACION = 11;
 
   /**
    * The feature id for the '<em><b>Operador Con</b></em>' attribute.
@@ -435,7 +572,7 @@ public interface DymeLanguagePackage extends EPackage
    * @see edu.upb.lp.isc.dymeLanguage.impl.DymeLanguagePackageImpl#getExprAritmetica()
    * @generated
    */
-  int EXPR_ARITMETICA = 10;
+  int EXPR_ARITMETICA = 12;
 
   /**
    * The feature id for the '<em><b>Operador Ar</b></em>' attribute.
@@ -472,7 +609,7 @@ public interface DymeLanguagePackage extends EPackage
    * @see edu.upb.lp.isc.dymeLanguage.impl.DymeLanguagePackageImpl#getExprLogica()
    * @generated
    */
-  int EXPR_LOGICA = 11;
+  int EXPR_LOGICA = 13;
 
   /**
    * The feature id for the '<em><b>Operador Log</b></em>' attribute.
@@ -502,6 +639,70 @@ public interface DymeLanguagePackage extends EPackage
   int EXPR_LOGICA_FEATURE_COUNT = EXPRESION_FEATURE_COUNT + 2;
 
   /**
+   * The meta object id for the '{@link edu.upb.lp.isc.dymeLanguage.impl.ExprComparacionImpl <em>Expr Comparacion</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see edu.upb.lp.isc.dymeLanguage.impl.ExprComparacionImpl
+   * @see edu.upb.lp.isc.dymeLanguage.impl.DymeLanguagePackageImpl#getExprComparacion()
+   * @generated
+   */
+  int EXPR_COMPARACION = 14;
+
+  /**
+   * The feature id for the '<em><b>Operador Log</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPR_COMPARACION__OPERADOR_LOG = EXPR_LOGICA__OPERADOR_LOG;
+
+  /**
+   * The feature id for the '<em><b>Expr Log</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPR_COMPARACION__EXPR_LOG = EXPR_LOGICA__EXPR_LOG;
+
+  /**
+   * The feature id for the '<em><b>Operador Comp</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPR_COMPARACION__OPERADOR_COMP = EXPR_LOGICA_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Expr Com Izq</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPR_COMPARACION__EXPR_COM_IZQ = EXPR_LOGICA_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Expr Com Der</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPR_COMPARACION__EXPR_COM_DER = EXPR_LOGICA_FEATURE_COUNT + 2;
+
+  /**
+   * The number of structural features of the '<em>Expr Comparacion</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPR_COMPARACION_FEATURE_COUNT = EXPR_LOGICA_FEATURE_COUNT + 3;
+
+  /**
    * The meta object id for the '{@link edu.upb.lp.isc.dymeLanguage.impl.PlanetaImpl <em>Planeta</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -509,7 +710,7 @@ public interface DymeLanguagePackage extends EPackage
    * @see edu.upb.lp.isc.dymeLanguage.impl.DymeLanguagePackageImpl#getPlaneta()
    * @generated
    */
-  int PLANETA = 12;
+  int PLANETA = 15;
 
   /**
    * The feature id for the '<em><b>Operador Ar</b></em>' attribute.
@@ -555,7 +756,7 @@ public interface DymeLanguagePackage extends EPackage
    * @see edu.upb.lp.isc.dymeLanguage.impl.DymeLanguagePackageImpl#getConstelacion()
    * @generated
    */
-  int CONSTELACION = 13;
+  int CONSTELACION = 16;
 
   /**
    * The feature id for the '<em><b>Operador Con</b></em>' attribute.
@@ -601,7 +802,7 @@ public interface DymeLanguagePackage extends EPackage
    * @see edu.upb.lp.isc.dymeLanguage.impl.DymeLanguagePackageImpl#getEstrella()
    * @generated
    */
-  int ESTRELLA = 14;
+  int ESTRELLA = 17;
 
   /**
    * The feature id for the '<em><b>Operador Con</b></em>' attribute.
@@ -647,7 +848,7 @@ public interface DymeLanguagePackage extends EPackage
    * @see edu.upb.lp.isc.dymeLanguage.impl.DymeLanguagePackageImpl#getPolvoEstelar()
    * @generated
    */
-  int POLVO_ESTELAR = 15;
+  int POLVO_ESTELAR = 18;
 
   /**
    * The feature id for the '<em><b>Operador Ar</b></em>' attribute.
@@ -693,7 +894,7 @@ public interface DymeLanguagePackage extends EPackage
    * @see edu.upb.lp.isc.dymeLanguage.impl.DymeLanguagePackageImpl#getLuna()
    * @generated
    */
-  int LUNA = 16;
+  int LUNA = 19;
 
   /**
    * The feature id for the '<em><b>Operador Log</b></em>' attribute.
@@ -752,6 +953,49 @@ public interface DymeLanguagePackage extends EPackage
    * @generated
    */
   EReference getPrograma_Func();
+
+  /**
+   * Returns the meta object for class '{@link edu.upb.lp.isc.dymeLanguage.EstrellaFugazMeteoro <em>Estrella Fugaz Meteoro</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Estrella Fugaz Meteoro</em>'.
+   * @see edu.upb.lp.isc.dymeLanguage.EstrellaFugazMeteoro
+   * @generated
+   */
+  EClass getEstrellaFugazMeteoro();
+
+  /**
+   * Returns the meta object for the containment reference '{@link edu.upb.lp.isc.dymeLanguage.EstrellaFugazMeteoro#getExprLogCondicion <em>Expr Log Condicion</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Expr Log Condicion</em>'.
+   * @see edu.upb.lp.isc.dymeLanguage.EstrellaFugazMeteoro#getExprLogCondicion()
+   * @see #getEstrellaFugazMeteoro()
+   * @generated
+   */
+  EReference getEstrellaFugazMeteoro_ExprLogCondicion();
+
+  /**
+   * Returns the meta object for the containment reference '{@link edu.upb.lp.isc.dymeLanguage.EstrellaFugazMeteoro#getEstrellaFugazRes <em>Estrella Fugaz Res</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Estrella Fugaz Res</em>'.
+   * @see edu.upb.lp.isc.dymeLanguage.EstrellaFugazMeteoro#getEstrellaFugazRes()
+   * @see #getEstrellaFugazMeteoro()
+   * @generated
+   */
+  EReference getEstrellaFugazMeteoro_EstrellaFugazRes();
+
+  /**
+   * Returns the meta object for the containment reference '{@link edu.upb.lp.isc.dymeLanguage.EstrellaFugazMeteoro#getMeteoroRes <em>Meteoro Res</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Meteoro Res</em>'.
+   * @see edu.upb.lp.isc.dymeLanguage.EstrellaFugazMeteoro#getMeteoroRes()
+   * @see #getEstrellaFugazMeteoro()
+   * @generated
+   */
+  EReference getEstrellaFugazMeteoro_MeteoroRes();
 
   /**
    * Returns the meta object for class '{@link edu.upb.lp.isc.dymeLanguage.Funcion <em>Funcion</em>}'.
@@ -819,15 +1063,15 @@ public interface DymeLanguagePackage extends EPackage
   EAttribute getFuncion_ReturnTipo();
 
   /**
-   * Returns the meta object for the containment reference '{@link edu.upb.lp.isc.dymeLanguage.Funcion#getTip <em>Tip</em>}'.
+   * Returns the meta object for the containment reference '{@link edu.upb.lp.isc.dymeLanguage.Funcion#getTipoClass <em>Tipo Class</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Tip</em>'.
-   * @see edu.upb.lp.isc.dymeLanguage.Funcion#getTip()
+   * @return the meta object for the containment reference '<em>Tipo Class</em>'.
+   * @see edu.upb.lp.isc.dymeLanguage.Funcion#getTipoClass()
    * @see #getFuncion()
    * @generated
    */
-  EReference getFuncion_Tip();
+  EReference getFuncion_TipoClass();
 
   /**
    * Returns the meta object for class '{@link edu.upb.lp.isc.dymeLanguage.LlamadoFunc <em>Llamado Func</em>}'.
@@ -883,15 +1127,15 @@ public interface DymeLanguagePackage extends EPackage
   EAttribute getParam_Name();
 
   /**
-   * Returns the meta object for the containment reference '{@link edu.upb.lp.isc.dymeLanguage.Param#getTip <em>Tip</em>}'.
+   * Returns the meta object for the containment reference '{@link edu.upb.lp.isc.dymeLanguage.Param#getTipoClass <em>Tipo Class</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Tip</em>'.
-   * @see edu.upb.lp.isc.dymeLanguage.Param#getTip()
+   * @return the meta object for the containment reference '<em>Tipo Class</em>'.
+   * @see edu.upb.lp.isc.dymeLanguage.Param#getTipoClass()
    * @see #getParam()
    * @generated
    */
-  EReference getParam_Tip();
+  EReference getParam_TipoClass();
 
   /**
    * Returns the meta object for class '{@link edu.upb.lp.isc.dymeLanguage.Instruccion <em>Instruccion</em>}'.
@@ -936,15 +1180,15 @@ public interface DymeLanguagePackage extends EPackage
   EAttribute getAsignacion_TipoInferido();
 
   /**
-   * Returns the meta object for the containment reference '{@link edu.upb.lp.isc.dymeLanguage.Asignacion#getTip <em>Tip</em>}'.
+   * Returns the meta object for the containment reference '{@link edu.upb.lp.isc.dymeLanguage.Asignacion#getTipoClass <em>Tipo Class</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Tip</em>'.
-   * @see edu.upb.lp.isc.dymeLanguage.Asignacion#getTip()
+   * @return the meta object for the containment reference '<em>Tipo Class</em>'.
+   * @see edu.upb.lp.isc.dymeLanguage.Asignacion#getTipoClass()
    * @see #getAsignacion()
    * @generated
    */
-  EReference getAsignacion_Tip();
+  EReference getAsignacion_TipoClass();
 
   /**
    * Returns the meta object for the containment reference '{@link edu.upb.lp.isc.dymeLanguage.Asignacion#getValorAsig <em>Valor Asig</em>}'.
@@ -968,15 +1212,69 @@ public interface DymeLanguagePackage extends EPackage
   EClass getTipo();
 
   /**
-   * Returns the meta object for the attribute '{@link edu.upb.lp.isc.dymeLanguage.Tipo#getType <em>Type</em>}'.
+   * Returns the meta object for the attribute '{@link edu.upb.lp.isc.dymeLanguage.Tipo#getTipo <em>Tipo</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Type</em>'.
-   * @see edu.upb.lp.isc.dymeLanguage.Tipo#getType()
+   * @return the meta object for the attribute '<em>Tipo</em>'.
+   * @see edu.upb.lp.isc.dymeLanguage.Tipo#getTipo()
    * @see #getTipo()
    * @generated
    */
-  EAttribute getTipo_Type();
+  EAttribute getTipo_Tipo();
+
+  /**
+   * Returns the meta object for class '{@link edu.upb.lp.isc.dymeLanguage.TipoFuncionOrdenSuperior <em>Tipo Funcion Orden Superior</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Tipo Funcion Orden Superior</em>'.
+   * @see edu.upb.lp.isc.dymeLanguage.TipoFuncionOrdenSuperior
+   * @generated
+   */
+  EClass getTipoFuncionOrdenSuperior();
+
+  /**
+   * Returns the meta object for the attribute '{@link edu.upb.lp.isc.dymeLanguage.TipoFuncionOrdenSuperior#getOrdenSuperiorTipo <em>Orden Superior Tipo</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Orden Superior Tipo</em>'.
+   * @see edu.upb.lp.isc.dymeLanguage.TipoFuncionOrdenSuperior#getOrdenSuperiorTipo()
+   * @see #getTipoFuncionOrdenSuperior()
+   * @generated
+   */
+  EAttribute getTipoFuncionOrdenSuperior_OrdenSuperiorTipo();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link edu.upb.lp.isc.dymeLanguage.TipoFuncionOrdenSuperior#getParamFunc <em>Param Func</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Param Func</em>'.
+   * @see edu.upb.lp.isc.dymeLanguage.TipoFuncionOrdenSuperior#getParamFunc()
+   * @see #getTipoFuncionOrdenSuperior()
+   * @generated
+   */
+  EReference getTipoFuncionOrdenSuperior_ParamFunc();
+
+  /**
+   * Returns the meta object for the attribute '{@link edu.upb.lp.isc.dymeLanguage.TipoFuncionOrdenSuperior#isReturnTipoFunc <em>Return Tipo Func</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Return Tipo Func</em>'.
+   * @see edu.upb.lp.isc.dymeLanguage.TipoFuncionOrdenSuperior#isReturnTipoFunc()
+   * @see #getTipoFuncionOrdenSuperior()
+   * @generated
+   */
+  EAttribute getTipoFuncionOrdenSuperior_ReturnTipoFunc();
+
+  /**
+   * Returns the meta object for the containment reference '{@link edu.upb.lp.isc.dymeLanguage.TipoFuncionOrdenSuperior#getReturnFunc <em>Return Func</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Return Func</em>'.
+   * @see edu.upb.lp.isc.dymeLanguage.TipoFuncionOrdenSuperior#getReturnFunc()
+   * @see #getTipoFuncionOrdenSuperior()
+   * @generated
+   */
+  EReference getTipoFuncionOrdenSuperior_ReturnFunc();
 
   /**
    * Returns the meta object for class '{@link edu.upb.lp.isc.dymeLanguage.Constante <em>Constante</em>}'.
@@ -1117,6 +1415,49 @@ public interface DymeLanguagePackage extends EPackage
   EReference getExprLogica_ExprLog();
 
   /**
+   * Returns the meta object for class '{@link edu.upb.lp.isc.dymeLanguage.ExprComparacion <em>Expr Comparacion</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Expr Comparacion</em>'.
+   * @see edu.upb.lp.isc.dymeLanguage.ExprComparacion
+   * @generated
+   */
+  EClass getExprComparacion();
+
+  /**
+   * Returns the meta object for the attribute '{@link edu.upb.lp.isc.dymeLanguage.ExprComparacion#getOperadorComp <em>Operador Comp</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Operador Comp</em>'.
+   * @see edu.upb.lp.isc.dymeLanguage.ExprComparacion#getOperadorComp()
+   * @see #getExprComparacion()
+   * @generated
+   */
+  EAttribute getExprComparacion_OperadorComp();
+
+  /**
+   * Returns the meta object for the containment reference '{@link edu.upb.lp.isc.dymeLanguage.ExprComparacion#getExprComIzq <em>Expr Com Izq</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Expr Com Izq</em>'.
+   * @see edu.upb.lp.isc.dymeLanguage.ExprComparacion#getExprComIzq()
+   * @see #getExprComparacion()
+   * @generated
+   */
+  EReference getExprComparacion_ExprComIzq();
+
+  /**
+   * Returns the meta object for the containment reference '{@link edu.upb.lp.isc.dymeLanguage.ExprComparacion#getExprComDer <em>Expr Com Der</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Expr Com Der</em>'.
+   * @see edu.upb.lp.isc.dymeLanguage.ExprComparacion#getExprComDer()
+   * @see #getExprComparacion()
+   * @generated
+   */
+  EReference getExprComparacion_ExprComDer();
+
+  /**
    * Returns the meta object for class '{@link edu.upb.lp.isc.dymeLanguage.Planeta <em>Planeta</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1241,6 +1582,40 @@ public interface DymeLanguagePackage extends EPackage
     EReference PROGRAMA__FUNC = eINSTANCE.getPrograma_Func();
 
     /**
+     * The meta object literal for the '{@link edu.upb.lp.isc.dymeLanguage.impl.EstrellaFugazMeteoroImpl <em>Estrella Fugaz Meteoro</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see edu.upb.lp.isc.dymeLanguage.impl.EstrellaFugazMeteoroImpl
+     * @see edu.upb.lp.isc.dymeLanguage.impl.DymeLanguagePackageImpl#getEstrellaFugazMeteoro()
+     * @generated
+     */
+    EClass ESTRELLA_FUGAZ_METEORO = eINSTANCE.getEstrellaFugazMeteoro();
+
+    /**
+     * The meta object literal for the '<em><b>Expr Log Condicion</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ESTRELLA_FUGAZ_METEORO__EXPR_LOG_CONDICION = eINSTANCE.getEstrellaFugazMeteoro_ExprLogCondicion();
+
+    /**
+     * The meta object literal for the '<em><b>Estrella Fugaz Res</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ESTRELLA_FUGAZ_METEORO__ESTRELLA_FUGAZ_RES = eINSTANCE.getEstrellaFugazMeteoro_EstrellaFugazRes();
+
+    /**
+     * The meta object literal for the '<em><b>Meteoro Res</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ESTRELLA_FUGAZ_METEORO__METEORO_RES = eINSTANCE.getEstrellaFugazMeteoro_MeteoroRes();
+
+    /**
      * The meta object literal for the '{@link edu.upb.lp.isc.dymeLanguage.impl.FuncionImpl <em>Funcion</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1291,12 +1666,12 @@ public interface DymeLanguagePackage extends EPackage
     EAttribute FUNCION__RETURN_TIPO = eINSTANCE.getFuncion_ReturnTipo();
 
     /**
-     * The meta object literal for the '<em><b>Tip</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Tipo Class</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference FUNCION__TIP = eINSTANCE.getFuncion_Tip();
+    EReference FUNCION__TIPO_CLASS = eINSTANCE.getFuncion_TipoClass();
 
     /**
      * The meta object literal for the '{@link edu.upb.lp.isc.dymeLanguage.impl.LlamadoFuncImpl <em>Llamado Func</em>}' class.
@@ -1343,12 +1718,12 @@ public interface DymeLanguagePackage extends EPackage
     EAttribute PARAM__NAME = eINSTANCE.getParam_Name();
 
     /**
-     * The meta object literal for the '<em><b>Tip</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Tipo Class</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference PARAM__TIP = eINSTANCE.getParam_Tip();
+    EReference PARAM__TIPO_CLASS = eINSTANCE.getParam_TipoClass();
 
     /**
      * The meta object literal for the '{@link edu.upb.lp.isc.dymeLanguage.impl.InstruccionImpl <em>Instruccion</em>}' class.
@@ -1387,12 +1762,12 @@ public interface DymeLanguagePackage extends EPackage
     EAttribute ASIGNACION__TIPO_INFERIDO = eINSTANCE.getAsignacion_TipoInferido();
 
     /**
-     * The meta object literal for the '<em><b>Tip</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Tipo Class</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference ASIGNACION__TIP = eINSTANCE.getAsignacion_Tip();
+    EReference ASIGNACION__TIPO_CLASS = eINSTANCE.getAsignacion_TipoClass();
 
     /**
      * The meta object literal for the '<em><b>Valor Asig</b></em>' containment reference feature.
@@ -1413,12 +1788,54 @@ public interface DymeLanguagePackage extends EPackage
     EClass TIPO = eINSTANCE.getTipo();
 
     /**
-     * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Tipo</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute TIPO__TYPE = eINSTANCE.getTipo_Type();
+    EAttribute TIPO__TIPO = eINSTANCE.getTipo_Tipo();
+
+    /**
+     * The meta object literal for the '{@link edu.upb.lp.isc.dymeLanguage.impl.TipoFuncionOrdenSuperiorImpl <em>Tipo Funcion Orden Superior</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see edu.upb.lp.isc.dymeLanguage.impl.TipoFuncionOrdenSuperiorImpl
+     * @see edu.upb.lp.isc.dymeLanguage.impl.DymeLanguagePackageImpl#getTipoFuncionOrdenSuperior()
+     * @generated
+     */
+    EClass TIPO_FUNCION_ORDEN_SUPERIOR = eINSTANCE.getTipoFuncionOrdenSuperior();
+
+    /**
+     * The meta object literal for the '<em><b>Orden Superior Tipo</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute TIPO_FUNCION_ORDEN_SUPERIOR__ORDEN_SUPERIOR_TIPO = eINSTANCE.getTipoFuncionOrdenSuperior_OrdenSuperiorTipo();
+
+    /**
+     * The meta object literal for the '<em><b>Param Func</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference TIPO_FUNCION_ORDEN_SUPERIOR__PARAM_FUNC = eINSTANCE.getTipoFuncionOrdenSuperior_ParamFunc();
+
+    /**
+     * The meta object literal for the '<em><b>Return Tipo Func</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute TIPO_FUNCION_ORDEN_SUPERIOR__RETURN_TIPO_FUNC = eINSTANCE.getTipoFuncionOrdenSuperior_ReturnTipoFunc();
+
+    /**
+     * The meta object literal for the '<em><b>Return Func</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference TIPO_FUNCION_ORDEN_SUPERIOR__RETURN_FUNC = eINSTANCE.getTipoFuncionOrdenSuperior_ReturnFunc();
 
     /**
      * The meta object literal for the '{@link edu.upb.lp.isc.dymeLanguage.impl.ConstanteImpl <em>Constante</em>}' class.
@@ -1533,6 +1950,40 @@ public interface DymeLanguagePackage extends EPackage
      * @generated
      */
     EReference EXPR_LOGICA__EXPR_LOG = eINSTANCE.getExprLogica_ExprLog();
+
+    /**
+     * The meta object literal for the '{@link edu.upb.lp.isc.dymeLanguage.impl.ExprComparacionImpl <em>Expr Comparacion</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see edu.upb.lp.isc.dymeLanguage.impl.ExprComparacionImpl
+     * @see edu.upb.lp.isc.dymeLanguage.impl.DymeLanguagePackageImpl#getExprComparacion()
+     * @generated
+     */
+    EClass EXPR_COMPARACION = eINSTANCE.getExprComparacion();
+
+    /**
+     * The meta object literal for the '<em><b>Operador Comp</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute EXPR_COMPARACION__OPERADOR_COMP = eINSTANCE.getExprComparacion_OperadorComp();
+
+    /**
+     * The meta object literal for the '<em><b>Expr Com Izq</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference EXPR_COMPARACION__EXPR_COM_IZQ = eINSTANCE.getExprComparacion_ExprComIzq();
+
+    /**
+     * The meta object literal for the '<em><b>Expr Com Der</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference EXPR_COMPARACION__EXPR_COM_DER = eINSTANCE.getExprComparacion_ExprComDer();
 
     /**
      * The meta object literal for the '{@link edu.upb.lp.isc.dymeLanguage.impl.PlanetaImpl <em>Planeta</em>}' class.

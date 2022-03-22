@@ -15,7 +15,7 @@ package edu.upb.lp.isc.dymeLanguage;
  * <ul>
  *   <li>{@link edu.upb.lp.isc.dymeLanguage.Asignacion#getName <em>Name</em>}</li>
  *   <li>{@link edu.upb.lp.isc.dymeLanguage.Asignacion#isTipoInferido <em>Tipo Inferido</em>}</li>
- *   <li>{@link edu.upb.lp.isc.dymeLanguage.Asignacion#getTip <em>Tip</em>}</li>
+ *   <li>{@link edu.upb.lp.isc.dymeLanguage.Asignacion#getTipoClass <em>Tipo Class</em>}</li>
  *   <li>{@link edu.upb.lp.isc.dymeLanguage.Asignacion#getValorAsig <em>Valor Asig</em>}</li>
  * </ul>
  *
@@ -70,26 +70,26 @@ public interface Asignacion extends Instruccion
   void setTipoInferido(boolean value);
 
   /**
-   * Returns the value of the '<em><b>Tip</b></em>' containment reference.
+   * Returns the value of the '<em><b>Tipo Class</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Tip</em>' containment reference.
-   * @see #setTip(Tipo)
-   * @see edu.upb.lp.isc.dymeLanguage.DymeLanguagePackage#getAsignacion_Tip()
+   * @return the value of the '<em>Tipo Class</em>' containment reference.
+   * @see #setTipoClass(TipoFuncionOrdenSuperior)
+   * @see edu.upb.lp.isc.dymeLanguage.DymeLanguagePackage#getAsignacion_TipoClass()
    * @model containment="true"
    * @generated
    */
-  Tipo getTip();
+  TipoFuncionOrdenSuperior getTipoClass();
 
   /**
-   * Sets the value of the '{@link edu.upb.lp.isc.dymeLanguage.Asignacion#getTip <em>Tip</em>}' containment reference.
+   * Sets the value of the '{@link edu.upb.lp.isc.dymeLanguage.Asignacion#getTipoClass <em>Tipo Class</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Tip</em>' containment reference.
-   * @see #getTip()
+   * @param value the new value of the '<em>Tipo Class</em>' containment reference.
+   * @see #getTipoClass()
    * @generated
    */
-  void setTip(Tipo value);
+  void setTipoClass(TipoFuncionOrdenSuperior value);
 
   /**
    * Returns the value of the '<em><b>Valor Asig</b></em>' containment reference.

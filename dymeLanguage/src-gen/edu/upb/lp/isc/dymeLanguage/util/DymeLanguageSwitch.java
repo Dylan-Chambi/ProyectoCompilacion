@@ -80,6 +80,14 @@ public class DymeLanguageSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case DymeLanguagePackage.ESTRELLA_FUGAZ_METEORO:
+      {
+        EstrellaFugazMeteoro estrellaFugazMeteoro = (EstrellaFugazMeteoro)theEObject;
+        T result = caseEstrellaFugazMeteoro(estrellaFugazMeteoro);
+        if (result == null) result = caseExpresion(estrellaFugazMeteoro);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case DymeLanguagePackage.FUNCION:
       {
         Funcion funcion = (Funcion)theEObject;
@@ -121,6 +129,14 @@ public class DymeLanguageSwitch<T> extends Switch<T>
       {
         Tipo tipo = (Tipo)theEObject;
         T result = caseTipo(tipo);
+        if (result == null) result = caseTipoFuncionOrdenSuperior(tipo);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DymeLanguagePackage.TIPO_FUNCION_ORDEN_SUPERIOR:
+      {
+        TipoFuncionOrdenSuperior tipoFuncionOrdenSuperior = (TipoFuncionOrdenSuperior)theEObject;
+        T result = caseTipoFuncionOrdenSuperior(tipoFuncionOrdenSuperior);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -160,6 +176,15 @@ public class DymeLanguageSwitch<T> extends Switch<T>
         ExprLogica exprLogica = (ExprLogica)theEObject;
         T result = caseExprLogica(exprLogica);
         if (result == null) result = caseExpresion(exprLogica);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DymeLanguagePackage.EXPR_COMPARACION:
+      {
+        ExprComparacion exprComparacion = (ExprComparacion)theEObject;
+        T result = caseExprComparacion(exprComparacion);
+        if (result == null) result = caseExprLogica(exprComparacion);
+        if (result == null) result = caseExpresion(exprComparacion);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -224,6 +249,22 @@ public class DymeLanguageSwitch<T> extends Switch<T>
    * @generated
    */
   public T casePrograma(Programa object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Estrella Fugaz Meteoro</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Estrella Fugaz Meteoro</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseEstrellaFugazMeteoro(EstrellaFugazMeteoro object)
   {
     return null;
   }
@@ -325,6 +366,22 @@ public class DymeLanguageSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Tipo Funcion Orden Superior</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Tipo Funcion Orden Superior</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseTipoFuncionOrdenSuperior(TipoFuncionOrdenSuperior object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Constante</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -400,6 +457,22 @@ public class DymeLanguageSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseExprLogica(ExprLogica object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Expr Comparacion</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Expr Comparacion</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseExprComparacion(ExprComparacion object)
   {
     return null;
   }

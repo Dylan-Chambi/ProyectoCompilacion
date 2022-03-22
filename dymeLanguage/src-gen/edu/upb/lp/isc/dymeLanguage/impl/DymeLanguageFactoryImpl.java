@@ -66,17 +66,20 @@ public class DymeLanguageFactoryImpl extends EFactoryImpl implements DymeLanguag
     switch (eClass.getClassifierID())
     {
       case DymeLanguagePackage.PROGRAMA: return createPrograma();
+      case DymeLanguagePackage.ESTRELLA_FUGAZ_METEORO: return createEstrellaFugazMeteoro();
       case DymeLanguagePackage.FUNCION: return createFuncion();
       case DymeLanguagePackage.LLAMADO_FUNC: return createLlamadoFunc();
       case DymeLanguagePackage.PARAM: return createParam();
       case DymeLanguagePackage.INSTRUCCION: return createInstruccion();
       case DymeLanguagePackage.ASIGNACION: return createAsignacion();
       case DymeLanguagePackage.TIPO: return createTipo();
+      case DymeLanguagePackage.TIPO_FUNCION_ORDEN_SUPERIOR: return createTipoFuncionOrdenSuperior();
       case DymeLanguagePackage.CONSTANTE: return createConstante();
       case DymeLanguagePackage.EXPRESION: return createExpresion();
       case DymeLanguagePackage.EXPR_CONCATENACION: return createExprConcatenacion();
       case DymeLanguagePackage.EXPR_ARITMETICA: return createExprAritmetica();
       case DymeLanguagePackage.EXPR_LOGICA: return createExprLogica();
+      case DymeLanguagePackage.EXPR_COMPARACION: return createExprComparacion();
       case DymeLanguagePackage.PLANETA: return createPlaneta();
       case DymeLanguagePackage.CONSTELACION: return createConstelacion();
       case DymeLanguagePackage.ESTRELLA: return createEstrella();
@@ -97,6 +100,18 @@ public class DymeLanguageFactoryImpl extends EFactoryImpl implements DymeLanguag
   {
     ProgramaImpl programa = new ProgramaImpl();
     return programa;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EstrellaFugazMeteoro createEstrellaFugazMeteoro()
+  {
+    EstrellaFugazMeteoroImpl estrellaFugazMeteoro = new EstrellaFugazMeteoroImpl();
+    return estrellaFugazMeteoro;
   }
 
   /**
@@ -177,6 +192,18 @@ public class DymeLanguageFactoryImpl extends EFactoryImpl implements DymeLanguag
    * @generated
    */
   @Override
+  public TipoFuncionOrdenSuperior createTipoFuncionOrdenSuperior()
+  {
+    TipoFuncionOrdenSuperiorImpl tipoFuncionOrdenSuperior = new TipoFuncionOrdenSuperiorImpl();
+    return tipoFuncionOrdenSuperior;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public Constante createConstante()
   {
     ConstanteImpl constante = new ConstanteImpl();
@@ -229,6 +256,18 @@ public class DymeLanguageFactoryImpl extends EFactoryImpl implements DymeLanguag
   {
     ExprLogicaImpl exprLogica = new ExprLogicaImpl();
     return exprLogica;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public ExprComparacion createExprComparacion()
+  {
+    ExprComparacionImpl exprComparacion = new ExprComparacionImpl();
+    return exprComparacion;
   }
 
   /**

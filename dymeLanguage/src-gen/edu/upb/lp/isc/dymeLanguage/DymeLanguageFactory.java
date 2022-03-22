@@ -33,6 +33,15 @@ public interface DymeLanguageFactory extends EFactory
   Programa createPrograma();
 
   /**
+   * Returns a new object of class '<em>Estrella Fugaz Meteoro</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Estrella Fugaz Meteoro</em>'.
+   * @generated
+   */
+  EstrellaFugazMeteoro createEstrellaFugazMeteoro();
+
+  /**
    * Returns a new object of class '<em>Funcion</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -87,6 +96,15 @@ public interface DymeLanguageFactory extends EFactory
   Tipo createTipo();
 
   /**
+   * Returns a new object of class '<em>Tipo Funcion Orden Superior</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Tipo Funcion Orden Superior</em>'.
+   * @generated
+   */
+  TipoFuncionOrdenSuperior createTipoFuncionOrdenSuperior();
+
+  /**
    * Returns a new object of class '<em>Constante</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -130,6 +148,15 @@ public interface DymeLanguageFactory extends EFactory
    * @generated
    */
   ExprLogica createExprLogica();
+
+  /**
+   * Returns a new object of class '<em>Expr Comparacion</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Expr Comparacion</em>'.
+   * @generated
+   */
+  ExprComparacion createExprComparacion();
 
   /**
    * Returns a new object of class '<em>Planeta</em>'.

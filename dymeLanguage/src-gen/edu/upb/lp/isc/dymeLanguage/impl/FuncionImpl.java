@@ -8,7 +8,7 @@ import edu.upb.lp.isc.dymeLanguage.Expresion;
 import edu.upb.lp.isc.dymeLanguage.Funcion;
 import edu.upb.lp.isc.dymeLanguage.Instruccion;
 import edu.upb.lp.isc.dymeLanguage.Param;
-import edu.upb.lp.isc.dymeLanguage.Tipo;
+import edu.upb.lp.isc.dymeLanguage.TipoFuncionOrdenSuperior;
 
 import java.util.Collection;
 
@@ -39,7 +39,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link edu.upb.lp.isc.dymeLanguage.impl.FuncionImpl#getInstr <em>Instr</em>}</li>
  *   <li>{@link edu.upb.lp.isc.dymeLanguage.impl.FuncionImpl#getExpr <em>Expr</em>}</li>
  *   <li>{@link edu.upb.lp.isc.dymeLanguage.impl.FuncionImpl#isReturnTipo <em>Return Tipo</em>}</li>
- *   <li>{@link edu.upb.lp.isc.dymeLanguage.impl.FuncionImpl#getTip <em>Tip</em>}</li>
+ *   <li>{@link edu.upb.lp.isc.dymeLanguage.impl.FuncionImpl#getTipoClass <em>Tipo Class</em>}</li>
  * </ul>
  *
  * @generated
@@ -117,14 +117,14 @@ public class FuncionImpl extends MinimalEObjectImpl.Container implements Funcion
   protected boolean returnTipo = RETURN_TIPO_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getTip() <em>Tip</em>}' containment reference.
+   * The cached value of the '{@link #getTipoClass() <em>Tipo Class</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getTip()
+   * @see #getTipoClass()
    * @generated
    * @ordered
    */
-  protected Tipo tip;
+  protected TipoFuncionOrdenSuperior tipoClass;
 
   /**
    * <!-- begin-user-doc -->
@@ -283,9 +283,9 @@ public class FuncionImpl extends MinimalEObjectImpl.Container implements Funcion
    * @generated
    */
   @Override
-  public Tipo getTip()
+  public TipoFuncionOrdenSuperior getTipoClass()
   {
-    return tip;
+    return tipoClass;
   }
 
   /**
@@ -293,13 +293,13 @@ public class FuncionImpl extends MinimalEObjectImpl.Container implements Funcion
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetTip(Tipo newTip, NotificationChain msgs)
+  public NotificationChain basicSetTipoClass(TipoFuncionOrdenSuperior newTipoClass, NotificationChain msgs)
   {
-    Tipo oldTip = tip;
-    tip = newTip;
+    TipoFuncionOrdenSuperior oldTipoClass = tipoClass;
+    tipoClass = newTipoClass;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DymeLanguagePackage.FUNCION__TIP, oldTip, newTip);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DymeLanguagePackage.FUNCION__TIPO_CLASS, oldTipoClass, newTipoClass);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -311,20 +311,20 @@ public class FuncionImpl extends MinimalEObjectImpl.Container implements Funcion
    * @generated
    */
   @Override
-  public void setTip(Tipo newTip)
+  public void setTipoClass(TipoFuncionOrdenSuperior newTipoClass)
   {
-    if (newTip != tip)
+    if (newTipoClass != tipoClass)
     {
       NotificationChain msgs = null;
-      if (tip != null)
-        msgs = ((InternalEObject)tip).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DymeLanguagePackage.FUNCION__TIP, null, msgs);
-      if (newTip != null)
-        msgs = ((InternalEObject)newTip).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DymeLanguagePackage.FUNCION__TIP, null, msgs);
-      msgs = basicSetTip(newTip, msgs);
+      if (tipoClass != null)
+        msgs = ((InternalEObject)tipoClass).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DymeLanguagePackage.FUNCION__TIPO_CLASS, null, msgs);
+      if (newTipoClass != null)
+        msgs = ((InternalEObject)newTipoClass).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DymeLanguagePackage.FUNCION__TIPO_CLASS, null, msgs);
+      msgs = basicSetTipoClass(newTipoClass, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DymeLanguagePackage.FUNCION__TIP, newTip, newTip));
+      eNotify(new ENotificationImpl(this, Notification.SET, DymeLanguagePackage.FUNCION__TIPO_CLASS, newTipoClass, newTipoClass));
   }
 
   /**
@@ -343,8 +343,8 @@ public class FuncionImpl extends MinimalEObjectImpl.Container implements Funcion
         return ((InternalEList<?>)getInstr()).basicRemove(otherEnd, msgs);
       case DymeLanguagePackage.FUNCION__EXPR:
         return basicSetExpr(null, msgs);
-      case DymeLanguagePackage.FUNCION__TIP:
-        return basicSetTip(null, msgs);
+      case DymeLanguagePackage.FUNCION__TIPO_CLASS:
+        return basicSetTipoClass(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -369,8 +369,8 @@ public class FuncionImpl extends MinimalEObjectImpl.Container implements Funcion
         return getExpr();
       case DymeLanguagePackage.FUNCION__RETURN_TIPO:
         return isReturnTipo();
-      case DymeLanguagePackage.FUNCION__TIP:
-        return getTip();
+      case DymeLanguagePackage.FUNCION__TIPO_CLASS:
+        return getTipoClass();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -403,8 +403,8 @@ public class FuncionImpl extends MinimalEObjectImpl.Container implements Funcion
       case DymeLanguagePackage.FUNCION__RETURN_TIPO:
         setReturnTipo((Boolean)newValue);
         return;
-      case DymeLanguagePackage.FUNCION__TIP:
-        setTip((Tipo)newValue);
+      case DymeLanguagePackage.FUNCION__TIPO_CLASS:
+        setTipoClass((TipoFuncionOrdenSuperior)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -435,8 +435,8 @@ public class FuncionImpl extends MinimalEObjectImpl.Container implements Funcion
       case DymeLanguagePackage.FUNCION__RETURN_TIPO:
         setReturnTipo(RETURN_TIPO_EDEFAULT);
         return;
-      case DymeLanguagePackage.FUNCION__TIP:
-        setTip((Tipo)null);
+      case DymeLanguagePackage.FUNCION__TIPO_CLASS:
+        setTipoClass((TipoFuncionOrdenSuperior)null);
         return;
     }
     super.eUnset(featureID);
@@ -462,8 +462,8 @@ public class FuncionImpl extends MinimalEObjectImpl.Container implements Funcion
         return expr != null;
       case DymeLanguagePackage.FUNCION__RETURN_TIPO:
         return returnTipo != RETURN_TIPO_EDEFAULT;
-      case DymeLanguagePackage.FUNCION__TIP:
-        return tip != null;
+      case DymeLanguagePackage.FUNCION__TIPO_CLASS:
+        return tipoClass != null;
     }
     return super.eIsSet(featureID);
   }

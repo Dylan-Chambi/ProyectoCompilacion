@@ -14,11 +14,16 @@ Programa:
 	(func+=Funcion)+
 ;
 
-
+EstrellaFugazMeteoro: //If
+     ("EstrellaFugaz" '(' exprLogCondicion=(Expresion)')' estrellaFugazRes = Expresion)
+     ("Meteoro" meteoroRes = Expresion)
+ ;
+ 
 Funcion:
-	'CASIMIR' name=ID 'NECESITA' (param+=Param ('$' param+=Param)*)? 'CONVERGE'
-	(instr+=Instruccion)* (expr=Expresion)
-	"GUT" (returnTipo ?= '->' tip=Tipo?)?
+    'CASIMIR' name=ID 'NECESITA' (param+=Param ('$' param+=Param)*)? 'CONVERGE'
+    (instr+=Instruccion)* (expr=Expresion)
+    /*ef+=EstrellaFugazMeteoro*/
+    "GUT" (returnTipo ?= '->' tipoClass=TipoFuncionOrdenSuperior?)?
 ;
 
 LlamadoFunc:
@@ -26,7 +31,7 @@ LlamadoFunc:
 ;
 
 Param:
-	name=ID 'es' tip=Tipo
+	name=ID 'es' tipoClass=TipoFuncionOrdenSuperior
 ;
 
 
@@ -35,13 +40,18 @@ Instruccion:
 ;
 
 Asignacion:
-	'MASA' name=ID (tipoInferido ?= 'es' tip=Tipo)?  '<-' valorAsig=Expresion '~'
+	'MASA' name=ID (tipoInferido ?= 'es' tipoClass=TipoFuncionOrdenSuperior)?  '<-' valorAsig=Expresion '~'
 	/*'MASA' name=ID ('es' tip=Tipo)?  '<-' valor=Expresion */
 	/* Preguntar la comparacion con null, con el valor opcional */
 ;
 
 Tipo:
-	type = ('Planeta' | 'Constelacion' | 'Estrella' | 'PolvoEstelar' | 'Luna' )
+	tipo = ('Planeta' | 'Constelacion' | 'Estrella' | 'PolvoEstelar' | 'Luna' )
+;
+
+TipoFuncionOrdenSuperior:
+	(ordenSuperiorTipo = '(' paramFunc+=(TipoFuncionOrdenSuperior) ('$' paramFunc+=TipoFuncionOrdenSuperior)* ')' | Tipo)
+	(returnTipoFunc ?= '->' (('(' returnFunc=(TipoFuncionOrdenSuperior) ')') | returnFunc=Tipo))?
 ;
 
 Constante:
@@ -50,7 +60,7 @@ Constante:
 
 
 Expresion:
-	ExprConcatenacion | ExprAritmetica | ExprLogica | LlamadoFunc | Constante
+	ExprConcatenacion | ExprAritmetica | ExprLogica | LlamadoFunc | Constante | EstrellaFugazMeteoro
 ;
 
 ExprConcatenacion:
@@ -64,8 +74,13 @@ ExprAritmetica:
 
 
 ExprLogica:
-	'('(operadorLog = ( '&&' | '||' | '$$' | '!' ) (exprLog+=(ExprLogica | LlamadoFunc))+) ')' | Luna
+	'('(operadorLog = ( '&&' | '||' | '$$' | '!' ) (exprLog+=(ExprLogica | LlamadoFunc))+) ')' | (Luna | ExprComparacion )
 ;
+
+ExprComparacion:
+	'('(operadorComp = ('<' | '>' | '<=' | '>=' | '==' | '~') exprComIzq=(Expresion) exprComDer=(Expresion)) ')'
+;
+
 /*
 ExprSimple:
 	 valorExpr = ( Planeta | PolvoEstelar | Constelacion | Estrella | Luna | Cometa )

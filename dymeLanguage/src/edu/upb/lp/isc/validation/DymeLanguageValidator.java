@@ -9,7 +9,9 @@ import edu.upb.lp.isc.dymeLanguage.Constante;
 import edu.upb.lp.isc.dymeLanguage.Constelacion;
 import edu.upb.lp.isc.dymeLanguage.DymeLanguagePackage;
 import edu.upb.lp.isc.dymeLanguage.Estrella;
+import edu.upb.lp.isc.dymeLanguage.EstrellaFugazMeteoro;
 import edu.upb.lp.isc.dymeLanguage.ExprAritmetica;
+import edu.upb.lp.isc.dymeLanguage.ExprComparacion;
 import edu.upb.lp.isc.dymeLanguage.ExprConcatenacion;
 import edu.upb.lp.isc.dymeLanguage.ExprLogica;
 import edu.upb.lp.isc.dymeLanguage.Expresion;
@@ -19,6 +21,7 @@ import edu.upb.lp.isc.dymeLanguage.Luna;
 import edu.upb.lp.isc.dymeLanguage.Planeta;
 import edu.upb.lp.isc.dymeLanguage.PolvoEstelar;
 import edu.upb.lp.isc.dymeLanguage.Tipo;
+import edu.upb.lp.isc.dymeLanguage.TipoFuncionOrdenSuperior;
 import edu.upb.lp.isc.dymeLanguage.impl.TipoImpl;
 
 /**
@@ -27,19 +30,7 @@ import edu.upb.lp.isc.dymeLanguage.impl.TipoImpl;
  * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#validation
  */
 public class DymeLanguageValidator extends AbstractDymeLanguageValidator {
-	
-//	public static final String INVALID_NAME = "invalidName";
-//
-//	@Check
-//	public void checkGreetingStartsWithCapital(Greeting greeting) {
-//		if (!Character.isUpperCase(greeting.getName().charAt(0))) {
-//			warning("Name should start with a capital",
-//					DymeLanguagePackage.Literals.GREETING__NAME,
-//					INVALID_NAME);
-//		}
-//	}
-	
-	
+		
 	public String obtenerValorExpr(Expresion expr) {
 		if(expr instanceof ExprConcatenacion) {
 			ExprConcatenacion exprCon = (ExprConcatenacion) expr;
@@ -50,12 +41,44 @@ public class DymeLanguageValidator extends AbstractDymeLanguageValidator {
 		}else if(expr instanceof ExprLogica) {
 			ExprLogica exprLog = (ExprLogica) expr;
 			return(obtenerTipoExprLog(exprLog));
+		}else if(expr instanceof ExprComparacion) {
+			return "Luna";
 		}else if (expr instanceof LlamadoFunc) {
 			return obtenerTipoLlamadoFunc((LlamadoFunc) expr);
 		}else if(expr instanceof Constante) {
 			return obtenerTipoConstante((Constante) expr);
+		}else if(expr instanceof EstrellaFugazMeteoro) {
+			return obtenerValorExpr(((EstrellaFugazMeteoro) expr).getEstrellaFugazRes());
 		}
 		return "ErrorType";
+	}
+	
+	public String obtenerTipoString(TipoFuncionOrdenSuperior tipoFunc) {
+		String returnTipo = "";
+		if(tipoFunc instanceof Tipo ) {
+			returnTipo = ((Tipo) tipoFunc).getTipo() ;
+		}else if (tipoFunc instanceof TipoFuncionOrdenSuperior) {
+			returnTipo += "(";
+			for(int i = 0; i < tipoFunc.getParamFunc().size(); i++) {
+				returnTipo += obtenerTipoString(tipoFunc.getParamFunc().get(i));
+				if(i != tipoFunc.getParamFunc().size()-1) returnTipo += " $ ";
+			}
+			returnTipo += ")";
+		}else {
+			return "ErrorType";
+		}
+		
+		if(tipoFunc.isReturnTipoFunc()) {
+			returnTipo += " -> ";
+			//String returnReturnTipo = obtenerTipoString(tipoFunc.getReturnFunc());
+			TipoFuncionOrdenSuperior returnReturnTipo = tipoFunc.getReturnFunc();
+			if(returnReturnTipo instanceof Tipo && !returnReturnTipo.isReturnTipoFunc()) {
+				returnTipo += obtenerTipoString((Tipo) returnReturnTipo);
+			}else if(returnReturnTipo instanceof TipoFuncionOrdenSuperior) {
+				returnTipo += ("(" + obtenerTipoString(returnReturnTipo) + ")");
+			}
+		}
+		return returnTipo;
 	}
 	
 	public String obtenerTipoExprConcat(ExprConcatenacion expr) {
@@ -109,37 +132,55 @@ public class DymeLanguageValidator extends AbstractDymeLanguageValidator {
 	}
 	
 	public String obtenerTipoLlamadoFunc(LlamadoFunc llf) {
-		return llf.getFuncion().getTip().getType();
+		return obtenerTipoString(llf.getFuncion().getTipoClass());
 	}
 	
 	public String obtenerTipoConstante(Constante cons) {
-		return cons.getNombre().getTip().getType();
+		return obtenerTipoString(cons.getNombre().getTipoClass());
 	}
 	
 	@Check
-	public void obtenerTipoFuncion(Funcion func) {		
+	public void verificarTipoEnCondicionEstrellaFugazmeteoro(EstrellaFugazMeteoro estFugMet) {
+		String exprCond = obtenerValorExpr(estFugMet.getExprLogCondicion());
+		if(!exprCond.equals("Luna")) {
+			error("La condicion solo puede ser una expresion logica",
+					DymeLanguagePackage.Literals.ESTRELLA_FUGAZ_METEORO__EXPR_LOG_CONDICION);
+		}
+	}
+	
+	@Check
+	public void verificarTipoEnEstrellaFugazmeteoro(EstrellaFugazMeteoro estFugMet) {
+		String exprEstFugTipo = obtenerValorExpr(estFugMet.getEstrellaFugazRes());
+		String exprMeteoro = obtenerValorExpr(estFugMet.getMeteoroRes());
+		if(!exprEstFugTipo.equals(exprMeteoro)) {
+			error("Discordancia de tipos en expresion EstrellaFugazMeteoro", DymeLanguagePackage.Literals.ESTRELLA_FUGAZ_METEORO__ESTRELLA_FUGAZ_RES.getEOpposite());
+		}
+	}
+	
+	@Check
+	public void obtenerTipoFuncion(Funcion func) {
 		String tipoExprFinal= obtenerValorExpr(func.getExpr());
 		if(func.isReturnTipo()) {
-			String TipoFunc = func.getTip().getType();
+			String TipoFunc = obtenerTipoString(func.getTipoClass());
+			System.out.println(TipoFunc);
 			if(!TipoFunc.equals(tipoExprFinal)) {
 				error("Tipo no valido: " + tipoExprFinal, DymeLanguagePackage.Literals.FUNCION__EXPR);
 			}
 		}else {
 			/* Cambiamos la visibilidad del constructor de TipoImpl para crear y pasar un nuevo tipo inferido */
+			
 			Tipo myTipo = new TipoImpl();
-			myTipo.setType(tipoExprFinal);
-			func.setTip(myTipo);
+			myTipo.setTipo(tipoExprFinal);
+			func.setTipoClass(myTipo);
 		}
 	}
 	
 	@Check
 	public void verificarNumeroParametrosLLamadoFunc(LlamadoFunc llf) {
 		Funcion func = llf.getFuncion();
-		System.out.println(func.getParam());
-		System.out.println(llf.getArgs());
 		if(llf.getArgs().size() == func.getParam().size()) {
 		for( int i = 0; i < llf.getArgs().size(); i++) {
-			String paramTipo = func.getParam().get(i).getTip().getType();
+			String paramTipo = obtenerTipoString(func.getParam().get(i).getTipoClass());
 			String argTipo = obtenerValorExpr(llf.getArgs().get(i));
 			if(!argTipo.equals(paramTipo)) {
 				error("Argumento " + (i+1) + " no valido '"+ argTipo + "' para el tipo de parametro '" + paramTipo + "'", DymeLanguagePackage.Literals.LLAMADO_FUNC__ARGS.getEOpposite());
@@ -149,7 +190,7 @@ public class DymeLanguageValidator extends AbstractDymeLanguageValidator {
 			error("Numero de argumentos no valido: " + llf.getArgs().size(), DymeLanguagePackage.Literals.LLAMADO_FUNC__ARGS.getEOpposite());
 		}
 	}
-
+	
 	@Check
 	public void verificaroInferirTipoDeExpresionEnAsignacion(Asignacion asg) {
 		Object valor = asg.getValorAsig();
@@ -157,17 +198,54 @@ public class DymeLanguageValidator extends AbstractDymeLanguageValidator {
 			Expresion valorExpr = ((Expresion) valor);
 			String exprTipo = obtenerValorExpr(valorExpr);
 			if(asg.isTipoInferido()) {
-				Object tipo = asg.getTip().getType();
+				String tipo = obtenerTipoString(asg.getTipoClass());
+				System.out.println(tipo);
 				if(!exprTipo.equals(tipo)) {
 					error("Tipo no valido: " + exprTipo, DymeLanguagePackage.Literals.ASIGNACION__VALOR_ASIG);
 				}
 			}else {
 				Tipo myTipo = new TipoImpl();
-				myTipo.setType(exprTipo);
-				asg.setTip(myTipo);
+				myTipo.setTipo(exprTipo);
+				asg.setTipoClass(myTipo);
 			}
 		}else {
 			error("No es un valor valido", DymeLanguagePackage.Literals.ASIGNACION__VALOR_ASIG);
+		}
+	}
+	
+	@Check
+	public void verificarTiposDeExprComp(ExprComparacion exprCom) {
+		String exprIzqTipo = obtenerValorExpr(exprCom.getExprComIzq());
+		String exprDerTipo = obtenerValorExpr(exprCom.getExprComDer());
+		String operador = exprCom.getOperadorComp();
+		/*
+		System.out.println("Izq " + exprIzqTipo);
+		System.out.println("Der " + exprDerTipo);
+		System.out.println("op " + operador);
+		*/
+		if (!exprIzqTipo.equals(exprDerTipo)) {
+			if (operador.equals("==") || operador.equals("~")) {
+				if ( !((exprIzqTipo.equals("Planeta") && exprDerTipo.equals("PolvoEstelar")
+						|| (exprIzqTipo.equals("PolvoEstelar") && exprDerTipo.equals("Planeta"))
+						|| (exprIzqTipo.equals("Constelacion") && exprDerTipo.equals("Estrella"))
+						|| (exprIzqTipo.equals("Estrella") && exprDerTipo.equals("Constelacion")))) ) {
+					error("Comparacion de tipos invalida",
+							DymeLanguagePackage.Literals.EXPR_COMPARACION__EXPR_COM_DER.getEOpposite());
+				}
+			} else {
+				if ( !((exprIzqTipo.equals("Planeta") && exprDerTipo.equals("PolvoEstelar")
+						|| (exprIzqTipo.equals("PolvoEstelar") && exprDerTipo.equals("Planeta")))) ){
+					error("Comparacion de tipos invalida",
+							DymeLanguagePackage.Literals.EXPR_COMPARACION__EXPR_COM_DER.getEOpposite());
+				}
+			}
+		} else {
+			if(!(operador.equals("==") || operador.equals("~"))) {
+				if(exprIzqTipo.equals("Constelacion") || exprIzqTipo.equals("Estrella")  || exprIzqTipo.equals("Luna") ) {
+					error("Operador no valido para esta comparacion",
+							DymeLanguagePackage.Literals.EXPR_COMPARACION__EXPR_COM_DER.getEOpposite());
+				}
+			}
 		}
 	}
 	
