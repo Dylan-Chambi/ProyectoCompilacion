@@ -3,10 +3,10 @@
  */
 package edu.upb.lp.isc.dymeLanguage.impl;
 
+import edu.upb.lp.isc.dymeLanguage.Declaracion;
 import edu.upb.lp.isc.dymeLanguage.DymeLanguagePackage;
-import edu.upb.lp.isc.dymeLanguage.Expresion;
-import edu.upb.lp.isc.dymeLanguage.Funcion;
 import edu.upb.lp.isc.dymeLanguage.LlamadoFunc;
+import edu.upb.lp.isc.dymeLanguage.Valor;
 
 import java.util.Collection;
 
@@ -31,7 +31,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link edu.upb.lp.isc.dymeLanguage.impl.LlamadoFuncImpl#getFuncion <em>Funcion</em>}</li>
+ *   <li>{@link edu.upb.lp.isc.dymeLanguage.impl.LlamadoFuncImpl#getFuncionID <em>Funcion ID</em>}</li>
  *   <li>{@link edu.upb.lp.isc.dymeLanguage.impl.LlamadoFuncImpl#getArgs <em>Args</em>}</li>
  * </ul>
  *
@@ -40,14 +40,14 @@ import org.eclipse.emf.ecore.util.InternalEList;
 public class LlamadoFuncImpl extends ExpresionImpl implements LlamadoFunc
 {
   /**
-   * The cached value of the '{@link #getFuncion() <em>Funcion</em>}' reference.
+   * The cached value of the '{@link #getFuncionID() <em>Funcion ID</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getFuncion()
+   * @see #getFuncionID()
    * @generated
    * @ordered
    */
-  protected Funcion funcion;
+  protected Declaracion funcionID;
 
   /**
    * The cached value of the '{@link #getArgs() <em>Args</em>}' containment reference list.
@@ -57,7 +57,7 @@ public class LlamadoFuncImpl extends ExpresionImpl implements LlamadoFunc
    * @generated
    * @ordered
    */
-  protected EList<Expresion> args;
+  protected EList<Valor> args;
 
   /**
    * <!-- begin-user-doc -->
@@ -86,19 +86,19 @@ public class LlamadoFuncImpl extends ExpresionImpl implements LlamadoFunc
    * @generated
    */
   @Override
-  public Funcion getFuncion()
+  public Declaracion getFuncionID()
   {
-    if (funcion != null && funcion.eIsProxy())
+    if (funcionID != null && funcionID.eIsProxy())
     {
-      InternalEObject oldFuncion = (InternalEObject)funcion;
-      funcion = (Funcion)eResolveProxy(oldFuncion);
-      if (funcion != oldFuncion)
+      InternalEObject oldFuncionID = (InternalEObject)funcionID;
+      funcionID = (Declaracion)eResolveProxy(oldFuncionID);
+      if (funcionID != oldFuncionID)
       {
         if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, DymeLanguagePackage.LLAMADO_FUNC__FUNCION, oldFuncion, funcion));
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, DymeLanguagePackage.LLAMADO_FUNC__FUNCION_ID, oldFuncionID, funcionID));
       }
     }
-    return funcion;
+    return funcionID;
   }
 
   /**
@@ -106,9 +106,9 @@ public class LlamadoFuncImpl extends ExpresionImpl implements LlamadoFunc
    * <!-- end-user-doc -->
    * @generated
    */
-  public Funcion basicGetFuncion()
+  public Declaracion basicGetFuncionID()
   {
-    return funcion;
+    return funcionID;
   }
 
   /**
@@ -117,12 +117,12 @@ public class LlamadoFuncImpl extends ExpresionImpl implements LlamadoFunc
    * @generated
    */
   @Override
-  public void setFuncion(Funcion newFuncion)
+  public void setFuncionID(Declaracion newFuncionID)
   {
-    Funcion oldFuncion = funcion;
-    funcion = newFuncion;
+    Declaracion oldFuncionID = funcionID;
+    funcionID = newFuncionID;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DymeLanguagePackage.LLAMADO_FUNC__FUNCION, oldFuncion, funcion));
+      eNotify(new ENotificationImpl(this, Notification.SET, DymeLanguagePackage.LLAMADO_FUNC__FUNCION_ID, oldFuncionID, funcionID));
   }
 
   /**
@@ -131,11 +131,11 @@ public class LlamadoFuncImpl extends ExpresionImpl implements LlamadoFunc
    * @generated
    */
   @Override
-  public EList<Expresion> getArgs()
+  public EList<Valor> getArgs()
   {
     if (args == null)
     {
-      args = new EObjectContainmentEList<Expresion>(Expresion.class, this, DymeLanguagePackage.LLAMADO_FUNC__ARGS);
+      args = new EObjectContainmentEList<Valor>(Valor.class, this, DymeLanguagePackage.LLAMADO_FUNC__ARGS);
     }
     return args;
   }
@@ -166,9 +166,9 @@ public class LlamadoFuncImpl extends ExpresionImpl implements LlamadoFunc
   {
     switch (featureID)
     {
-      case DymeLanguagePackage.LLAMADO_FUNC__FUNCION:
-        if (resolve) return getFuncion();
-        return basicGetFuncion();
+      case DymeLanguagePackage.LLAMADO_FUNC__FUNCION_ID:
+        if (resolve) return getFuncionID();
+        return basicGetFuncionID();
       case DymeLanguagePackage.LLAMADO_FUNC__ARGS:
         return getArgs();
     }
@@ -186,12 +186,12 @@ public class LlamadoFuncImpl extends ExpresionImpl implements LlamadoFunc
   {
     switch (featureID)
     {
-      case DymeLanguagePackage.LLAMADO_FUNC__FUNCION:
-        setFuncion((Funcion)newValue);
+      case DymeLanguagePackage.LLAMADO_FUNC__FUNCION_ID:
+        setFuncionID((Declaracion)newValue);
         return;
       case DymeLanguagePackage.LLAMADO_FUNC__ARGS:
         getArgs().clear();
-        getArgs().addAll((Collection<? extends Expresion>)newValue);
+        getArgs().addAll((Collection<? extends Valor>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -207,8 +207,8 @@ public class LlamadoFuncImpl extends ExpresionImpl implements LlamadoFunc
   {
     switch (featureID)
     {
-      case DymeLanguagePackage.LLAMADO_FUNC__FUNCION:
-        setFuncion((Funcion)null);
+      case DymeLanguagePackage.LLAMADO_FUNC__FUNCION_ID:
+        setFuncionID((Declaracion)null);
         return;
       case DymeLanguagePackage.LLAMADO_FUNC__ARGS:
         getArgs().clear();
@@ -227,8 +227,8 @@ public class LlamadoFuncImpl extends ExpresionImpl implements LlamadoFunc
   {
     switch (featureID)
     {
-      case DymeLanguagePackage.LLAMADO_FUNC__FUNCION:
-        return funcion != null;
+      case DymeLanguagePackage.LLAMADO_FUNC__FUNCION_ID:
+        return funcionID != null;
       case DymeLanguagePackage.LLAMADO_FUNC__ARGS:
         return args != null && !args.isEmpty();
     }

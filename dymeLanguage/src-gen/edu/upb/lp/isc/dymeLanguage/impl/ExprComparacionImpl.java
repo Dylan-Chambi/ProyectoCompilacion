@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -30,7 +31,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class ExprComparacionImpl extends ExprLogicaImpl implements ExprComparacion
+public class ExprComparacionImpl extends MinimalEObjectImpl.Container implements ExprComparacion
 {
   /**
    * The default value of the '{@link #getOperadorComp() <em>Operador Comp</em>}' attribute.

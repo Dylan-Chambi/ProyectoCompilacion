@@ -3,7 +3,6 @@
  */
 package edu.upb.lp.isc.dymeLanguage;
 
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -15,6 +14,6 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface Expresion extends EObject
+public interface Expresion extends Valor
 {
 } // Expresion

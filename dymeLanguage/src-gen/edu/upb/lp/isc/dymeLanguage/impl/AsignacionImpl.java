@@ -5,8 +5,8 @@ package edu.upb.lp.isc.dymeLanguage.impl;
 
 import edu.upb.lp.isc.dymeLanguage.Asignacion;
 import edu.upb.lp.isc.dymeLanguage.DymeLanguagePackage;
-import edu.upb.lp.isc.dymeLanguage.Expresion;
-import edu.upb.lp.isc.dymeLanguage.TipoFuncionOrdenSuperior;
+import edu.upb.lp.isc.dymeLanguage.Objeto;
+import edu.upb.lp.isc.dymeLanguage.Valor;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -32,7 +32,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class AsignacionImpl extends InstruccionImpl implements Asignacion
+public class AsignacionImpl extends DeclaracionImpl implements Asignacion
 {
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -82,7 +82,7 @@ public class AsignacionImpl extends InstruccionImpl implements Asignacion
    * @generated
    * @ordered
    */
-  protected TipoFuncionOrdenSuperior tipoClass;
+  protected Objeto tipoClass;
 
   /**
    * The cached value of the '{@link #getValorAsig() <em>Valor Asig</em>}' containment reference.
@@ -92,7 +92,7 @@ public class AsignacionImpl extends InstruccionImpl implements Asignacion
    * @generated
    * @ordered
    */
-  protected Expresion valorAsig;
+  protected Valor valorAsig;
 
   /**
    * <!-- begin-user-doc -->
@@ -171,7 +171,7 @@ public class AsignacionImpl extends InstruccionImpl implements Asignacion
    * @generated
    */
   @Override
-  public TipoFuncionOrdenSuperior getTipoClass()
+  public Objeto getTipoClass()
   {
     return tipoClass;
   }
@@ -181,9 +181,9 @@ public class AsignacionImpl extends InstruccionImpl implements Asignacion
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetTipoClass(TipoFuncionOrdenSuperior newTipoClass, NotificationChain msgs)
+  public NotificationChain basicSetTipoClass(Objeto newTipoClass, NotificationChain msgs)
   {
-    TipoFuncionOrdenSuperior oldTipoClass = tipoClass;
+    Objeto oldTipoClass = tipoClass;
     tipoClass = newTipoClass;
     if (eNotificationRequired())
     {
@@ -199,7 +199,7 @@ public class AsignacionImpl extends InstruccionImpl implements Asignacion
    * @generated
    */
   @Override
-  public void setTipoClass(TipoFuncionOrdenSuperior newTipoClass)
+  public void setTipoClass(Objeto newTipoClass)
   {
     if (newTipoClass != tipoClass)
     {
@@ -221,7 +221,7 @@ public class AsignacionImpl extends InstruccionImpl implements Asignacion
    * @generated
    */
   @Override
-  public Expresion getValorAsig()
+  public Valor getValorAsig()
   {
     return valorAsig;
   }
@@ -231,9 +231,9 @@ public class AsignacionImpl extends InstruccionImpl implements Asignacion
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetValorAsig(Expresion newValorAsig, NotificationChain msgs)
+  public NotificationChain basicSetValorAsig(Valor newValorAsig, NotificationChain msgs)
   {
-    Expresion oldValorAsig = valorAsig;
+    Valor oldValorAsig = valorAsig;
     valorAsig = newValorAsig;
     if (eNotificationRequired())
     {
@@ -249,7 +249,7 @@ public class AsignacionImpl extends InstruccionImpl implements Asignacion
    * @generated
    */
   @Override
-  public void setValorAsig(Expresion newValorAsig)
+  public void setValorAsig(Valor newValorAsig)
   {
     if (newValorAsig != valorAsig)
     {
@@ -322,10 +322,10 @@ public class AsignacionImpl extends InstruccionImpl implements Asignacion
         setTipoInferido((Boolean)newValue);
         return;
       case DymeLanguagePackage.ASIGNACION__TIPO_CLASS:
-        setTipoClass((TipoFuncionOrdenSuperior)newValue);
+        setTipoClass((Objeto)newValue);
         return;
       case DymeLanguagePackage.ASIGNACION__VALOR_ASIG:
-        setValorAsig((Expresion)newValue);
+        setValorAsig((Valor)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -348,10 +348,10 @@ public class AsignacionImpl extends InstruccionImpl implements Asignacion
         setTipoInferido(TIPO_INFERIDO_EDEFAULT);
         return;
       case DymeLanguagePackage.ASIGNACION__TIPO_CLASS:
-        setTipoClass((TipoFuncionOrdenSuperior)null);
+        setTipoClass((Objeto)null);
         return;
       case DymeLanguagePackage.ASIGNACION__VALOR_ASIG:
-        setValorAsig((Expresion)null);
+        setValorAsig((Valor)null);
         return;
     }
     super.eUnset(featureID);

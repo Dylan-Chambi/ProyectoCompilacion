@@ -16,7 +16,8 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link edu.upb.lp.isc.dymeLanguage.Programa#getFunc <em>Func</em>}</li>
+ *   <li>{@link edu.upb.lp.isc.dymeLanguage.Programa#getName <em>Name</em>}</li>
+ *   <li>{@link edu.upb.lp.isc.dymeLanguage.Programa#getProg <em>Prog</em>}</li>
  * </ul>
  *
  * @see edu.upb.lp.isc.dymeLanguage.DymeLanguagePackage#getPrograma()
@@ -26,15 +27,37 @@ import org.eclipse.emf.ecore.EObject;
 public interface Programa extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Func</b></em>' containment reference list.
-   * The list contents are of type {@link edu.upb.lp.isc.dymeLanguage.Funcion}.
+   * Returns the value of the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Func</em>' containment reference list.
-   * @see edu.upb.lp.isc.dymeLanguage.DymeLanguagePackage#getPrograma_Func()
+   * @return the value of the '<em>Name</em>' attribute.
+   * @see #setName(String)
+   * @see edu.upb.lp.isc.dymeLanguage.DymeLanguagePackage#getPrograma_Name()
+   * @model
+   * @generated
+   */
+  String getName();
+
+  /**
+   * Sets the value of the '{@link edu.upb.lp.isc.dymeLanguage.Programa#getName <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Name</em>' attribute.
+   * @see #getName()
+   * @generated
+   */
+  void setName(String value);
+
+  /**
+   * Returns the value of the '<em><b>Prog</b></em>' containment reference list.
+   * The list contents are of type {@link edu.upb.lp.isc.dymeLanguage.Instrucciones}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Prog</em>' containment reference list.
+   * @see edu.upb.lp.isc.dymeLanguage.DymeLanguagePackage#getPrograma_Prog()
    * @model containment="true"
    * @generated
    */
-  EList<Funcion> getFunc();
+  EList<Instrucciones> getProg();
 
 } // Programa

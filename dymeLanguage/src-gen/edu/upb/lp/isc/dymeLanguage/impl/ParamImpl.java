@@ -5,16 +5,23 @@ package edu.upb.lp.isc.dymeLanguage.impl;
 
 import edu.upb.lp.isc.dymeLanguage.DymeLanguagePackage;
 import edu.upb.lp.isc.dymeLanguage.Param;
+import edu.upb.lp.isc.dymeLanguage.Primitivo;
 import edu.upb.lp.isc.dymeLanguage.TipoFuncionOrdenSuperior;
+
+import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -25,12 +32,14 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * </p>
  * <ul>
  *   <li>{@link edu.upb.lp.isc.dymeLanguage.impl.ParamImpl#getName <em>Name</em>}</li>
- *   <li>{@link edu.upb.lp.isc.dymeLanguage.impl.ParamImpl#getTipoClass <em>Tipo Class</em>}</li>
+ *   <li>{@link edu.upb.lp.isc.dymeLanguage.impl.ParamImpl#getParam <em>Param</em>}</li>
+ *   <li>{@link edu.upb.lp.isc.dymeLanguage.impl.ParamImpl#isTipoRetorno <em>Tipo Retorno</em>}</li>
+ *   <li>{@link edu.upb.lp.isc.dymeLanguage.impl.ParamImpl#getReturnTipo <em>Return Tipo</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ParamImpl extends MinimalEObjectImpl.Container implements Param
+public class ParamImpl extends DeclaracionImpl implements Param
 {
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -53,14 +62,44 @@ public class ParamImpl extends MinimalEObjectImpl.Container implements Param
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getTipoClass() <em>Tipo Class</em>}' containment reference.
+   * The cached value of the '{@link #getParam() <em>Param</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getTipoClass()
+   * @see #getParam()
    * @generated
    * @ordered
    */
-  protected TipoFuncionOrdenSuperior tipoClass;
+  protected EList<TipoFuncionOrdenSuperior> param;
+
+  /**
+   * The default value of the '{@link #isTipoRetorno() <em>Tipo Retorno</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isTipoRetorno()
+   * @generated
+   * @ordered
+   */
+  protected static final boolean TIPO_RETORNO_EDEFAULT = false;
+
+  /**
+   * The cached value of the '{@link #isTipoRetorno() <em>Tipo Retorno</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isTipoRetorno()
+   * @generated
+   * @ordered
+   */
+  protected boolean tipoRetorno = TIPO_RETORNO_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getReturnTipo() <em>Return Tipo</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getReturnTipo()
+   * @generated
+   * @ordered
+   */
+  protected Primitivo returnTipo;
 
   /**
    * <!-- begin-user-doc -->
@@ -114,9 +153,13 @@ public class ParamImpl extends MinimalEObjectImpl.Container implements Param
    * @generated
    */
   @Override
-  public TipoFuncionOrdenSuperior getTipoClass()
+  public EList<TipoFuncionOrdenSuperior> getParam()
   {
-    return tipoClass;
+    if (param == null)
+    {
+      param = new EObjectContainmentEList<TipoFuncionOrdenSuperior>(TipoFuncionOrdenSuperior.class, this, DymeLanguagePackage.PARAM__PARAM);
+    }
+    return param;
   }
 
   /**
@@ -124,13 +167,49 @@ public class ParamImpl extends MinimalEObjectImpl.Container implements Param
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetTipoClass(TipoFuncionOrdenSuperior newTipoClass, NotificationChain msgs)
+  @Override
+  public boolean isTipoRetorno()
   {
-    TipoFuncionOrdenSuperior oldTipoClass = tipoClass;
-    tipoClass = newTipoClass;
+    return tipoRetorno;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setTipoRetorno(boolean newTipoRetorno)
+  {
+    boolean oldTipoRetorno = tipoRetorno;
+    tipoRetorno = newTipoRetorno;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DymeLanguagePackage.PARAM__TIPO_RETORNO, oldTipoRetorno, tipoRetorno));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Primitivo getReturnTipo()
+  {
+    return returnTipo;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetReturnTipo(Primitivo newReturnTipo, NotificationChain msgs)
+  {
+    Primitivo oldReturnTipo = returnTipo;
+    returnTipo = newReturnTipo;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DymeLanguagePackage.PARAM__TIPO_CLASS, oldTipoClass, newTipoClass);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DymeLanguagePackage.PARAM__RETURN_TIPO, oldReturnTipo, newReturnTipo);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -142,20 +221,20 @@ public class ParamImpl extends MinimalEObjectImpl.Container implements Param
    * @generated
    */
   @Override
-  public void setTipoClass(TipoFuncionOrdenSuperior newTipoClass)
+  public void setReturnTipo(Primitivo newReturnTipo)
   {
-    if (newTipoClass != tipoClass)
+    if (newReturnTipo != returnTipo)
     {
       NotificationChain msgs = null;
-      if (tipoClass != null)
-        msgs = ((InternalEObject)tipoClass).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DymeLanguagePackage.PARAM__TIPO_CLASS, null, msgs);
-      if (newTipoClass != null)
-        msgs = ((InternalEObject)newTipoClass).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DymeLanguagePackage.PARAM__TIPO_CLASS, null, msgs);
-      msgs = basicSetTipoClass(newTipoClass, msgs);
+      if (returnTipo != null)
+        msgs = ((InternalEObject)returnTipo).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DymeLanguagePackage.PARAM__RETURN_TIPO, null, msgs);
+      if (newReturnTipo != null)
+        msgs = ((InternalEObject)newReturnTipo).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DymeLanguagePackage.PARAM__RETURN_TIPO, null, msgs);
+      msgs = basicSetReturnTipo(newReturnTipo, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DymeLanguagePackage.PARAM__TIPO_CLASS, newTipoClass, newTipoClass));
+      eNotify(new ENotificationImpl(this, Notification.SET, DymeLanguagePackage.PARAM__RETURN_TIPO, newReturnTipo, newReturnTipo));
   }
 
   /**
@@ -168,8 +247,10 @@ public class ParamImpl extends MinimalEObjectImpl.Container implements Param
   {
     switch (featureID)
     {
-      case DymeLanguagePackage.PARAM__TIPO_CLASS:
-        return basicSetTipoClass(null, msgs);
+      case DymeLanguagePackage.PARAM__PARAM:
+        return ((InternalEList<?>)getParam()).basicRemove(otherEnd, msgs);
+      case DymeLanguagePackage.PARAM__RETURN_TIPO:
+        return basicSetReturnTipo(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -186,8 +267,12 @@ public class ParamImpl extends MinimalEObjectImpl.Container implements Param
     {
       case DymeLanguagePackage.PARAM__NAME:
         return getName();
-      case DymeLanguagePackage.PARAM__TIPO_CLASS:
-        return getTipoClass();
+      case DymeLanguagePackage.PARAM__PARAM:
+        return getParam();
+      case DymeLanguagePackage.PARAM__TIPO_RETORNO:
+        return isTipoRetorno();
+      case DymeLanguagePackage.PARAM__RETURN_TIPO:
+        return getReturnTipo();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -197,6 +282,7 @@ public class ParamImpl extends MinimalEObjectImpl.Container implements Param
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
@@ -205,8 +291,15 @@ public class ParamImpl extends MinimalEObjectImpl.Container implements Param
       case DymeLanguagePackage.PARAM__NAME:
         setName((String)newValue);
         return;
-      case DymeLanguagePackage.PARAM__TIPO_CLASS:
-        setTipoClass((TipoFuncionOrdenSuperior)newValue);
+      case DymeLanguagePackage.PARAM__PARAM:
+        getParam().clear();
+        getParam().addAll((Collection<? extends TipoFuncionOrdenSuperior>)newValue);
+        return;
+      case DymeLanguagePackage.PARAM__TIPO_RETORNO:
+        setTipoRetorno((Boolean)newValue);
+        return;
+      case DymeLanguagePackage.PARAM__RETURN_TIPO:
+        setReturnTipo((Primitivo)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -225,8 +318,14 @@ public class ParamImpl extends MinimalEObjectImpl.Container implements Param
       case DymeLanguagePackage.PARAM__NAME:
         setName(NAME_EDEFAULT);
         return;
-      case DymeLanguagePackage.PARAM__TIPO_CLASS:
-        setTipoClass((TipoFuncionOrdenSuperior)null);
+      case DymeLanguagePackage.PARAM__PARAM:
+        getParam().clear();
+        return;
+      case DymeLanguagePackage.PARAM__TIPO_RETORNO:
+        setTipoRetorno(TIPO_RETORNO_EDEFAULT);
+        return;
+      case DymeLanguagePackage.PARAM__RETURN_TIPO:
+        setReturnTipo((Primitivo)null);
         return;
     }
     super.eUnset(featureID);
@@ -244,8 +343,12 @@ public class ParamImpl extends MinimalEObjectImpl.Container implements Param
     {
       case DymeLanguagePackage.PARAM__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case DymeLanguagePackage.PARAM__TIPO_CLASS:
-        return tipoClass != null;
+      case DymeLanguagePackage.PARAM__PARAM:
+        return param != null && !param.isEmpty();
+      case DymeLanguagePackage.PARAM__TIPO_RETORNO:
+        return tipoRetorno != TIPO_RETORNO_EDEFAULT;
+      case DymeLanguagePackage.PARAM__RETURN_TIPO:
+        return returnTipo != null;
     }
     return super.eIsSet(featureID);
   }
@@ -263,6 +366,8 @@ public class ParamImpl extends MinimalEObjectImpl.Container implements Param
     StringBuilder result = new StringBuilder(super.toString());
     result.append(" (name: ");
     result.append(name);
+    result.append(", tipoRetorno: ");
+    result.append(tipoRetorno);
     result.append(')');
     return result.toString();
   }

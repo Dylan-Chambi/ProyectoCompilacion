@@ -4,6 +4,8 @@
 package edu.upb.lp.isc.dymeLanguage.impl;
 
 import edu.upb.lp.isc.dymeLanguage.DymeLanguagePackage;
+import edu.upb.lp.isc.dymeLanguage.Objeto;
+import edu.upb.lp.isc.dymeLanguage.Primitivo;
 import edu.upb.lp.isc.dymeLanguage.TipoFuncionOrdenSuperior;
 
 import java.util.Collection;
@@ -68,7 +70,7 @@ public class TipoFuncionOrdenSuperiorImpl extends MinimalEObjectImpl.Container i
    * @generated
    * @ordered
    */
-  protected EList<TipoFuncionOrdenSuperior> paramFunc;
+  protected EList<Objeto> paramFunc;
 
   /**
    * The default value of the '{@link #isReturnTipoFunc() <em>Return Tipo Func</em>}' attribute.
@@ -98,7 +100,7 @@ public class TipoFuncionOrdenSuperiorImpl extends MinimalEObjectImpl.Container i
    * @generated
    * @ordered
    */
-  protected TipoFuncionOrdenSuperior returnFunc;
+  protected Primitivo returnFunc;
 
   /**
    * <!-- begin-user-doc -->
@@ -152,11 +154,11 @@ public class TipoFuncionOrdenSuperiorImpl extends MinimalEObjectImpl.Container i
    * @generated
    */
   @Override
-  public EList<TipoFuncionOrdenSuperior> getParamFunc()
+  public EList<Objeto> getParamFunc()
   {
     if (paramFunc == null)
     {
-      paramFunc = new EObjectContainmentEList<TipoFuncionOrdenSuperior>(TipoFuncionOrdenSuperior.class, this, DymeLanguagePackage.TIPO_FUNCION_ORDEN_SUPERIOR__PARAM_FUNC);
+      paramFunc = new EObjectContainmentEList<Objeto>(Objeto.class, this, DymeLanguagePackage.TIPO_FUNCION_ORDEN_SUPERIOR__PARAM_FUNC);
     }
     return paramFunc;
   }
@@ -192,7 +194,7 @@ public class TipoFuncionOrdenSuperiorImpl extends MinimalEObjectImpl.Container i
    * @generated
    */
   @Override
-  public TipoFuncionOrdenSuperior getReturnFunc()
+  public Primitivo getReturnFunc()
   {
     return returnFunc;
   }
@@ -202,9 +204,9 @@ public class TipoFuncionOrdenSuperiorImpl extends MinimalEObjectImpl.Container i
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetReturnFunc(TipoFuncionOrdenSuperior newReturnFunc, NotificationChain msgs)
+  public NotificationChain basicSetReturnFunc(Primitivo newReturnFunc, NotificationChain msgs)
   {
-    TipoFuncionOrdenSuperior oldReturnFunc = returnFunc;
+    Primitivo oldReturnFunc = returnFunc;
     returnFunc = newReturnFunc;
     if (eNotificationRequired())
     {
@@ -220,7 +222,7 @@ public class TipoFuncionOrdenSuperiorImpl extends MinimalEObjectImpl.Container i
    * @generated
    */
   @Override
-  public void setReturnFunc(TipoFuncionOrdenSuperior newReturnFunc)
+  public void setReturnFunc(Primitivo newReturnFunc)
   {
     if (newReturnFunc != returnFunc)
     {
@@ -292,13 +294,13 @@ public class TipoFuncionOrdenSuperiorImpl extends MinimalEObjectImpl.Container i
         return;
       case DymeLanguagePackage.TIPO_FUNCION_ORDEN_SUPERIOR__PARAM_FUNC:
         getParamFunc().clear();
-        getParamFunc().addAll((Collection<? extends TipoFuncionOrdenSuperior>)newValue);
+        getParamFunc().addAll((Collection<? extends Objeto>)newValue);
         return;
       case DymeLanguagePackage.TIPO_FUNCION_ORDEN_SUPERIOR__RETURN_TIPO_FUNC:
         setReturnTipoFunc((Boolean)newValue);
         return;
       case DymeLanguagePackage.TIPO_FUNCION_ORDEN_SUPERIOR__RETURN_FUNC:
-        setReturnFunc((TipoFuncionOrdenSuperior)newValue);
+        setReturnFunc((Primitivo)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -324,7 +326,7 @@ public class TipoFuncionOrdenSuperiorImpl extends MinimalEObjectImpl.Container i
         setReturnTipoFunc(RETURN_TIPO_FUNC_EDEFAULT);
         return;
       case DymeLanguagePackage.TIPO_FUNCION_ORDEN_SUPERIOR__RETURN_FUNC:
-        setReturnFunc((TipoFuncionOrdenSuperior)null);
+        setReturnFunc((Primitivo)null);
         return;
     }
     super.eUnset(featureID);

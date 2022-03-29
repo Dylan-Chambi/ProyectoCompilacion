@@ -4,7 +4,7 @@
 package edu.upb.lp.isc.dymeLanguage.impl;
 
 import edu.upb.lp.isc.dymeLanguage.DymeLanguagePackage;
-import edu.upb.lp.isc.dymeLanguage.Tipo;
+import edu.upb.lp.isc.dymeLanguage.Primitivo;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -14,18 +14,18 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Tipo</b></em>'.
+ * An implementation of the model object '<em><b>Primitivo</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link edu.upb.lp.isc.dymeLanguage.impl.TipoImpl#getTipo <em>Tipo</em>}</li>
+ *   <li>{@link edu.upb.lp.isc.dymeLanguage.impl.PrimitivoImpl#getTipo <em>Tipo</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class TipoImpl extends TipoFuncionOrdenSuperiorImpl implements Tipo
+public class PrimitivoImpl extends ObjetoImpl implements Primitivo
 {
   /**
    * The default value of the '{@link #getTipo() <em>Tipo</em>}' attribute.
@@ -52,7 +52,7 @@ public class TipoImpl extends TipoFuncionOrdenSuperiorImpl implements Tipo
    * <!-- end-user-doc -->
    * @generated
    */
-  public TipoImpl()
+  protected PrimitivoImpl()
   {
     super();
   }
@@ -65,7 +65,7 @@ public class TipoImpl extends TipoFuncionOrdenSuperiorImpl implements Tipo
   @Override
   protected EClass eStaticClass()
   {
-    return DymeLanguagePackage.Literals.TIPO;
+    return DymeLanguagePackage.Literals.PRIMITIVO;
   }
 
   /**
@@ -90,7 +90,7 @@ public class TipoImpl extends TipoFuncionOrdenSuperiorImpl implements Tipo
     String oldTipo = tipo;
     tipo = newTipo;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DymeLanguagePackage.TIPO__TIPO, oldTipo, tipo));
+      eNotify(new ENotificationImpl(this, Notification.SET, DymeLanguagePackage.PRIMITIVO__TIPO, oldTipo, tipo));
   }
 
   /**
@@ -103,7 +103,7 @@ public class TipoImpl extends TipoFuncionOrdenSuperiorImpl implements Tipo
   {
     switch (featureID)
     {
-      case DymeLanguagePackage.TIPO__TIPO:
+      case DymeLanguagePackage.PRIMITIVO__TIPO:
         return getTipo();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -119,7 +119,7 @@ public class TipoImpl extends TipoFuncionOrdenSuperiorImpl implements Tipo
   {
     switch (featureID)
     {
-      case DymeLanguagePackage.TIPO__TIPO:
+      case DymeLanguagePackage.PRIMITIVO__TIPO:
         setTipo((String)newValue);
         return;
     }
@@ -136,7 +136,7 @@ public class TipoImpl extends TipoFuncionOrdenSuperiorImpl implements Tipo
   {
     switch (featureID)
     {
-      case DymeLanguagePackage.TIPO__TIPO:
+      case DymeLanguagePackage.PRIMITIVO__TIPO:
         setTipo(TIPO_EDEFAULT);
         return;
     }
@@ -153,7 +153,7 @@ public class TipoImpl extends TipoFuncionOrdenSuperiorImpl implements Tipo
   {
     switch (featureID)
     {
-      case DymeLanguagePackage.TIPO__TIPO:
+      case DymeLanguagePackage.PRIMITIVO__TIPO:
         return TIPO_EDEFAULT == null ? tipo != null : !TIPO_EDEFAULT.equals(tipo);
     }
     return super.eIsSet(featureID);
@@ -176,4 +176,4 @@ public class TipoImpl extends TipoFuncionOrdenSuperiorImpl implements Tipo
     return result.toString();
   }
 
-} //TipoImpl
+} //PrimitivoImpl

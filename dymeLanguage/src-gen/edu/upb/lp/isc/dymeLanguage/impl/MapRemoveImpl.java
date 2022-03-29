@@ -4,27 +4,25 @@
 package edu.upb.lp.isc.dymeLanguage.impl;
 
 import edu.upb.lp.isc.dymeLanguage.DymeLanguagePackage;
-import edu.upb.lp.isc.dymeLanguage.Instruccion;
+import edu.upb.lp.isc.dymeLanguage.MapRemove;
 
 import org.eclipse.emf.ecore.EClass;
 
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Instruccion</b></em>'.
+ * An implementation of the model object '<em><b>Map Remove</b></em>'.
  * <!-- end-user-doc -->
  *
  * @generated
  */
-public class InstruccionImpl extends MinimalEObjectImpl.Container implements Instruccion
+public class MapRemoveImpl extends ExprMapOperacionesImpl implements MapRemove
 {
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected InstruccionImpl()
+  protected MapRemoveImpl()
   {
     super();
   }
@@ -37,7 +35,7 @@ public class InstruccionImpl extends MinimalEObjectImpl.Container implements Ins
   @Override
   protected EClass eStaticClass()
   {
-    return DymeLanguagePackage.Literals.INSTRUCCION;
+    return DymeLanguagePackage.Literals.MAP_REMOVE;
   }
 
-} //InstruccionImpl
+} //MapRemoveImpl

@@ -3,6 +3,7 @@
  */
 package edu.upb.lp.isc.dymeLanguage;
 
+import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -22,7 +23,7 @@ package edu.upb.lp.isc.dymeLanguage;
  * @model
  * @generated
  */
-public interface ExprComparacion extends ExprLogica
+public interface ExprComparacion extends EObject
 {
   /**
    * Returns the value of the '<em><b>Operador Comp</b></em>' attribute.

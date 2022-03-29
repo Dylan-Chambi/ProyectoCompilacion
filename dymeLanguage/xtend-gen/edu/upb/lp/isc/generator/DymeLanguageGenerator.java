@@ -3,10 +3,52 @@
  */
 package edu.upb.lp.isc.generator;
 
+import edu.upb.lp.isc.dymeLanguage.Asignacion;
+import edu.upb.lp.isc.dymeLanguage.CalistoMapTipo;
+import edu.upb.lp.isc.dymeLanguage.CalistoMapValor;
+import edu.upb.lp.isc.dymeLanguage.Constante;
+import edu.upb.lp.isc.dymeLanguage.Constelacion;
+import edu.upb.lp.isc.dymeLanguage.Declaracion;
+import edu.upb.lp.isc.dymeLanguage.Estrella;
+import edu.upb.lp.isc.dymeLanguage.EstrellaFugazMeteoro;
+import edu.upb.lp.isc.dymeLanguage.ExprAritmetica;
+import edu.upb.lp.isc.dymeLanguage.ExprComparacion;
+import edu.upb.lp.isc.dymeLanguage.ExprConcatenacion;
+import edu.upb.lp.isc.dymeLanguage.ExprLogica;
+import edu.upb.lp.isc.dymeLanguage.ExprLogicaOperadores;
+import edu.upb.lp.isc.dymeLanguage.ExprMapOperaciones;
+import edu.upb.lp.isc.dymeLanguage.Expresion;
+import edu.upb.lp.isc.dymeLanguage.Funcion;
+import edu.upb.lp.isc.dymeLanguage.Instrucciones;
+import edu.upb.lp.isc.dymeLanguage.LlamadoFunc;
+import edu.upb.lp.isc.dymeLanguage.LlamadoMapa;
+import edu.upb.lp.isc.dymeLanguage.Luna;
+import edu.upb.lp.isc.dymeLanguage.MapAdd;
+import edu.upb.lp.isc.dymeLanguage.MapRemove;
+import edu.upb.lp.isc.dymeLanguage.Objeto;
+import edu.upb.lp.isc.dymeLanguage.Param;
+import edu.upb.lp.isc.dymeLanguage.Planeta;
+import edu.upb.lp.isc.dymeLanguage.PolvoEstelar;
+import edu.upb.lp.isc.dymeLanguage.Primitivo;
+import edu.upb.lp.isc.dymeLanguage.Print;
+import edu.upb.lp.isc.dymeLanguage.Programa;
+import edu.upb.lp.isc.dymeLanguage.TipoFuncionOrdenSuperior;
+import edu.upb.lp.isc.dymeLanguage.Valor;
+import edu.upb.lp.isc.dymeLanguage.XOR;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.AbstractGenerator;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.generator.IGeneratorContext;
+import org.eclipse.xtext.xbase.lib.CollectionLiterals;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.ListExtensions;
+import org.eclipse.xtext.xbase.lib.Procedures.Procedure2;
 
 /**
  * Generates code from your model files on save.
@@ -17,5 +59,663 @@ import org.eclipse.xtext.generator.IGeneratorContext;
 public class DymeLanguageGenerator extends AbstractGenerator {
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
+    EObject _get = resource.getContents().get(0);
+    final Programa program = ((Programa) _get);
+    String _name = program.getName();
+    String _plus = (_name + ".sc");
+    fsa.generateFile(_plus, this.generate(program));
+  }
+  
+  public CharSequence generate(final Programa prog) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("import scala.annotation.tailrec");
+    _builder.newLine();
+    _builder.newLine();
+    final Function1<Instrucciones, CharSequence> _function = (Instrucciones it) -> {
+      return this.generateInstr(it);
+    };
+    String _join = IterableExtensions.join(ListExtensions.<Instrucciones, CharSequence>map(prog.getProg(), _function), "\n");
+    _builder.append(_join);
+    _builder.newLineIfNotEmpty();
+    return _builder;
+  }
+  
+  public CharSequence generateProgram(final Instrucciones Inst) {
+    StringConcatenation _builder = new StringConcatenation();
+    CharSequence _generateInstr = this.generateInstr(Inst);
+    _builder.append(_generateInstr);
+    return _builder;
+  }
+  
+  protected CharSequence _generateInstr(final Declaracion declar) {
+    StringConcatenation _builder = new StringConcatenation();
+    CharSequence _generateDeclaracion = this.generateDeclaracion(declar);
+    _builder.append(_generateDeclaracion);
+    return _builder;
+  }
+  
+  protected CharSequence _generateInstr(final Valor valor) {
+    StringConcatenation _builder = new StringConcatenation();
+    CharSequence _generateValor = this.generateValor(valor);
+    _builder.append(_generateValor);
+    return _builder;
+  }
+  
+  protected CharSequence _generateDeclaracion(final Asignacion asig) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("val ");
+    String _name = asig.getName();
+    _builder.append(_name);
+    {
+      boolean _isTipoInferido = asig.isTipoInferido();
+      if (_isTipoInferido) {
+        _builder.append(": ");
+        CharSequence _generateTipoFuncionOrdenSuperior = this.generateTipoFuncionOrdenSuperior(asig.getTipoClass());
+        _builder.append(_generateTipoFuncionOrdenSuperior);
+      }
+    }
+    _builder.append(" = ");
+    Object _generateInstr = this.generateInstr(asig.getValorAsig());
+    _builder.append(_generateInstr);
+    _builder.newLineIfNotEmpty();
+    return _builder;
+  }
+  
+  protected CharSequence _generateDeclaracion(final Funcion func) {
+    StringConcatenation _builder = new StringConcatenation();
+    {
+      boolean _isGusano = func.isGusano();
+      if (_isGusano) {
+        _builder.append("@tailrec");
+      }
+    }
+    _builder.newLineIfNotEmpty();
+    _builder.append("def ");
+    String _name = func.getName();
+    _builder.append(_name);
+    _builder.append("(");
+    final Function1<Param, Object> _function = (Param it) -> {
+      return this.generateDeclaracion(it);
+    };
+    String _join = IterableExtensions.join(ListExtensions.<Param, Object>map(func.getParam(), _function), ", ");
+    _builder.append(_join);
+    _builder.append(")");
+    {
+      boolean _isTipoInferido = func.isTipoInferido();
+      if (_isTipoInferido) {
+        _builder.append(": ");
+        CharSequence _generateTipoFuncionOrdenSuperior = this.generateTipoFuncionOrdenSuperior(func.getTipoClass());
+        _builder.append(_generateTipoFuncionOrdenSuperior);
+        _builder.append(" ");
+      }
+    }
+    _builder.append(" = {");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    final Function1<Declaracion, Object> _function_1 = (Declaracion it) -> {
+      return this.generateInstr(it);
+    };
+    String _join_1 = IterableExtensions.join(ListExtensions.<Declaracion, Object>map(func.getDeclar(), _function_1));
+    _builder.append(_join_1, "\t");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    Object _generateInstr = this.generateInstr(func.getVal());
+    _builder.append(_generateInstr, "\t");
+    _builder.newLineIfNotEmpty();
+    _builder.append("}");
+    _builder.newLine();
+    return _builder;
+  }
+  
+  protected CharSequence _generateDeclaracion(final Param param) {
+    StringConcatenation _builder = new StringConcatenation();
+    String _name = param.getName();
+    _builder.append(_name);
+    _builder.append(": ");
+    final Function1<TipoFuncionOrdenSuperior, CharSequence> _function = (TipoFuncionOrdenSuperior it) -> {
+      return this.generateTipoFuncionOrdenSuperior(it);
+    };
+    String _join = IterableExtensions.join(ListExtensions.<TipoFuncionOrdenSuperior, CharSequence>map(param.getParam(), _function), ", ");
+    _builder.append(_join);
+    {
+      boolean _isTipoRetorno = param.isTipoRetorno();
+      if (_isTipoRetorno) {
+        _builder.append(" => ");
+        CharSequence _generateTipoFuncionOrdenSuperior = this.generateTipoFuncionOrdenSuperior(param.getReturnTipo());
+        _builder.append(_generateTipoFuncionOrdenSuperior);
+      }
+    }
+    return _builder;
+  }
+  
+  protected CharSequence _generateDeclaracion(final Print print) {
+    CharSequence _switchResult = null;
+    String _printTipo = print.getPrintTipo();
+    if (_printTipo != null) {
+      switch (_printTipo) {
+        case "Mensaje":
+          StringConcatenation _builder = new StringConcatenation();
+          _builder.append("print(");
+          CharSequence _generateValor = this.generateValor(print.getVal());
+          _builder.append(_generateValor);
+          _builder.append(")");
+          _switchResult = _builder;
+          break;
+        case "MensajeLineal":
+          StringConcatenation _builder_1 = new StringConcatenation();
+          _builder_1.append("println(");
+          CharSequence _generateValor_1 = this.generateValor(print.getVal());
+          _builder_1.append(_generateValor_1);
+          _builder_1.append(")");
+          _switchResult = _builder_1;
+          break;
+      }
+    }
+    return _switchResult;
+  }
+  
+  protected CharSequence _generateValor(final Expresion expr) {
+    StringConcatenation _builder = new StringConcatenation();
+    CharSequence _generateExpresion = this.generateExpresion(expr);
+    _builder.append(_generateExpresion);
+    return _builder;
+  }
+  
+  protected CharSequence _generateValor(final CalistoMapValor calisMapVaor) {
+    CharSequence _xblockexpression = null;
+    {
+      final ArrayList<Object> list = CollectionLiterals.<Object>newArrayList();
+      final Procedure2<Expresion, Integer> _function = (Expresion item, Integer index) -> {
+        CharSequence _generateExpresion = this.generateExpresion(item);
+        String _plus = (_generateExpresion + " -> ");
+        CharSequence _generateExpresion_1 = this.generateExpresion(calisMapVaor.getValue().get((index).intValue()));
+        String _plus_1 = (_plus + _generateExpresion_1);
+        list.add(_plus_1);
+      };
+      IterableExtensions.<Expresion>forEach(calisMapVaor.getKey(), _function);
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("Map(");
+      String _join = IterableExtensions.join(list, ", ");
+      _builder.append(_join);
+      _builder.append(")");
+      _xblockexpression = _builder;
+    }
+    return _xblockexpression;
+  }
+  
+  protected CharSequence _generateValor(final ExprMapOperaciones mapOper) {
+    StringConcatenation _builder = new StringConcatenation();
+    CharSequence _generateMapOper = this.generateMapOper(mapOper);
+    _builder.append(_generateMapOper);
+    return _builder;
+  }
+  
+  protected CharSequence _generateMapOper(final MapAdd mapAdd) {
+    StringConcatenation _builder = new StringConcatenation();
+    CharSequence _generateDeclaracionName = this.generateDeclaracionName(mapAdd.getMapConst().getNombre());
+    _builder.append(_generateDeclaracionName);
+    _builder.append(" + ");
+    CharSequence _xblockexpression = null;
+    {
+      final ArrayList<Object> list = CollectionLiterals.<Object>newArrayList();
+      final Procedure2<Expresion, Integer> _function = (Expresion item, Integer index) -> {
+        CharSequence _generateExpresion = this.generateExpresion(item);
+        String _plus = (_generateExpresion + " -> ");
+        CharSequence _generateExpresion_1 = this.generateExpresion(mapAdd.getValue().get((index).intValue()));
+        String _plus_1 = (_plus + _generateExpresion_1);
+        list.add(_plus_1);
+      };
+      IterableExtensions.<Expresion>forEach(mapAdd.getKey(), _function);
+      StringConcatenation _builder_1 = new StringConcatenation();
+      _builder_1.append("(");
+      String _join = IterableExtensions.join(list, ") + (");
+      _builder_1.append(_join);
+      _builder_1.append(")");
+      _xblockexpression = _builder_1;
+    }
+    return (_builder.toString() + _xblockexpression);
+  }
+  
+  protected CharSequence _generateMapOper(final MapRemove mapRem) {
+    StringConcatenation _builder = new StringConcatenation();
+    CharSequence _generateDeclaracionName = this.generateDeclaracionName(mapRem.getMapConst().getNombre());
+    _builder.append(_generateDeclaracionName);
+    _builder.append(" - ");
+    final Function1<Expresion, String> _function = (Expresion it) -> {
+      StringConcatenation _builder_1 = new StringConcatenation();
+      _builder_1.append("(");
+      CharSequence _generateExpresion = this.generateExpresion(it);
+      _builder_1.append(_generateExpresion);
+      _builder_1.append(")");
+      return _builder_1.toString();
+    };
+    String _join = IterableExtensions.join(ListExtensions.<Expresion, String>map(mapRem.getKey(), _function), " - ");
+    _builder.append(_join);
+    return _builder;
+  }
+  
+  protected CharSequence _generateDeclaracionName(final Param param) {
+    StringConcatenation _builder = new StringConcatenation();
+    String _name = param.getName();
+    _builder.append(_name);
+    return _builder;
+  }
+  
+  protected CharSequence _generateDeclaracionName(final Funcion func) {
+    StringConcatenation _builder = new StringConcatenation();
+    String _name = func.getName();
+    _builder.append(_name);
+    return _builder;
+  }
+  
+  protected CharSequence _generateDeclaracionName(final Asignacion asig) {
+    StringConcatenation _builder = new StringConcatenation();
+    String _name = asig.getName();
+    _builder.append(_name);
+    return _builder;
+  }
+  
+  protected CharSequence _generateTipoFuncionOrdenSuperior(final TipoFuncionOrdenSuperior tfos) {
+    StringConcatenation _builder = new StringConcatenation();
+    final Function1<Objeto, Object> _function = (Objeto it) -> {
+      return this.generateTipoFuncionOrdenSuperior(it);
+    };
+    String _join = IterableExtensions.join(ListExtensions.<Objeto, Object>map(tfos.getParamFunc(), _function), ", ");
+    _builder.append(_join);
+    _builder.append(" ");
+    {
+      boolean _isReturnTipoFunc = tfos.isReturnTipoFunc();
+      if (_isReturnTipoFunc) {
+        _builder.append(" => ");
+        Object _generateTipoFuncionOrdenSuperior = this.generateTipoFuncionOrdenSuperior(tfos.getReturnFunc());
+        _builder.append(_generateTipoFuncionOrdenSuperior);
+        _builder.append(" ");
+      }
+    }
+    _builder.append(" ");
+    _builder.newLineIfNotEmpty();
+    return _builder;
+  }
+  
+  protected CharSequence _generateTipoFuncionOrdenSuperior(final CalistoMapTipo caliMap) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("Map[");
+    Object _generateTipoFuncionOrdenSuperior = this.generateTipoFuncionOrdenSuperior(caliMap.getTipoIzq());
+    _builder.append(_generateTipoFuncionOrdenSuperior);
+    _builder.append(", ");
+    Object _generateTipoFuncionOrdenSuperior_1 = this.generateTipoFuncionOrdenSuperior(caliMap.getTipoDer());
+    _builder.append(_generateTipoFuncionOrdenSuperior_1);
+    _builder.append("]");
+    return _builder;
+  }
+  
+  protected CharSequence _generateTipoFuncionOrdenSuperior(final Primitivo prim) {
+    CharSequence _switchResult = null;
+    String _tipo = prim.getTipo();
+    if (_tipo != null) {
+      switch (_tipo) {
+        case "Planeta":
+          StringConcatenation _builder = new StringConcatenation();
+          _builder.append("Int");
+          _switchResult = _builder;
+          break;
+        case "PolvoEstelar":
+          StringConcatenation _builder_1 = new StringConcatenation();
+          _builder_1.append("Double");
+          _switchResult = _builder_1;
+          break;
+        case "Constelacion":
+          StringConcatenation _builder_2 = new StringConcatenation();
+          _builder_2.append("String");
+          _switchResult = _builder_2;
+          break;
+        case "Luna":
+          StringConcatenation _builder_3 = new StringConcatenation();
+          _builder_3.append("Boolean");
+          _switchResult = _builder_3;
+          break;
+        case "Estrella":
+          StringConcatenation _builder_4 = new StringConcatenation();
+          _builder_4.append("Char");
+          _switchResult = _builder_4;
+          break;
+        default:
+          StringConcatenation _builder_5 = new StringConcatenation();
+          _builder_5.append("ErrorType");
+          _switchResult = _builder_5;
+          break;
+      }
+    } else {
+      StringConcatenation _builder_5 = new StringConcatenation();
+      _builder_5.append("ErrorType");
+      _switchResult = _builder_5;
+    }
+    return _switchResult;
+  }
+  
+  protected CharSequence _generateExpresion(final Constante const_) {
+    StringConcatenation _builder = new StringConcatenation();
+    CharSequence _generateDeclaracionName = this.generateDeclaracionName(const_.getNombre());
+    _builder.append(_generateDeclaracionName);
+    return _builder;
+  }
+  
+  protected CharSequence _generateExpresion(final LlamadoMapa llamMap) {
+    StringConcatenation _builder = new StringConcatenation();
+    CharSequence _generateDeclaracionName = this.generateDeclaracionName(llamMap.getDecID());
+    _builder.append(_generateDeclaracionName);
+    _builder.append("(");
+    Object _generateExpresion = this.generateExpresion(llamMap.getMapKey());
+    _builder.append(_generateExpresion);
+    _builder.append(")");
+    return _builder;
+  }
+  
+  protected CharSequence _generateExpresion(final EstrellaFugazMeteoro efm) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("if (");
+    Object _generateExpresion = this.generateExpresion(efm.getExprLogCondicion());
+    _builder.append(_generateExpresion);
+    _builder.append(") ");
+    Object _generateExpresion_1 = this.generateExpresion(efm.getEstrellaFugazRes());
+    _builder.append(_generateExpresion_1);
+    _builder.append(" else ");
+    Object _generateExpresion_2 = this.generateExpresion(efm.getMeteoroRes());
+    _builder.append(_generateExpresion_2);
+    _builder.newLineIfNotEmpty();
+    return _builder;
+  }
+  
+  protected CharSequence _generateExpresion(final LlamadoFunc llf) {
+    StringConcatenation _builder = new StringConcatenation();
+    CharSequence _generateDeclaracionName = this.generateDeclaracionName(llf.getFuncionID());
+    _builder.append(_generateDeclaracionName);
+    _builder.append("(");
+    final Function1<Valor, Object> _function = (Valor it) -> {
+      return this.generateValor(it);
+    };
+    String _join = IterableExtensions.join(ListExtensions.<Valor, Object>map(llf.getArgs(), _function), ", ");
+    _builder.append(_join);
+    _builder.append(")");
+    _builder.newLineIfNotEmpty();
+    return _builder;
+  }
+  
+  protected CharSequence _generateExpresion(final ExprComparacion exprComp) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("(");
+    Object _generateExpresion = this.generateExpresion(exprComp.getExprComIzq());
+    _builder.append(_generateExpresion);
+    CharSequence _switchResult = null;
+    String _operadorComp = exprComp.getOperadorComp();
+    if (_operadorComp != null) {
+      switch (_operadorComp) {
+        case "~=":
+          StringConcatenation _builder_1 = new StringConcatenation();
+          _builder_1.append("!=");
+          _switchResult = _builder_1;
+          break;
+        default:
+          _switchResult = exprComp.getOperadorComp();
+          break;
+      }
+    } else {
+      _switchResult = exprComp.getOperadorComp();
+    }
+    String _plus = (_builder.toString() + _switchResult);
+    StringConcatenation _builder_2 = new StringConcatenation();
+    Object _generateExpresion_1 = this.generateExpresion(exprComp.getExprComDer());
+    _builder_2.append(_generateExpresion_1);
+    _builder_2.append(")");
+    return (_plus + _builder_2);
+  }
+  
+  protected CharSequence _generateExpresion(final ExprConcatenacion ec) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("(");
+    final Function1<Expresion, Object> _function = (Expresion it) -> {
+      return this.generateExpresion(it);
+    };
+    String _join = IterableExtensions.join(ListExtensions.<Expresion, Object>map(ec.getExprCon(), _function), " + ");
+    _builder.append(_join);
+    _builder.append(")");
+    return _builder;
+  }
+  
+  protected CharSequence _generateExpresion(final ExprAritmetica ea) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("(");
+    final Function1<Expresion, Object> _function = (Expresion it) -> {
+      return this.generateExpresion(it);
+    };
+    List<Object> _map = ListExtensions.<Expresion, Object>map(ea.getExprAr(), _function);
+    String _operadorAr = ea.getOperadorAr();
+    String _plus = (" " + _operadorAr);
+    String _plus_1 = (_plus + " ");
+    String _join = IterableExtensions.join(_map, _plus_1);
+    _builder.append(_join);
+    _builder.append(")");
+    return _builder;
+  }
+  
+  protected CharSequence _generateExpresion(final ExprLogica el) {
+    StringConcatenation _builder = new StringConcatenation();
+    {
+      boolean _isNegado = el.isNegado();
+      if (_isNegado) {
+        _builder.append("!");
+      }
+    }
+    Object _generateExpresion = this.generateExpresion(el.getExprLog());
+    _builder.append(_generateExpresion);
+    return _builder;
+  }
+  
+  protected CharSequence _generateExpresion(final ExprLogicaOperadores expLogop) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("(");
+    final Function1<Expresion, Object> _function = (Expresion it) -> {
+      return this.generateExpresion(it);
+    };
+    List<Object> _map = ListExtensions.<Expresion, Object>map(expLogop.getExprLogs(), _function);
+    String _operadorLog = expLogop.getOperadorLog();
+    String _plus = (" " + _operadorLog);
+    String _plus_1 = (_plus + " ");
+    String _join = IterableExtensions.join(_map, _plus_1);
+    _builder.append(_join);
+    _builder.append(")");
+    return _builder;
+  }
+  
+  protected CharSequence _generateExpresion(final XOR xor) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("(");
+    Object _generateExpresion = this.generateExpresion(xor.getExprLogIzq());
+    _builder.append(_generateExpresion);
+    _builder.append(" && !");
+    Object _generateExpresion_1 = this.generateExpresion(xor.getExprLogDer());
+    _builder.append(_generateExpresion_1);
+    _builder.append(") || (!");
+    Object _generateExpresion_2 = this.generateExpresion(xor.getExprLogIzq());
+    _builder.append(_generateExpresion_2);
+    _builder.append(" && ");
+    Object _generateExpresion_3 = this.generateExpresion(xor.getExprLogDer());
+    _builder.append(_generateExpresion_3);
+    _builder.append(")");
+    return _builder;
+  }
+  
+  protected CharSequence _generateExpresion(final Planeta pl) {
+    StringConcatenation _builder = new StringConcatenation();
+    int _x = pl.getX();
+    _builder.append(_x);
+    return _builder;
+  }
+  
+  protected CharSequence _generateExpresion(final Constelacion co) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("\"");
+    String _x = co.getX();
+    _builder.append(_x);
+    _builder.append("\"");
+    return _builder;
+  }
+  
+  protected CharSequence _generateExpresion(final Estrella es) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append(" ");
+    String _x = es.getX();
+    _builder.append(_x, " ");
+    _builder.append(" ");
+    return _builder;
+  }
+  
+  protected CharSequence _generateExpresion(final PolvoEstelar pe) {
+    StringConcatenation _builder = new StringConcatenation();
+    double _x = pe.getX();
+    _builder.append(_x);
+    return _builder;
+  }
+  
+  protected CharSequence _generateExpresion(final Luna lu) {
+    CharSequence _switchResult = null;
+    String _x = lu.getX();
+    if (_x != null) {
+      switch (_x) {
+        case "LunaNueva":
+          StringConcatenation _builder = new StringConcatenation();
+          _builder.append("false");
+          _switchResult = _builder;
+          break;
+        case "LunaLlena":
+          StringConcatenation _builder_1 = new StringConcatenation();
+          _builder_1.append("true");
+          _switchResult = _builder_1;
+          break;
+        default:
+          StringConcatenation _builder_2 = new StringConcatenation();
+          _builder_2.append("ErrorType");
+          _switchResult = _builder_2;
+          break;
+      }
+    } else {
+      StringConcatenation _builder_2 = new StringConcatenation();
+      _builder_2.append("ErrorType");
+      _switchResult = _builder_2;
+    }
+    return _switchResult;
+  }
+  
+  public CharSequence generateInstr(final Instrucciones declar) {
+    if (declar instanceof Declaracion) {
+      return _generateInstr((Declaracion)declar);
+    } else if (declar instanceof Valor) {
+      return _generateInstr((Valor)declar);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(declar).toString());
+    }
+  }
+  
+  public CharSequence generateDeclaracion(final Declaracion asig) {
+    if (asig instanceof Asignacion) {
+      return _generateDeclaracion((Asignacion)asig);
+    } else if (asig instanceof Funcion) {
+      return _generateDeclaracion((Funcion)asig);
+    } else if (asig instanceof Param) {
+      return _generateDeclaracion((Param)asig);
+    } else if (asig instanceof Print) {
+      return _generateDeclaracion((Print)asig);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(asig).toString());
+    }
+  }
+  
+  public CharSequence generateValor(final Valor calisMapVaor) {
+    if (calisMapVaor instanceof CalistoMapValor) {
+      return _generateValor((CalistoMapValor)calisMapVaor);
+    } else if (calisMapVaor instanceof ExprMapOperaciones) {
+      return _generateValor((ExprMapOperaciones)calisMapVaor);
+    } else if (calisMapVaor instanceof Expresion) {
+      return _generateValor((Expresion)calisMapVaor);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(calisMapVaor).toString());
+    }
+  }
+  
+  public CharSequence generateMapOper(final ExprMapOperaciones mapAdd) {
+    if (mapAdd instanceof MapAdd) {
+      return _generateMapOper((MapAdd)mapAdd);
+    } else if (mapAdd instanceof MapRemove) {
+      return _generateMapOper((MapRemove)mapAdd);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(mapAdd).toString());
+    }
+  }
+  
+  public CharSequence generateDeclaracionName(final Declaracion asig) {
+    if (asig instanceof Asignacion) {
+      return _generateDeclaracionName((Asignacion)asig);
+    } else if (asig instanceof Funcion) {
+      return _generateDeclaracionName((Funcion)asig);
+    } else if (asig instanceof Param) {
+      return _generateDeclaracionName((Param)asig);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(asig).toString());
+    }
+  }
+  
+  public CharSequence generateTipoFuncionOrdenSuperior(final TipoFuncionOrdenSuperior caliMap) {
+    if (caliMap instanceof CalistoMapTipo) {
+      return _generateTipoFuncionOrdenSuperior((CalistoMapTipo)caliMap);
+    } else if (caliMap instanceof Primitivo) {
+      return _generateTipoFuncionOrdenSuperior((Primitivo)caliMap);
+    } else if (caliMap != null) {
+      return _generateTipoFuncionOrdenSuperior(caliMap);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(caliMap).toString());
+    }
+  }
+  
+  public CharSequence generateExpresion(final EObject co) {
+    if (co instanceof Constelacion) {
+      return _generateExpresion((Constelacion)co);
+    } else if (co instanceof Estrella) {
+      return _generateExpresion((Estrella)co);
+    } else if (co instanceof Planeta) {
+      return _generateExpresion((Planeta)co);
+    } else if (co instanceof PolvoEstelar) {
+      return _generateExpresion((PolvoEstelar)co);
+    } else if (co instanceof Constante) {
+      return _generateExpresion((Constante)co);
+    } else if (co instanceof EstrellaFugazMeteoro) {
+      return _generateExpresion((EstrellaFugazMeteoro)co);
+    } else if (co instanceof ExprAritmetica) {
+      return _generateExpresion((ExprAritmetica)co);
+    } else if (co instanceof ExprConcatenacion) {
+      return _generateExpresion((ExprConcatenacion)co);
+    } else if (co instanceof ExprLogica) {
+      return _generateExpresion((ExprLogica)co);
+    } else if (co instanceof LlamadoFunc) {
+      return _generateExpresion((LlamadoFunc)co);
+    } else if (co instanceof LlamadoMapa) {
+      return _generateExpresion((LlamadoMapa)co);
+    } else if (co instanceof ExprComparacion) {
+      return _generateExpresion((ExprComparacion)co);
+    } else if (co instanceof ExprLogicaOperadores) {
+      return _generateExpresion((ExprLogicaOperadores)co);
+    } else if (co instanceof Luna) {
+      return _generateExpresion((Luna)co);
+    } else if (co instanceof XOR) {
+      return _generateExpresion((XOR)co);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(co).toString());
+    }
   }
 }

@@ -3,12 +3,12 @@
  */
 package edu.upb.lp.isc.dymeLanguage.impl;
 
+import edu.upb.lp.isc.dymeLanguage.Declaracion;
 import edu.upb.lp.isc.dymeLanguage.DymeLanguagePackage;
-import edu.upb.lp.isc.dymeLanguage.Expresion;
 import edu.upb.lp.isc.dymeLanguage.Funcion;
-import edu.upb.lp.isc.dymeLanguage.Instruccion;
 import edu.upb.lp.isc.dymeLanguage.Param;
-import edu.upb.lp.isc.dymeLanguage.TipoFuncionOrdenSuperior;
+import edu.upb.lp.isc.dymeLanguage.Primitivo;
+import edu.upb.lp.isc.dymeLanguage.Valor;
 
 import java.util.Collection;
 
@@ -21,7 +21,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -34,18 +33,39 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link edu.upb.lp.isc.dymeLanguage.impl.FuncionImpl#isGusano <em>Gusano</em>}</li>
  *   <li>{@link edu.upb.lp.isc.dymeLanguage.impl.FuncionImpl#getName <em>Name</em>}</li>
  *   <li>{@link edu.upb.lp.isc.dymeLanguage.impl.FuncionImpl#getParam <em>Param</em>}</li>
- *   <li>{@link edu.upb.lp.isc.dymeLanguage.impl.FuncionImpl#getInstr <em>Instr</em>}</li>
- *   <li>{@link edu.upb.lp.isc.dymeLanguage.impl.FuncionImpl#getExpr <em>Expr</em>}</li>
- *   <li>{@link edu.upb.lp.isc.dymeLanguage.impl.FuncionImpl#isReturnTipo <em>Return Tipo</em>}</li>
+ *   <li>{@link edu.upb.lp.isc.dymeLanguage.impl.FuncionImpl#getDeclar <em>Declar</em>}</li>
+ *   <li>{@link edu.upb.lp.isc.dymeLanguage.impl.FuncionImpl#getVal <em>Val</em>}</li>
+ *   <li>{@link edu.upb.lp.isc.dymeLanguage.impl.FuncionImpl#isTipoInferido <em>Tipo Inferido</em>}</li>
  *   <li>{@link edu.upb.lp.isc.dymeLanguage.impl.FuncionImpl#getTipoClass <em>Tipo Class</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class FuncionImpl extends MinimalEObjectImpl.Container implements Funcion
+public class FuncionImpl extends DeclaracionImpl implements Funcion
 {
+  /**
+   * The default value of the '{@link #isGusano() <em>Gusano</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isGusano()
+   * @generated
+   * @ordered
+   */
+  protected static final boolean GUSANO_EDEFAULT = false;
+
+  /**
+   * The cached value of the '{@link #isGusano() <em>Gusano</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isGusano()
+   * @generated
+   * @ordered
+   */
+  protected boolean gusano = GUSANO_EDEFAULT;
+
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -77,44 +97,44 @@ public class FuncionImpl extends MinimalEObjectImpl.Container implements Funcion
   protected EList<Param> param;
 
   /**
-   * The cached value of the '{@link #getInstr() <em>Instr</em>}' containment reference list.
+   * The cached value of the '{@link #getDeclar() <em>Declar</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getInstr()
+   * @see #getDeclar()
    * @generated
    * @ordered
    */
-  protected EList<Instruccion> instr;
+  protected EList<Declaracion> declar;
 
   /**
-   * The cached value of the '{@link #getExpr() <em>Expr</em>}' containment reference.
+   * The cached value of the '{@link #getVal() <em>Val</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getExpr()
+   * @see #getVal()
    * @generated
    * @ordered
    */
-  protected Expresion expr;
+  protected Valor val;
 
   /**
-   * The default value of the '{@link #isReturnTipo() <em>Return Tipo</em>}' attribute.
+   * The default value of the '{@link #isTipoInferido() <em>Tipo Inferido</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #isReturnTipo()
+   * @see #isTipoInferido()
    * @generated
    * @ordered
    */
-  protected static final boolean RETURN_TIPO_EDEFAULT = false;
+  protected static final boolean TIPO_INFERIDO_EDEFAULT = false;
 
   /**
-   * The cached value of the '{@link #isReturnTipo() <em>Return Tipo</em>}' attribute.
+   * The cached value of the '{@link #isTipoInferido() <em>Tipo Inferido</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #isReturnTipo()
+   * @see #isTipoInferido()
    * @generated
    * @ordered
    */
-  protected boolean returnTipo = RETURN_TIPO_EDEFAULT;
+  protected boolean tipoInferido = TIPO_INFERIDO_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getTipoClass() <em>Tipo Class</em>}' containment reference.
@@ -124,7 +144,7 @@ public class FuncionImpl extends MinimalEObjectImpl.Container implements Funcion
    * @generated
    * @ordered
    */
-  protected TipoFuncionOrdenSuperior tipoClass;
+  protected Primitivo tipoClass;
 
   /**
    * <!-- begin-user-doc -->
@@ -145,6 +165,31 @@ public class FuncionImpl extends MinimalEObjectImpl.Container implements Funcion
   protected EClass eStaticClass()
   {
     return DymeLanguagePackage.Literals.FUNCION;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public boolean isGusano()
+  {
+    return gusano;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setGusano(boolean newGusano)
+  {
+    boolean oldGusano = gusano;
+    gusano = newGusano;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DymeLanguagePackage.FUNCION__GUSANO, oldGusano, gusano));
   }
 
   /**
@@ -193,13 +238,13 @@ public class FuncionImpl extends MinimalEObjectImpl.Container implements Funcion
    * @generated
    */
   @Override
-  public EList<Instruccion> getInstr()
+  public EList<Declaracion> getDeclar()
   {
-    if (instr == null)
+    if (declar == null)
     {
-      instr = new EObjectContainmentEList<Instruccion>(Instruccion.class, this, DymeLanguagePackage.FUNCION__INSTR);
+      declar = new EObjectContainmentEList<Declaracion>(Declaracion.class, this, DymeLanguagePackage.FUNCION__DECLAR);
     }
-    return instr;
+    return declar;
   }
 
   /**
@@ -208,9 +253,9 @@ public class FuncionImpl extends MinimalEObjectImpl.Container implements Funcion
    * @generated
    */
   @Override
-  public Expresion getExpr()
+  public Valor getVal()
   {
-    return expr;
+    return val;
   }
 
   /**
@@ -218,13 +263,13 @@ public class FuncionImpl extends MinimalEObjectImpl.Container implements Funcion
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetExpr(Expresion newExpr, NotificationChain msgs)
+  public NotificationChain basicSetVal(Valor newVal, NotificationChain msgs)
   {
-    Expresion oldExpr = expr;
-    expr = newExpr;
+    Valor oldVal = val;
+    val = newVal;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DymeLanguagePackage.FUNCION__EXPR, oldExpr, newExpr);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DymeLanguagePackage.FUNCION__VAL, oldVal, newVal);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -236,20 +281,20 @@ public class FuncionImpl extends MinimalEObjectImpl.Container implements Funcion
    * @generated
    */
   @Override
-  public void setExpr(Expresion newExpr)
+  public void setVal(Valor newVal)
   {
-    if (newExpr != expr)
+    if (newVal != val)
     {
       NotificationChain msgs = null;
-      if (expr != null)
-        msgs = ((InternalEObject)expr).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DymeLanguagePackage.FUNCION__EXPR, null, msgs);
-      if (newExpr != null)
-        msgs = ((InternalEObject)newExpr).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DymeLanguagePackage.FUNCION__EXPR, null, msgs);
-      msgs = basicSetExpr(newExpr, msgs);
+      if (val != null)
+        msgs = ((InternalEObject)val).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DymeLanguagePackage.FUNCION__VAL, null, msgs);
+      if (newVal != null)
+        msgs = ((InternalEObject)newVal).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DymeLanguagePackage.FUNCION__VAL, null, msgs);
+      msgs = basicSetVal(newVal, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DymeLanguagePackage.FUNCION__EXPR, newExpr, newExpr));
+      eNotify(new ENotificationImpl(this, Notification.SET, DymeLanguagePackage.FUNCION__VAL, newVal, newVal));
   }
 
   /**
@@ -258,9 +303,9 @@ public class FuncionImpl extends MinimalEObjectImpl.Container implements Funcion
    * @generated
    */
   @Override
-  public boolean isReturnTipo()
+  public boolean isTipoInferido()
   {
-    return returnTipo;
+    return tipoInferido;
   }
 
   /**
@@ -269,12 +314,12 @@ public class FuncionImpl extends MinimalEObjectImpl.Container implements Funcion
    * @generated
    */
   @Override
-  public void setReturnTipo(boolean newReturnTipo)
+  public void setTipoInferido(boolean newTipoInferido)
   {
-    boolean oldReturnTipo = returnTipo;
-    returnTipo = newReturnTipo;
+    boolean oldTipoInferido = tipoInferido;
+    tipoInferido = newTipoInferido;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DymeLanguagePackage.FUNCION__RETURN_TIPO, oldReturnTipo, returnTipo));
+      eNotify(new ENotificationImpl(this, Notification.SET, DymeLanguagePackage.FUNCION__TIPO_INFERIDO, oldTipoInferido, tipoInferido));
   }
 
   /**
@@ -283,7 +328,7 @@ public class FuncionImpl extends MinimalEObjectImpl.Container implements Funcion
    * @generated
    */
   @Override
-  public TipoFuncionOrdenSuperior getTipoClass()
+  public Primitivo getTipoClass()
   {
     return tipoClass;
   }
@@ -293,9 +338,9 @@ public class FuncionImpl extends MinimalEObjectImpl.Container implements Funcion
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetTipoClass(TipoFuncionOrdenSuperior newTipoClass, NotificationChain msgs)
+  public NotificationChain basicSetTipoClass(Primitivo newTipoClass, NotificationChain msgs)
   {
-    TipoFuncionOrdenSuperior oldTipoClass = tipoClass;
+    Primitivo oldTipoClass = tipoClass;
     tipoClass = newTipoClass;
     if (eNotificationRequired())
     {
@@ -311,7 +356,7 @@ public class FuncionImpl extends MinimalEObjectImpl.Container implements Funcion
    * @generated
    */
   @Override
-  public void setTipoClass(TipoFuncionOrdenSuperior newTipoClass)
+  public void setTipoClass(Primitivo newTipoClass)
   {
     if (newTipoClass != tipoClass)
     {
@@ -339,10 +384,10 @@ public class FuncionImpl extends MinimalEObjectImpl.Container implements Funcion
     {
       case DymeLanguagePackage.FUNCION__PARAM:
         return ((InternalEList<?>)getParam()).basicRemove(otherEnd, msgs);
-      case DymeLanguagePackage.FUNCION__INSTR:
-        return ((InternalEList<?>)getInstr()).basicRemove(otherEnd, msgs);
-      case DymeLanguagePackage.FUNCION__EXPR:
-        return basicSetExpr(null, msgs);
+      case DymeLanguagePackage.FUNCION__DECLAR:
+        return ((InternalEList<?>)getDeclar()).basicRemove(otherEnd, msgs);
+      case DymeLanguagePackage.FUNCION__VAL:
+        return basicSetVal(null, msgs);
       case DymeLanguagePackage.FUNCION__TIPO_CLASS:
         return basicSetTipoClass(null, msgs);
     }
@@ -359,16 +404,18 @@ public class FuncionImpl extends MinimalEObjectImpl.Container implements Funcion
   {
     switch (featureID)
     {
+      case DymeLanguagePackage.FUNCION__GUSANO:
+        return isGusano();
       case DymeLanguagePackage.FUNCION__NAME:
         return getName();
       case DymeLanguagePackage.FUNCION__PARAM:
         return getParam();
-      case DymeLanguagePackage.FUNCION__INSTR:
-        return getInstr();
-      case DymeLanguagePackage.FUNCION__EXPR:
-        return getExpr();
-      case DymeLanguagePackage.FUNCION__RETURN_TIPO:
-        return isReturnTipo();
+      case DymeLanguagePackage.FUNCION__DECLAR:
+        return getDeclar();
+      case DymeLanguagePackage.FUNCION__VAL:
+        return getVal();
+      case DymeLanguagePackage.FUNCION__TIPO_INFERIDO:
+        return isTipoInferido();
       case DymeLanguagePackage.FUNCION__TIPO_CLASS:
         return getTipoClass();
     }
@@ -386,6 +433,9 @@ public class FuncionImpl extends MinimalEObjectImpl.Container implements Funcion
   {
     switch (featureID)
     {
+      case DymeLanguagePackage.FUNCION__GUSANO:
+        setGusano((Boolean)newValue);
+        return;
       case DymeLanguagePackage.FUNCION__NAME:
         setName((String)newValue);
         return;
@@ -393,18 +443,18 @@ public class FuncionImpl extends MinimalEObjectImpl.Container implements Funcion
         getParam().clear();
         getParam().addAll((Collection<? extends Param>)newValue);
         return;
-      case DymeLanguagePackage.FUNCION__INSTR:
-        getInstr().clear();
-        getInstr().addAll((Collection<? extends Instruccion>)newValue);
+      case DymeLanguagePackage.FUNCION__DECLAR:
+        getDeclar().clear();
+        getDeclar().addAll((Collection<? extends Declaracion>)newValue);
         return;
-      case DymeLanguagePackage.FUNCION__EXPR:
-        setExpr((Expresion)newValue);
+      case DymeLanguagePackage.FUNCION__VAL:
+        setVal((Valor)newValue);
         return;
-      case DymeLanguagePackage.FUNCION__RETURN_TIPO:
-        setReturnTipo((Boolean)newValue);
+      case DymeLanguagePackage.FUNCION__TIPO_INFERIDO:
+        setTipoInferido((Boolean)newValue);
         return;
       case DymeLanguagePackage.FUNCION__TIPO_CLASS:
-        setTipoClass((TipoFuncionOrdenSuperior)newValue);
+        setTipoClass((Primitivo)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -420,23 +470,26 @@ public class FuncionImpl extends MinimalEObjectImpl.Container implements Funcion
   {
     switch (featureID)
     {
+      case DymeLanguagePackage.FUNCION__GUSANO:
+        setGusano(GUSANO_EDEFAULT);
+        return;
       case DymeLanguagePackage.FUNCION__NAME:
         setName(NAME_EDEFAULT);
         return;
       case DymeLanguagePackage.FUNCION__PARAM:
         getParam().clear();
         return;
-      case DymeLanguagePackage.FUNCION__INSTR:
-        getInstr().clear();
+      case DymeLanguagePackage.FUNCION__DECLAR:
+        getDeclar().clear();
         return;
-      case DymeLanguagePackage.FUNCION__EXPR:
-        setExpr((Expresion)null);
+      case DymeLanguagePackage.FUNCION__VAL:
+        setVal((Valor)null);
         return;
-      case DymeLanguagePackage.FUNCION__RETURN_TIPO:
-        setReturnTipo(RETURN_TIPO_EDEFAULT);
+      case DymeLanguagePackage.FUNCION__TIPO_INFERIDO:
+        setTipoInferido(TIPO_INFERIDO_EDEFAULT);
         return;
       case DymeLanguagePackage.FUNCION__TIPO_CLASS:
-        setTipoClass((TipoFuncionOrdenSuperior)null);
+        setTipoClass((Primitivo)null);
         return;
     }
     super.eUnset(featureID);
@@ -452,16 +505,18 @@ public class FuncionImpl extends MinimalEObjectImpl.Container implements Funcion
   {
     switch (featureID)
     {
+      case DymeLanguagePackage.FUNCION__GUSANO:
+        return gusano != GUSANO_EDEFAULT;
       case DymeLanguagePackage.FUNCION__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case DymeLanguagePackage.FUNCION__PARAM:
         return param != null && !param.isEmpty();
-      case DymeLanguagePackage.FUNCION__INSTR:
-        return instr != null && !instr.isEmpty();
-      case DymeLanguagePackage.FUNCION__EXPR:
-        return expr != null;
-      case DymeLanguagePackage.FUNCION__RETURN_TIPO:
-        return returnTipo != RETURN_TIPO_EDEFAULT;
+      case DymeLanguagePackage.FUNCION__DECLAR:
+        return declar != null && !declar.isEmpty();
+      case DymeLanguagePackage.FUNCION__VAL:
+        return val != null;
+      case DymeLanguagePackage.FUNCION__TIPO_INFERIDO:
+        return tipoInferido != TIPO_INFERIDO_EDEFAULT;
       case DymeLanguagePackage.FUNCION__TIPO_CLASS:
         return tipoClass != null;
     }
@@ -479,10 +534,12 @@ public class FuncionImpl extends MinimalEObjectImpl.Container implements Funcion
     if (eIsProxy()) return super.toString();
 
     StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (name: ");
+    result.append(" (gusano: ");
+    result.append(gusano);
+    result.append(", name: ");
     result.append(name);
-    result.append(", returnTipo: ");
-    result.append(returnTipo);
+    result.append(", tipoInferido: ");
+    result.append(tipoInferido);
     result.append(')');
     return result.toString();
   }

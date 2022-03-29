@@ -5,22 +5,15 @@ package edu.upb.lp.isc.dymeLanguage.impl;
 
 import edu.upb.lp.isc.dymeLanguage.DymeLanguagePackage;
 import edu.upb.lp.isc.dymeLanguage.ExprLogica;
-import edu.upb.lp.isc.dymeLanguage.Expresion;
-
-import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -30,7 +23,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link edu.upb.lp.isc.dymeLanguage.impl.ExprLogicaImpl#getOperadorLog <em>Operador Log</em>}</li>
+ *   <li>{@link edu.upb.lp.isc.dymeLanguage.impl.ExprLogicaImpl#isNegado <em>Negado</em>}</li>
  *   <li>{@link edu.upb.lp.isc.dymeLanguage.impl.ExprLogicaImpl#getExprLog <em>Expr Log</em>}</li>
  * </ul>
  *
@@ -39,34 +32,34 @@ import org.eclipse.emf.ecore.util.InternalEList;
 public class ExprLogicaImpl extends ExpresionImpl implements ExprLogica
 {
   /**
-   * The default value of the '{@link #getOperadorLog() <em>Operador Log</em>}' attribute.
+   * The default value of the '{@link #isNegado() <em>Negado</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getOperadorLog()
+   * @see #isNegado()
    * @generated
    * @ordered
    */
-  protected static final String OPERADOR_LOG_EDEFAULT = null;
+  protected static final boolean NEGADO_EDEFAULT = false;
 
   /**
-   * The cached value of the '{@link #getOperadorLog() <em>Operador Log</em>}' attribute.
+   * The cached value of the '{@link #isNegado() <em>Negado</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getOperadorLog()
+   * @see #isNegado()
    * @generated
    * @ordered
    */
-  protected String operadorLog = OPERADOR_LOG_EDEFAULT;
+  protected boolean negado = NEGADO_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getExprLog() <em>Expr Log</em>}' containment reference list.
+   * The cached value of the '{@link #getExprLog() <em>Expr Log</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getExprLog()
    * @generated
    * @ordered
    */
-  protected EList<Expresion> exprLog;
+  protected EObject exprLog;
 
   /**
    * <!-- begin-user-doc -->
@@ -95,9 +88,9 @@ public class ExprLogicaImpl extends ExpresionImpl implements ExprLogica
    * @generated
    */
   @Override
-  public String getOperadorLog()
+  public boolean isNegado()
   {
-    return operadorLog;
+    return negado;
   }
 
   /**
@@ -106,12 +99,12 @@ public class ExprLogicaImpl extends ExpresionImpl implements ExprLogica
    * @generated
    */
   @Override
-  public void setOperadorLog(String newOperadorLog)
+  public void setNegado(boolean newNegado)
   {
-    String oldOperadorLog = operadorLog;
-    operadorLog = newOperadorLog;
+    boolean oldNegado = negado;
+    negado = newNegado;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DymeLanguagePackage.EXPR_LOGICA__OPERADOR_LOG, oldOperadorLog, operadorLog));
+      eNotify(new ENotificationImpl(this, Notification.SET, DymeLanguagePackage.EXPR_LOGICA__NEGADO, oldNegado, negado));
   }
 
   /**
@@ -120,13 +113,48 @@ public class ExprLogicaImpl extends ExpresionImpl implements ExprLogica
    * @generated
    */
   @Override
-  public EList<Expresion> getExprLog()
+  public EObject getExprLog()
   {
-    if (exprLog == null)
-    {
-      exprLog = new EObjectContainmentEList<Expresion>(Expresion.class, this, DymeLanguagePackage.EXPR_LOGICA__EXPR_LOG);
-    }
     return exprLog;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetExprLog(EObject newExprLog, NotificationChain msgs)
+  {
+    EObject oldExprLog = exprLog;
+    exprLog = newExprLog;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DymeLanguagePackage.EXPR_LOGICA__EXPR_LOG, oldExprLog, newExprLog);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setExprLog(EObject newExprLog)
+  {
+    if (newExprLog != exprLog)
+    {
+      NotificationChain msgs = null;
+      if (exprLog != null)
+        msgs = ((InternalEObject)exprLog).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DymeLanguagePackage.EXPR_LOGICA__EXPR_LOG, null, msgs);
+      if (newExprLog != null)
+        msgs = ((InternalEObject)newExprLog).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DymeLanguagePackage.EXPR_LOGICA__EXPR_LOG, null, msgs);
+      msgs = basicSetExprLog(newExprLog, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DymeLanguagePackage.EXPR_LOGICA__EXPR_LOG, newExprLog, newExprLog));
   }
 
   /**
@@ -140,7 +168,7 @@ public class ExprLogicaImpl extends ExpresionImpl implements ExprLogica
     switch (featureID)
     {
       case DymeLanguagePackage.EXPR_LOGICA__EXPR_LOG:
-        return ((InternalEList<?>)getExprLog()).basicRemove(otherEnd, msgs);
+        return basicSetExprLog(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -155,8 +183,8 @@ public class ExprLogicaImpl extends ExpresionImpl implements ExprLogica
   {
     switch (featureID)
     {
-      case DymeLanguagePackage.EXPR_LOGICA__OPERADOR_LOG:
-        return getOperadorLog();
+      case DymeLanguagePackage.EXPR_LOGICA__NEGADO:
+        return isNegado();
       case DymeLanguagePackage.EXPR_LOGICA__EXPR_LOG:
         return getExprLog();
     }
@@ -168,18 +196,16 @@ public class ExprLogicaImpl extends ExpresionImpl implements ExprLogica
    * <!-- end-user-doc -->
    * @generated
    */
-  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
-      case DymeLanguagePackage.EXPR_LOGICA__OPERADOR_LOG:
-        setOperadorLog((String)newValue);
+      case DymeLanguagePackage.EXPR_LOGICA__NEGADO:
+        setNegado((Boolean)newValue);
         return;
       case DymeLanguagePackage.EXPR_LOGICA__EXPR_LOG:
-        getExprLog().clear();
-        getExprLog().addAll((Collection<? extends Expresion>)newValue);
+        setExprLog((EObject)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -195,11 +221,11 @@ public class ExprLogicaImpl extends ExpresionImpl implements ExprLogica
   {
     switch (featureID)
     {
-      case DymeLanguagePackage.EXPR_LOGICA__OPERADOR_LOG:
-        setOperadorLog(OPERADOR_LOG_EDEFAULT);
+      case DymeLanguagePackage.EXPR_LOGICA__NEGADO:
+        setNegado(NEGADO_EDEFAULT);
         return;
       case DymeLanguagePackage.EXPR_LOGICA__EXPR_LOG:
-        getExprLog().clear();
+        setExprLog((EObject)null);
         return;
     }
     super.eUnset(featureID);
@@ -215,10 +241,10 @@ public class ExprLogicaImpl extends ExpresionImpl implements ExprLogica
   {
     switch (featureID)
     {
-      case DymeLanguagePackage.EXPR_LOGICA__OPERADOR_LOG:
-        return OPERADOR_LOG_EDEFAULT == null ? operadorLog != null : !OPERADOR_LOG_EDEFAULT.equals(operadorLog);
+      case DymeLanguagePackage.EXPR_LOGICA__NEGADO:
+        return negado != NEGADO_EDEFAULT;
       case DymeLanguagePackage.EXPR_LOGICA__EXPR_LOG:
-        return exprLog != null && !exprLog.isEmpty();
+        return exprLog != null;
     }
     return super.eIsSet(featureID);
   }
@@ -234,8 +260,8 @@ public class ExprLogicaImpl extends ExpresionImpl implements ExprLogica
     if (eIsProxy()) return super.toString();
 
     StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (operadorLog: ");
-    result.append(operadorLog);
+    result.append(" (Negado: ");
+    result.append(negado);
     result.append(')');
     return result.toString();
   }

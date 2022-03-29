@@ -3,7 +3,7 @@
  */
 package edu.upb.lp.isc.dymeLanguage;
 
-import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -15,14 +15,16 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link edu.upb.lp.isc.dymeLanguage.Param#getName <em>Name</em>}</li>
- *   <li>{@link edu.upb.lp.isc.dymeLanguage.Param#getTipoClass <em>Tipo Class</em>}</li>
+ *   <li>{@link edu.upb.lp.isc.dymeLanguage.Param#getParam <em>Param</em>}</li>
+ *   <li>{@link edu.upb.lp.isc.dymeLanguage.Param#isTipoRetorno <em>Tipo Retorno</em>}</li>
+ *   <li>{@link edu.upb.lp.isc.dymeLanguage.Param#getReturnTipo <em>Return Tipo</em>}</li>
  * </ul>
  *
  * @see edu.upb.lp.isc.dymeLanguage.DymeLanguagePackage#getParam()
  * @model
  * @generated
  */
-public interface Param extends EObject
+public interface Param extends Declaracion
 {
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.
@@ -47,25 +49,59 @@ public interface Param extends EObject
   void setName(String value);
 
   /**
-   * Returns the value of the '<em><b>Tipo Class</b></em>' containment reference.
+   * Returns the value of the '<em><b>Param</b></em>' containment reference list.
+   * The list contents are of type {@link edu.upb.lp.isc.dymeLanguage.TipoFuncionOrdenSuperior}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Tipo Class</em>' containment reference.
-   * @see #setTipoClass(TipoFuncionOrdenSuperior)
-   * @see edu.upb.lp.isc.dymeLanguage.DymeLanguagePackage#getParam_TipoClass()
+   * @return the value of the '<em>Param</em>' containment reference list.
+   * @see edu.upb.lp.isc.dymeLanguage.DymeLanguagePackage#getParam_Param()
    * @model containment="true"
    * @generated
    */
-  TipoFuncionOrdenSuperior getTipoClass();
+  EList<TipoFuncionOrdenSuperior> getParam();
 
   /**
-   * Sets the value of the '{@link edu.upb.lp.isc.dymeLanguage.Param#getTipoClass <em>Tipo Class</em>}' containment reference.
+   * Returns the value of the '<em><b>Tipo Retorno</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Tipo Class</em>' containment reference.
-   * @see #getTipoClass()
+   * @return the value of the '<em>Tipo Retorno</em>' attribute.
+   * @see #setTipoRetorno(boolean)
+   * @see edu.upb.lp.isc.dymeLanguage.DymeLanguagePackage#getParam_TipoRetorno()
+   * @model
    * @generated
    */
-  void setTipoClass(TipoFuncionOrdenSuperior value);
+  boolean isTipoRetorno();
+
+  /**
+   * Sets the value of the '{@link edu.upb.lp.isc.dymeLanguage.Param#isTipoRetorno <em>Tipo Retorno</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Tipo Retorno</em>' attribute.
+   * @see #isTipoRetorno()
+   * @generated
+   */
+  void setTipoRetorno(boolean value);
+
+  /**
+   * Returns the value of the '<em><b>Return Tipo</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Return Tipo</em>' containment reference.
+   * @see #setReturnTipo(Primitivo)
+   * @see edu.upb.lp.isc.dymeLanguage.DymeLanguagePackage#getParam_ReturnTipo()
+   * @model containment="true"
+   * @generated
+   */
+  Primitivo getReturnTipo();
+
+  /**
+   * Sets the value of the '{@link edu.upb.lp.isc.dymeLanguage.Param#getReturnTipo <em>Return Tipo</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Return Tipo</em>' containment reference.
+   * @see #getReturnTipo()
+   * @generated
+   */
+  void setReturnTipo(Primitivo value);
 
 } // Param

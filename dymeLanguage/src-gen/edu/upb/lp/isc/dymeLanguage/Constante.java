@@ -27,12 +27,12 @@ public interface Constante extends Expresion
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the value of the '<em>Nombre</em>' reference.
-   * @see #setNombre(Asignacion)
+   * @see #setNombre(Declaracion)
    * @see edu.upb.lp.isc.dymeLanguage.DymeLanguagePackage#getConstante_Nombre()
    * @model
    * @generated
    */
-  Asignacion getNombre();
+  Declaracion getNombre();
 
   /**
    * Sets the value of the '{@link edu.upb.lp.isc.dymeLanguage.Constante#getNombre <em>Nombre</em>}' reference.
@@ -42,6 +42,6 @@ public interface Constante extends Expresion
    * @see #getNombre()
    * @generated
    */
-  void setNombre(Asignacion value);
+  void setNombre(Declaracion value);
 
 } // Constante

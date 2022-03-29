@@ -7,49 +7,64 @@
   <genPackages prefix="DymeLanguage" basePackage="edu.upb.lp.isc" disposableProviderFactory="true"
       fileExtensions="dyme" ecorePackage="DymeLanguage.ecore#/">
     <genClasses ecoreClass="DymeLanguage.ecore#//Programa">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DymeLanguage.ecore#//Programa/func"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DymeLanguage.ecore#//Programa/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DymeLanguage.ecore#//Programa/prog"/>
     </genClasses>
+    <genClasses ecoreClass="DymeLanguage.ecore#//Objeto"/>
+    <genClasses ecoreClass="DymeLanguage.ecore#//Print">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DymeLanguage.ecore#//Print/printTipo"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DymeLanguage.ecore#//Print/val"/>
+    </genClasses>
+    <genClasses ecoreClass="DymeLanguage.ecore#//Instrucciones"/>
     <genClasses ecoreClass="DymeLanguage.ecore#//EstrellaFugazMeteoro">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DymeLanguage.ecore#//EstrellaFugazMeteoro/exprLogCondicion"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DymeLanguage.ecore#//EstrellaFugazMeteoro/estrellaFugazRes"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DymeLanguage.ecore#//EstrellaFugazMeteoro/meteoroRes"/>
     </genClasses>
-    <genClasses ecoreClass="DymeLanguage.ecore#//Funcion">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DymeLanguage.ecore#//Funcion/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DymeLanguage.ecore#//Funcion/param"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DymeLanguage.ecore#//Funcion/instr"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DymeLanguage.ecore#//Funcion/expr"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DymeLanguage.ecore#//Funcion/returnTipo"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DymeLanguage.ecore#//Funcion/tipoClass"/>
-    </genClasses>
     <genClasses ecoreClass="DymeLanguage.ecore#//LlamadoFunc">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DymeLanguage.ecore#//LlamadoFunc/funcion"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DymeLanguage.ecore#//LlamadoFunc/funcionID"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DymeLanguage.ecore#//LlamadoFunc/args"/>
     </genClasses>
-    <genClasses ecoreClass="DymeLanguage.ecore#//Param">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DymeLanguage.ecore#//Param/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DymeLanguage.ecore#//Param/tipoClass"/>
+    <genClasses ecoreClass="DymeLanguage.ecore#//LlamadoMapa">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DymeLanguage.ecore#//LlamadoMapa/decID"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DymeLanguage.ecore#//LlamadoMapa/mapKey"/>
     </genClasses>
-    <genClasses ecoreClass="DymeLanguage.ecore#//Instruccion"/>
+    <genClasses ecoreClass="DymeLanguage.ecore#//Declaracion"/>
+    <genClasses ecoreClass="DymeLanguage.ecore#//Funcion">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DymeLanguage.ecore#//Funcion/gusano"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DymeLanguage.ecore#//Funcion/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DymeLanguage.ecore#//Funcion/param"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DymeLanguage.ecore#//Funcion/declar"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DymeLanguage.ecore#//Funcion/val"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DymeLanguage.ecore#//Funcion/tipoInferido"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DymeLanguage.ecore#//Funcion/tipoClass"/>
+    </genClasses>
     <genClasses ecoreClass="DymeLanguage.ecore#//Asignacion">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DymeLanguage.ecore#//Asignacion/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DymeLanguage.ecore#//Asignacion/tipoInferido"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DymeLanguage.ecore#//Asignacion/tipoClass"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DymeLanguage.ecore#//Asignacion/valorAsig"/>
     </genClasses>
-    <genClasses ecoreClass="DymeLanguage.ecore#//Tipo">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DymeLanguage.ecore#//Tipo/tipo"/>
-    </genClasses>
-    <genClasses ecoreClass="DymeLanguage.ecore#//TipoFuncionOrdenSuperior">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DymeLanguage.ecore#//TipoFuncionOrdenSuperior/ordenSuperiorTipo"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DymeLanguage.ecore#//TipoFuncionOrdenSuperior/paramFunc"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DymeLanguage.ecore#//TipoFuncionOrdenSuperior/returnTipoFunc"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DymeLanguage.ecore#//TipoFuncionOrdenSuperior/returnFunc"/>
+    <genClasses ecoreClass="DymeLanguage.ecore#//Param">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DymeLanguage.ecore#//Param/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DymeLanguage.ecore#//Param/param"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DymeLanguage.ecore#//Param/tipoRetorno"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DymeLanguage.ecore#//Param/returnTipo"/>
     </genClasses>
     <genClasses ecoreClass="DymeLanguage.ecore#//Constante">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DymeLanguage.ecore#//Constante/nombre"/>
     </genClasses>
+    <genClasses ecoreClass="DymeLanguage.ecore#//Valor"/>
     <genClasses ecoreClass="DymeLanguage.ecore#//Expresion"/>
+    <genClasses ecoreClass="DymeLanguage.ecore#//ExprMapOperaciones">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DymeLanguage.ecore#//ExprMapOperaciones/operadorAdd"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DymeLanguage.ecore#//ExprMapOperaciones/mapConst"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DymeLanguage.ecore#//ExprMapOperaciones/key"/>
+    </genClasses>
+    <genClasses ecoreClass="DymeLanguage.ecore#//MapAdd">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DymeLanguage.ecore#//MapAdd/value"/>
+    </genClasses>
+    <genClasses ecoreClass="DymeLanguage.ecore#//MapRemove"/>
     <genClasses ecoreClass="DymeLanguage.ecore#//ExprConcatenacion">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DymeLanguage.ecore#//ExprConcatenacion/operadorCon"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DymeLanguage.ecore#//ExprConcatenacion/exprCon"/>
@@ -60,13 +75,31 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DymeLanguage.ecore#//ExprAritmetica/exprAr"/>
     </genClasses>
     <genClasses ecoreClass="DymeLanguage.ecore#//ExprLogica">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DymeLanguage.ecore#//ExprLogica/operadorLog"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DymeLanguage.ecore#//ExprLogica/Negado"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DymeLanguage.ecore#//ExprLogica/exprLog"/>
+    </genClasses>
+    <genClasses ecoreClass="DymeLanguage.ecore#//ExprLogicaOperadores">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DymeLanguage.ecore#//ExprLogicaOperadores/operadorLog"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DymeLanguage.ecore#//ExprLogicaOperadores/exprLogs"/>
+    </genClasses>
+    <genClasses ecoreClass="DymeLanguage.ecore#//XOR">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DymeLanguage.ecore#//XOR/operadorXOR"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DymeLanguage.ecore#//XOR/exprLogIzq"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DymeLanguage.ecore#//XOR/exprLogDer"/>
     </genClasses>
     <genClasses ecoreClass="DymeLanguage.ecore#//ExprComparacion">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DymeLanguage.ecore#//ExprComparacion/operadorComp"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DymeLanguage.ecore#//ExprComparacion/exprComIzq"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DymeLanguage.ecore#//ExprComparacion/exprComDer"/>
+    </genClasses>
+    <genClasses ecoreClass="DymeLanguage.ecore#//Primitivo">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DymeLanguage.ecore#//Primitivo/tipo"/>
+    </genClasses>
+    <genClasses ecoreClass="DymeLanguage.ecore#//TipoFuncionOrdenSuperior">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DymeLanguage.ecore#//TipoFuncionOrdenSuperior/ordenSuperiorTipo"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DymeLanguage.ecore#//TipoFuncionOrdenSuperior/paramFunc"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DymeLanguage.ecore#//TipoFuncionOrdenSuperior/returnTipoFunc"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DymeLanguage.ecore#//TipoFuncionOrdenSuperior/returnFunc"/>
     </genClasses>
     <genClasses ecoreClass="DymeLanguage.ecore#//Planeta">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DymeLanguage.ecore#//Planeta/x"/>
@@ -78,6 +111,14 @@
     </genClasses>
     <genClasses ecoreClass="DymeLanguage.ecore#//Luna">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DymeLanguage.ecore#//Luna/x"/>
+    </genClasses>
+    <genClasses ecoreClass="DymeLanguage.ecore#//CalistoMapTipo">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DymeLanguage.ecore#//CalistoMapTipo/tipoIzq"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DymeLanguage.ecore#//CalistoMapTipo/tipoDer"/>
+    </genClasses>
+    <genClasses ecoreClass="DymeLanguage.ecore#//CalistoMapValor">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DymeLanguage.ecore#//CalistoMapValor/key"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DymeLanguage.ecore#//CalistoMapValor/value"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

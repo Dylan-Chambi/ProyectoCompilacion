@@ -33,6 +33,33 @@ public interface DymeLanguageFactory extends EFactory
   Programa createPrograma();
 
   /**
+   * Returns a new object of class '<em>Objeto</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Objeto</em>'.
+   * @generated
+   */
+  Objeto createObjeto();
+
+  /**
+   * Returns a new object of class '<em>Print</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Print</em>'.
+   * @generated
+   */
+  Print createPrint();
+
+  /**
+   * Returns a new object of class '<em>Instrucciones</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Instrucciones</em>'.
+   * @generated
+   */
+  Instrucciones createInstrucciones();
+
+  /**
    * Returns a new object of class '<em>Estrella Fugaz Meteoro</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -40,15 +67,6 @@ public interface DymeLanguageFactory extends EFactory
    * @generated
    */
   EstrellaFugazMeteoro createEstrellaFugazMeteoro();
-
-  /**
-   * Returns a new object of class '<em>Funcion</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Funcion</em>'.
-   * @generated
-   */
-  Funcion createFuncion();
 
   /**
    * Returns a new object of class '<em>Llamado Func</em>'.
@@ -60,22 +78,31 @@ public interface DymeLanguageFactory extends EFactory
   LlamadoFunc createLlamadoFunc();
 
   /**
-   * Returns a new object of class '<em>Param</em>'.
+   * Returns a new object of class '<em>Llamado Mapa</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Param</em>'.
+   * @return a new object of class '<em>Llamado Mapa</em>'.
    * @generated
    */
-  Param createParam();
+  LlamadoMapa createLlamadoMapa();
 
   /**
-   * Returns a new object of class '<em>Instruccion</em>'.
+   * Returns a new object of class '<em>Declaracion</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Instruccion</em>'.
+   * @return a new object of class '<em>Declaracion</em>'.
    * @generated
    */
-  Instruccion createInstruccion();
+  Declaracion createDeclaracion();
+
+  /**
+   * Returns a new object of class '<em>Funcion</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Funcion</em>'.
+   * @generated
+   */
+  Funcion createFuncion();
 
   /**
    * Returns a new object of class '<em>Asignacion</em>'.
@@ -87,22 +114,13 @@ public interface DymeLanguageFactory extends EFactory
   Asignacion createAsignacion();
 
   /**
-   * Returns a new object of class '<em>Tipo</em>'.
+   * Returns a new object of class '<em>Param</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Tipo</em>'.
+   * @return a new object of class '<em>Param</em>'.
    * @generated
    */
-  Tipo createTipo();
-
-  /**
-   * Returns a new object of class '<em>Tipo Funcion Orden Superior</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Tipo Funcion Orden Superior</em>'.
-   * @generated
-   */
-  TipoFuncionOrdenSuperior createTipoFuncionOrdenSuperior();
+  Param createParam();
 
   /**
    * Returns a new object of class '<em>Constante</em>'.
@@ -114,6 +132,15 @@ public interface DymeLanguageFactory extends EFactory
   Constante createConstante();
 
   /**
+   * Returns a new object of class '<em>Valor</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Valor</em>'.
+   * @generated
+   */
+  Valor createValor();
+
+  /**
    * Returns a new object of class '<em>Expresion</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -121,6 +148,33 @@ public interface DymeLanguageFactory extends EFactory
    * @generated
    */
   Expresion createExpresion();
+
+  /**
+   * Returns a new object of class '<em>Expr Map Operaciones</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Expr Map Operaciones</em>'.
+   * @generated
+   */
+  ExprMapOperaciones createExprMapOperaciones();
+
+  /**
+   * Returns a new object of class '<em>Map Add</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Map Add</em>'.
+   * @generated
+   */
+  MapAdd createMapAdd();
+
+  /**
+   * Returns a new object of class '<em>Map Remove</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Map Remove</em>'.
+   * @generated
+   */
+  MapRemove createMapRemove();
 
   /**
    * Returns a new object of class '<em>Expr Concatenacion</em>'.
@@ -150,6 +204,24 @@ public interface DymeLanguageFactory extends EFactory
   ExprLogica createExprLogica();
 
   /**
+   * Returns a new object of class '<em>Expr Logica Operadores</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Expr Logica Operadores</em>'.
+   * @generated
+   */
+  ExprLogicaOperadores createExprLogicaOperadores();
+
+  /**
+   * Returns a new object of class '<em>XOR</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>XOR</em>'.
+   * @generated
+   */
+  XOR createXOR();
+
+  /**
    * Returns a new object of class '<em>Expr Comparacion</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -157,6 +229,24 @@ public interface DymeLanguageFactory extends EFactory
    * @generated
    */
   ExprComparacion createExprComparacion();
+
+  /**
+   * Returns a new object of class '<em>Primitivo</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Primitivo</em>'.
+   * @generated
+   */
+  Primitivo createPrimitivo();
+
+  /**
+   * Returns a new object of class '<em>Tipo Funcion Orden Superior</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Tipo Funcion Orden Superior</em>'.
+   * @generated
+   */
+  TipoFuncionOrdenSuperior createTipoFuncionOrdenSuperior();
 
   /**
    * Returns a new object of class '<em>Planeta</em>'.
@@ -202,6 +292,24 @@ public interface DymeLanguageFactory extends EFactory
    * @generated
    */
   Luna createLuna();
+
+  /**
+   * Returns a new object of class '<em>Calisto Map Tipo</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Calisto Map Tipo</em>'.
+   * @generated
+   */
+  CalistoMapTipo createCalistoMapTipo();
+
+  /**
+   * Returns a new object of class '<em>Calisto Map Valor</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Calisto Map Valor</em>'.
+   * @generated
+   */
+  CalistoMapValor createCalistoMapValor();
 
   /**
    * Returns the package supported by this factory.

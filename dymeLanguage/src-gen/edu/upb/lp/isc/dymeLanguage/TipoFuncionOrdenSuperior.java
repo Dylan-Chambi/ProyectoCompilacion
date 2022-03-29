@@ -52,7 +52,7 @@ public interface TipoFuncionOrdenSuperior extends EObject
 
   /**
    * Returns the value of the '<em><b>Param Func</b></em>' containment reference list.
-   * The list contents are of type {@link edu.upb.lp.isc.dymeLanguage.TipoFuncionOrdenSuperior}.
+   * The list contents are of type {@link edu.upb.lp.isc.dymeLanguage.Objeto}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the value of the '<em>Param Func</em>' containment reference list.
@@ -60,7 +60,7 @@ public interface TipoFuncionOrdenSuperior extends EObject
    * @model containment="true"
    * @generated
    */
-  EList<TipoFuncionOrdenSuperior> getParamFunc();
+  EList<Objeto> getParamFunc();
 
   /**
    * Returns the value of the '<em><b>Return Tipo Func</b></em>' attribute.
@@ -89,12 +89,12 @@ public interface TipoFuncionOrdenSuperior extends EObject
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the value of the '<em>Return Func</em>' containment reference.
-   * @see #setReturnFunc(TipoFuncionOrdenSuperior)
+   * @see #setReturnFunc(Primitivo)
    * @see edu.upb.lp.isc.dymeLanguage.DymeLanguagePackage#getTipoFuncionOrdenSuperior_ReturnFunc()
    * @model containment="true"
    * @generated
    */
-  TipoFuncionOrdenSuperior getReturnFunc();
+  Primitivo getReturnFunc();
 
   /**
    * Sets the value of the '{@link edu.upb.lp.isc.dymeLanguage.TipoFuncionOrdenSuperior#getReturnFunc <em>Return Func</em>}' containment reference.
@@ -104,6 +104,6 @@ public interface TipoFuncionOrdenSuperior extends EObject
    * @see #getReturnFunc()
    * @generated
    */
-  void setReturnFunc(TipoFuncionOrdenSuperior value);
+  void setReturnFunc(Primitivo value);
 
 } // TipoFuncionOrdenSuperior

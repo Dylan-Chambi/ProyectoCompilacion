@@ -66,25 +66,37 @@ public class DymeLanguageFactoryImpl extends EFactoryImpl implements DymeLanguag
     switch (eClass.getClassifierID())
     {
       case DymeLanguagePackage.PROGRAMA: return createPrograma();
+      case DymeLanguagePackage.OBJETO: return createObjeto();
+      case DymeLanguagePackage.PRINT: return createPrint();
+      case DymeLanguagePackage.INSTRUCCIONES: return createInstrucciones();
       case DymeLanguagePackage.ESTRELLA_FUGAZ_METEORO: return createEstrellaFugazMeteoro();
-      case DymeLanguagePackage.FUNCION: return createFuncion();
       case DymeLanguagePackage.LLAMADO_FUNC: return createLlamadoFunc();
-      case DymeLanguagePackage.PARAM: return createParam();
-      case DymeLanguagePackage.INSTRUCCION: return createInstruccion();
+      case DymeLanguagePackage.LLAMADO_MAPA: return createLlamadoMapa();
+      case DymeLanguagePackage.DECLARACION: return createDeclaracion();
+      case DymeLanguagePackage.FUNCION: return createFuncion();
       case DymeLanguagePackage.ASIGNACION: return createAsignacion();
-      case DymeLanguagePackage.TIPO: return createTipo();
-      case DymeLanguagePackage.TIPO_FUNCION_ORDEN_SUPERIOR: return createTipoFuncionOrdenSuperior();
+      case DymeLanguagePackage.PARAM: return createParam();
       case DymeLanguagePackage.CONSTANTE: return createConstante();
+      case DymeLanguagePackage.VALOR: return createValor();
       case DymeLanguagePackage.EXPRESION: return createExpresion();
+      case DymeLanguagePackage.EXPR_MAP_OPERACIONES: return createExprMapOperaciones();
+      case DymeLanguagePackage.MAP_ADD: return createMapAdd();
+      case DymeLanguagePackage.MAP_REMOVE: return createMapRemove();
       case DymeLanguagePackage.EXPR_CONCATENACION: return createExprConcatenacion();
       case DymeLanguagePackage.EXPR_ARITMETICA: return createExprAritmetica();
       case DymeLanguagePackage.EXPR_LOGICA: return createExprLogica();
+      case DymeLanguagePackage.EXPR_LOGICA_OPERADORES: return createExprLogicaOperadores();
+      case DymeLanguagePackage.XOR: return createXOR();
       case DymeLanguagePackage.EXPR_COMPARACION: return createExprComparacion();
+      case DymeLanguagePackage.PRIMITIVO: return createPrimitivo();
+      case DymeLanguagePackage.TIPO_FUNCION_ORDEN_SUPERIOR: return createTipoFuncionOrdenSuperior();
       case DymeLanguagePackage.PLANETA: return createPlaneta();
       case DymeLanguagePackage.CONSTELACION: return createConstelacion();
       case DymeLanguagePackage.ESTRELLA: return createEstrella();
       case DymeLanguagePackage.POLVO_ESTELAR: return createPolvoEstelar();
       case DymeLanguagePackage.LUNA: return createLuna();
+      case DymeLanguagePackage.CALISTO_MAP_TIPO: return createCalistoMapTipo();
+      case DymeLanguagePackage.CALISTO_MAP_VALOR: return createCalistoMapValor();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -108,10 +120,10 @@ public class DymeLanguageFactoryImpl extends EFactoryImpl implements DymeLanguag
    * @generated
    */
   @Override
-  public EstrellaFugazMeteoro createEstrellaFugazMeteoro()
+  public Objeto createObjeto()
   {
-    EstrellaFugazMeteoroImpl estrellaFugazMeteoro = new EstrellaFugazMeteoroImpl();
-    return estrellaFugazMeteoro;
+    ObjetoImpl objeto = new ObjetoImpl();
+    return objeto;
   }
 
   /**
@@ -120,10 +132,34 @@ public class DymeLanguageFactoryImpl extends EFactoryImpl implements DymeLanguag
    * @generated
    */
   @Override
-  public Funcion createFuncion()
+  public Print createPrint()
   {
-    FuncionImpl funcion = new FuncionImpl();
-    return funcion;
+    PrintImpl print = new PrintImpl();
+    return print;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Instrucciones createInstrucciones()
+  {
+    InstruccionesImpl instrucciones = new InstruccionesImpl();
+    return instrucciones;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EstrellaFugazMeteoro createEstrellaFugazMeteoro()
+  {
+    EstrellaFugazMeteoroImpl estrellaFugazMeteoro = new EstrellaFugazMeteoroImpl();
+    return estrellaFugazMeteoro;
   }
 
   /**
@@ -144,10 +180,10 @@ public class DymeLanguageFactoryImpl extends EFactoryImpl implements DymeLanguag
    * @generated
    */
   @Override
-  public Param createParam()
+  public LlamadoMapa createLlamadoMapa()
   {
-    ParamImpl param = new ParamImpl();
-    return param;
+    LlamadoMapaImpl llamadoMapa = new LlamadoMapaImpl();
+    return llamadoMapa;
   }
 
   /**
@@ -156,10 +192,22 @@ public class DymeLanguageFactoryImpl extends EFactoryImpl implements DymeLanguag
    * @generated
    */
   @Override
-  public Instruccion createInstruccion()
+  public Declaracion createDeclaracion()
   {
-    InstruccionImpl instruccion = new InstruccionImpl();
-    return instruccion;
+    DeclaracionImpl declaracion = new DeclaracionImpl();
+    return declaracion;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Funcion createFuncion()
+  {
+    FuncionImpl funcion = new FuncionImpl();
+    return funcion;
   }
 
   /**
@@ -180,22 +228,10 @@ public class DymeLanguageFactoryImpl extends EFactoryImpl implements DymeLanguag
    * @generated
    */
   @Override
-  public Tipo createTipo()
+  public Param createParam()
   {
-    TipoImpl tipo = new TipoImpl();
-    return tipo;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public TipoFuncionOrdenSuperior createTipoFuncionOrdenSuperior()
-  {
-    TipoFuncionOrdenSuperiorImpl tipoFuncionOrdenSuperior = new TipoFuncionOrdenSuperiorImpl();
-    return tipoFuncionOrdenSuperior;
+    ParamImpl param = new ParamImpl();
+    return param;
   }
 
   /**
@@ -216,10 +252,58 @@ public class DymeLanguageFactoryImpl extends EFactoryImpl implements DymeLanguag
    * @generated
    */
   @Override
+  public Valor createValor()
+  {
+    ValorImpl valor = new ValorImpl();
+    return valor;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public Expresion createExpresion()
   {
     ExpresionImpl expresion = new ExpresionImpl();
     return expresion;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public ExprMapOperaciones createExprMapOperaciones()
+  {
+    ExprMapOperacionesImpl exprMapOperaciones = new ExprMapOperacionesImpl();
+    return exprMapOperaciones;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public MapAdd createMapAdd()
+  {
+    MapAddImpl mapAdd = new MapAddImpl();
+    return mapAdd;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public MapRemove createMapRemove()
+  {
+    MapRemoveImpl mapRemove = new MapRemoveImpl();
+    return mapRemove;
   }
 
   /**
@@ -264,10 +348,58 @@ public class DymeLanguageFactoryImpl extends EFactoryImpl implements DymeLanguag
    * @generated
    */
   @Override
+  public ExprLogicaOperadores createExprLogicaOperadores()
+  {
+    ExprLogicaOperadoresImpl exprLogicaOperadores = new ExprLogicaOperadoresImpl();
+    return exprLogicaOperadores;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public XOR createXOR()
+  {
+    XORImpl xor = new XORImpl();
+    return xor;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public ExprComparacion createExprComparacion()
   {
     ExprComparacionImpl exprComparacion = new ExprComparacionImpl();
     return exprComparacion;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Primitivo createPrimitivo()
+  {
+    PrimitivoImpl primitivo = new PrimitivoImpl();
+    return primitivo;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public TipoFuncionOrdenSuperior createTipoFuncionOrdenSuperior()
+  {
+    TipoFuncionOrdenSuperiorImpl tipoFuncionOrdenSuperior = new TipoFuncionOrdenSuperiorImpl();
+    return tipoFuncionOrdenSuperior;
   }
 
   /**
@@ -328,6 +460,30 @@ public class DymeLanguageFactoryImpl extends EFactoryImpl implements DymeLanguag
   {
     LunaImpl luna = new LunaImpl();
     return luna;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public CalistoMapTipo createCalistoMapTipo()
+  {
+    CalistoMapTipoImpl calistoMapTipo = new CalistoMapTipoImpl();
+    return calistoMapTipo;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public CalistoMapValor createCalistoMapValor()
+  {
+    CalistoMapValorImpl calistoMapValor = new CalistoMapValorImpl();
+    return calistoMapValor;
   }
 
   /**

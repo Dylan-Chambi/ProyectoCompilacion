@@ -5,8 +5,6 @@ package edu.upb.lp.isc.dymeLanguage;
 
 import org.eclipse.emf.common.util.EList;
 
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Funcion</b></em>'.
@@ -16,11 +14,12 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link edu.upb.lp.isc.dymeLanguage.Funcion#isGusano <em>Gusano</em>}</li>
  *   <li>{@link edu.upb.lp.isc.dymeLanguage.Funcion#getName <em>Name</em>}</li>
  *   <li>{@link edu.upb.lp.isc.dymeLanguage.Funcion#getParam <em>Param</em>}</li>
- *   <li>{@link edu.upb.lp.isc.dymeLanguage.Funcion#getInstr <em>Instr</em>}</li>
- *   <li>{@link edu.upb.lp.isc.dymeLanguage.Funcion#getExpr <em>Expr</em>}</li>
- *   <li>{@link edu.upb.lp.isc.dymeLanguage.Funcion#isReturnTipo <em>Return Tipo</em>}</li>
+ *   <li>{@link edu.upb.lp.isc.dymeLanguage.Funcion#getDeclar <em>Declar</em>}</li>
+ *   <li>{@link edu.upb.lp.isc.dymeLanguage.Funcion#getVal <em>Val</em>}</li>
+ *   <li>{@link edu.upb.lp.isc.dymeLanguage.Funcion#isTipoInferido <em>Tipo Inferido</em>}</li>
  *   <li>{@link edu.upb.lp.isc.dymeLanguage.Funcion#getTipoClass <em>Tipo Class</em>}</li>
  * </ul>
  *
@@ -28,8 +27,30 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface Funcion extends EObject
+public interface Funcion extends Declaracion
 {
+  /**
+   * Returns the value of the '<em><b>Gusano</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Gusano</em>' attribute.
+   * @see #setGusano(boolean)
+   * @see edu.upb.lp.isc.dymeLanguage.DymeLanguagePackage#getFuncion_Gusano()
+   * @model
+   * @generated
+   */
+  boolean isGusano();
+
+  /**
+   * Sets the value of the '{@link edu.upb.lp.isc.dymeLanguage.Funcion#isGusano <em>Gusano</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Gusano</em>' attribute.
+   * @see #isGusano()
+   * @generated
+   */
+  void setGusano(boolean value);
+
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
@@ -65,72 +86,72 @@ public interface Funcion extends EObject
   EList<Param> getParam();
 
   /**
-   * Returns the value of the '<em><b>Instr</b></em>' containment reference list.
-   * The list contents are of type {@link edu.upb.lp.isc.dymeLanguage.Instruccion}.
+   * Returns the value of the '<em><b>Declar</b></em>' containment reference list.
+   * The list contents are of type {@link edu.upb.lp.isc.dymeLanguage.Declaracion}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Instr</em>' containment reference list.
-   * @see edu.upb.lp.isc.dymeLanguage.DymeLanguagePackage#getFuncion_Instr()
+   * @return the value of the '<em>Declar</em>' containment reference list.
+   * @see edu.upb.lp.isc.dymeLanguage.DymeLanguagePackage#getFuncion_Declar()
    * @model containment="true"
    * @generated
    */
-  EList<Instruccion> getInstr();
+  EList<Declaracion> getDeclar();
 
   /**
-   * Returns the value of the '<em><b>Expr</b></em>' containment reference.
+   * Returns the value of the '<em><b>Val</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Expr</em>' containment reference.
-   * @see #setExpr(Expresion)
-   * @see edu.upb.lp.isc.dymeLanguage.DymeLanguagePackage#getFuncion_Expr()
+   * @return the value of the '<em>Val</em>' containment reference.
+   * @see #setVal(Valor)
+   * @see edu.upb.lp.isc.dymeLanguage.DymeLanguagePackage#getFuncion_Val()
    * @model containment="true"
    * @generated
    */
-  Expresion getExpr();
+  Valor getVal();
 
   /**
-   * Sets the value of the '{@link edu.upb.lp.isc.dymeLanguage.Funcion#getExpr <em>Expr</em>}' containment reference.
+   * Sets the value of the '{@link edu.upb.lp.isc.dymeLanguage.Funcion#getVal <em>Val</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Expr</em>' containment reference.
-   * @see #getExpr()
+   * @param value the new value of the '<em>Val</em>' containment reference.
+   * @see #getVal()
    * @generated
    */
-  void setExpr(Expresion value);
+  void setVal(Valor value);
 
   /**
-   * Returns the value of the '<em><b>Return Tipo</b></em>' attribute.
+   * Returns the value of the '<em><b>Tipo Inferido</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Return Tipo</em>' attribute.
-   * @see #setReturnTipo(boolean)
-   * @see edu.upb.lp.isc.dymeLanguage.DymeLanguagePackage#getFuncion_ReturnTipo()
+   * @return the value of the '<em>Tipo Inferido</em>' attribute.
+   * @see #setTipoInferido(boolean)
+   * @see edu.upb.lp.isc.dymeLanguage.DymeLanguagePackage#getFuncion_TipoInferido()
    * @model
    * @generated
    */
-  boolean isReturnTipo();
+  boolean isTipoInferido();
 
   /**
-   * Sets the value of the '{@link edu.upb.lp.isc.dymeLanguage.Funcion#isReturnTipo <em>Return Tipo</em>}' attribute.
+   * Sets the value of the '{@link edu.upb.lp.isc.dymeLanguage.Funcion#isTipoInferido <em>Tipo Inferido</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Return Tipo</em>' attribute.
-   * @see #isReturnTipo()
+   * @param value the new value of the '<em>Tipo Inferido</em>' attribute.
+   * @see #isTipoInferido()
    * @generated
    */
-  void setReturnTipo(boolean value);
+  void setTipoInferido(boolean value);
 
   /**
    * Returns the value of the '<em><b>Tipo Class</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the value of the '<em>Tipo Class</em>' containment reference.
-   * @see #setTipoClass(TipoFuncionOrdenSuperior)
+   * @see #setTipoClass(Primitivo)
    * @see edu.upb.lp.isc.dymeLanguage.DymeLanguagePackage#getFuncion_TipoClass()
    * @model containment="true"
    * @generated
    */
-  TipoFuncionOrdenSuperior getTipoClass();
+  Primitivo getTipoClass();
 
   /**
    * Sets the value of the '{@link edu.upb.lp.isc.dymeLanguage.Funcion#getTipoClass <em>Tipo Class</em>}' containment reference.
@@ -140,6 +161,6 @@ public interface Funcion extends EObject
    * @see #getTipoClass()
    * @generated
    */
-  void setTipoClass(TipoFuncionOrdenSuperior value);
+  void setTipoClass(Primitivo value);
 
 } // Funcion

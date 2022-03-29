@@ -3,7 +3,7 @@
  */
 package edu.upb.lp.isc.dymeLanguage;
 
-import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -14,7 +14,7 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link edu.upb.lp.isc.dymeLanguage.ExprLogica#getOperadorLog <em>Operador Log</em>}</li>
+ *   <li>{@link edu.upb.lp.isc.dymeLanguage.ExprLogica#isNegado <em>Negado</em>}</li>
  *   <li>{@link edu.upb.lp.isc.dymeLanguage.ExprLogica#getExprLog <em>Expr Log</em>}</li>
  * </ul>
  *
@@ -25,37 +25,47 @@ import org.eclipse.emf.common.util.EList;
 public interface ExprLogica extends Expresion
 {
   /**
-   * Returns the value of the '<em><b>Operador Log</b></em>' attribute.
+   * Returns the value of the '<em><b>Negado</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Operador Log</em>' attribute.
-   * @see #setOperadorLog(String)
-   * @see edu.upb.lp.isc.dymeLanguage.DymeLanguagePackage#getExprLogica_OperadorLog()
+   * @return the value of the '<em>Negado</em>' attribute.
+   * @see #setNegado(boolean)
+   * @see edu.upb.lp.isc.dymeLanguage.DymeLanguagePackage#getExprLogica_Negado()
    * @model
    * @generated
    */
-  String getOperadorLog();
+  boolean isNegado();
 
   /**
-   * Sets the value of the '{@link edu.upb.lp.isc.dymeLanguage.ExprLogica#getOperadorLog <em>Operador Log</em>}' attribute.
+   * Sets the value of the '{@link edu.upb.lp.isc.dymeLanguage.ExprLogica#isNegado <em>Negado</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Operador Log</em>' attribute.
-   * @see #getOperadorLog()
+   * @param value the new value of the '<em>Negado</em>' attribute.
+   * @see #isNegado()
    * @generated
    */
-  void setOperadorLog(String value);
+  void setNegado(boolean value);
 
   /**
-   * Returns the value of the '<em><b>Expr Log</b></em>' containment reference list.
-   * The list contents are of type {@link edu.upb.lp.isc.dymeLanguage.Expresion}.
+   * Returns the value of the '<em><b>Expr Log</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Expr Log</em>' containment reference list.
+   * @return the value of the '<em>Expr Log</em>' containment reference.
+   * @see #setExprLog(EObject)
    * @see edu.upb.lp.isc.dymeLanguage.DymeLanguagePackage#getExprLogica_ExprLog()
    * @model containment="true"
    * @generated
    */
-  EList<Expresion> getExprLog();
+  EObject getExprLog();
+
+  /**
+   * Sets the value of the '{@link edu.upb.lp.isc.dymeLanguage.ExprLogica#getExprLog <em>Expr Log</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Expr Log</em>' containment reference.
+   * @see #getExprLog()
+   * @generated
+   */
+  void setExprLog(EObject value);
 
 } // ExprLogica

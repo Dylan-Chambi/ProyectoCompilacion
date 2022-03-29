@@ -7,6 +7,37 @@ import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
+import edu.upb.lp.isc.dymeLanguage.Programa
+import edu.upb.lp.isc.dymeLanguage.Declaracion
+import edu.upb.lp.isc.dymeLanguage.Valor
+import edu.upb.lp.isc.dymeLanguage.Asignacion
+import edu.upb.lp.isc.dymeLanguage.Param
+import edu.upb.lp.isc.dymeLanguage.Funcion
+import edu.upb.lp.isc.dymeLanguage.Expresion
+import edu.upb.lp.isc.dymeLanguage.Constante
+import edu.upb.lp.isc.dymeLanguage.EstrellaFugazMeteoro
+import edu.upb.lp.isc.dymeLanguage.LlamadoFunc
+import edu.upb.lp.isc.dymeLanguage.ExprConcatenacion
+import edu.upb.lp.isc.dymeLanguage.ExprAritmetica
+import edu.upb.lp.isc.dymeLanguage.ExprLogica
+import edu.upb.lp.isc.dymeLanguage.Planeta
+import edu.upb.lp.isc.dymeLanguage.Constelacion
+import edu.upb.lp.isc.dymeLanguage.Estrella
+import edu.upb.lp.isc.dymeLanguage.PolvoEstelar
+import edu.upb.lp.isc.dymeLanguage.Luna
+import edu.upb.lp.isc.dymeLanguage.Instrucciones
+import edu.upb.lp.isc.dymeLanguage.TipoFuncionOrdenSuperior
+import edu.upb.lp.isc.dymeLanguage.Primitivo
+import edu.upb.lp.isc.dymeLanguage.ExprLogicaOperadores
+import edu.upb.lp.isc.dymeLanguage.XOR
+import edu.upb.lp.isc.dymeLanguage.ExprComparacion
+import edu.upb.lp.isc.dymeLanguage.CalistoMapTipo
+import edu.upb.lp.isc.dymeLanguage.CalistoMapValor
+import edu.upb.lp.isc.dymeLanguage.Print
+import edu.upb.lp.isc.dymeLanguage.LlamadoMapa
+import edu.upb.lp.isc.dymeLanguage.ExprMapOperaciones
+import edu.upb.lp.isc.dymeLanguage.MapAdd
+import edu.upb.lp.isc.dymeLanguage.MapRemove
 
 /**
  * Generates code from your model files on save.
@@ -16,10 +47,117 @@ import org.eclipse.xtext.generator.IGeneratorContext
 class DymeLanguageGenerator extends AbstractGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-//		fsa.generateFile('greetings.txt', 'People to greet: ' + 
-//			resource.allContents
-//				.filter(Greeting)
-//				.map[name]
-//				.join(', '))
+		val program = resource.contents.get(0) as Programa
+    	fsa.generateFile(program.name + ".sc", generate(program))
+    }
+	
+	def generate(Programa prog){'''
+		import scala.annotation.tailrec
+		
+		«prog.prog.map[generateInstr].join('\n')»
+		'''
+    }
+   
+	def generateProgram (Instrucciones Inst)'''«generateInstr(Inst)»'''
+	
+    dispatch def generateInstr (Declaracion declar)'''«generateDeclaracion(declar)»'''
+    dispatch def generateInstr (Valor valor)'''«generateValor(valor)»'''
+    
+    dispatch def generateDeclaracion (Asignacion asig)'''
+    	val «asig.name»«IF asig.isTipoInferido»: «generateTipoFuncionOrdenSuperior(asig.tipoClass)»«ENDIF» = «generateInstr(asig.valorAsig)»
+    '''
+    dispatch def generateDeclaracion (Funcion func)'''
+    	«IF func.isGusano»@tailrec«ENDIF»
+    	def «func.name»(«func.param.map[generateDeclaracion].join(', ')»)«IF func.isTipoInferido»: «generateTipoFuncionOrdenSuperior(func.tipoClass)» «ENDIF» = {
+    		«func.declar.map[generateInstr].join()»
+    		«generateInstr(func.^val)»
+    	}
+    '''
+    dispatch def generateDeclaracion (Param param)'''«param.name»: «param.param.map[generateTipoFuncionOrdenSuperior].join(', ')»«IF param.isTipoRetorno» => «generateTipoFuncionOrdenSuperior(param.returnTipo)»«ENDIF»'''
+    
+    dispatch def generateDeclaracion (Print print){
+    	switch print.printTipo {
+    		case "Mensaje": '''print(«generateValor(print.^val)»)'''
+    		case "MensajeLineal": '''println(«generateValor(print.^val)»)'''
+    	}
+    }
+    
+    dispatch def generateValor (Expresion expr)'''«generateExpresion(expr)»'''
+    dispatch def generateValor (CalistoMapValor calisMapVaor){
+    	val list = newArrayList()
+    	calisMapVaor.key.forEach[item, index | list.add(generateExpresion(item) + " -> " + generateExpresion(calisMapVaor.value.get(index)))]
+    '''Map(«list.join(", ")»)'''
+    }
+    
+     dispatch def generateValor (ExprMapOperaciones mapOper)'''«generateMapOper(mapOper)»'''
+     
+     dispatch def generateMapOper(MapAdd mapAdd){ '''«generateDeclaracionName(mapAdd.mapConst.nombre)» + ''' + {
+    	val list = newArrayList()
+    	mapAdd.key.forEach[item, index | list.add(generateExpresion(item) + " -> " + generateExpresion(mapAdd.value.get(index)))]
+    	'''(«list.join(") + (")»)'''
+    	}
+    }
+     
+     dispatch def generateMapOper(MapRemove mapRem)'''«generateDeclaracionName(mapRem.mapConst.nombre)» - «mapRem.key.map[ '''(«generateExpresion»)''' ].join(" - ")»'''
+    
+    dispatch def generateDeclaracionName(Param param)'''«param.name»'''
+   	dispatch def generateDeclaracionName(Funcion func)'''«func.name»'''
+    dispatch def generateDeclaracionName(Asignacion asig)'''«asig.name»'''
+    
+    dispatch def generateTipoFuncionOrdenSuperior(TipoFuncionOrdenSuperior tfos)'''
+    	«tfos.paramFunc.map[generateTipoFuncionOrdenSuperior].join(', ')» «IF tfos.isReturnTipoFunc» => «generateTipoFuncionOrdenSuperior(tfos.returnFunc)» «ENDIF» 
+    '''
+    
+    dispatch def generateTipoFuncionOrdenSuperior(CalistoMapTipo caliMap)'''Map[«generateTipoFuncionOrdenSuperior(caliMap.tipoIzq)», «generateTipoFuncionOrdenSuperior(caliMap.tipoDer)»]'''
+    
+    dispatch def generateTipoFuncionOrdenSuperior(Primitivo prim){
+    	switch prim.tipo {
+    		case "Planeta": '''Int'''
+    		case "PolvoEstelar": '''Double'''
+    		case "Constelacion": '''String'''
+    		case "Luna": '''Boolean'''
+    		case "Estrella": '''Char'''
+    		default: '''ErrorType'''
+    	}
+    }
+	dispatch def generateExpresion (Constante const)'''«generateDeclaracionName(const.nombre)»'''
+	dispatch def generateExpresion (LlamadoMapa llamMap)'''«generateDeclaracionName(llamMap.decID)»(«generateExpresion(llamMap.mapKey)»)'''
+   	dispatch def generateExpresion (EstrellaFugazMeteoro efm)'''
+        if («generateExpresion(efm.exprLogCondicion)») «generateExpresion(efm.estrellaFugazRes)» else «generateExpresion(efm.meteoroRes)»
+    '''
+
+    dispatch def generateExpresion (LlamadoFunc llf)'''
+		«generateDeclaracionName(llf.funcionID)»(«llf.args.map[generateValor].join(', ')»)
+    '''
+
+
+	dispatch def generateExpresion (ExprComparacion exprComp){
+		'''(«generateExpresion(exprComp.exprComIzq)»''' +
+		switch exprComp.operadorComp{
+    			case "~=": '''!='''
+    			default: exprComp.operadorComp
+    	} + '''«generateExpresion(exprComp.exprComDer)»)'''
 	}
+	
+    dispatch def generateExpresion (ExprConcatenacion ec)'''(«ec.exprCon.map[generateExpresion].join(" + ")»)'''
+    dispatch def generateExpresion (ExprAritmetica ea)'''(«ea.exprAr.map[generateExpresion].join(" " + ea.operadorAr + " ")»)'''
+    
+    dispatch def generateExpresion (ExprLogica el)'''«IF el.isNegado»!«ENDIF»«generateExpresion(el.exprLog)»'''
+    
+    dispatch def generateExpresion(ExprLogicaOperadores expLogop)'''(«expLogop.exprLogs.map[generateExpresion].join(" " + expLogop.operadorLog + " ")»)'''
+    
+	dispatch def generateExpresion (XOR xor)'''(«generateExpresion(xor.exprLogIzq)» && !«generateExpresion(xor.exprLogDer)») || (!«generateExpresion(xor.exprLogIzq)» && «generateExpresion(xor.exprLogDer)»)'''
+	    
+    dispatch def generateExpresion (Planeta pl)'''«pl.x»'''
+    dispatch def generateExpresion (Constelacion co)'''"«co.x»"'''
+    dispatch def generateExpresion (Estrella es)''' «es.x» ''' 
+    dispatch def generateExpresion (PolvoEstelar pe)'''«pe.x»'''
+    dispatch def generateExpresion (Luna lu){
+    	switch lu.x {
+    		case "LunaNueva": '''false'''
+    		case "LunaLlena": '''true'''
+    		default: '''ErrorType'''
+    	}
+    }
+    
 }

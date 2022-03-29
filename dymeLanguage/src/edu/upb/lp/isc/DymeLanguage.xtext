@@ -5,101 +5,145 @@ generate dymeLanguage "http://www.upb.edu/lp/isc/DymeLanguage"
 import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 
 //Model:
-//	greetings+=Greeting*;
-//	
+//    greetings+=Greeting*;
+//    
 //Greeting:
-//	'Hello' name=ID '!';
+//    'Hello' name=ID '!';
+
 
 Programa:
-	(func+=Funcion)+
+    'GALAXIA' name=ID 
+    (prog+=Instrucciones)*
+;
+
+Objeto:
+	(CalistoMapTipo | Primitivo)
+;
+
+Print:
+	printTipo=('Mensaje' | 'MensajeLineal') '(' (val=Valor) ')'
+;
+
+Instrucciones:
+    (Declaracion | Valor)
 ;
 
 EstrellaFugazMeteoro: //If
      ("EstrellaFugaz" '(' exprLogCondicion=(Expresion)')' estrellaFugazRes = Expresion)
      ("Meteoro" meteoroRes = Expresion)
  ;
- 
-Funcion:
-    'CASIMIR' name=ID 'NECESITA' (param+=Param ('$' param+=Param)*)? 'CONVERGE'
-    (instr+=Instruccion)* (expr=Expresion)
-    /*ef+=EstrellaFugazMeteoro*/
-    "GUT" (returnTipo ?= '->' tipoClass=TipoFuncionOrdenSuperior?)?
-;
 
 LlamadoFunc:
-	funcion=[Funcion] 'CONSUME' (args+=Expresion ('$' args+=Expresion)*)? '#'
+    funcionID=[Declaracion] '{' (args+=(Valor) ('$' args+=(Valor))*)? '}' 
 ;
 
-Param:
-	name=ID 'es' tipoClass=TipoFuncionOrdenSuperior
+LlamadoMapa:
+	decID=[Declaracion] '[' mapKey=Expresion ']' 
 ;
 
+Declaracion:
+    (Asignacion | Funcion | Param | Print)
+;
 
-Instruccion:
-	Asignacion /*Falta */
+Funcion:
+	(gusano ?= 'Agujero' 'de' 'Gusano')?
+    'CASIMIR' name=ID ('CONSUME'  param+=Param ('$' param+=Param)*)? 'CONVERGE'
+    (declar+=(Declaracion))*
+    (val=(Valor))
+    "GUT" (tipoInferido ?= '->' tipoClass=Primitivo)?
 ;
 
 Asignacion:
-	'MASA' name=ID (tipoInferido ?= 'es' tipoClass=TipoFuncionOrdenSuperior)?  '<-' valorAsig=Expresion '~'
-	/*'MASA' name=ID ('es' tip=Tipo)?  '<-' valor=Expresion */
-	/* Preguntar la comparacion con null, con el valor opcional */
+    'MASA' name=ID (tipoInferido ?= 'es' tipoClass=Objeto)?  '<-' valorAsig=Valor
 ;
 
-Tipo:
-	tipo = ('Planeta' | 'Constelacion' | 'Estrella' | 'PolvoEstelar' | 'Luna' )
-;
-
-TipoFuncionOrdenSuperior:
-	(ordenSuperiorTipo = '(' paramFunc+=(TipoFuncionOrdenSuperior) ('$' paramFunc+=TipoFuncionOrdenSuperior)* ')' | Tipo)
-	(returnTipoFunc ?= '->' (('(' returnFunc=(TipoFuncionOrdenSuperior) ')') | returnFunc=Tipo))?
+Param:
+    name=ID 'es' ('(' (param+=(TipoFuncionOrdenSuperior) ('$' param+=TipoFuncionOrdenSuperior)*)? ')' | param+=Objeto) (tipoRetorno ?= '->' returnTipo=Primitivo)?
 ;
 
 Constante:
-	nombre=[Asignacion]
+    nombre=[Declaracion]
+;
+
+
+Valor:
+    (Expresion | CalistoMapValor | ExprMapOperaciones)
 ;
 
 
 Expresion:
-	ExprConcatenacion | ExprAritmetica | ExprLogica | LlamadoFunc | Constante | EstrellaFugazMeteoro
+    ExprConcatenacion | ExprAritmetica | ExprLogica | LlamadoFunc | EstrellaFugazMeteoro | Constante | LlamadoMapa
 ;
 
+ExprMapOperaciones:
+	MapAdd | MapRemove
+;
+
+MapAdd:
+	'(' operadorAdd = ('+') mapConst=Constante '(' (key+=Expresion '->' value+=Expresion) ')' ('('  key+=Expresion '->' value+=Expresion ')')* ')'
+;
+
+MapRemove:
+	'(' operadorAdd = ('-') mapConst=Constante '(' key+=Expresion ')' ( '(' key+=Expresion ')' )* ')'
+;
+
+
+
 ExprConcatenacion:
-	'('(operadorCon = '++' (exprCon+=(ExprConcatenacion | LlamadoFunc))+) ')' |  (Constelacion | Estrella)
+    '('(operadorCon = ('++') (exprCon+=(Expresion))+) ')' |  (Constelacion | Estrella)
 ;
 
 
 ExprAritmetica:
-	'('(operadorAr = ('+' | '-' | '/' | '*' | '%')  (exprAr+=(ExprAritmetica | LlamadoFunc))+) ')' |  (Planeta | PolvoEstelar)
+    '('(operadorAr = ('+' | '-' | '/' | '*' | '%')  (exprAr+=(Expresion))+) ')' |  (Planeta | PolvoEstelar)
 ;
 
 
 ExprLogica:
-	'('(operadorLog = ( '&&' | '||' | '$$' | '!' ) (exprLog+=(ExprLogica | LlamadoFunc))+) ')' | (Luna | ExprComparacion )
+   (Negado ?= '!')? exprLog=(ExprLogicaOperadores | Luna | ExprComparacion | XOR)
+;
+
+ExprLogicaOperadores:
+	(('('(operadorLog = ( '&&' | '||' ) (exprLogs+=(Expresion))+) ')' ))
+;
+
+XOR:
+	'('(operadorXOR = '$$' exprLogIzq=(Expresion) exprLogDer=(Expresion)) ')'
 ;
 
 ExprComparacion:
-	'('(operadorComp = ('<' | '>' | '<=' | '>=' | '==' | '~') exprComIzq=(Expresion) exprComDer=(Expresion)) ')'
+    '('(operadorComp = ('<' | '>' | '<=' | '>=' | '==' | '~=') exprComIzq=(Expresion) exprComDer=(Expresion)) ')'
 ;
 
-/*
-ExprSimple:
-	 valorExpr = ( Planeta | PolvoEstelar | Constelacion | Estrella | Luna | Cometa )
+Primitivo:
+    tipo = ('Planeta' | 'Constelacion' | 'Estrella' | 'PolvoEstelar' | 'Luna')
 ;
-*/
+
+TipoFuncionOrdenSuperior:
+    (ordenSuperiorTipo = '(' (paramFunc+=(Objeto) ('$' paramFunc+=Objeto)*)? ')' | Objeto)
+    (returnTipoFunc ?= '->' returnFunc=(Primitivo) )?
+;
+
+
 Planeta: /* int */
-	x = INT
+    x = INT
 ;
 
 Constelacion: /* string */
-	x = STRING
+    x = STRING
 ;
 
-Estrella: /* char */ /* preguntar como aceptar solo 1 */
-	x = 'a'
+terminal CHAR: /* char */ 
+    '"' ( '\\' . | !('\\'|'"') ) '"' | 
+    "'" ( '\\' . | !('\\'|"'") ) "'"
+;
+
+Estrella:
+    x = CHAR
 ;
 
 PolvoEstelar:
-	x = Double
+    x = Double
 ;
 
 
@@ -109,8 +153,18 @@ Double returns ecore::EDouble:
 
 
 Luna:
-	x = ('LunaNueva' | 'LunaLlena')
+    x = ('LunaNueva' | 'LunaLlena')
 ;
+
+CalistoMapTipo: //mapa -> entrada con la declaracion de tipos
+     'Calisto' '[' (tipoIzq=Primitivo '$' tipoDer=Primitivo) ']'
+ ;
+ 
+CalistoMapValor: //mapa -> salida con tipos asignados
+     {CalistoMapValor} 'Calisto' '(' ((key+=Expresion '->' value+=Expresion) ('$' key+=Expresion '->' value+=Expresion)*)? ')'
+;
+//{CalistoMapValor} 'Calisto' (( ( calistoValues ?= '('(returnFunc+=Primitivo*) )? ')') | '()')
+//{CalistoMapValor} 'Calisto' '(' ((key+=Expresion '->' value+=Expresion) ('$' key+=Expresion '->' value+=Expresion)*)? ')'
 
 /*
  1 Valores de Planeta como INT o nueva descripcion regular

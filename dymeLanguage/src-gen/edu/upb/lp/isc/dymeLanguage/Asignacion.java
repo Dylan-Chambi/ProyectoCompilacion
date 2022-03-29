@@ -23,7 +23,7 @@ package edu.upb.lp.isc.dymeLanguage;
  * @model
  * @generated
  */
-public interface Asignacion extends Instruccion
+public interface Asignacion extends Declaracion
 {
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.
@@ -74,12 +74,12 @@ public interface Asignacion extends Instruccion
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the value of the '<em>Tipo Class</em>' containment reference.
-   * @see #setTipoClass(TipoFuncionOrdenSuperior)
+   * @see #setTipoClass(Objeto)
    * @see edu.upb.lp.isc.dymeLanguage.DymeLanguagePackage#getAsignacion_TipoClass()
    * @model containment="true"
    * @generated
    */
-  TipoFuncionOrdenSuperior getTipoClass();
+  Objeto getTipoClass();
 
   /**
    * Sets the value of the '{@link edu.upb.lp.isc.dymeLanguage.Asignacion#getTipoClass <em>Tipo Class</em>}' containment reference.
@@ -89,19 +89,19 @@ public interface Asignacion extends Instruccion
    * @see #getTipoClass()
    * @generated
    */
-  void setTipoClass(TipoFuncionOrdenSuperior value);
+  void setTipoClass(Objeto value);
 
   /**
    * Returns the value of the '<em><b>Valor Asig</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the value of the '<em>Valor Asig</em>' containment reference.
-   * @see #setValorAsig(Expresion)
+   * @see #setValorAsig(Valor)
    * @see edu.upb.lp.isc.dymeLanguage.DymeLanguagePackage#getAsignacion_ValorAsig()
    * @model containment="true"
    * @generated
    */
-  Expresion getValorAsig();
+  Valor getValorAsig();
 
   /**
    * Sets the value of the '{@link edu.upb.lp.isc.dymeLanguage.Asignacion#getValorAsig <em>Valor Asig</em>}' containment reference.
@@ -111,6 +111,6 @@ public interface Asignacion extends Instruccion
    * @see #getValorAsig()
    * @generated
    */
-  void setValorAsig(Expresion value);
+  void setValorAsig(Valor value);
 
 } // Asignacion

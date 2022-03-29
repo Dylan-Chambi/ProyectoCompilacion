@@ -3,8 +3,8 @@
  */
 package edu.upb.lp.isc.dymeLanguage.impl;
 
-import edu.upb.lp.isc.dymeLanguage.Asignacion;
 import edu.upb.lp.isc.dymeLanguage.Constante;
+import edu.upb.lp.isc.dymeLanguage.Declaracion;
 import edu.upb.lp.isc.dymeLanguage.DymeLanguagePackage;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -37,7 +37,7 @@ public class ConstanteImpl extends ExpresionImpl implements Constante
    * @generated
    * @ordered
    */
-  protected Asignacion nombre;
+  protected Declaracion nombre;
 
   /**
    * <!-- begin-user-doc -->
@@ -66,12 +66,12 @@ public class ConstanteImpl extends ExpresionImpl implements Constante
    * @generated
    */
   @Override
-  public Asignacion getNombre()
+  public Declaracion getNombre()
   {
     if (nombre != null && nombre.eIsProxy())
     {
       InternalEObject oldNombre = (InternalEObject)nombre;
-      nombre = (Asignacion)eResolveProxy(oldNombre);
+      nombre = (Declaracion)eResolveProxy(oldNombre);
       if (nombre != oldNombre)
       {
         if (eNotificationRequired())
@@ -86,7 +86,7 @@ public class ConstanteImpl extends ExpresionImpl implements Constante
    * <!-- end-user-doc -->
    * @generated
    */
-  public Asignacion basicGetNombre()
+  public Declaracion basicGetNombre()
   {
     return nombre;
   }
@@ -97,9 +97,9 @@ public class ConstanteImpl extends ExpresionImpl implements Constante
    * @generated
    */
   @Override
-  public void setNombre(Asignacion newNombre)
+  public void setNombre(Declaracion newNombre)
   {
-    Asignacion oldNombre = nombre;
+    Declaracion oldNombre = nombre;
     nombre = newNombre;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, DymeLanguagePackage.CONSTANTE__NOMBRE, oldNombre, nombre));
@@ -133,7 +133,7 @@ public class ConstanteImpl extends ExpresionImpl implements Constante
     switch (featureID)
     {
       case DymeLanguagePackage.CONSTANTE__NOMBRE:
-        setNombre((Asignacion)newValue);
+        setNombre((Declaracion)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -150,7 +150,7 @@ public class ConstanteImpl extends ExpresionImpl implements Constante
     switch (featureID)
     {
       case DymeLanguagePackage.CONSTANTE__NOMBRE:
-        setNombre((Asignacion)null);
+        setNombre((Declaracion)null);
         return;
     }
     super.eUnset(featureID);

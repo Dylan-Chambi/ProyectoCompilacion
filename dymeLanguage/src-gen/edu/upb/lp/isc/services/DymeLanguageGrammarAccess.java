@@ -6,6 +6,7 @@ package edu.upb.lp.isc.services;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import java.util.List;
+import org.eclipse.xtext.Action;
 import org.eclipse.xtext.Alternatives;
 import org.eclipse.xtext.Assignment;
 import org.eclipse.xtext.CrossReference;
@@ -25,8 +26,12 @@ public class DymeLanguageGrammarAccess extends AbstractElementFinder.AbstractGra
 	
 	public class ProgramaElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.isc.DymeLanguage.Programa");
-		private final Assignment cFuncAssignment = (Assignment)rule.eContents().get(1);
-		private final RuleCall cFuncFuncionParserRuleCall_0 = (RuleCall)cFuncAssignment.eContents().get(0);
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cGALAXIAKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Assignment cProgAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cProgInstruccionesParserRuleCall_2_0 = (RuleCall)cProgAssignment_2.eContents().get(0);
 		
 		////Model:
 		////    greetings+=Greeting*;
@@ -34,15 +39,113 @@ public class DymeLanguageGrammarAccess extends AbstractElementFinder.AbstractGra
 		////Greeting:
 		////    'Hello' name=ID '!';
 		//Programa:
-		//    (func+=Funcion)+
+		//    'GALAXIA' name=ID
+		//    (prog+=Instrucciones)*
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//(func+=Funcion)+
-		public Assignment getFuncAssignment() { return cFuncAssignment; }
+		//'GALAXIA' name=ID
+		//(prog+=Instrucciones)*
+		public Group getGroup() { return cGroup; }
 		
-		//Funcion
-		public RuleCall getFuncFuncionParserRuleCall_0() { return cFuncFuncionParserRuleCall_0; }
+		//'GALAXIA'
+		public Keyword getGALAXIAKeyword_0() { return cGALAXIAKeyword_0; }
+		
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+		
+		//(prog+=Instrucciones)*
+		public Assignment getProgAssignment_2() { return cProgAssignment_2; }
+		
+		//Instrucciones
+		public RuleCall getProgInstruccionesParserRuleCall_2_0() { return cProgInstruccionesParserRuleCall_2_0; }
+	}
+	public class ObjetoElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.isc.DymeLanguage.Objeto");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cCalistoMapTipoParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cPrimitivoParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		
+		//Objeto:
+		//    (CalistoMapTipo | Primitivo)
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//(CalistoMapTipo | Primitivo)
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//CalistoMapTipo
+		public RuleCall getCalistoMapTipoParserRuleCall_0() { return cCalistoMapTipoParserRuleCall_0; }
+		
+		//Primitivo
+		public RuleCall getPrimitivoParserRuleCall_1() { return cPrimitivoParserRuleCall_1; }
+	}
+	public class PrintElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.isc.DymeLanguage.Print");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cPrintTipoAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final Alternatives cPrintTipoAlternatives_0_0 = (Alternatives)cPrintTipoAssignment_0.eContents().get(0);
+		private final Keyword cPrintTipoMensajeKeyword_0_0_0 = (Keyword)cPrintTipoAlternatives_0_0.eContents().get(0);
+		private final Keyword cPrintTipoMensajeLinealKeyword_0_0_1 = (Keyword)cPrintTipoAlternatives_0_0.eContents().get(1);
+		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cValAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cValValorParserRuleCall_2_0 = (RuleCall)cValAssignment_2.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		
+		//Print:
+		//    printTipo=('Mensaje' | 'MensajeLineal') '(' (val=Valor) ')'
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//printTipo=('Mensaje' | 'MensajeLineal') '(' (val=Valor) ')'
+		public Group getGroup() { return cGroup; }
+		
+		//printTipo=('Mensaje' | 'MensajeLineal')
+		public Assignment getPrintTipoAssignment_0() { return cPrintTipoAssignment_0; }
+		
+		//('Mensaje' | 'MensajeLineal')
+		public Alternatives getPrintTipoAlternatives_0_0() { return cPrintTipoAlternatives_0_0; }
+		
+		//'Mensaje'
+		public Keyword getPrintTipoMensajeKeyword_0_0_0() { return cPrintTipoMensajeKeyword_0_0_0; }
+		
+		//'MensajeLineal'
+		public Keyword getPrintTipoMensajeLinealKeyword_0_0_1() { return cPrintTipoMensajeLinealKeyword_0_0_1; }
+		
+		//'('
+		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
+		
+		//(val=Valor)
+		public Assignment getValAssignment_2() { return cValAssignment_2; }
+		
+		//Valor
+		public RuleCall getValValorParserRuleCall_2_0() { return cValValorParserRuleCall_2_0; }
+		
+		//')'
+		public Keyword getRightParenthesisKeyword_3() { return cRightParenthesisKeyword_3; }
+	}
+	public class InstruccionesElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.isc.DymeLanguage.Instrucciones");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cDeclaracionParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cValorParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		
+		//Instrucciones:
+		//    (Declaracion | Valor)
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//(Declaracion | Valor)
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//Declaracion
+		public RuleCall getDeclaracionParserRuleCall_0() { return cDeclaracionParserRuleCall_0; }
+		
+		//Valor
+		public RuleCall getValorParserRuleCall_1() { return cValorParserRuleCall_1; }
 	}
 	public class EstrellaFugazMeteoroElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.isc.DymeLanguage.EstrellaFugazMeteoro");
@@ -108,216 +211,261 @@ public class DymeLanguageGrammarAccess extends AbstractElementFinder.AbstractGra
 		//Expresion
 		public RuleCall getMeteoroResExpresionParserRuleCall_1_1_0() { return cMeteoroResExpresionParserRuleCall_1_1_0; }
 	}
-	public class FuncionElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.isc.DymeLanguage.Funcion");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cCASIMIRKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Keyword cNECESITAKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
-		private final Assignment cParamAssignment_3_0 = (Assignment)cGroup_3.eContents().get(0);
-		private final RuleCall cParamParamParserRuleCall_3_0_0 = (RuleCall)cParamAssignment_3_0.eContents().get(0);
-		private final Group cGroup_3_1 = (Group)cGroup_3.eContents().get(1);
-		private final Keyword cDollarSignKeyword_3_1_0 = (Keyword)cGroup_3_1.eContents().get(0);
-		private final Assignment cParamAssignment_3_1_1 = (Assignment)cGroup_3_1.eContents().get(1);
-		private final RuleCall cParamParamParserRuleCall_3_1_1_0 = (RuleCall)cParamAssignment_3_1_1.eContents().get(0);
-		private final Keyword cCONVERGEKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Assignment cInstrAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cInstrInstruccionParserRuleCall_5_0 = (RuleCall)cInstrAssignment_5.eContents().get(0);
-		private final Assignment cExprAssignment_6 = (Assignment)cGroup.eContents().get(6);
-		private final RuleCall cExprExpresionParserRuleCall_6_0 = (RuleCall)cExprAssignment_6.eContents().get(0);
-		private final Keyword cGUTKeyword_7 = (Keyword)cGroup.eContents().get(7);
-		private final Group cGroup_8 = (Group)cGroup.eContents().get(8);
-		private final Assignment cReturnTipoAssignment_8_0 = (Assignment)cGroup_8.eContents().get(0);
-		private final Keyword cReturnTipoHyphenMinusGreaterThanSignKeyword_8_0_0 = (Keyword)cReturnTipoAssignment_8_0.eContents().get(0);
-		private final Assignment cTipoClassAssignment_8_1 = (Assignment)cGroup_8.eContents().get(1);
-		private final RuleCall cTipoClassTipoFuncionOrdenSuperiorParserRuleCall_8_1_0 = (RuleCall)cTipoClassAssignment_8_1.eContents().get(0);
-		
-		//Funcion:
-		//    'CASIMIR' name=ID 'NECESITA' (param+=Param ('$' param+=Param)*)? 'CONVERGE'
-		//    (instr+=Instruccion)* (expr=Expresion)
-		//    /*ef+=EstrellaFugazMeteoro*/
-		//    "GUT" (returnTipo ?= '->' tipoClass=TipoFuncionOrdenSuperior?)?
-		//;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//'CASIMIR' name=ID 'NECESITA' (param+=Param ('$' param+=Param)*)? 'CONVERGE'
-		//(instr+=Instruccion)* (expr=Expresion)
-		///*ef+=EstrellaFugazMeteoro*/
-		//"GUT" (returnTipo ?= '->' tipoClass=TipoFuncionOrdenSuperior?)?
-		public Group getGroup() { return cGroup; }
-		
-		//'CASIMIR'
-		public Keyword getCASIMIRKeyword_0() { return cCASIMIRKeyword_0; }
-		
-		//name=ID
-		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
-		
-		//ID
-		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
-		
-		//'NECESITA'
-		public Keyword getNECESITAKeyword_2() { return cNECESITAKeyword_2; }
-		
-		//(param+=Param ('$' param+=Param)*)?
-		public Group getGroup_3() { return cGroup_3; }
-		
-		//param+=Param
-		public Assignment getParamAssignment_3_0() { return cParamAssignment_3_0; }
-		
-		//Param
-		public RuleCall getParamParamParserRuleCall_3_0_0() { return cParamParamParserRuleCall_3_0_0; }
-		
-		//('$' param+=Param)*
-		public Group getGroup_3_1() { return cGroup_3_1; }
-		
-		//'$'
-		public Keyword getDollarSignKeyword_3_1_0() { return cDollarSignKeyword_3_1_0; }
-		
-		//param+=Param
-		public Assignment getParamAssignment_3_1_1() { return cParamAssignment_3_1_1; }
-		
-		//Param
-		public RuleCall getParamParamParserRuleCall_3_1_1_0() { return cParamParamParserRuleCall_3_1_1_0; }
-		
-		//'CONVERGE'
-		public Keyword getCONVERGEKeyword_4() { return cCONVERGEKeyword_4; }
-		
-		//(instr+=Instruccion)*
-		public Assignment getInstrAssignment_5() { return cInstrAssignment_5; }
-		
-		//Instruccion
-		public RuleCall getInstrInstruccionParserRuleCall_5_0() { return cInstrInstruccionParserRuleCall_5_0; }
-		
-		//(expr=Expresion)
-		public Assignment getExprAssignment_6() { return cExprAssignment_6; }
-		
-		//Expresion
-		public RuleCall getExprExpresionParserRuleCall_6_0() { return cExprExpresionParserRuleCall_6_0; }
-		
-		///*ef+=EstrellaFugazMeteoro*/
-		//"GUT"
-		public Keyword getGUTKeyword_7() { return cGUTKeyword_7; }
-		
-		//(returnTipo ?= '->' tipoClass=TipoFuncionOrdenSuperior?)?
-		public Group getGroup_8() { return cGroup_8; }
-		
-		//returnTipo ?= '->'
-		public Assignment getReturnTipoAssignment_8_0() { return cReturnTipoAssignment_8_0; }
-		
-		//'->'
-		public Keyword getReturnTipoHyphenMinusGreaterThanSignKeyword_8_0_0() { return cReturnTipoHyphenMinusGreaterThanSignKeyword_8_0_0; }
-		
-		//tipoClass=TipoFuncionOrdenSuperior?
-		public Assignment getTipoClassAssignment_8_1() { return cTipoClassAssignment_8_1; }
-		
-		//TipoFuncionOrdenSuperior
-		public RuleCall getTipoClassTipoFuncionOrdenSuperiorParserRuleCall_8_1_0() { return cTipoClassTipoFuncionOrdenSuperiorParserRuleCall_8_1_0; }
-	}
 	public class LlamadoFuncElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.isc.DymeLanguage.LlamadoFunc");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cFuncionAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final CrossReference cFuncionFuncionCrossReference_0_0 = (CrossReference)cFuncionAssignment_0.eContents().get(0);
-		private final RuleCall cFuncionFuncionIDTerminalRuleCall_0_0_1 = (RuleCall)cFuncionFuncionCrossReference_0_0.eContents().get(1);
-		private final Keyword cCONSUMEKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cFuncionIDAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final CrossReference cFuncionIDDeclaracionCrossReference_0_0 = (CrossReference)cFuncionIDAssignment_0.eContents().get(0);
+		private final RuleCall cFuncionIDDeclaracionIDTerminalRuleCall_0_0_1 = (RuleCall)cFuncionIDDeclaracionCrossReference_0_0.eContents().get(1);
+		private final Keyword cLeftCurlyBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
 		private final Assignment cArgsAssignment_2_0 = (Assignment)cGroup_2.eContents().get(0);
-		private final RuleCall cArgsExpresionParserRuleCall_2_0_0 = (RuleCall)cArgsAssignment_2_0.eContents().get(0);
+		private final RuleCall cArgsValorParserRuleCall_2_0_0 = (RuleCall)cArgsAssignment_2_0.eContents().get(0);
 		private final Group cGroup_2_1 = (Group)cGroup_2.eContents().get(1);
 		private final Keyword cDollarSignKeyword_2_1_0 = (Keyword)cGroup_2_1.eContents().get(0);
 		private final Assignment cArgsAssignment_2_1_1 = (Assignment)cGroup_2_1.eContents().get(1);
-		private final RuleCall cArgsExpresionParserRuleCall_2_1_1_0 = (RuleCall)cArgsAssignment_2_1_1.eContents().get(0);
-		private final Keyword cNumberSignKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final RuleCall cArgsValorParserRuleCall_2_1_1_0 = (RuleCall)cArgsAssignment_2_1_1.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
 		//LlamadoFunc:
-		//    funcion=[Funcion] 'CONSUME' (args+=Expresion ('$' args+=Expresion)*)? '#'
+		//    funcionID=[Declaracion] '{' (args+=(Valor) ('$' args+=(Valor))*)? '}'
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//funcion=[Funcion] 'CONSUME' (args+=Expresion ('$' args+=Expresion)*)? '#'
+		//funcionID=[Declaracion] '{' (args+=(Valor) ('$' args+=(Valor))*)? '}'
 		public Group getGroup() { return cGroup; }
 		
-		//funcion=[Funcion]
-		public Assignment getFuncionAssignment_0() { return cFuncionAssignment_0; }
+		//funcionID=[Declaracion]
+		public Assignment getFuncionIDAssignment_0() { return cFuncionIDAssignment_0; }
 		
-		//[Funcion]
-		public CrossReference getFuncionFuncionCrossReference_0_0() { return cFuncionFuncionCrossReference_0_0; }
+		//[Declaracion]
+		public CrossReference getFuncionIDDeclaracionCrossReference_0_0() { return cFuncionIDDeclaracionCrossReference_0_0; }
 		
 		//ID
-		public RuleCall getFuncionFuncionIDTerminalRuleCall_0_0_1() { return cFuncionFuncionIDTerminalRuleCall_0_0_1; }
+		public RuleCall getFuncionIDDeclaracionIDTerminalRuleCall_0_0_1() { return cFuncionIDDeclaracionIDTerminalRuleCall_0_0_1; }
 		
-		//'CONSUME'
-		public Keyword getCONSUMEKeyword_1() { return cCONSUMEKeyword_1; }
+		//'{'
+		public Keyword getLeftCurlyBracketKeyword_1() { return cLeftCurlyBracketKeyword_1; }
 		
-		//(args+=Expresion ('$' args+=Expresion)*)?
+		//(args+=(Valor) ('$' args+=(Valor))*)?
 		public Group getGroup_2() { return cGroup_2; }
 		
-		//args+=Expresion
+		//args+=(Valor)
 		public Assignment getArgsAssignment_2_0() { return cArgsAssignment_2_0; }
 		
-		//Expresion
-		public RuleCall getArgsExpresionParserRuleCall_2_0_0() { return cArgsExpresionParserRuleCall_2_0_0; }
+		//(Valor)
+		public RuleCall getArgsValorParserRuleCall_2_0_0() { return cArgsValorParserRuleCall_2_0_0; }
 		
-		//('$' args+=Expresion)*
+		//('$' args+=(Valor))*
 		public Group getGroup_2_1() { return cGroup_2_1; }
 		
 		//'$'
 		public Keyword getDollarSignKeyword_2_1_0() { return cDollarSignKeyword_2_1_0; }
 		
-		//args+=Expresion
+		//args+=(Valor)
 		public Assignment getArgsAssignment_2_1_1() { return cArgsAssignment_2_1_1; }
 		
-		//Expresion
-		public RuleCall getArgsExpresionParserRuleCall_2_1_1_0() { return cArgsExpresionParserRuleCall_2_1_1_0; }
+		//(Valor)
+		public RuleCall getArgsValorParserRuleCall_2_1_1_0() { return cArgsValorParserRuleCall_2_1_1_0; }
 		
-		//'#'
-		public Keyword getNumberSignKeyword_3() { return cNumberSignKeyword_3; }
+		//'}'
+		public Keyword getRightCurlyBracketKeyword_3() { return cRightCurlyBracketKeyword_3; }
 	}
-	public class ParamElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.isc.DymeLanguage.Param");
+	public class LlamadoMapaElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.isc.DymeLanguage.LlamadoMapa");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cNameIDTerminalRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
-		private final Keyword cEsKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cTipoClassAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cTipoClassTipoFuncionOrdenSuperiorParserRuleCall_2_0 = (RuleCall)cTipoClassAssignment_2.eContents().get(0);
+		private final Assignment cDecIDAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final CrossReference cDecIDDeclaracionCrossReference_0_0 = (CrossReference)cDecIDAssignment_0.eContents().get(0);
+		private final RuleCall cDecIDDeclaracionIDTerminalRuleCall_0_0_1 = (RuleCall)cDecIDDeclaracionCrossReference_0_0.eContents().get(1);
+		private final Keyword cLeftSquareBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cMapKeyAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cMapKeyExpresionParserRuleCall_2_0 = (RuleCall)cMapKeyAssignment_2.eContents().get(0);
+		private final Keyword cRightSquareBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
-		//Param:
-		//    name=ID 'es' tipoClass=TipoFuncionOrdenSuperior
+		//LlamadoMapa:
+		//    decID=[Declaracion] '[' mapKey=Expresion ']'
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//name=ID 'es' tipoClass=TipoFuncionOrdenSuperior
+		//decID=[Declaracion] '[' mapKey=Expresion ']'
 		public Group getGroup() { return cGroup; }
 		
-		//name=ID
-		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
+		//decID=[Declaracion]
+		public Assignment getDecIDAssignment_0() { return cDecIDAssignment_0; }
+		
+		//[Declaracion]
+		public CrossReference getDecIDDeclaracionCrossReference_0_0() { return cDecIDDeclaracionCrossReference_0_0; }
 		
 		//ID
-		public RuleCall getNameIDTerminalRuleCall_0_0() { return cNameIDTerminalRuleCall_0_0; }
+		public RuleCall getDecIDDeclaracionIDTerminalRuleCall_0_0_1() { return cDecIDDeclaracionIDTerminalRuleCall_0_0_1; }
 		
-		//'es'
-		public Keyword getEsKeyword_1() { return cEsKeyword_1; }
+		//'['
+		public Keyword getLeftSquareBracketKeyword_1() { return cLeftSquareBracketKeyword_1; }
 		
-		//tipoClass=TipoFuncionOrdenSuperior
-		public Assignment getTipoClassAssignment_2() { return cTipoClassAssignment_2; }
+		//mapKey=Expresion
+		public Assignment getMapKeyAssignment_2() { return cMapKeyAssignment_2; }
 		
-		//TipoFuncionOrdenSuperior
-		public RuleCall getTipoClassTipoFuncionOrdenSuperiorParserRuleCall_2_0() { return cTipoClassTipoFuncionOrdenSuperiorParserRuleCall_2_0; }
+		//Expresion
+		public RuleCall getMapKeyExpresionParserRuleCall_2_0() { return cMapKeyExpresionParserRuleCall_2_0; }
+		
+		//']'
+		public Keyword getRightSquareBracketKeyword_3() { return cRightSquareBracketKeyword_3; }
 	}
-	public class InstruccionElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.isc.DymeLanguage.Instruccion");
-		private final RuleCall cAsignacionParserRuleCall = (RuleCall)rule.eContents().get(1);
+	public class DeclaracionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.isc.DymeLanguage.Declaracion");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cAsignacionParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cFuncionParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cParamParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cPrintParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
 		
-		//Instruccion:
-		//    Asignacion /*Falta */
+		//Declaracion:
+		//    (Asignacion | Funcion | Param | Print)
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
+		//(Asignacion | Funcion | Param | Print)
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
 		//Asignacion
-		public RuleCall getAsignacionParserRuleCall() { return cAsignacionParserRuleCall; }
+		public RuleCall getAsignacionParserRuleCall_0() { return cAsignacionParserRuleCall_0; }
+		
+		//Funcion
+		public RuleCall getFuncionParserRuleCall_1() { return cFuncionParserRuleCall_1; }
+		
+		//Param
+		public RuleCall getParamParserRuleCall_2() { return cParamParserRuleCall_2; }
+		
+		//Print
+		public RuleCall getPrintParserRuleCall_3() { return cPrintParserRuleCall_3; }
+	}
+	public class FuncionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.isc.DymeLanguage.Funcion");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Group cGroup_0 = (Group)cGroup.eContents().get(0);
+		private final Assignment cGusanoAssignment_0_0 = (Assignment)cGroup_0.eContents().get(0);
+		private final Keyword cGusanoAgujeroKeyword_0_0_0 = (Keyword)cGusanoAssignment_0_0.eContents().get(0);
+		private final Keyword cDeKeyword_0_1 = (Keyword)cGroup_0.eContents().get(1);
+		private final Keyword cGusanoKeyword_0_2 = (Keyword)cGroup_0.eContents().get(2);
+		private final Keyword cCASIMIRKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cNameIDTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
+		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
+		private final Keyword cCONSUMEKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
+		private final Assignment cParamAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
+		private final RuleCall cParamParamParserRuleCall_3_1_0 = (RuleCall)cParamAssignment_3_1.eContents().get(0);
+		private final Group cGroup_3_2 = (Group)cGroup_3.eContents().get(2);
+		private final Keyword cDollarSignKeyword_3_2_0 = (Keyword)cGroup_3_2.eContents().get(0);
+		private final Assignment cParamAssignment_3_2_1 = (Assignment)cGroup_3_2.eContents().get(1);
+		private final RuleCall cParamParamParserRuleCall_3_2_1_0 = (RuleCall)cParamAssignment_3_2_1.eContents().get(0);
+		private final Keyword cCONVERGEKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cDeclarAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cDeclarDeclaracionParserRuleCall_5_0 = (RuleCall)cDeclarAssignment_5.eContents().get(0);
+		private final Assignment cValAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cValValorParserRuleCall_6_0 = (RuleCall)cValAssignment_6.eContents().get(0);
+		private final Keyword cGUTKeyword_7 = (Keyword)cGroup.eContents().get(7);
+		private final Group cGroup_8 = (Group)cGroup.eContents().get(8);
+		private final Assignment cTipoInferidoAssignment_8_0 = (Assignment)cGroup_8.eContents().get(0);
+		private final Keyword cTipoInferidoHyphenMinusGreaterThanSignKeyword_8_0_0 = (Keyword)cTipoInferidoAssignment_8_0.eContents().get(0);
+		private final Assignment cTipoClassAssignment_8_1 = (Assignment)cGroup_8.eContents().get(1);
+		private final RuleCall cTipoClassPrimitivoParserRuleCall_8_1_0 = (RuleCall)cTipoClassAssignment_8_1.eContents().get(0);
+		
+		//Funcion:
+		//    (gusano ?= 'Agujero' 'de' 'Gusano')?
+		//    'CASIMIR' name=ID ('CONSUME'  param+=Param ('$' param+=Param)*)? 'CONVERGE'
+		//    (declar+=(Declaracion))*
+		//    (val=(Valor))
+		//    "GUT" (tipoInferido ?= '->' tipoClass=Primitivo)?
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//(gusano ?= 'Agujero' 'de' 'Gusano')?
+		//'CASIMIR' name=ID ('CONSUME'  param+=Param ('$' param+=Param)*)? 'CONVERGE'
+		//(declar+=(Declaracion))*
+		//(val=(Valor))
+		//"GUT" (tipoInferido ?= '->' tipoClass=Primitivo)?
+		public Group getGroup() { return cGroup; }
+		
+		//(gusano ?= 'Agujero' 'de' 'Gusano')?
+		public Group getGroup_0() { return cGroup_0; }
+		
+		//gusano ?= 'Agujero'
+		public Assignment getGusanoAssignment_0_0() { return cGusanoAssignment_0_0; }
+		
+		//'Agujero'
+		public Keyword getGusanoAgujeroKeyword_0_0_0() { return cGusanoAgujeroKeyword_0_0_0; }
+		
+		//'de'
+		public Keyword getDeKeyword_0_1() { return cDeKeyword_0_1; }
+		
+		//'Gusano'
+		public Keyword getGusanoKeyword_0_2() { return cGusanoKeyword_0_2; }
+		
+		//'CASIMIR'
+		public Keyword getCASIMIRKeyword_1() { return cCASIMIRKeyword_1; }
+		
+		//name=ID
+		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_2_0() { return cNameIDTerminalRuleCall_2_0; }
+		
+		//('CONSUME'  param+=Param ('$' param+=Param)*)?
+		public Group getGroup_3() { return cGroup_3; }
+		
+		//'CONSUME'
+		public Keyword getCONSUMEKeyword_3_0() { return cCONSUMEKeyword_3_0; }
+		
+		//param+=Param
+		public Assignment getParamAssignment_3_1() { return cParamAssignment_3_1; }
+		
+		//Param
+		public RuleCall getParamParamParserRuleCall_3_1_0() { return cParamParamParserRuleCall_3_1_0; }
+		
+		//('$' param+=Param)*
+		public Group getGroup_3_2() { return cGroup_3_2; }
+		
+		//'$'
+		public Keyword getDollarSignKeyword_3_2_0() { return cDollarSignKeyword_3_2_0; }
+		
+		//param+=Param
+		public Assignment getParamAssignment_3_2_1() { return cParamAssignment_3_2_1; }
+		
+		//Param
+		public RuleCall getParamParamParserRuleCall_3_2_1_0() { return cParamParamParserRuleCall_3_2_1_0; }
+		
+		//'CONVERGE'
+		public Keyword getCONVERGEKeyword_4() { return cCONVERGEKeyword_4; }
+		
+		//(declar+=(Declaracion))*
+		public Assignment getDeclarAssignment_5() { return cDeclarAssignment_5; }
+		
+		//(Declaracion)
+		public RuleCall getDeclarDeclaracionParserRuleCall_5_0() { return cDeclarDeclaracionParserRuleCall_5_0; }
+		
+		//(val=(Valor))
+		public Assignment getValAssignment_6() { return cValAssignment_6; }
+		
+		//(Valor)
+		public RuleCall getValValorParserRuleCall_6_0() { return cValValorParserRuleCall_6_0; }
+		
+		//"GUT"
+		public Keyword getGUTKeyword_7() { return cGUTKeyword_7; }
+		
+		//(tipoInferido ?= '->' tipoClass=Primitivo)?
+		public Group getGroup_8() { return cGroup_8; }
+		
+		//tipoInferido ?= '->'
+		public Assignment getTipoInferidoAssignment_8_0() { return cTipoInferidoAssignment_8_0; }
+		
+		//'->'
+		public Keyword getTipoInferidoHyphenMinusGreaterThanSignKeyword_8_0_0() { return cTipoInferidoHyphenMinusGreaterThanSignKeyword_8_0_0; }
+		
+		//tipoClass=Primitivo
+		public Assignment getTipoClassAssignment_8_1() { return cTipoClassAssignment_8_1; }
+		
+		//Primitivo
+		public RuleCall getTipoClassPrimitivoParserRuleCall_8_1_0() { return cTipoClassPrimitivoParserRuleCall_8_1_0; }
 	}
 	public class AsignacionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.isc.DymeLanguage.Asignacion");
@@ -329,20 +477,17 @@ public class DymeLanguageGrammarAccess extends AbstractElementFinder.AbstractGra
 		private final Assignment cTipoInferidoAssignment_2_0 = (Assignment)cGroup_2.eContents().get(0);
 		private final Keyword cTipoInferidoEsKeyword_2_0_0 = (Keyword)cTipoInferidoAssignment_2_0.eContents().get(0);
 		private final Assignment cTipoClassAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
-		private final RuleCall cTipoClassTipoFuncionOrdenSuperiorParserRuleCall_2_1_0 = (RuleCall)cTipoClassAssignment_2_1.eContents().get(0);
+		private final RuleCall cTipoClassObjetoParserRuleCall_2_1_0 = (RuleCall)cTipoClassAssignment_2_1.eContents().get(0);
 		private final Keyword cLessThanSignHyphenMinusKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		private final Assignment cValorAsigAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cValorAsigExpresionParserRuleCall_4_0 = (RuleCall)cValorAsigAssignment_4.eContents().get(0);
-		private final Keyword cTildeKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final RuleCall cValorAsigValorParserRuleCall_4_0 = (RuleCall)cValorAsigAssignment_4.eContents().get(0);
 		
 		//Asignacion:
-		//    'MASA' name=ID (tipoInferido ?= 'es' tipoClass=TipoFuncionOrdenSuperior)?  '<-' valorAsig=Expresion '~'
-		//    /*'MASA' name=ID ('es' tip=Tipo)?  '<-' valor=Expresion */
-		//    /* Preguntar la comparacion con null, con el valor opcional */
+		//    'MASA' name=ID (tipoInferido ?= 'es' tipoClass=Objeto)?  '<-' valorAsig=Valor
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'MASA' name=ID (tipoInferido ?= 'es' tipoClass=TipoFuncionOrdenSuperior)?  '<-' valorAsig=Expresion '~'
+		//'MASA' name=ID (tipoInferido ?= 'es' tipoClass=Objeto)?  '<-' valorAsig=Valor
 		public Group getGroup() { return cGroup; }
 		
 		//'MASA'
@@ -354,7 +499,7 @@ public class DymeLanguageGrammarAccess extends AbstractElementFinder.AbstractGra
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 		
-		//(tipoInferido ?= 'es' tipoClass=TipoFuncionOrdenSuperior)?
+		//(tipoInferido ?= 'es' tipoClass=Objeto)?
 		public Group getGroup_2() { return cGroup_2; }
 		
 		//tipoInferido ?= 'es'
@@ -363,185 +508,160 @@ public class DymeLanguageGrammarAccess extends AbstractElementFinder.AbstractGra
 		//'es'
 		public Keyword getTipoInferidoEsKeyword_2_0_0() { return cTipoInferidoEsKeyword_2_0_0; }
 		
-		//tipoClass=TipoFuncionOrdenSuperior
+		//tipoClass=Objeto
 		public Assignment getTipoClassAssignment_2_1() { return cTipoClassAssignment_2_1; }
 		
-		//TipoFuncionOrdenSuperior
-		public RuleCall getTipoClassTipoFuncionOrdenSuperiorParserRuleCall_2_1_0() { return cTipoClassTipoFuncionOrdenSuperiorParserRuleCall_2_1_0; }
+		//Objeto
+		public RuleCall getTipoClassObjetoParserRuleCall_2_1_0() { return cTipoClassObjetoParserRuleCall_2_1_0; }
 		
 		//'<-'
 		public Keyword getLessThanSignHyphenMinusKeyword_3() { return cLessThanSignHyphenMinusKeyword_3; }
 		
-		//valorAsig=Expresion
+		//valorAsig=Valor
 		public Assignment getValorAsigAssignment_4() { return cValorAsigAssignment_4; }
 		
-		//Expresion
-		public RuleCall getValorAsigExpresionParserRuleCall_4_0() { return cValorAsigExpresionParserRuleCall_4_0; }
-		
-		//'~'
-		public Keyword getTildeKeyword_5() { return cTildeKeyword_5; }
+		//Valor
+		public RuleCall getValorAsigValorParserRuleCall_4_0() { return cValorAsigValorParserRuleCall_4_0; }
 	}
-	public class TipoElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.isc.DymeLanguage.Tipo");
-		private final Assignment cTipoAssignment = (Assignment)rule.eContents().get(1);
-		private final Alternatives cTipoAlternatives_0 = (Alternatives)cTipoAssignment.eContents().get(0);
-		private final Keyword cTipoPlanetaKeyword_0_0 = (Keyword)cTipoAlternatives_0.eContents().get(0);
-		private final Keyword cTipoConstelacionKeyword_0_1 = (Keyword)cTipoAlternatives_0.eContents().get(1);
-		private final Keyword cTipoEstrellaKeyword_0_2 = (Keyword)cTipoAlternatives_0.eContents().get(2);
-		private final Keyword cTipoPolvoEstelarKeyword_0_3 = (Keyword)cTipoAlternatives_0.eContents().get(3);
-		private final Keyword cTipoLunaKeyword_0_4 = (Keyword)cTipoAlternatives_0.eContents().get(4);
-		
-		//Tipo:
-		//    tipo = ('Planeta' | 'Constelacion' | 'Estrella' | 'PolvoEstelar' | 'Luna' )
-		//;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//tipo = ('Planeta' | 'Constelacion' | 'Estrella' | 'PolvoEstelar' | 'Luna' )
-		public Assignment getTipoAssignment() { return cTipoAssignment; }
-		
-		//('Planeta' | 'Constelacion' | 'Estrella' | 'PolvoEstelar' | 'Luna' )
-		public Alternatives getTipoAlternatives_0() { return cTipoAlternatives_0; }
-		
-		//'Planeta'
-		public Keyword getTipoPlanetaKeyword_0_0() { return cTipoPlanetaKeyword_0_0; }
-		
-		//'Constelacion'
-		public Keyword getTipoConstelacionKeyword_0_1() { return cTipoConstelacionKeyword_0_1; }
-		
-		//'Estrella'
-		public Keyword getTipoEstrellaKeyword_0_2() { return cTipoEstrellaKeyword_0_2; }
-		
-		//'PolvoEstelar'
-		public Keyword getTipoPolvoEstelarKeyword_0_3() { return cTipoPolvoEstelarKeyword_0_3; }
-		
-		//'Luna'
-		public Keyword getTipoLunaKeyword_0_4() { return cTipoLunaKeyword_0_4; }
-	}
-	public class TipoFuncionOrdenSuperiorElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.isc.DymeLanguage.TipoFuncionOrdenSuperior");
+	public class ParamElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.isc.DymeLanguage.Param");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Alternatives cAlternatives_0 = (Alternatives)cGroup.eContents().get(0);
-		private final Group cGroup_0_0 = (Group)cAlternatives_0.eContents().get(0);
-		private final Assignment cOrdenSuperiorTipoAssignment_0_0_0 = (Assignment)cGroup_0_0.eContents().get(0);
-		private final Keyword cOrdenSuperiorTipoLeftParenthesisKeyword_0_0_0_0 = (Keyword)cOrdenSuperiorTipoAssignment_0_0_0.eContents().get(0);
-		private final Assignment cParamFuncAssignment_0_0_1 = (Assignment)cGroup_0_0.eContents().get(1);
-		private final RuleCall cParamFuncTipoFuncionOrdenSuperiorParserRuleCall_0_0_1_0 = (RuleCall)cParamFuncAssignment_0_0_1.eContents().get(0);
-		private final Group cGroup_0_0_2 = (Group)cGroup_0_0.eContents().get(2);
-		private final Keyword cDollarSignKeyword_0_0_2_0 = (Keyword)cGroup_0_0_2.eContents().get(0);
-		private final Assignment cParamFuncAssignment_0_0_2_1 = (Assignment)cGroup_0_0_2.eContents().get(1);
-		private final RuleCall cParamFuncTipoFuncionOrdenSuperiorParserRuleCall_0_0_2_1_0 = (RuleCall)cParamFuncAssignment_0_0_2_1.eContents().get(0);
-		private final Keyword cRightParenthesisKeyword_0_0_3 = (Keyword)cGroup_0_0.eContents().get(3);
-		private final RuleCall cTipoParserRuleCall_0_1 = (RuleCall)cAlternatives_0.eContents().get(1);
-		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
-		private final Assignment cReturnTipoFuncAssignment_1_0 = (Assignment)cGroup_1.eContents().get(0);
-		private final Keyword cReturnTipoFuncHyphenMinusGreaterThanSignKeyword_1_0_0 = (Keyword)cReturnTipoFuncAssignment_1_0.eContents().get(0);
-		private final Alternatives cAlternatives_1_1 = (Alternatives)cGroup_1.eContents().get(1);
-		private final Group cGroup_1_1_0 = (Group)cAlternatives_1_1.eContents().get(0);
-		private final Keyword cLeftParenthesisKeyword_1_1_0_0 = (Keyword)cGroup_1_1_0.eContents().get(0);
-		private final Assignment cReturnFuncAssignment_1_1_0_1 = (Assignment)cGroup_1_1_0.eContents().get(1);
-		private final RuleCall cReturnFuncTipoFuncionOrdenSuperiorParserRuleCall_1_1_0_1_0 = (RuleCall)cReturnFuncAssignment_1_1_0_1.eContents().get(0);
-		private final Keyword cRightParenthesisKeyword_1_1_0_2 = (Keyword)cGroup_1_1_0.eContents().get(2);
-		private final Assignment cReturnFuncAssignment_1_1_1 = (Assignment)cAlternatives_1_1.eContents().get(1);
-		private final RuleCall cReturnFuncTipoParserRuleCall_1_1_1_0 = (RuleCall)cReturnFuncAssignment_1_1_1.eContents().get(0);
+		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cNameIDTerminalRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
+		private final Keyword cEsKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Alternatives cAlternatives_2 = (Alternatives)cGroup.eContents().get(2);
+		private final Group cGroup_2_0 = (Group)cAlternatives_2.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_2_0_0 = (Keyword)cGroup_2_0.eContents().get(0);
+		private final Group cGroup_2_0_1 = (Group)cGroup_2_0.eContents().get(1);
+		private final Assignment cParamAssignment_2_0_1_0 = (Assignment)cGroup_2_0_1.eContents().get(0);
+		private final RuleCall cParamTipoFuncionOrdenSuperiorParserRuleCall_2_0_1_0_0 = (RuleCall)cParamAssignment_2_0_1_0.eContents().get(0);
+		private final Group cGroup_2_0_1_1 = (Group)cGroup_2_0_1.eContents().get(1);
+		private final Keyword cDollarSignKeyword_2_0_1_1_0 = (Keyword)cGroup_2_0_1_1.eContents().get(0);
+		private final Assignment cParamAssignment_2_0_1_1_1 = (Assignment)cGroup_2_0_1_1.eContents().get(1);
+		private final RuleCall cParamTipoFuncionOrdenSuperiorParserRuleCall_2_0_1_1_1_0 = (RuleCall)cParamAssignment_2_0_1_1_1.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_2_0_2 = (Keyword)cGroup_2_0.eContents().get(2);
+		private final Assignment cParamAssignment_2_1 = (Assignment)cAlternatives_2.eContents().get(1);
+		private final RuleCall cParamObjetoParserRuleCall_2_1_0 = (RuleCall)cParamAssignment_2_1.eContents().get(0);
+		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
+		private final Assignment cTipoRetornoAssignment_3_0 = (Assignment)cGroup_3.eContents().get(0);
+		private final Keyword cTipoRetornoHyphenMinusGreaterThanSignKeyword_3_0_0 = (Keyword)cTipoRetornoAssignment_3_0.eContents().get(0);
+		private final Assignment cReturnTipoAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
+		private final RuleCall cReturnTipoPrimitivoParserRuleCall_3_1_0 = (RuleCall)cReturnTipoAssignment_3_1.eContents().get(0);
 		
-		//TipoFuncionOrdenSuperior:
-		//    (ordenSuperiorTipo = '(' paramFunc+=(TipoFuncionOrdenSuperior) ('$' paramFunc+=TipoFuncionOrdenSuperior)* ')' | Tipo)
-		//    (returnTipoFunc ?= '->' (('(' returnFunc=(TipoFuncionOrdenSuperior) ')') | returnFunc=Tipo))?
+		//Param:
+		//    name=ID 'es' ('(' (param+=(TipoFuncionOrdenSuperior) ('$' param+=TipoFuncionOrdenSuperior)*)? ')' | param+=Objeto) (tipoRetorno ?= '->' returnTipo=Primitivo)?
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//(ordenSuperiorTipo = '(' paramFunc+=(TipoFuncionOrdenSuperior) ('$' paramFunc+=TipoFuncionOrdenSuperior)* ')' | Tipo)
-		//(returnTipoFunc ?= '->' (('(' returnFunc=(TipoFuncionOrdenSuperior) ')') | returnFunc=Tipo))?
+		//name=ID 'es' ('(' (param+=(TipoFuncionOrdenSuperior) ('$' param+=TipoFuncionOrdenSuperior)*)? ')' | param+=Objeto) (tipoRetorno ?= '->' returnTipo=Primitivo)?
 		public Group getGroup() { return cGroup; }
 		
-		//(ordenSuperiorTipo = '(' paramFunc+=(TipoFuncionOrdenSuperior) ('$' paramFunc+=TipoFuncionOrdenSuperior)* ')' | Tipo)
-		public Alternatives getAlternatives_0() { return cAlternatives_0; }
+		//name=ID
+		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
 		
-		//ordenSuperiorTipo = '(' paramFunc+=(TipoFuncionOrdenSuperior) ('$' paramFunc+=TipoFuncionOrdenSuperior)* ')'
-		public Group getGroup_0_0() { return cGroup_0_0; }
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_0_0() { return cNameIDTerminalRuleCall_0_0; }
 		
-		//ordenSuperiorTipo = '('
-		public Assignment getOrdenSuperiorTipoAssignment_0_0_0() { return cOrdenSuperiorTipoAssignment_0_0_0; }
+		//'es'
+		public Keyword getEsKeyword_1() { return cEsKeyword_1; }
+		
+		//('(' (param+=(TipoFuncionOrdenSuperior) ('$' param+=TipoFuncionOrdenSuperior)*)? ')' | param+=Objeto)
+		public Alternatives getAlternatives_2() { return cAlternatives_2; }
+		
+		//'(' (param+=(TipoFuncionOrdenSuperior) ('$' param+=TipoFuncionOrdenSuperior)*)? ')'
+		public Group getGroup_2_0() { return cGroup_2_0; }
 		
 		//'('
-		public Keyword getOrdenSuperiorTipoLeftParenthesisKeyword_0_0_0_0() { return cOrdenSuperiorTipoLeftParenthesisKeyword_0_0_0_0; }
+		public Keyword getLeftParenthesisKeyword_2_0_0() { return cLeftParenthesisKeyword_2_0_0; }
 		
-		//paramFunc+=(TipoFuncionOrdenSuperior)
-		public Assignment getParamFuncAssignment_0_0_1() { return cParamFuncAssignment_0_0_1; }
+		//(param+=(TipoFuncionOrdenSuperior) ('$' param+=TipoFuncionOrdenSuperior)*)?
+		public Group getGroup_2_0_1() { return cGroup_2_0_1; }
+		
+		//param+=(TipoFuncionOrdenSuperior)
+		public Assignment getParamAssignment_2_0_1_0() { return cParamAssignment_2_0_1_0; }
 		
 		//(TipoFuncionOrdenSuperior)
-		public RuleCall getParamFuncTipoFuncionOrdenSuperiorParserRuleCall_0_0_1_0() { return cParamFuncTipoFuncionOrdenSuperiorParserRuleCall_0_0_1_0; }
+		public RuleCall getParamTipoFuncionOrdenSuperiorParserRuleCall_2_0_1_0_0() { return cParamTipoFuncionOrdenSuperiorParserRuleCall_2_0_1_0_0; }
 		
-		//('$' paramFunc+=TipoFuncionOrdenSuperior)*
-		public Group getGroup_0_0_2() { return cGroup_0_0_2; }
+		//('$' param+=TipoFuncionOrdenSuperior)*
+		public Group getGroup_2_0_1_1() { return cGroup_2_0_1_1; }
 		
 		//'$'
-		public Keyword getDollarSignKeyword_0_0_2_0() { return cDollarSignKeyword_0_0_2_0; }
+		public Keyword getDollarSignKeyword_2_0_1_1_0() { return cDollarSignKeyword_2_0_1_1_0; }
 		
-		//paramFunc+=TipoFuncionOrdenSuperior
-		public Assignment getParamFuncAssignment_0_0_2_1() { return cParamFuncAssignment_0_0_2_1; }
+		//param+=TipoFuncionOrdenSuperior
+		public Assignment getParamAssignment_2_0_1_1_1() { return cParamAssignment_2_0_1_1_1; }
 		
 		//TipoFuncionOrdenSuperior
-		public RuleCall getParamFuncTipoFuncionOrdenSuperiorParserRuleCall_0_0_2_1_0() { return cParamFuncTipoFuncionOrdenSuperiorParserRuleCall_0_0_2_1_0; }
+		public RuleCall getParamTipoFuncionOrdenSuperiorParserRuleCall_2_0_1_1_1_0() { return cParamTipoFuncionOrdenSuperiorParserRuleCall_2_0_1_1_1_0; }
 		
 		//')'
-		public Keyword getRightParenthesisKeyword_0_0_3() { return cRightParenthesisKeyword_0_0_3; }
+		public Keyword getRightParenthesisKeyword_2_0_2() { return cRightParenthesisKeyword_2_0_2; }
 		
-		//Tipo
-		public RuleCall getTipoParserRuleCall_0_1() { return cTipoParserRuleCall_0_1; }
+		//param+=Objeto
+		public Assignment getParamAssignment_2_1() { return cParamAssignment_2_1; }
 		
-		//(returnTipoFunc ?= '->' (('(' returnFunc=(TipoFuncionOrdenSuperior) ')') | returnFunc=Tipo))?
-		public Group getGroup_1() { return cGroup_1; }
+		//Objeto
+		public RuleCall getParamObjetoParserRuleCall_2_1_0() { return cParamObjetoParserRuleCall_2_1_0; }
 		
-		//returnTipoFunc ?= '->'
-		public Assignment getReturnTipoFuncAssignment_1_0() { return cReturnTipoFuncAssignment_1_0; }
+		//(tipoRetorno ?= '->' returnTipo=Primitivo)?
+		public Group getGroup_3() { return cGroup_3; }
+		
+		//tipoRetorno ?= '->'
+		public Assignment getTipoRetornoAssignment_3_0() { return cTipoRetornoAssignment_3_0; }
 		
 		//'->'
-		public Keyword getReturnTipoFuncHyphenMinusGreaterThanSignKeyword_1_0_0() { return cReturnTipoFuncHyphenMinusGreaterThanSignKeyword_1_0_0; }
+		public Keyword getTipoRetornoHyphenMinusGreaterThanSignKeyword_3_0_0() { return cTipoRetornoHyphenMinusGreaterThanSignKeyword_3_0_0; }
 		
-		//(('(' returnFunc=(TipoFuncionOrdenSuperior) ')') | returnFunc=Tipo)
-		public Alternatives getAlternatives_1_1() { return cAlternatives_1_1; }
+		//returnTipo=Primitivo
+		public Assignment getReturnTipoAssignment_3_1() { return cReturnTipoAssignment_3_1; }
 		
-		//('(' returnFunc=(TipoFuncionOrdenSuperior) ')')
-		public Group getGroup_1_1_0() { return cGroup_1_1_0; }
-		
-		//'('
-		public Keyword getLeftParenthesisKeyword_1_1_0_0() { return cLeftParenthesisKeyword_1_1_0_0; }
-		
-		//returnFunc=(TipoFuncionOrdenSuperior)
-		public Assignment getReturnFuncAssignment_1_1_0_1() { return cReturnFuncAssignment_1_1_0_1; }
-		
-		//(TipoFuncionOrdenSuperior)
-		public RuleCall getReturnFuncTipoFuncionOrdenSuperiorParserRuleCall_1_1_0_1_0() { return cReturnFuncTipoFuncionOrdenSuperiorParserRuleCall_1_1_0_1_0; }
-		
-		//')'
-		public Keyword getRightParenthesisKeyword_1_1_0_2() { return cRightParenthesisKeyword_1_1_0_2; }
-		
-		//returnFunc=Tipo
-		public Assignment getReturnFuncAssignment_1_1_1() { return cReturnFuncAssignment_1_1_1; }
-		
-		//Tipo
-		public RuleCall getReturnFuncTipoParserRuleCall_1_1_1_0() { return cReturnFuncTipoParserRuleCall_1_1_1_0; }
+		//Primitivo
+		public RuleCall getReturnTipoPrimitivoParserRuleCall_3_1_0() { return cReturnTipoPrimitivoParserRuleCall_3_1_0; }
 	}
 	public class ConstanteElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.isc.DymeLanguage.Constante");
 		private final Assignment cNombreAssignment = (Assignment)rule.eContents().get(1);
-		private final CrossReference cNombreAsignacionCrossReference_0 = (CrossReference)cNombreAssignment.eContents().get(0);
-		private final RuleCall cNombreAsignacionIDTerminalRuleCall_0_1 = (RuleCall)cNombreAsignacionCrossReference_0.eContents().get(1);
+		private final CrossReference cNombreDeclaracionCrossReference_0 = (CrossReference)cNombreAssignment.eContents().get(0);
+		private final RuleCall cNombreDeclaracionIDTerminalRuleCall_0_1 = (RuleCall)cNombreDeclaracionCrossReference_0.eContents().get(1);
 		
 		//Constante:
-		//    nombre=[Asignacion]
+		//    nombre=[Declaracion]
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//nombre=[Asignacion]
+		//nombre=[Declaracion]
 		public Assignment getNombreAssignment() { return cNombreAssignment; }
 		
-		//[Asignacion]
-		public CrossReference getNombreAsignacionCrossReference_0() { return cNombreAsignacionCrossReference_0; }
+		//[Declaracion]
+		public CrossReference getNombreDeclaracionCrossReference_0() { return cNombreDeclaracionCrossReference_0; }
 		
 		//ID
-		public RuleCall getNombreAsignacionIDTerminalRuleCall_0_1() { return cNombreAsignacionIDTerminalRuleCall_0_1; }
+		public RuleCall getNombreDeclaracionIDTerminalRuleCall_0_1() { return cNombreDeclaracionIDTerminalRuleCall_0_1; }
+	}
+	public class ValorElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.isc.DymeLanguage.Valor");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cExpresionParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cCalistoMapValorParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cExprMapOperacionesParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		
+		//Valor:
+		//    (Expresion | CalistoMapValor | ExprMapOperaciones)
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//(Expresion | CalistoMapValor | ExprMapOperaciones)
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//Expresion
+		public RuleCall getExpresionParserRuleCall_0() { return cExpresionParserRuleCall_0; }
+		
+		//CalistoMapValor
+		public RuleCall getCalistoMapValorParserRuleCall_1() { return cCalistoMapValorParserRuleCall_1; }
+		
+		//ExprMapOperaciones
+		public RuleCall getExprMapOperacionesParserRuleCall_2() { return cExprMapOperacionesParserRuleCall_2; }
 	}
 	public class ExpresionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.isc.DymeLanguage.Expresion");
@@ -550,15 +670,16 @@ public class DymeLanguageGrammarAccess extends AbstractElementFinder.AbstractGra
 		private final RuleCall cExprAritmeticaParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		private final RuleCall cExprLogicaParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		private final RuleCall cLlamadoFuncParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
-		private final RuleCall cConstanteParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
-		private final RuleCall cEstrellaFugazMeteoroParserRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
+		private final RuleCall cEstrellaFugazMeteoroParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
+		private final RuleCall cConstanteParserRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
+		private final RuleCall cLlamadoMapaParserRuleCall_6 = (RuleCall)cAlternatives.eContents().get(6);
 		
 		//Expresion:
-		//    ExprConcatenacion | ExprAritmetica | ExprLogica | LlamadoFunc | Constante | EstrellaFugazMeteoro
+		//    ExprConcatenacion | ExprAritmetica | ExprLogica | LlamadoFunc | EstrellaFugazMeteoro | Constante | LlamadoMapa
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//ExprConcatenacion | ExprAritmetica | ExprLogica | LlamadoFunc | Constante | EstrellaFugazMeteoro
+		//ExprConcatenacion | ExprAritmetica | ExprLogica | LlamadoFunc | EstrellaFugazMeteoro | Constante | LlamadoMapa
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//ExprConcatenacion
@@ -573,11 +694,206 @@ public class DymeLanguageGrammarAccess extends AbstractElementFinder.AbstractGra
 		//LlamadoFunc
 		public RuleCall getLlamadoFuncParserRuleCall_3() { return cLlamadoFuncParserRuleCall_3; }
 		
-		//Constante
-		public RuleCall getConstanteParserRuleCall_4() { return cConstanteParserRuleCall_4; }
-		
 		//EstrellaFugazMeteoro
-		public RuleCall getEstrellaFugazMeteoroParserRuleCall_5() { return cEstrellaFugazMeteoroParserRuleCall_5; }
+		public RuleCall getEstrellaFugazMeteoroParserRuleCall_4() { return cEstrellaFugazMeteoroParserRuleCall_4; }
+		
+		//Constante
+		public RuleCall getConstanteParserRuleCall_5() { return cConstanteParserRuleCall_5; }
+		
+		//LlamadoMapa
+		public RuleCall getLlamadoMapaParserRuleCall_6() { return cLlamadoMapaParserRuleCall_6; }
+	}
+	public class ExprMapOperacionesElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.isc.DymeLanguage.ExprMapOperaciones");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cMapAddParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cMapRemoveParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		
+		//ExprMapOperaciones:
+		//    MapAdd | MapRemove
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//MapAdd | MapRemove
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//MapAdd
+		public RuleCall getMapAddParserRuleCall_0() { return cMapAddParserRuleCall_0; }
+		
+		//MapRemove
+		public RuleCall getMapRemoveParserRuleCall_1() { return cMapRemoveParserRuleCall_1; }
+	}
+	public class MapAddElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.isc.DymeLanguage.MapAdd");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cLeftParenthesisKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cOperadorAddAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final Keyword cOperadorAddPlusSignKeyword_1_0 = (Keyword)cOperadorAddAssignment_1.eContents().get(0);
+		private final Assignment cMapConstAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cMapConstConstanteParserRuleCall_2_0 = (RuleCall)cMapConstAssignment_2.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
+		private final Assignment cKeyAssignment_4_0 = (Assignment)cGroup_4.eContents().get(0);
+		private final RuleCall cKeyExpresionParserRuleCall_4_0_0 = (RuleCall)cKeyAssignment_4_0.eContents().get(0);
+		private final Keyword cHyphenMinusGreaterThanSignKeyword_4_1 = (Keyword)cGroup_4.eContents().get(1);
+		private final Assignment cValueAssignment_4_2 = (Assignment)cGroup_4.eContents().get(2);
+		private final RuleCall cValueExpresionParserRuleCall_4_2_0 = (RuleCall)cValueAssignment_4_2.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Group cGroup_6 = (Group)cGroup.eContents().get(6);
+		private final Keyword cLeftParenthesisKeyword_6_0 = (Keyword)cGroup_6.eContents().get(0);
+		private final Assignment cKeyAssignment_6_1 = (Assignment)cGroup_6.eContents().get(1);
+		private final RuleCall cKeyExpresionParserRuleCall_6_1_0 = (RuleCall)cKeyAssignment_6_1.eContents().get(0);
+		private final Keyword cHyphenMinusGreaterThanSignKeyword_6_2 = (Keyword)cGroup_6.eContents().get(2);
+		private final Assignment cValueAssignment_6_3 = (Assignment)cGroup_6.eContents().get(3);
+		private final RuleCall cValueExpresionParserRuleCall_6_3_0 = (RuleCall)cValueAssignment_6_3.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_6_4 = (Keyword)cGroup_6.eContents().get(4);
+		private final Keyword cRightParenthesisKeyword_7 = (Keyword)cGroup.eContents().get(7);
+		
+		//MapAdd:
+		//    '(' operadorAdd = ('+') mapConst=Constante '(' (key+=Expresion '->' value+=Expresion) ')' ('('  key+=Expresion '->' value+=Expresion ')')* ')'
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'(' operadorAdd = ('+') mapConst=Constante '(' (key+=Expresion '->' value+=Expresion) ')' ('('  key+=Expresion '->' value+=Expresion ')')* ')'
+		public Group getGroup() { return cGroup; }
+		
+		//'('
+		public Keyword getLeftParenthesisKeyword_0() { return cLeftParenthesisKeyword_0; }
+		
+		//operadorAdd = ('+')
+		public Assignment getOperadorAddAssignment_1() { return cOperadorAddAssignment_1; }
+		
+		//('+')
+		public Keyword getOperadorAddPlusSignKeyword_1_0() { return cOperadorAddPlusSignKeyword_1_0; }
+		
+		//mapConst=Constante
+		public Assignment getMapConstAssignment_2() { return cMapConstAssignment_2; }
+		
+		//Constante
+		public RuleCall getMapConstConstanteParserRuleCall_2_0() { return cMapConstConstanteParserRuleCall_2_0; }
+		
+		//'('
+		public Keyword getLeftParenthesisKeyword_3() { return cLeftParenthesisKeyword_3; }
+		
+		//(key+=Expresion '->' value+=Expresion)
+		public Group getGroup_4() { return cGroup_4; }
+		
+		//key+=Expresion
+		public Assignment getKeyAssignment_4_0() { return cKeyAssignment_4_0; }
+		
+		//Expresion
+		public RuleCall getKeyExpresionParserRuleCall_4_0_0() { return cKeyExpresionParserRuleCall_4_0_0; }
+		
+		//'->'
+		public Keyword getHyphenMinusGreaterThanSignKeyword_4_1() { return cHyphenMinusGreaterThanSignKeyword_4_1; }
+		
+		//value+=Expresion
+		public Assignment getValueAssignment_4_2() { return cValueAssignment_4_2; }
+		
+		//Expresion
+		public RuleCall getValueExpresionParserRuleCall_4_2_0() { return cValueExpresionParserRuleCall_4_2_0; }
+		
+		//')'
+		public Keyword getRightParenthesisKeyword_5() { return cRightParenthesisKeyword_5; }
+		
+		//('('  key+=Expresion '->' value+=Expresion ')')*
+		public Group getGroup_6() { return cGroup_6; }
+		
+		//'('
+		public Keyword getLeftParenthesisKeyword_6_0() { return cLeftParenthesisKeyword_6_0; }
+		
+		//key+=Expresion
+		public Assignment getKeyAssignment_6_1() { return cKeyAssignment_6_1; }
+		
+		//Expresion
+		public RuleCall getKeyExpresionParserRuleCall_6_1_0() { return cKeyExpresionParserRuleCall_6_1_0; }
+		
+		//'->'
+		public Keyword getHyphenMinusGreaterThanSignKeyword_6_2() { return cHyphenMinusGreaterThanSignKeyword_6_2; }
+		
+		//value+=Expresion
+		public Assignment getValueAssignment_6_3() { return cValueAssignment_6_3; }
+		
+		//Expresion
+		public RuleCall getValueExpresionParserRuleCall_6_3_0() { return cValueExpresionParserRuleCall_6_3_0; }
+		
+		//')'
+		public Keyword getRightParenthesisKeyword_6_4() { return cRightParenthesisKeyword_6_4; }
+		
+		//')'
+		public Keyword getRightParenthesisKeyword_7() { return cRightParenthesisKeyword_7; }
+	}
+	public class MapRemoveElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.isc.DymeLanguage.MapRemove");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cLeftParenthesisKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cOperadorAddAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final Keyword cOperadorAddHyphenMinusKeyword_1_0 = (Keyword)cOperadorAddAssignment_1.eContents().get(0);
+		private final Assignment cMapConstAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cMapConstConstanteParserRuleCall_2_0 = (RuleCall)cMapConstAssignment_2.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cKeyAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cKeyExpresionParserRuleCall_4_0 = (RuleCall)cKeyAssignment_4.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Group cGroup_6 = (Group)cGroup.eContents().get(6);
+		private final Keyword cLeftParenthesisKeyword_6_0 = (Keyword)cGroup_6.eContents().get(0);
+		private final Assignment cKeyAssignment_6_1 = (Assignment)cGroup_6.eContents().get(1);
+		private final RuleCall cKeyExpresionParserRuleCall_6_1_0 = (RuleCall)cKeyAssignment_6_1.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_6_2 = (Keyword)cGroup_6.eContents().get(2);
+		private final Keyword cRightParenthesisKeyword_7 = (Keyword)cGroup.eContents().get(7);
+		
+		//MapRemove:
+		//    '(' operadorAdd = ('-') mapConst=Constante '(' key+=Expresion ')' ( '(' key+=Expresion ')' )* ')'
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'(' operadorAdd = ('-') mapConst=Constante '(' key+=Expresion ')' ( '(' key+=Expresion ')' )* ')'
+		public Group getGroup() { return cGroup; }
+		
+		//'('
+		public Keyword getLeftParenthesisKeyword_0() { return cLeftParenthesisKeyword_0; }
+		
+		//operadorAdd = ('-')
+		public Assignment getOperadorAddAssignment_1() { return cOperadorAddAssignment_1; }
+		
+		//('-')
+		public Keyword getOperadorAddHyphenMinusKeyword_1_0() { return cOperadorAddHyphenMinusKeyword_1_0; }
+		
+		//mapConst=Constante
+		public Assignment getMapConstAssignment_2() { return cMapConstAssignment_2; }
+		
+		//Constante
+		public RuleCall getMapConstConstanteParserRuleCall_2_0() { return cMapConstConstanteParserRuleCall_2_0; }
+		
+		//'('
+		public Keyword getLeftParenthesisKeyword_3() { return cLeftParenthesisKeyword_3; }
+		
+		//key+=Expresion
+		public Assignment getKeyAssignment_4() { return cKeyAssignment_4; }
+		
+		//Expresion
+		public RuleCall getKeyExpresionParserRuleCall_4_0() { return cKeyExpresionParserRuleCall_4_0; }
+		
+		//')'
+		public Keyword getRightParenthesisKeyword_5() { return cRightParenthesisKeyword_5; }
+		
+		//( '(' key+=Expresion ')' )*
+		public Group getGroup_6() { return cGroup_6; }
+		
+		//'('
+		public Keyword getLeftParenthesisKeyword_6_0() { return cLeftParenthesisKeyword_6_0; }
+		
+		//key+=Expresion
+		public Assignment getKeyAssignment_6_1() { return cKeyAssignment_6_1; }
+		
+		//Expresion
+		public RuleCall getKeyExpresionParserRuleCall_6_1_0() { return cKeyExpresionParserRuleCall_6_1_0; }
+		
+		//')'
+		public Keyword getRightParenthesisKeyword_6_2() { return cRightParenthesisKeyword_6_2; }
+		
+		//')'
+		public Keyword getRightParenthesisKeyword_7() { return cRightParenthesisKeyword_7; }
 	}
 	public class ExprConcatenacionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.isc.DymeLanguage.ExprConcatenacion");
@@ -588,48 +904,40 @@ public class DymeLanguageGrammarAccess extends AbstractElementFinder.AbstractGra
 		private final Assignment cOperadorConAssignment_0_1_0 = (Assignment)cGroup_0_1.eContents().get(0);
 		private final Keyword cOperadorConPlusSignPlusSignKeyword_0_1_0_0 = (Keyword)cOperadorConAssignment_0_1_0.eContents().get(0);
 		private final Assignment cExprConAssignment_0_1_1 = (Assignment)cGroup_0_1.eContents().get(1);
-		private final Alternatives cExprConAlternatives_0_1_1_0 = (Alternatives)cExprConAssignment_0_1_1.eContents().get(0);
-		private final RuleCall cExprConExprConcatenacionParserRuleCall_0_1_1_0_0 = (RuleCall)cExprConAlternatives_0_1_1_0.eContents().get(0);
-		private final RuleCall cExprConLlamadoFuncParserRuleCall_0_1_1_0_1 = (RuleCall)cExprConAlternatives_0_1_1_0.eContents().get(1);
+		private final RuleCall cExprConExpresionParserRuleCall_0_1_1_0 = (RuleCall)cExprConAssignment_0_1_1.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_0_2 = (Keyword)cGroup_0.eContents().get(2);
 		private final Alternatives cAlternatives_1 = (Alternatives)cAlternatives.eContents().get(1);
 		private final RuleCall cConstelacionParserRuleCall_1_0 = (RuleCall)cAlternatives_1.eContents().get(0);
 		private final RuleCall cEstrellaParserRuleCall_1_1 = (RuleCall)cAlternatives_1.eContents().get(1);
 		
 		//ExprConcatenacion:
-		//    '('(operadorCon = '++' (exprCon+=(ExprConcatenacion | LlamadoFunc))+) ')' |  (Constelacion | Estrella)
+		//    '('(operadorCon = ('++') (exprCon+=(Expresion))+) ')' |  (Constelacion | Estrella)
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'('(operadorCon = '++' (exprCon+=(ExprConcatenacion | LlamadoFunc))+) ')' |  (Constelacion | Estrella)
+		//'('(operadorCon = ('++') (exprCon+=(Expresion))+) ')' |  (Constelacion | Estrella)
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
-		//'('(operadorCon = '++' (exprCon+=(ExprConcatenacion | LlamadoFunc))+) ')'
+		//'('(operadorCon = ('++') (exprCon+=(Expresion))+) ')'
 		public Group getGroup_0() { return cGroup_0; }
 		
 		//'('
 		public Keyword getLeftParenthesisKeyword_0_0() { return cLeftParenthesisKeyword_0_0; }
 		
-		//(operadorCon = '++' (exprCon+=(ExprConcatenacion | LlamadoFunc))+)
+		//(operadorCon = ('++') (exprCon+=(Expresion))+)
 		public Group getGroup_0_1() { return cGroup_0_1; }
 		
-		//operadorCon = '++'
+		//operadorCon = ('++')
 		public Assignment getOperadorConAssignment_0_1_0() { return cOperadorConAssignment_0_1_0; }
 		
-		//'++'
+		//('++')
 		public Keyword getOperadorConPlusSignPlusSignKeyword_0_1_0_0() { return cOperadorConPlusSignPlusSignKeyword_0_1_0_0; }
 		
-		//(exprCon+=(ExprConcatenacion | LlamadoFunc))+
+		//(exprCon+=(Expresion))+
 		public Assignment getExprConAssignment_0_1_1() { return cExprConAssignment_0_1_1; }
 		
-		//(ExprConcatenacion | LlamadoFunc)
-		public Alternatives getExprConAlternatives_0_1_1_0() { return cExprConAlternatives_0_1_1_0; }
-		
-		//ExprConcatenacion
-		public RuleCall getExprConExprConcatenacionParserRuleCall_0_1_1_0_0() { return cExprConExprConcatenacionParserRuleCall_0_1_1_0_0; }
-		
-		//LlamadoFunc
-		public RuleCall getExprConLlamadoFuncParserRuleCall_0_1_1_0_1() { return cExprConLlamadoFuncParserRuleCall_0_1_1_0_1; }
+		//(Expresion)
+		public RuleCall getExprConExpresionParserRuleCall_0_1_1_0() { return cExprConExpresionParserRuleCall_0_1_1_0; }
 		
 		//')'
 		public Keyword getRightParenthesisKeyword_0_2() { return cRightParenthesisKeyword_0_2; }
@@ -657,29 +965,27 @@ public class DymeLanguageGrammarAccess extends AbstractElementFinder.AbstractGra
 		private final Keyword cOperadorArAsteriskKeyword_0_1_0_0_3 = (Keyword)cOperadorArAlternatives_0_1_0_0.eContents().get(3);
 		private final Keyword cOperadorArPercentSignKeyword_0_1_0_0_4 = (Keyword)cOperadorArAlternatives_0_1_0_0.eContents().get(4);
 		private final Assignment cExprArAssignment_0_1_1 = (Assignment)cGroup_0_1.eContents().get(1);
-		private final Alternatives cExprArAlternatives_0_1_1_0 = (Alternatives)cExprArAssignment_0_1_1.eContents().get(0);
-		private final RuleCall cExprArExprAritmeticaParserRuleCall_0_1_1_0_0 = (RuleCall)cExprArAlternatives_0_1_1_0.eContents().get(0);
-		private final RuleCall cExprArLlamadoFuncParserRuleCall_0_1_1_0_1 = (RuleCall)cExprArAlternatives_0_1_1_0.eContents().get(1);
+		private final RuleCall cExprArExpresionParserRuleCall_0_1_1_0 = (RuleCall)cExprArAssignment_0_1_1.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_0_2 = (Keyword)cGroup_0.eContents().get(2);
 		private final Alternatives cAlternatives_1 = (Alternatives)cAlternatives.eContents().get(1);
 		private final RuleCall cPlanetaParserRuleCall_1_0 = (RuleCall)cAlternatives_1.eContents().get(0);
 		private final RuleCall cPolvoEstelarParserRuleCall_1_1 = (RuleCall)cAlternatives_1.eContents().get(1);
 		
 		//ExprAritmetica:
-		//    '('(operadorAr = ('+' | '-' | '/' | '*' | '%')  (exprAr+=(ExprAritmetica | LlamadoFunc))+) ')' |  (Planeta | PolvoEstelar)
+		//    '('(operadorAr = ('+' | '-' | '/' | '*' | '%')  (exprAr+=(Expresion))+) ')' |  (Planeta | PolvoEstelar)
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'('(operadorAr = ('+' | '-' | '/' | '*' | '%')  (exprAr+=(ExprAritmetica | LlamadoFunc))+) ')' |  (Planeta | PolvoEstelar)
+		//'('(operadorAr = ('+' | '-' | '/' | '*' | '%')  (exprAr+=(Expresion))+) ')' |  (Planeta | PolvoEstelar)
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
-		//'('(operadorAr = ('+' | '-' | '/' | '*' | '%')  (exprAr+=(ExprAritmetica | LlamadoFunc))+) ')'
+		//'('(operadorAr = ('+' | '-' | '/' | '*' | '%')  (exprAr+=(Expresion))+) ')'
 		public Group getGroup_0() { return cGroup_0; }
 		
 		//'('
 		public Keyword getLeftParenthesisKeyword_0_0() { return cLeftParenthesisKeyword_0_0; }
 		
-		//(operadorAr = ('+' | '-' | '/' | '*' | '%')  (exprAr+=(ExprAritmetica | LlamadoFunc))+)
+		//(operadorAr = ('+' | '-' | '/' | '*' | '%')  (exprAr+=(Expresion))+)
 		public Group getGroup_0_1() { return cGroup_0_1; }
 		
 		//operadorAr = ('+' | '-' | '/' | '*' | '%')
@@ -703,17 +1009,11 @@ public class DymeLanguageGrammarAccess extends AbstractElementFinder.AbstractGra
 		//'%'
 		public Keyword getOperadorArPercentSignKeyword_0_1_0_0_4() { return cOperadorArPercentSignKeyword_0_1_0_0_4; }
 		
-		//(exprAr+=(ExprAritmetica | LlamadoFunc))+
+		//(exprAr+=(Expresion))+
 		public Assignment getExprArAssignment_0_1_1() { return cExprArAssignment_0_1_1; }
 		
-		//(ExprAritmetica | LlamadoFunc)
-		public Alternatives getExprArAlternatives_0_1_1_0() { return cExprArAlternatives_0_1_1_0; }
-		
-		//ExprAritmetica
-		public RuleCall getExprArExprAritmeticaParserRuleCall_0_1_1_0_0() { return cExprArExprAritmeticaParserRuleCall_0_1_1_0_0; }
-		
-		//LlamadoFunc
-		public RuleCall getExprArLlamadoFuncParserRuleCall_0_1_1_0_1() { return cExprArLlamadoFuncParserRuleCall_0_1_1_0_1; }
+		//(Expresion)
+		public RuleCall getExprArExpresionParserRuleCall_0_1_1_0() { return cExprArExpresionParserRuleCall_0_1_1_0; }
 		
 		//')'
 		public Keyword getRightParenthesisKeyword_0_2() { return cRightParenthesisKeyword_0_2; }
@@ -729,83 +1029,143 @@ public class DymeLanguageGrammarAccess extends AbstractElementFinder.AbstractGra
 	}
 	public class ExprLogicaElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.isc.DymeLanguage.ExprLogica");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
-		private final Keyword cLeftParenthesisKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
-		private final Group cGroup_0_1 = (Group)cGroup_0.eContents().get(1);
-		private final Assignment cOperadorLogAssignment_0_1_0 = (Assignment)cGroup_0_1.eContents().get(0);
-		private final Alternatives cOperadorLogAlternatives_0_1_0_0 = (Alternatives)cOperadorLogAssignment_0_1_0.eContents().get(0);
-		private final Keyword cOperadorLogAmpersandAmpersandKeyword_0_1_0_0_0 = (Keyword)cOperadorLogAlternatives_0_1_0_0.eContents().get(0);
-		private final Keyword cOperadorLogVerticalLineVerticalLineKeyword_0_1_0_0_1 = (Keyword)cOperadorLogAlternatives_0_1_0_0.eContents().get(1);
-		private final Keyword cOperadorLogDollarSignDollarSignKeyword_0_1_0_0_2 = (Keyword)cOperadorLogAlternatives_0_1_0_0.eContents().get(2);
-		private final Keyword cOperadorLogExclamationMarkKeyword_0_1_0_0_3 = (Keyword)cOperadorLogAlternatives_0_1_0_0.eContents().get(3);
-		private final Assignment cExprLogAssignment_0_1_1 = (Assignment)cGroup_0_1.eContents().get(1);
-		private final Alternatives cExprLogAlternatives_0_1_1_0 = (Alternatives)cExprLogAssignment_0_1_1.eContents().get(0);
-		private final RuleCall cExprLogExprLogicaParserRuleCall_0_1_1_0_0 = (RuleCall)cExprLogAlternatives_0_1_1_0.eContents().get(0);
-		private final RuleCall cExprLogLlamadoFuncParserRuleCall_0_1_1_0_1 = (RuleCall)cExprLogAlternatives_0_1_1_0.eContents().get(1);
-		private final Keyword cRightParenthesisKeyword_0_2 = (Keyword)cGroup_0.eContents().get(2);
-		private final Alternatives cAlternatives_1 = (Alternatives)cAlternatives.eContents().get(1);
-		private final RuleCall cLunaParserRuleCall_1_0 = (RuleCall)cAlternatives_1.eContents().get(0);
-		private final RuleCall cExprComparacionParserRuleCall_1_1 = (RuleCall)cAlternatives_1.eContents().get(1);
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cNegadoAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final Keyword cNegadoExclamationMarkKeyword_0_0 = (Keyword)cNegadoAssignment_0.eContents().get(0);
+		private final Assignment cExprLogAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final Alternatives cExprLogAlternatives_1_0 = (Alternatives)cExprLogAssignment_1.eContents().get(0);
+		private final RuleCall cExprLogExprLogicaOperadoresParserRuleCall_1_0_0 = (RuleCall)cExprLogAlternatives_1_0.eContents().get(0);
+		private final RuleCall cExprLogLunaParserRuleCall_1_0_1 = (RuleCall)cExprLogAlternatives_1_0.eContents().get(1);
+		private final RuleCall cExprLogExprComparacionParserRuleCall_1_0_2 = (RuleCall)cExprLogAlternatives_1_0.eContents().get(2);
+		private final RuleCall cExprLogXORParserRuleCall_1_0_3 = (RuleCall)cExprLogAlternatives_1_0.eContents().get(3);
 		
 		//ExprLogica:
-		//    '('(operadorLog = ( '&&' | '||' | '$$' | '!' ) (exprLog+=(ExprLogica | LlamadoFunc))+) ')' | (Luna | ExprComparacion )
+		//   (Negado ?= '!')? exprLog=(ExprLogicaOperadores | Luna | ExprComparacion | XOR)
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'('(operadorLog = ( '&&' | '||' | '$$' | '!' ) (exprLog+=(ExprLogica | LlamadoFunc))+) ')' | (Luna | ExprComparacion )
-		public Alternatives getAlternatives() { return cAlternatives; }
+		//(Negado ?= '!')? exprLog=(ExprLogicaOperadores | Luna | ExprComparacion | XOR)
+		public Group getGroup() { return cGroup; }
 		
-		//'('(operadorLog = ( '&&' | '||' | '$$' | '!' ) (exprLog+=(ExprLogica | LlamadoFunc))+) ')'
-		public Group getGroup_0() { return cGroup_0; }
-		
-		//'('
-		public Keyword getLeftParenthesisKeyword_0_0() { return cLeftParenthesisKeyword_0_0; }
-		
-		//(operadorLog = ( '&&' | '||' | '$$' | '!' ) (exprLog+=(ExprLogica | LlamadoFunc))+)
-		public Group getGroup_0_1() { return cGroup_0_1; }
-		
-		//operadorLog = ( '&&' | '||' | '$$' | '!' )
-		public Assignment getOperadorLogAssignment_0_1_0() { return cOperadorLogAssignment_0_1_0; }
-		
-		//( '&&' | '||' | '$$' | '!' )
-		public Alternatives getOperadorLogAlternatives_0_1_0_0() { return cOperadorLogAlternatives_0_1_0_0; }
-		
-		//'&&'
-		public Keyword getOperadorLogAmpersandAmpersandKeyword_0_1_0_0_0() { return cOperadorLogAmpersandAmpersandKeyword_0_1_0_0_0; }
-		
-		//'||'
-		public Keyword getOperadorLogVerticalLineVerticalLineKeyword_0_1_0_0_1() { return cOperadorLogVerticalLineVerticalLineKeyword_0_1_0_0_1; }
-		
-		//'$$'
-		public Keyword getOperadorLogDollarSignDollarSignKeyword_0_1_0_0_2() { return cOperadorLogDollarSignDollarSignKeyword_0_1_0_0_2; }
+		//(Negado ?= '!')?
+		public Assignment getNegadoAssignment_0() { return cNegadoAssignment_0; }
 		
 		//'!'
-		public Keyword getOperadorLogExclamationMarkKeyword_0_1_0_0_3() { return cOperadorLogExclamationMarkKeyword_0_1_0_0_3; }
+		public Keyword getNegadoExclamationMarkKeyword_0_0() { return cNegadoExclamationMarkKeyword_0_0; }
 		
-		//(exprLog+=(ExprLogica | LlamadoFunc))+
-		public Assignment getExprLogAssignment_0_1_1() { return cExprLogAssignment_0_1_1; }
+		//exprLog=(ExprLogicaOperadores | Luna | ExprComparacion | XOR)
+		public Assignment getExprLogAssignment_1() { return cExprLogAssignment_1; }
 		
-		//(ExprLogica | LlamadoFunc)
-		public Alternatives getExprLogAlternatives_0_1_1_0() { return cExprLogAlternatives_0_1_1_0; }
+		//(ExprLogicaOperadores | Luna | ExprComparacion | XOR)
+		public Alternatives getExprLogAlternatives_1_0() { return cExprLogAlternatives_1_0; }
 		
-		//ExprLogica
-		public RuleCall getExprLogExprLogicaParserRuleCall_0_1_1_0_0() { return cExprLogExprLogicaParserRuleCall_0_1_1_0_0; }
-		
-		//LlamadoFunc
-		public RuleCall getExprLogLlamadoFuncParserRuleCall_0_1_1_0_1() { return cExprLogLlamadoFuncParserRuleCall_0_1_1_0_1; }
-		
-		//')'
-		public Keyword getRightParenthesisKeyword_0_2() { return cRightParenthesisKeyword_0_2; }
-		
-		//(Luna | ExprComparacion )
-		public Alternatives getAlternatives_1() { return cAlternatives_1; }
+		//ExprLogicaOperadores
+		public RuleCall getExprLogExprLogicaOperadoresParserRuleCall_1_0_0() { return cExprLogExprLogicaOperadoresParserRuleCall_1_0_0; }
 		
 		//Luna
-		public RuleCall getLunaParserRuleCall_1_0() { return cLunaParserRuleCall_1_0; }
+		public RuleCall getExprLogLunaParserRuleCall_1_0_1() { return cExprLogLunaParserRuleCall_1_0_1; }
 		
 		//ExprComparacion
-		public RuleCall getExprComparacionParserRuleCall_1_1() { return cExprComparacionParserRuleCall_1_1; }
+		public RuleCall getExprLogExprComparacionParserRuleCall_1_0_2() { return cExprLogExprComparacionParserRuleCall_1_0_2; }
+		
+		//XOR
+		public RuleCall getExprLogXORParserRuleCall_1_0_3() { return cExprLogXORParserRuleCall_1_0_3; }
+	}
+	public class ExprLogicaOperadoresElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.isc.DymeLanguage.ExprLogicaOperadores");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cLeftParenthesisKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Assignment cOperadorLogAssignment_1_0 = (Assignment)cGroup_1.eContents().get(0);
+		private final Alternatives cOperadorLogAlternatives_1_0_0 = (Alternatives)cOperadorLogAssignment_1_0.eContents().get(0);
+		private final Keyword cOperadorLogAmpersandAmpersandKeyword_1_0_0_0 = (Keyword)cOperadorLogAlternatives_1_0_0.eContents().get(0);
+		private final Keyword cOperadorLogVerticalLineVerticalLineKeyword_1_0_0_1 = (Keyword)cOperadorLogAlternatives_1_0_0.eContents().get(1);
+		private final Assignment cExprLogsAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cExprLogsExpresionParserRuleCall_1_1_0 = (RuleCall)cExprLogsAssignment_1_1.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		
+		//ExprLogicaOperadores:
+		//    (('('(operadorLog = ( '&&' | '||' ) (exprLogs+=(Expresion))+) ')' ))
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//(('('(operadorLog = ( '&&' | '||' ) (exprLogs+=(Expresion))+) ')' ))
+		public Group getGroup() { return cGroup; }
+		
+		//'('
+		public Keyword getLeftParenthesisKeyword_0() { return cLeftParenthesisKeyword_0; }
+		
+		//(operadorLog = ( '&&' | '||' ) (exprLogs+=(Expresion))+)
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//operadorLog = ( '&&' | '||' )
+		public Assignment getOperadorLogAssignment_1_0() { return cOperadorLogAssignment_1_0; }
+		
+		//( '&&' | '||' )
+		public Alternatives getOperadorLogAlternatives_1_0_0() { return cOperadorLogAlternatives_1_0_0; }
+		
+		//'&&'
+		public Keyword getOperadorLogAmpersandAmpersandKeyword_1_0_0_0() { return cOperadorLogAmpersandAmpersandKeyword_1_0_0_0; }
+		
+		//'||'
+		public Keyword getOperadorLogVerticalLineVerticalLineKeyword_1_0_0_1() { return cOperadorLogVerticalLineVerticalLineKeyword_1_0_0_1; }
+		
+		//(exprLogs+=(Expresion))+
+		public Assignment getExprLogsAssignment_1_1() { return cExprLogsAssignment_1_1; }
+		
+		//(Expresion)
+		public RuleCall getExprLogsExpresionParserRuleCall_1_1_0() { return cExprLogsExpresionParserRuleCall_1_1_0; }
+		
+		//')'
+		public Keyword getRightParenthesisKeyword_2() { return cRightParenthesisKeyword_2; }
+	}
+	public class XORElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.isc.DymeLanguage.XOR");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cLeftParenthesisKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Assignment cOperadorXORAssignment_1_0 = (Assignment)cGroup_1.eContents().get(0);
+		private final Keyword cOperadorXORDollarSignDollarSignKeyword_1_0_0 = (Keyword)cOperadorXORAssignment_1_0.eContents().get(0);
+		private final Assignment cExprLogIzqAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cExprLogIzqExpresionParserRuleCall_1_1_0 = (RuleCall)cExprLogIzqAssignment_1_1.eContents().get(0);
+		private final Assignment cExprLogDerAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
+		private final RuleCall cExprLogDerExpresionParserRuleCall_1_2_0 = (RuleCall)cExprLogDerAssignment_1_2.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		
+		//XOR:
+		//    '('(operadorXOR = '$$' exprLogIzq=(Expresion) exprLogDer=(Expresion)) ')'
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'('(operadorXOR = '$$' exprLogIzq=(Expresion) exprLogDer=(Expresion)) ')'
+		public Group getGroup() { return cGroup; }
+		
+		//'('
+		public Keyword getLeftParenthesisKeyword_0() { return cLeftParenthesisKeyword_0; }
+		
+		//(operadorXOR = '$$' exprLogIzq=(Expresion) exprLogDer=(Expresion))
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//operadorXOR = '$$'
+		public Assignment getOperadorXORAssignment_1_0() { return cOperadorXORAssignment_1_0; }
+		
+		//'$$'
+		public Keyword getOperadorXORDollarSignDollarSignKeyword_1_0_0() { return cOperadorXORDollarSignDollarSignKeyword_1_0_0; }
+		
+		//exprLogIzq=(Expresion)
+		public Assignment getExprLogIzqAssignment_1_1() { return cExprLogIzqAssignment_1_1; }
+		
+		//(Expresion)
+		public RuleCall getExprLogIzqExpresionParserRuleCall_1_1_0() { return cExprLogIzqExpresionParserRuleCall_1_1_0; }
+		
+		//exprLogDer=(Expresion)
+		public Assignment getExprLogDerAssignment_1_2() { return cExprLogDerAssignment_1_2; }
+		
+		//(Expresion)
+		public RuleCall getExprLogDerExpresionParserRuleCall_1_2_0() { return cExprLogDerExpresionParserRuleCall_1_2_0; }
+		
+		//')'
+		public Keyword getRightParenthesisKeyword_2() { return cRightParenthesisKeyword_2; }
 	}
 	public class ExprComparacionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.isc.DymeLanguage.ExprComparacion");
@@ -819,7 +1179,7 @@ public class DymeLanguageGrammarAccess extends AbstractElementFinder.AbstractGra
 		private final Keyword cOperadorCompLessThanSignEqualsSignKeyword_1_0_0_2 = (Keyword)cOperadorCompAlternatives_1_0_0.eContents().get(2);
 		private final Keyword cOperadorCompGreaterThanSignEqualsSignKeyword_1_0_0_3 = (Keyword)cOperadorCompAlternatives_1_0_0.eContents().get(3);
 		private final Keyword cOperadorCompEqualsSignEqualsSignKeyword_1_0_0_4 = (Keyword)cOperadorCompAlternatives_1_0_0.eContents().get(4);
-		private final Keyword cOperadorCompTildeKeyword_1_0_0_5 = (Keyword)cOperadorCompAlternatives_1_0_0.eContents().get(5);
+		private final Keyword cOperadorCompTildeEqualsSignKeyword_1_0_0_5 = (Keyword)cOperadorCompAlternatives_1_0_0.eContents().get(5);
 		private final Assignment cExprComIzqAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
 		private final RuleCall cExprComIzqExpresionParserRuleCall_1_1_0 = (RuleCall)cExprComIzqAssignment_1_1.eContents().get(0);
 		private final Assignment cExprComDerAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
@@ -827,23 +1187,23 @@ public class DymeLanguageGrammarAccess extends AbstractElementFinder.AbstractGra
 		private final Keyword cRightParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		
 		//ExprComparacion:
-		//    '('(operadorComp = ('<' | '>' | '<=' | '>=' | '==' | '~') exprComIzq=(Expresion) exprComDer=(Expresion)) ')'
+		//    '('(operadorComp = ('<' | '>' | '<=' | '>=' | '==' | '~=') exprComIzq=(Expresion) exprComDer=(Expresion)) ')'
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'('(operadorComp = ('<' | '>' | '<=' | '>=' | '==' | '~') exprComIzq=(Expresion) exprComDer=(Expresion)) ')'
+		//'('(operadorComp = ('<' | '>' | '<=' | '>=' | '==' | '~=') exprComIzq=(Expresion) exprComDer=(Expresion)) ')'
 		public Group getGroup() { return cGroup; }
 		
 		//'('
 		public Keyword getLeftParenthesisKeyword_0() { return cLeftParenthesisKeyword_0; }
 		
-		//(operadorComp = ('<' | '>' | '<=' | '>=' | '==' | '~') exprComIzq=(Expresion) exprComDer=(Expresion))
+		//(operadorComp = ('<' | '>' | '<=' | '>=' | '==' | '~=') exprComIzq=(Expresion) exprComDer=(Expresion))
 		public Group getGroup_1() { return cGroup_1; }
 		
-		//operadorComp = ('<' | '>' | '<=' | '>=' | '==' | '~')
+		//operadorComp = ('<' | '>' | '<=' | '>=' | '==' | '~=')
 		public Assignment getOperadorCompAssignment_1_0() { return cOperadorCompAssignment_1_0; }
 		
-		//('<' | '>' | '<=' | '>=' | '==' | '~')
+		//('<' | '>' | '<=' | '>=' | '==' | '~=')
 		public Alternatives getOperadorCompAlternatives_1_0_0() { return cOperadorCompAlternatives_1_0_0; }
 		
 		//'<'
@@ -861,8 +1221,8 @@ public class DymeLanguageGrammarAccess extends AbstractElementFinder.AbstractGra
 		//'=='
 		public Keyword getOperadorCompEqualsSignEqualsSignKeyword_1_0_0_4() { return cOperadorCompEqualsSignEqualsSignKeyword_1_0_0_4; }
 		
-		//'~'
-		public Keyword getOperadorCompTildeKeyword_1_0_0_5() { return cOperadorCompTildeKeyword_1_0_0_5; }
+		//'~='
+		public Keyword getOperadorCompTildeEqualsSignKeyword_1_0_0_5() { return cOperadorCompTildeEqualsSignKeyword_1_0_0_5; }
 		
 		//exprComIzq=(Expresion)
 		public Assignment getExprComIzqAssignment_1_1() { return cExprComIzqAssignment_1_1; }
@@ -879,16 +1239,133 @@ public class DymeLanguageGrammarAccess extends AbstractElementFinder.AbstractGra
 		//')'
 		public Keyword getRightParenthesisKeyword_2() { return cRightParenthesisKeyword_2; }
 	}
+	public class PrimitivoElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.isc.DymeLanguage.Primitivo");
+		private final Assignment cTipoAssignment = (Assignment)rule.eContents().get(1);
+		private final Alternatives cTipoAlternatives_0 = (Alternatives)cTipoAssignment.eContents().get(0);
+		private final Keyword cTipoPlanetaKeyword_0_0 = (Keyword)cTipoAlternatives_0.eContents().get(0);
+		private final Keyword cTipoConstelacionKeyword_0_1 = (Keyword)cTipoAlternatives_0.eContents().get(1);
+		private final Keyword cTipoEstrellaKeyword_0_2 = (Keyword)cTipoAlternatives_0.eContents().get(2);
+		private final Keyword cTipoPolvoEstelarKeyword_0_3 = (Keyword)cTipoAlternatives_0.eContents().get(3);
+		private final Keyword cTipoLunaKeyword_0_4 = (Keyword)cTipoAlternatives_0.eContents().get(4);
+		
+		//Primitivo:
+		//    tipo = ('Planeta' | 'Constelacion' | 'Estrella' | 'PolvoEstelar' | 'Luna')
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//tipo = ('Planeta' | 'Constelacion' | 'Estrella' | 'PolvoEstelar' | 'Luna')
+		public Assignment getTipoAssignment() { return cTipoAssignment; }
+		
+		//('Planeta' | 'Constelacion' | 'Estrella' | 'PolvoEstelar' | 'Luna')
+		public Alternatives getTipoAlternatives_0() { return cTipoAlternatives_0; }
+		
+		//'Planeta'
+		public Keyword getTipoPlanetaKeyword_0_0() { return cTipoPlanetaKeyword_0_0; }
+		
+		//'Constelacion'
+		public Keyword getTipoConstelacionKeyword_0_1() { return cTipoConstelacionKeyword_0_1; }
+		
+		//'Estrella'
+		public Keyword getTipoEstrellaKeyword_0_2() { return cTipoEstrellaKeyword_0_2; }
+		
+		//'PolvoEstelar'
+		public Keyword getTipoPolvoEstelarKeyword_0_3() { return cTipoPolvoEstelarKeyword_0_3; }
+		
+		//'Luna'
+		public Keyword getTipoLunaKeyword_0_4() { return cTipoLunaKeyword_0_4; }
+	}
+	public class TipoFuncionOrdenSuperiorElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.isc.DymeLanguage.TipoFuncionOrdenSuperior");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Alternatives cAlternatives_0 = (Alternatives)cGroup.eContents().get(0);
+		private final Group cGroup_0_0 = (Group)cAlternatives_0.eContents().get(0);
+		private final Assignment cOrdenSuperiorTipoAssignment_0_0_0 = (Assignment)cGroup_0_0.eContents().get(0);
+		private final Keyword cOrdenSuperiorTipoLeftParenthesisKeyword_0_0_0_0 = (Keyword)cOrdenSuperiorTipoAssignment_0_0_0.eContents().get(0);
+		private final Group cGroup_0_0_1 = (Group)cGroup_0_0.eContents().get(1);
+		private final Assignment cParamFuncAssignment_0_0_1_0 = (Assignment)cGroup_0_0_1.eContents().get(0);
+		private final RuleCall cParamFuncObjetoParserRuleCall_0_0_1_0_0 = (RuleCall)cParamFuncAssignment_0_0_1_0.eContents().get(0);
+		private final Group cGroup_0_0_1_1 = (Group)cGroup_0_0_1.eContents().get(1);
+		private final Keyword cDollarSignKeyword_0_0_1_1_0 = (Keyword)cGroup_0_0_1_1.eContents().get(0);
+		private final Assignment cParamFuncAssignment_0_0_1_1_1 = (Assignment)cGroup_0_0_1_1.eContents().get(1);
+		private final RuleCall cParamFuncObjetoParserRuleCall_0_0_1_1_1_0 = (RuleCall)cParamFuncAssignment_0_0_1_1_1.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_0_0_2 = (Keyword)cGroup_0_0.eContents().get(2);
+		private final RuleCall cObjetoParserRuleCall_0_1 = (RuleCall)cAlternatives_0.eContents().get(1);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Assignment cReturnTipoFuncAssignment_1_0 = (Assignment)cGroup_1.eContents().get(0);
+		private final Keyword cReturnTipoFuncHyphenMinusGreaterThanSignKeyword_1_0_0 = (Keyword)cReturnTipoFuncAssignment_1_0.eContents().get(0);
+		private final Assignment cReturnFuncAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cReturnFuncPrimitivoParserRuleCall_1_1_0 = (RuleCall)cReturnFuncAssignment_1_1.eContents().get(0);
+		
+		//TipoFuncionOrdenSuperior:
+		//    (ordenSuperiorTipo = '(' (paramFunc+=(Objeto) ('$' paramFunc+=Objeto)*)? ')' | Objeto)
+		//    (returnTipoFunc ?= '->' returnFunc=(Primitivo) )?
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//(ordenSuperiorTipo = '(' (paramFunc+=(Objeto) ('$' paramFunc+=Objeto)*)? ')' | Objeto)
+		//(returnTipoFunc ?= '->' returnFunc=(Primitivo) )?
+		public Group getGroup() { return cGroup; }
+		
+		//(ordenSuperiorTipo = '(' (paramFunc+=(Objeto) ('$' paramFunc+=Objeto)*)? ')' | Objeto)
+		public Alternatives getAlternatives_0() { return cAlternatives_0; }
+		
+		//ordenSuperiorTipo = '(' (paramFunc+=(Objeto) ('$' paramFunc+=Objeto)*)? ')'
+		public Group getGroup_0_0() { return cGroup_0_0; }
+		
+		//ordenSuperiorTipo = '('
+		public Assignment getOrdenSuperiorTipoAssignment_0_0_0() { return cOrdenSuperiorTipoAssignment_0_0_0; }
+		
+		//'('
+		public Keyword getOrdenSuperiorTipoLeftParenthesisKeyword_0_0_0_0() { return cOrdenSuperiorTipoLeftParenthesisKeyword_0_0_0_0; }
+		
+		//(paramFunc+=(Objeto) ('$' paramFunc+=Objeto)*)?
+		public Group getGroup_0_0_1() { return cGroup_0_0_1; }
+		
+		//paramFunc+=(Objeto)
+		public Assignment getParamFuncAssignment_0_0_1_0() { return cParamFuncAssignment_0_0_1_0; }
+		
+		//(Objeto)
+		public RuleCall getParamFuncObjetoParserRuleCall_0_0_1_0_0() { return cParamFuncObjetoParserRuleCall_0_0_1_0_0; }
+		
+		//('$' paramFunc+=Objeto)*
+		public Group getGroup_0_0_1_1() { return cGroup_0_0_1_1; }
+		
+		//'$'
+		public Keyword getDollarSignKeyword_0_0_1_1_0() { return cDollarSignKeyword_0_0_1_1_0; }
+		
+		//paramFunc+=Objeto
+		public Assignment getParamFuncAssignment_0_0_1_1_1() { return cParamFuncAssignment_0_0_1_1_1; }
+		
+		//Objeto
+		public RuleCall getParamFuncObjetoParserRuleCall_0_0_1_1_1_0() { return cParamFuncObjetoParserRuleCall_0_0_1_1_1_0; }
+		
+		//')'
+		public Keyword getRightParenthesisKeyword_0_0_2() { return cRightParenthesisKeyword_0_0_2; }
+		
+		//Objeto
+		public RuleCall getObjetoParserRuleCall_0_1() { return cObjetoParserRuleCall_0_1; }
+		
+		//(returnTipoFunc ?= '->' returnFunc=(Primitivo) )?
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//returnTipoFunc ?= '->'
+		public Assignment getReturnTipoFuncAssignment_1_0() { return cReturnTipoFuncAssignment_1_0; }
+		
+		//'->'
+		public Keyword getReturnTipoFuncHyphenMinusGreaterThanSignKeyword_1_0_0() { return cReturnTipoFuncHyphenMinusGreaterThanSignKeyword_1_0_0; }
+		
+		//returnFunc=(Primitivo)
+		public Assignment getReturnFuncAssignment_1_1() { return cReturnFuncAssignment_1_1; }
+		
+		//(Primitivo)
+		public RuleCall getReturnFuncPrimitivoParserRuleCall_1_1_0() { return cReturnFuncPrimitivoParserRuleCall_1_1_0; }
+	}
 	public class PlanetaElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.isc.DymeLanguage.Planeta");
 		private final Assignment cXAssignment = (Assignment)rule.eContents().get(1);
 		private final RuleCall cXINTTerminalRuleCall_0 = (RuleCall)cXAssignment.eContents().get(0);
 		
-		///*
-		//ExprSimple:
-		//     valorExpr = ( Planeta | PolvoEstelar | Constelacion | Estrella | Luna | Cometa )
-		//;
-		//*/
 		//Planeta: /* int */
 		//    x = INT
 		//;
@@ -921,19 +1398,18 @@ public class DymeLanguageGrammarAccess extends AbstractElementFinder.AbstractGra
 	public class EstrellaElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.isc.DymeLanguage.Estrella");
 		private final Assignment cXAssignment = (Assignment)rule.eContents().get(1);
-		private final Keyword cXAKeyword_0 = (Keyword)cXAssignment.eContents().get(0);
+		private final RuleCall cXCHARTerminalRuleCall_0 = (RuleCall)cXAssignment.eContents().get(0);
 		
-		//Estrella: /* char */ /* preguntar como aceptar solo 1 */
-		//    x = 'a'
+		//Estrella:
+		//    x = CHAR
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		///* char */ /* preguntar como aceptar solo 1 */
-		//   x = 'a'
+		//x = CHAR
 		public Assignment getXAssignment() { return cXAssignment; }
 		
-		//'a'
-		public Keyword getXAKeyword_0() { return cXAKeyword_0; }
+		//CHAR
+		public RuleCall getXCHARTerminalRuleCall_0() { return cXCHARTerminalRuleCall_0; }
 	}
 	public class PolvoEstelarElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.isc.DymeLanguage.PolvoEstelar");
@@ -999,29 +1475,178 @@ public class DymeLanguageGrammarAccess extends AbstractElementFinder.AbstractGra
 		//'LunaLlena'
 		public Keyword getXLunaLlenaKeyword_0_1() { return cXLunaLlenaKeyword_0_1; }
 	}
+	public class CalistoMapTipoElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.isc.DymeLanguage.CalistoMapTipo");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cCalistoKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cLeftSquareBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
+		private final Assignment cTipoIzqAssignment_2_0 = (Assignment)cGroup_2.eContents().get(0);
+		private final RuleCall cTipoIzqPrimitivoParserRuleCall_2_0_0 = (RuleCall)cTipoIzqAssignment_2_0.eContents().get(0);
+		private final Keyword cDollarSignKeyword_2_1 = (Keyword)cGroup_2.eContents().get(1);
+		private final Assignment cTipoDerAssignment_2_2 = (Assignment)cGroup_2.eContents().get(2);
+		private final RuleCall cTipoDerPrimitivoParserRuleCall_2_2_0 = (RuleCall)cTipoDerAssignment_2_2.eContents().get(0);
+		private final Keyword cRightSquareBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		
+		//CalistoMapTipo: //mapa -> entrada con la declaracion de tipos
+		//     'Calisto' '[' (tipoIzq=Primitivo '$' tipoDer=Primitivo) ']'
+		// ;
+		@Override public ParserRule getRule() { return rule; }
+		
+		////mapa -> entrada con la declaracion de tipos
+		//    'Calisto' '[' (tipoIzq=Primitivo '$' tipoDer=Primitivo) ']'
+		public Group getGroup() { return cGroup; }
+		
+		////mapa -> entrada con la declaracion de tipos
+		//    'Calisto'
+		public Keyword getCalistoKeyword_0() { return cCalistoKeyword_0; }
+		
+		//'['
+		public Keyword getLeftSquareBracketKeyword_1() { return cLeftSquareBracketKeyword_1; }
+		
+		//(tipoIzq=Primitivo '$' tipoDer=Primitivo)
+		public Group getGroup_2() { return cGroup_2; }
+		
+		//tipoIzq=Primitivo
+		public Assignment getTipoIzqAssignment_2_0() { return cTipoIzqAssignment_2_0; }
+		
+		//Primitivo
+		public RuleCall getTipoIzqPrimitivoParserRuleCall_2_0_0() { return cTipoIzqPrimitivoParserRuleCall_2_0_0; }
+		
+		//'$'
+		public Keyword getDollarSignKeyword_2_1() { return cDollarSignKeyword_2_1; }
+		
+		//tipoDer=Primitivo
+		public Assignment getTipoDerAssignment_2_2() { return cTipoDerAssignment_2_2; }
+		
+		//Primitivo
+		public RuleCall getTipoDerPrimitivoParserRuleCall_2_2_0() { return cTipoDerPrimitivoParserRuleCall_2_2_0; }
+		
+		//']'
+		public Keyword getRightSquareBracketKeyword_3() { return cRightSquareBracketKeyword_3; }
+	}
+	public class CalistoMapValorElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.isc.DymeLanguage.CalistoMapValor");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cCalistoMapValorAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cCalistoKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Keyword cLeftParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
+		private final Group cGroup_3_0 = (Group)cGroup_3.eContents().get(0);
+		private final Assignment cKeyAssignment_3_0_0 = (Assignment)cGroup_3_0.eContents().get(0);
+		private final RuleCall cKeyExpresionParserRuleCall_3_0_0_0 = (RuleCall)cKeyAssignment_3_0_0.eContents().get(0);
+		private final Keyword cHyphenMinusGreaterThanSignKeyword_3_0_1 = (Keyword)cGroup_3_0.eContents().get(1);
+		private final Assignment cValueAssignment_3_0_2 = (Assignment)cGroup_3_0.eContents().get(2);
+		private final RuleCall cValueExpresionParserRuleCall_3_0_2_0 = (RuleCall)cValueAssignment_3_0_2.eContents().get(0);
+		private final Group cGroup_3_1 = (Group)cGroup_3.eContents().get(1);
+		private final Keyword cDollarSignKeyword_3_1_0 = (Keyword)cGroup_3_1.eContents().get(0);
+		private final Assignment cKeyAssignment_3_1_1 = (Assignment)cGroup_3_1.eContents().get(1);
+		private final RuleCall cKeyExpresionParserRuleCall_3_1_1_0 = (RuleCall)cKeyAssignment_3_1_1.eContents().get(0);
+		private final Keyword cHyphenMinusGreaterThanSignKeyword_3_1_2 = (Keyword)cGroup_3_1.eContents().get(2);
+		private final Assignment cValueAssignment_3_1_3 = (Assignment)cGroup_3_1.eContents().get(3);
+		private final RuleCall cValueExpresionParserRuleCall_3_1_3_0 = (RuleCall)cValueAssignment_3_1_3.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		
+		//CalistoMapValor: //mapa -> salida con tipos asignados
+		//     {CalistoMapValor} 'Calisto' '(' ((key+=Expresion '->' value+=Expresion) ('$' key+=Expresion '->' value+=Expresion)*)? ')'
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		////mapa -> salida con tipos asignados
+		//    {CalistoMapValor} 'Calisto' '(' ((key+=Expresion '->' value+=Expresion) ('$' key+=Expresion '->' value+=Expresion)*)? ')'
+		public Group getGroup() { return cGroup; }
+		
+		////mapa -> salida con tipos asignados
+		//    {CalistoMapValor}
+		public Action getCalistoMapValorAction_0() { return cCalistoMapValorAction_0; }
+		
+		//'Calisto'
+		public Keyword getCalistoKeyword_1() { return cCalistoKeyword_1; }
+		
+		//'('
+		public Keyword getLeftParenthesisKeyword_2() { return cLeftParenthesisKeyword_2; }
+		
+		//((key+=Expresion '->' value+=Expresion) ('$' key+=Expresion '->' value+=Expresion)*)?
+		public Group getGroup_3() { return cGroup_3; }
+		
+		//(key+=Expresion '->' value+=Expresion)
+		public Group getGroup_3_0() { return cGroup_3_0; }
+		
+		//key+=Expresion
+		public Assignment getKeyAssignment_3_0_0() { return cKeyAssignment_3_0_0; }
+		
+		//Expresion
+		public RuleCall getKeyExpresionParserRuleCall_3_0_0_0() { return cKeyExpresionParserRuleCall_3_0_0_0; }
+		
+		//'->'
+		public Keyword getHyphenMinusGreaterThanSignKeyword_3_0_1() { return cHyphenMinusGreaterThanSignKeyword_3_0_1; }
+		
+		//value+=Expresion
+		public Assignment getValueAssignment_3_0_2() { return cValueAssignment_3_0_2; }
+		
+		//Expresion
+		public RuleCall getValueExpresionParserRuleCall_3_0_2_0() { return cValueExpresionParserRuleCall_3_0_2_0; }
+		
+		//('$' key+=Expresion '->' value+=Expresion)*
+		public Group getGroup_3_1() { return cGroup_3_1; }
+		
+		//'$'
+		public Keyword getDollarSignKeyword_3_1_0() { return cDollarSignKeyword_3_1_0; }
+		
+		//key+=Expresion
+		public Assignment getKeyAssignment_3_1_1() { return cKeyAssignment_3_1_1; }
+		
+		//Expresion
+		public RuleCall getKeyExpresionParserRuleCall_3_1_1_0() { return cKeyExpresionParserRuleCall_3_1_1_0; }
+		
+		//'->'
+		public Keyword getHyphenMinusGreaterThanSignKeyword_3_1_2() { return cHyphenMinusGreaterThanSignKeyword_3_1_2; }
+		
+		//value+=Expresion
+		public Assignment getValueAssignment_3_1_3() { return cValueAssignment_3_1_3; }
+		
+		//Expresion
+		public RuleCall getValueExpresionParserRuleCall_3_1_3_0() { return cValueExpresionParserRuleCall_3_1_3_0; }
+		
+		//')'
+		public Keyword getRightParenthesisKeyword_4() { return cRightParenthesisKeyword_4; }
+	}
 	
 	
 	private final ProgramaElements pPrograma;
+	private final ObjetoElements pObjeto;
+	private final PrintElements pPrint;
+	private final InstruccionesElements pInstrucciones;
 	private final EstrellaFugazMeteoroElements pEstrellaFugazMeteoro;
-	private final FuncionElements pFuncion;
 	private final LlamadoFuncElements pLlamadoFunc;
-	private final ParamElements pParam;
-	private final InstruccionElements pInstruccion;
+	private final LlamadoMapaElements pLlamadoMapa;
+	private final DeclaracionElements pDeclaracion;
+	private final FuncionElements pFuncion;
 	private final AsignacionElements pAsignacion;
-	private final TipoElements pTipo;
-	private final TipoFuncionOrdenSuperiorElements pTipoFuncionOrdenSuperior;
+	private final ParamElements pParam;
 	private final ConstanteElements pConstante;
+	private final ValorElements pValor;
 	private final ExpresionElements pExpresion;
+	private final ExprMapOperacionesElements pExprMapOperaciones;
+	private final MapAddElements pMapAdd;
+	private final MapRemoveElements pMapRemove;
 	private final ExprConcatenacionElements pExprConcatenacion;
 	private final ExprAritmeticaElements pExprAritmetica;
 	private final ExprLogicaElements pExprLogica;
+	private final ExprLogicaOperadoresElements pExprLogicaOperadores;
+	private final XORElements pXOR;
 	private final ExprComparacionElements pExprComparacion;
+	private final PrimitivoElements pPrimitivo;
+	private final TipoFuncionOrdenSuperiorElements pTipoFuncionOrdenSuperior;
 	private final PlanetaElements pPlaneta;
 	private final ConstelacionElements pConstelacion;
+	private final TerminalRule tCHAR;
 	private final EstrellaElements pEstrella;
 	private final PolvoEstelarElements pPolvoEstelar;
 	private final DoubleElements pDouble;
 	private final LunaElements pLuna;
+	private final CalistoMapTipoElements pCalistoMapTipo;
+	private final CalistoMapValorElements pCalistoMapValor;
 	
 	private final Grammar grammar;
 	
@@ -1033,26 +1658,39 @@ public class DymeLanguageGrammarAccess extends AbstractElementFinder.AbstractGra
 		this.grammar = internalFindGrammar(grammarProvider);
 		this.gaTerminals = gaTerminals;
 		this.pPrograma = new ProgramaElements();
+		this.pObjeto = new ObjetoElements();
+		this.pPrint = new PrintElements();
+		this.pInstrucciones = new InstruccionesElements();
 		this.pEstrellaFugazMeteoro = new EstrellaFugazMeteoroElements();
-		this.pFuncion = new FuncionElements();
 		this.pLlamadoFunc = new LlamadoFuncElements();
-		this.pParam = new ParamElements();
-		this.pInstruccion = new InstruccionElements();
+		this.pLlamadoMapa = new LlamadoMapaElements();
+		this.pDeclaracion = new DeclaracionElements();
+		this.pFuncion = new FuncionElements();
 		this.pAsignacion = new AsignacionElements();
-		this.pTipo = new TipoElements();
-		this.pTipoFuncionOrdenSuperior = new TipoFuncionOrdenSuperiorElements();
+		this.pParam = new ParamElements();
 		this.pConstante = new ConstanteElements();
+		this.pValor = new ValorElements();
 		this.pExpresion = new ExpresionElements();
+		this.pExprMapOperaciones = new ExprMapOperacionesElements();
+		this.pMapAdd = new MapAddElements();
+		this.pMapRemove = new MapRemoveElements();
 		this.pExprConcatenacion = new ExprConcatenacionElements();
 		this.pExprAritmetica = new ExprAritmeticaElements();
 		this.pExprLogica = new ExprLogicaElements();
+		this.pExprLogicaOperadores = new ExprLogicaOperadoresElements();
+		this.pXOR = new XORElements();
 		this.pExprComparacion = new ExprComparacionElements();
+		this.pPrimitivo = new PrimitivoElements();
+		this.pTipoFuncionOrdenSuperior = new TipoFuncionOrdenSuperiorElements();
 		this.pPlaneta = new PlanetaElements();
 		this.pConstelacion = new ConstelacionElements();
+		this.tCHAR = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.isc.DymeLanguage.CHAR");
 		this.pEstrella = new EstrellaElements();
 		this.pPolvoEstelar = new PolvoEstelarElements();
 		this.pDouble = new DoubleElements();
 		this.pLuna = new LunaElements();
+		this.pCalistoMapTipo = new CalistoMapTipoElements();
+		this.pCalistoMapValor = new CalistoMapValorElements();
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -1088,7 +1726,8 @@ public class DymeLanguageGrammarAccess extends AbstractElementFinder.AbstractGra
 	////Greeting:
 	////    'Hello' name=ID '!';
 	//Programa:
-	//    (func+=Funcion)+
+	//    'GALAXIA' name=ID
+	//    (prog+=Instrucciones)*
 	//;
 	public ProgramaElements getProgramaAccess() {
 		return pPrograma;
@@ -1096,6 +1735,39 @@ public class DymeLanguageGrammarAccess extends AbstractElementFinder.AbstractGra
 	
 	public ParserRule getProgramaRule() {
 		return getProgramaAccess().getRule();
+	}
+	
+	//Objeto:
+	//    (CalistoMapTipo | Primitivo)
+	//;
+	public ObjetoElements getObjetoAccess() {
+		return pObjeto;
+	}
+	
+	public ParserRule getObjetoRule() {
+		return getObjetoAccess().getRule();
+	}
+	
+	//Print:
+	//    printTipo=('Mensaje' | 'MensajeLineal') '(' (val=Valor) ')'
+	//;
+	public PrintElements getPrintAccess() {
+		return pPrint;
+	}
+	
+	public ParserRule getPrintRule() {
+		return getPrintAccess().getRule();
+	}
+	
+	//Instrucciones:
+	//    (Declaracion | Valor)
+	//;
+	public InstruccionesElements getInstruccionesAccess() {
+		return pInstrucciones;
+	}
+	
+	public ParserRule getInstruccionesRule() {
+		return getInstruccionesAccess().getRule();
 	}
 	
 	//EstrellaFugazMeteoro: //If
@@ -1110,22 +1782,8 @@ public class DymeLanguageGrammarAccess extends AbstractElementFinder.AbstractGra
 		return getEstrellaFugazMeteoroAccess().getRule();
 	}
 	
-	//Funcion:
-	//    'CASIMIR' name=ID 'NECESITA' (param+=Param ('$' param+=Param)*)? 'CONVERGE'
-	//    (instr+=Instruccion)* (expr=Expresion)
-	//    /*ef+=EstrellaFugazMeteoro*/
-	//    "GUT" (returnTipo ?= '->' tipoClass=TipoFuncionOrdenSuperior?)?
-	//;
-	public FuncionElements getFuncionAccess() {
-		return pFuncion;
-	}
-	
-	public ParserRule getFuncionRule() {
-		return getFuncionAccess().getRule();
-	}
-	
 	//LlamadoFunc:
-	//    funcion=[Funcion] 'CONSUME' (args+=Expresion ('$' args+=Expresion)*)? '#'
+	//    funcionID=[Declaracion] '{' (args+=(Valor) ('$' args+=(Valor))*)? '}'
 	//;
 	public LlamadoFuncElements getLlamadoFuncAccess() {
 		return pLlamadoFunc;
@@ -1135,32 +1793,45 @@ public class DymeLanguageGrammarAccess extends AbstractElementFinder.AbstractGra
 		return getLlamadoFuncAccess().getRule();
 	}
 	
-	//Param:
-	//    name=ID 'es' tipoClass=TipoFuncionOrdenSuperior
+	//LlamadoMapa:
+	//    decID=[Declaracion] '[' mapKey=Expresion ']'
 	//;
-	public ParamElements getParamAccess() {
-		return pParam;
+	public LlamadoMapaElements getLlamadoMapaAccess() {
+		return pLlamadoMapa;
 	}
 	
-	public ParserRule getParamRule() {
-		return getParamAccess().getRule();
+	public ParserRule getLlamadoMapaRule() {
+		return getLlamadoMapaAccess().getRule();
 	}
 	
-	//Instruccion:
-	//    Asignacion /*Falta */
+	//Declaracion:
+	//    (Asignacion | Funcion | Param | Print)
 	//;
-	public InstruccionElements getInstruccionAccess() {
-		return pInstruccion;
+	public DeclaracionElements getDeclaracionAccess() {
+		return pDeclaracion;
 	}
 	
-	public ParserRule getInstruccionRule() {
-		return getInstruccionAccess().getRule();
+	public ParserRule getDeclaracionRule() {
+		return getDeclaracionAccess().getRule();
+	}
+	
+	//Funcion:
+	//    (gusano ?= 'Agujero' 'de' 'Gusano')?
+	//    'CASIMIR' name=ID ('CONSUME'  param+=Param ('$' param+=Param)*)? 'CONVERGE'
+	//    (declar+=(Declaracion))*
+	//    (val=(Valor))
+	//    "GUT" (tipoInferido ?= '->' tipoClass=Primitivo)?
+	//;
+	public FuncionElements getFuncionAccess() {
+		return pFuncion;
+	}
+	
+	public ParserRule getFuncionRule() {
+		return getFuncionAccess().getRule();
 	}
 	
 	//Asignacion:
-	//    'MASA' name=ID (tipoInferido ?= 'es' tipoClass=TipoFuncionOrdenSuperior)?  '<-' valorAsig=Expresion '~'
-	//    /*'MASA' name=ID ('es' tip=Tipo)?  '<-' valor=Expresion */
-	//    /* Preguntar la comparacion con null, con el valor opcional */
+	//    'MASA' name=ID (tipoInferido ?= 'es' tipoClass=Objeto)?  '<-' valorAsig=Valor
 	//;
 	public AsignacionElements getAsignacionAccess() {
 		return pAsignacion;
@@ -1170,31 +1841,19 @@ public class DymeLanguageGrammarAccess extends AbstractElementFinder.AbstractGra
 		return getAsignacionAccess().getRule();
 	}
 	
-	//Tipo:
-	//    tipo = ('Planeta' | 'Constelacion' | 'Estrella' | 'PolvoEstelar' | 'Luna' )
+	//Param:
+	//    name=ID 'es' ('(' (param+=(TipoFuncionOrdenSuperior) ('$' param+=TipoFuncionOrdenSuperior)*)? ')' | param+=Objeto) (tipoRetorno ?= '->' returnTipo=Primitivo)?
 	//;
-	public TipoElements getTipoAccess() {
-		return pTipo;
+	public ParamElements getParamAccess() {
+		return pParam;
 	}
 	
-	public ParserRule getTipoRule() {
-		return getTipoAccess().getRule();
-	}
-	
-	//TipoFuncionOrdenSuperior:
-	//    (ordenSuperiorTipo = '(' paramFunc+=(TipoFuncionOrdenSuperior) ('$' paramFunc+=TipoFuncionOrdenSuperior)* ')' | Tipo)
-	//    (returnTipoFunc ?= '->' (('(' returnFunc=(TipoFuncionOrdenSuperior) ')') | returnFunc=Tipo))?
-	//;
-	public TipoFuncionOrdenSuperiorElements getTipoFuncionOrdenSuperiorAccess() {
-		return pTipoFuncionOrdenSuperior;
-	}
-	
-	public ParserRule getTipoFuncionOrdenSuperiorRule() {
-		return getTipoFuncionOrdenSuperiorAccess().getRule();
+	public ParserRule getParamRule() {
+		return getParamAccess().getRule();
 	}
 	
 	//Constante:
-	//    nombre=[Asignacion]
+	//    nombre=[Declaracion]
 	//;
 	public ConstanteElements getConstanteAccess() {
 		return pConstante;
@@ -1204,8 +1863,19 @@ public class DymeLanguageGrammarAccess extends AbstractElementFinder.AbstractGra
 		return getConstanteAccess().getRule();
 	}
 	
+	//Valor:
+	//    (Expresion | CalistoMapValor | ExprMapOperaciones)
+	//;
+	public ValorElements getValorAccess() {
+		return pValor;
+	}
+	
+	public ParserRule getValorRule() {
+		return getValorAccess().getRule();
+	}
+	
 	//Expresion:
-	//    ExprConcatenacion | ExprAritmetica | ExprLogica | LlamadoFunc | Constante | EstrellaFugazMeteoro
+	//    ExprConcatenacion | ExprAritmetica | ExprLogica | LlamadoFunc | EstrellaFugazMeteoro | Constante | LlamadoMapa
 	//;
 	public ExpresionElements getExpresionAccess() {
 		return pExpresion;
@@ -1215,8 +1885,41 @@ public class DymeLanguageGrammarAccess extends AbstractElementFinder.AbstractGra
 		return getExpresionAccess().getRule();
 	}
 	
+	//ExprMapOperaciones:
+	//    MapAdd | MapRemove
+	//;
+	public ExprMapOperacionesElements getExprMapOperacionesAccess() {
+		return pExprMapOperaciones;
+	}
+	
+	public ParserRule getExprMapOperacionesRule() {
+		return getExprMapOperacionesAccess().getRule();
+	}
+	
+	//MapAdd:
+	//    '(' operadorAdd = ('+') mapConst=Constante '(' (key+=Expresion '->' value+=Expresion) ')' ('('  key+=Expresion '->' value+=Expresion ')')* ')'
+	//;
+	public MapAddElements getMapAddAccess() {
+		return pMapAdd;
+	}
+	
+	public ParserRule getMapAddRule() {
+		return getMapAddAccess().getRule();
+	}
+	
+	//MapRemove:
+	//    '(' operadorAdd = ('-') mapConst=Constante '(' key+=Expresion ')' ( '(' key+=Expresion ')' )* ')'
+	//;
+	public MapRemoveElements getMapRemoveAccess() {
+		return pMapRemove;
+	}
+	
+	public ParserRule getMapRemoveRule() {
+		return getMapRemoveAccess().getRule();
+	}
+	
 	//ExprConcatenacion:
-	//    '('(operadorCon = '++' (exprCon+=(ExprConcatenacion | LlamadoFunc))+) ')' |  (Constelacion | Estrella)
+	//    '('(operadorCon = ('++') (exprCon+=(Expresion))+) ')' |  (Constelacion | Estrella)
 	//;
 	public ExprConcatenacionElements getExprConcatenacionAccess() {
 		return pExprConcatenacion;
@@ -1227,7 +1930,7 @@ public class DymeLanguageGrammarAccess extends AbstractElementFinder.AbstractGra
 	}
 	
 	//ExprAritmetica:
-	//    '('(operadorAr = ('+' | '-' | '/' | '*' | '%')  (exprAr+=(ExprAritmetica | LlamadoFunc))+) ')' |  (Planeta | PolvoEstelar)
+	//    '('(operadorAr = ('+' | '-' | '/' | '*' | '%')  (exprAr+=(Expresion))+) ')' |  (Planeta | PolvoEstelar)
 	//;
 	public ExprAritmeticaElements getExprAritmeticaAccess() {
 		return pExprAritmetica;
@@ -1238,7 +1941,7 @@ public class DymeLanguageGrammarAccess extends AbstractElementFinder.AbstractGra
 	}
 	
 	//ExprLogica:
-	//    '('(operadorLog = ( '&&' | '||' | '$$' | '!' ) (exprLog+=(ExprLogica | LlamadoFunc))+) ')' | (Luna | ExprComparacion )
+	//   (Negado ?= '!')? exprLog=(ExprLogicaOperadores | Luna | ExprComparacion | XOR)
 	//;
 	public ExprLogicaElements getExprLogicaAccess() {
 		return pExprLogica;
@@ -1248,8 +1951,30 @@ public class DymeLanguageGrammarAccess extends AbstractElementFinder.AbstractGra
 		return getExprLogicaAccess().getRule();
 	}
 	
+	//ExprLogicaOperadores:
+	//    (('('(operadorLog = ( '&&' | '||' ) (exprLogs+=(Expresion))+) ')' ))
+	//;
+	public ExprLogicaOperadoresElements getExprLogicaOperadoresAccess() {
+		return pExprLogicaOperadores;
+	}
+	
+	public ParserRule getExprLogicaOperadoresRule() {
+		return getExprLogicaOperadoresAccess().getRule();
+	}
+	
+	//XOR:
+	//    '('(operadorXOR = '$$' exprLogIzq=(Expresion) exprLogDer=(Expresion)) ')'
+	//;
+	public XORElements getXORAccess() {
+		return pXOR;
+	}
+	
+	public ParserRule getXORRule() {
+		return getXORAccess().getRule();
+	}
+	
 	//ExprComparacion:
-	//    '('(operadorComp = ('<' | '>' | '<=' | '>=' | '==' | '~') exprComIzq=(Expresion) exprComDer=(Expresion)) ')'
+	//    '('(operadorComp = ('<' | '>' | '<=' | '>=' | '==' | '~=') exprComIzq=(Expresion) exprComDer=(Expresion)) ')'
 	//;
 	public ExprComparacionElements getExprComparacionAccess() {
 		return pExprComparacion;
@@ -1259,11 +1984,29 @@ public class DymeLanguageGrammarAccess extends AbstractElementFinder.AbstractGra
 		return getExprComparacionAccess().getRule();
 	}
 	
-	///*
-	//ExprSimple:
-	//     valorExpr = ( Planeta | PolvoEstelar | Constelacion | Estrella | Luna | Cometa )
+	//Primitivo:
+	//    tipo = ('Planeta' | 'Constelacion' | 'Estrella' | 'PolvoEstelar' | 'Luna')
 	//;
-	//*/
+	public PrimitivoElements getPrimitivoAccess() {
+		return pPrimitivo;
+	}
+	
+	public ParserRule getPrimitivoRule() {
+		return getPrimitivoAccess().getRule();
+	}
+	
+	//TipoFuncionOrdenSuperior:
+	//    (ordenSuperiorTipo = '(' (paramFunc+=(Objeto) ('$' paramFunc+=Objeto)*)? ')' | Objeto)
+	//    (returnTipoFunc ?= '->' returnFunc=(Primitivo) )?
+	//;
+	public TipoFuncionOrdenSuperiorElements getTipoFuncionOrdenSuperiorAccess() {
+		return pTipoFuncionOrdenSuperior;
+	}
+	
+	public ParserRule getTipoFuncionOrdenSuperiorRule() {
+		return getTipoFuncionOrdenSuperiorAccess().getRule();
+	}
+	
 	//Planeta: /* int */
 	//    x = INT
 	//;
@@ -1286,8 +2029,16 @@ public class DymeLanguageGrammarAccess extends AbstractElementFinder.AbstractGra
 		return getConstelacionAccess().getRule();
 	}
 	
-	//Estrella: /* char */ /* preguntar como aceptar solo 1 */
-	//    x = 'a'
+	//terminal CHAR: /* char */
+	//    '"' ( '\\' . | !('\\'|'"') ) '"' |
+	//    "'" ( '\\' . | !('\\'|"'") ) "'"
+	//;
+	public TerminalRule getCHARRule() {
+		return tCHAR;
+	}
+	
+	//Estrella:
+	//    x = CHAR
 	//;
 	public EstrellaElements getEstrellaAccess() {
 		return pEstrella;
@@ -1328,6 +2079,28 @@ public class DymeLanguageGrammarAccess extends AbstractElementFinder.AbstractGra
 	
 	public ParserRule getLunaRule() {
 		return getLunaAccess().getRule();
+	}
+	
+	//CalistoMapTipo: //mapa -> entrada con la declaracion de tipos
+	//     'Calisto' '[' (tipoIzq=Primitivo '$' tipoDer=Primitivo) ']'
+	// ;
+	public CalistoMapTipoElements getCalistoMapTipoAccess() {
+		return pCalistoMapTipo;
+	}
+	
+	public ParserRule getCalistoMapTipoRule() {
+		return getCalistoMapTipoAccess().getRule();
+	}
+	
+	//CalistoMapValor: //mapa -> salida con tipos asignados
+	//     {CalistoMapValor} 'Calisto' '(' ((key+=Expresion '->' value+=Expresion) ('$' key+=Expresion '->' value+=Expresion)*)? ')'
+	//;
+	public CalistoMapValorElements getCalistoMapValorAccess() {
+		return pCalistoMapValor;
+	}
+	
+	public ParserRule getCalistoMapValorRule() {
+		return getCalistoMapValorAccess().getRule();
 	}
 	
 	//terminal ID: '^'?('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;

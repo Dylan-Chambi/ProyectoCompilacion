@@ -8,8 +8,6 @@ import edu.upb.lp.isc.dymeLanguage.Expresion;
 
 import org.eclipse.emf.ecore.EClass;
 
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Expresion</b></em>'.
@@ -17,7 +15,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *
  * @generated
  */
-public class ExpresionImpl extends MinimalEObjectImpl.Container implements Expresion
+public class ExpresionImpl extends ValorImpl implements Expresion
 {
   /**
    * <!-- begin-user-doc -->

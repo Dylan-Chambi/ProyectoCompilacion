@@ -4,11 +4,12 @@
 package edu.upb.lp.isc.dymeLanguage.impl;
 
 import edu.upb.lp.isc.dymeLanguage.DymeLanguagePackage;
-import edu.upb.lp.isc.dymeLanguage.Funcion;
+import edu.upb.lp.isc.dymeLanguage.Instrucciones;
 import edu.upb.lp.isc.dymeLanguage.Programa;
 
 import java.util.Collection;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
@@ -16,6 +17,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
@@ -29,7 +31,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link edu.upb.lp.isc.dymeLanguage.impl.ProgramaImpl#getFunc <em>Func</em>}</li>
+ *   <li>{@link edu.upb.lp.isc.dymeLanguage.impl.ProgramaImpl#getName <em>Name</em>}</li>
+ *   <li>{@link edu.upb.lp.isc.dymeLanguage.impl.ProgramaImpl#getProg <em>Prog</em>}</li>
  * </ul>
  *
  * @generated
@@ -37,14 +40,34 @@ import org.eclipse.emf.ecore.util.InternalEList;
 public class ProgramaImpl extends MinimalEObjectImpl.Container implements Programa
 {
   /**
-   * The cached value of the '{@link #getFunc() <em>Func</em>}' containment reference list.
+   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getFunc()
+   * @see #getName()
    * @generated
    * @ordered
    */
-  protected EList<Funcion> func;
+  protected static final String NAME_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
+  protected String name = NAME_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getProg() <em>Prog</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getProg()
+   * @generated
+   * @ordered
+   */
+  protected EList<Instrucciones> prog;
 
   /**
    * <!-- begin-user-doc -->
@@ -73,13 +96,38 @@ public class ProgramaImpl extends MinimalEObjectImpl.Container implements Progra
    * @generated
    */
   @Override
-  public EList<Funcion> getFunc()
+  public String getName()
   {
-    if (func == null)
+    return name;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setName(String newName)
+  {
+    String oldName = name;
+    name = newName;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DymeLanguagePackage.PROGRAMA__NAME, oldName, name));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EList<Instrucciones> getProg()
+  {
+    if (prog == null)
     {
-      func = new EObjectContainmentEList<Funcion>(Funcion.class, this, DymeLanguagePackage.PROGRAMA__FUNC);
+      prog = new EObjectContainmentEList<Instrucciones>(Instrucciones.class, this, DymeLanguagePackage.PROGRAMA__PROG);
     }
-    return func;
+    return prog;
   }
 
   /**
@@ -92,8 +140,8 @@ public class ProgramaImpl extends MinimalEObjectImpl.Container implements Progra
   {
     switch (featureID)
     {
-      case DymeLanguagePackage.PROGRAMA__FUNC:
-        return ((InternalEList<?>)getFunc()).basicRemove(otherEnd, msgs);
+      case DymeLanguagePackage.PROGRAMA__PROG:
+        return ((InternalEList<?>)getProg()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -108,8 +156,10 @@ public class ProgramaImpl extends MinimalEObjectImpl.Container implements Progra
   {
     switch (featureID)
     {
-      case DymeLanguagePackage.PROGRAMA__FUNC:
-        return getFunc();
+      case DymeLanguagePackage.PROGRAMA__NAME:
+        return getName();
+      case DymeLanguagePackage.PROGRAMA__PROG:
+        return getProg();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -125,9 +175,12 @@ public class ProgramaImpl extends MinimalEObjectImpl.Container implements Progra
   {
     switch (featureID)
     {
-      case DymeLanguagePackage.PROGRAMA__FUNC:
-        getFunc().clear();
-        getFunc().addAll((Collection<? extends Funcion>)newValue);
+      case DymeLanguagePackage.PROGRAMA__NAME:
+        setName((String)newValue);
+        return;
+      case DymeLanguagePackage.PROGRAMA__PROG:
+        getProg().clear();
+        getProg().addAll((Collection<? extends Instrucciones>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -143,8 +196,11 @@ public class ProgramaImpl extends MinimalEObjectImpl.Container implements Progra
   {
     switch (featureID)
     {
-      case DymeLanguagePackage.PROGRAMA__FUNC:
-        getFunc().clear();
+      case DymeLanguagePackage.PROGRAMA__NAME:
+        setName(NAME_EDEFAULT);
+        return;
+      case DymeLanguagePackage.PROGRAMA__PROG:
+        getProg().clear();
         return;
     }
     super.eUnset(featureID);
@@ -160,10 +216,29 @@ public class ProgramaImpl extends MinimalEObjectImpl.Container implements Progra
   {
     switch (featureID)
     {
-      case DymeLanguagePackage.PROGRAMA__FUNC:
-        return func != null && !func.isEmpty();
+      case DymeLanguagePackage.PROGRAMA__NAME:
+        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case DymeLanguagePackage.PROGRAMA__PROG:
+        return prog != null && !prog.isEmpty();
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuilder result = new StringBuilder(super.toString());
+    result.append(" (name: ");
+    result.append(name);
+    result.append(')');
+    return result.toString();
   }
 
 } //ProgramaImpl
